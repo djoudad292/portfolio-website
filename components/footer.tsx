@@ -6,7 +6,7 @@ export function Footer() {
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 sm:flex-row">
         <div className="flex items-center gap-2 text-muted-foreground">
           <Terminal className="h-4 w-4 text-primary" />
-          <span className="font-mono text-sm">{"<DEV />"}</span>
+          <span className="font-mono text-sm">Djaouad Tech</span>
         </div>
         <p className="text-sm text-muted-foreground">
           {"Built with Next.js, TypeScript & TailwindCSS"}

@@ -7,6 +7,7 @@ import { Architecture } from "@/components/architecture"
 import { Experience } from "@/components/experience"
 import { Contact } from "@/components/contact"
 import { Footer } from "@/components/footer"
+import { Toaster } from "sonner"
 
 export default function Home() {
   return (
@@ -20,6 +21,17 @@ export default function Home() {
       <Experience />
       <Contact />
       <Footer />
+      <Toaster
+        theme="dark"
+        position="bottom-right"
+        toastOptions={{
+          style: {
+            background: "oklch(0.17 0.005 260)",
+            border: "1px solid oklch(0.27 0.005 260)",
+            color: "oklch(0.95 0 0)",
+          },
+        }}
+      />
     </main>
   )
 }

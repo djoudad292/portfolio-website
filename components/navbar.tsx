@@ -38,7 +38,7 @@ export function Navbar() {
         <a href="#" className="flex items-center gap-2 text-foreground">
           <Terminal className="h-5 w-5 text-primary" />
           <span className="font-mono text-sm font-semibold tracking-wider">
-            {"<DEV />"}
+            Djaouad Tech
           </span>
         </a>
 

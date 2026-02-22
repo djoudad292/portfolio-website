@@ -19,7 +19,7 @@ export function Hero() {
           transition={{ duration: 0.5 }}
         >
           <p className="mb-4 font-mono text-sm tracking-widest text-primary">
-            FULL-STACK WEB DEVELOPER
+            DJAOUAD TECH &mdash; FULL-STACK WEB DEVELOPER
           </p>
         </motion.div>
 
