@@ -7,21 +7,21 @@ import { Briefcase, GraduationCap } from "lucide-react"
 const timeline = [
   {
     type: "work" as const,
-    title: "Senior Backend Developer",
-    company: "Tech Company",
+    title: "Full-Stack Web & Mobile Developer",
+    company: "Djaouad Tech",
     period: "2023 - Present",
     description:
-      "Leading backend architecture for microservices-based platforms. Designing scalable APIs, implementing message queue systems, and mentoring junior developers.",
-    techs: ["NestJS", "PostgreSQL", "Docker", "RabbitMQ"],
+      "Building end-to-end web and mobile solutions. Architecting scalable backend services, crafting responsive frontends, and shipping cross-platform mobile apps with React Native.",
+    techs: ["React Native", "NestJS", "Next.js", "PostgreSQL", "Docker"],
   },
   {
     type: "work" as const,
     title: "Full-Stack Developer",
-    company: "Software Agency",
+    company: "Freelance & Agency Work",
     period: "2021 - 2023",
     description:
-      "Built end-to-end web applications for clients across e-commerce, fintech, and SaaS domains. Focused on backend services and API design.",
-    techs: ["Node.js", "React", "TypeScript", "MySQL"],
+      "Delivered full-stack web and mobile applications for clients across e-commerce, real-time communication, and SaaS domains. Built both frontend interfaces and backend APIs.",
+    techs: ["React", "Node.js", "TypeScript", "React Native", "MySQL"],
   },
   {
     type: "education" as const,
@@ -29,8 +29,8 @@ const timeline = [
     company: "University",
     period: "2017 - 2021",
     description:
-      "Studied algorithms, data structures, distributed systems, and software engineering. Graduated with a focus on backend technologies.",
-    techs: ["Algorithms", "Databases", "Networking", "OS"],
+      "Studied algorithms, data structures, distributed systems, and software engineering. Built foundational skills in both web and mobile development.",
+    techs: ["Algorithms", "Databases", "Mobile Dev", "Web Dev"],
   },
 ]
 

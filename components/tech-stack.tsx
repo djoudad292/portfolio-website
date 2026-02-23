@@ -2,9 +2,35 @@
 
 import { motion } from "framer-motion"
 import { SectionHeading } from "./section-heading"
-import { Server, Monitor, Cloud } from "lucide-react"
+import { Server, Monitor, Cloud, Smartphone } from "lucide-react"
 
 const categories = [
+  {
+    icon: Monitor,
+    title: "Frontend",
+    techs: [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "TailwindCSS",
+      "Redux",
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+    ],
+  },
+  {
+    icon: Smartphone,
+    title: "Mobile",
+    techs: [
+      "React Native",
+      "Expo",
+      "Android",
+      "iOS",
+      "Push Notifications",
+      "App Store Deployment",
+    ],
+  },
   {
     icon: Server,
     title: "Backend",
@@ -23,14 +49,9 @@ const categories = [
     ],
   },
   {
-    icon: Monitor,
-    title: "Frontend",
-    techs: ["React", "Next.js", "TypeScript", "TailwindCSS"],
-  },
-  {
     icon: Cloud,
-    title: "DevOps",
-    techs: ["Docker", "GitHub Actions", "Nginx", "Linux"],
+    title: "DevOps & Tools",
+    techs: ["Docker", "GitHub Actions", "Nginx", "Linux", "Firebase", "Git"],
   },
 ]
 
@@ -41,10 +62,10 @@ export function TechStack() {
         <SectionHeading
           label="TECH STACK"
           title="Technologies I Work With"
-          description="My core toolkit for building production-grade software."
+          description="My core toolkit for building production-grade web and mobile applications."
         />
 
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {categories.map((cat, catIndex) => (
             <motion.div
               key={cat.title}

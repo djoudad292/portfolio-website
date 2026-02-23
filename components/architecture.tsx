@@ -7,46 +7,46 @@ import {
   GitBranch,
   Database,
   Shield,
-  Workflow,
-  Container,
+  Smartphone,
+  Monitor,
 } from "lucide-react"
 
 const principles = [
   {
     icon: Layers,
-    title: "Microservices Architecture",
+    title: "Scalable Architecture",
     description:
-      "Decomposing monoliths into independently deployable services with clear domain boundaries and API contracts.",
+      "Designing modular systems from microservices to monoliths, with clear domain boundaries and clean API contracts.",
+  },
+  {
+    icon: Monitor,
+    title: "Responsive Web Apps",
+    description:
+      "Building performant, accessible web applications with server-side rendering, code splitting, and progressive enhancement.",
+  },
+  {
+    icon: Smartphone,
+    title: "Cross-Platform Mobile",
+    description:
+      "Shipping native-quality iOS and Android apps from a single React Native codebase with offline support and smooth animations.",
   },
   {
     icon: GitBranch,
     title: "Event-Driven Design",
     description:
-      "Leveraging message queues and event sourcing for loose coupling and asynchronous communication between services.",
+      "Leveraging message queues, real-time WebSockets, and event sourcing for responsive, loosely-coupled systems.",
   },
   {
     icon: Database,
-    title: "Database Per Service",
+    title: "Data Layer Mastery",
     description:
-      "Each microservice owns its data with isolated databases, ensuring autonomy and independent scaling.",
+      "Designing efficient database schemas, ORMs, caching strategies, and offline-first data sync for web and mobile.",
   },
   {
     icon: Shield,
-    title: "API Gateway Pattern",
+    title: "Security & Auth",
     description:
-      "Centralized entry point handling routing, authentication, rate limiting, and request aggregation.",
-  },
-  {
-    icon: Workflow,
-    title: "CI/CD Pipelines",
-    description:
-      "Automated build, test, and deployment workflows using GitHub Actions and Docker for consistent releases.",
-  },
-  {
-    icon: Container,
-    title: "Containerization",
-    description:
-      "Docker-based development and deployment ensuring environment consistency from local to production.",
+      "Implementing production-grade authentication, role-based access, token rotation, rate limiting, and secure API gateways.",
   },
 ]
 
@@ -57,7 +57,7 @@ export function Architecture() {
         <SectionHeading
           label="ARCHITECTURE"
           title="Engineering Philosophy"
-          description="Core architectural principles and patterns I follow when designing distributed systems."
+          description="Core principles and patterns I follow when building web apps, mobile apps, and distributed systems."
         />
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
