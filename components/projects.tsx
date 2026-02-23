@@ -13,9 +13,48 @@ import {
   Video,
   Shield,
   Smartphone,
+  MessageCircle,
 } from "lucide-react"
 
-const projects = [
+interface Project {
+  icon: typeof Server
+  title: string
+  description: string
+  techStack: string[]
+  features: string[]
+  architecture: string
+  github?: string
+  githubBackend?: string
+  demo?: string
+}
+
+const projects: Project[] = [
+  {
+    icon: MessageCircle,
+    title: "AI Client Support Chatbot",
+    description:
+      "A real-time AI-powered chatbot for client support, built with Next.js on the frontend and Express.js on the backend. Uses AI APIs to provide intelligent, context-aware responses to customer queries.",
+    techStack: [
+      "Next.js",
+      "Express.js",
+      "AI API",
+      "TypeScript",
+      "TailwindCSS",
+      "WebSocket",
+    ],
+    features: [
+      "Real-time AI-powered conversational responses",
+      "Clean, responsive chat interface",
+      "Express.js backend handling API orchestration",
+      "Context-aware message history",
+      "Deployed frontend on Netlify, backend independently",
+    ],
+    architecture:
+      "The frontend is a Next.js app providing a polished chat UI with real-time message streaming. The Express.js backend acts as a middleware layer, handling user sessions, message routing, and AI API integration. Messages are processed server-side to maintain context history and deliver intelligent, relevant responses to client queries.",
+    github: "https://github.com/djoudad292/chatme",
+    githubBackend: "https://github.com/djoudad292/chatbot-temp",
+    demo: "https://djaouad-chat.netlify.app",
+  },
   {
     icon: Server,
     title: "Microservices Car Rental System",
@@ -156,7 +195,7 @@ export function Projects() {
 }
 
 interface ProjectCardProps {
-  project: (typeof projects)[number]
+  project: Project
   index: number
 }
 
@@ -253,21 +292,52 @@ function ProjectCard({ project, index }: ProjectCardProps) {
           </AnimatePresence>
 
           {/* Action buttons */}
-          <div className="flex gap-3">
-            <a
-              href="#"
-              className="inline-flex items-center gap-2 rounded-lg border border-border bg-secondary px-4 py-2 text-sm font-medium text-secondary-foreground transition-colors hover:bg-secondary/80"
-            >
-              <Github className="h-4 w-4" />
-              GitHub
-            </a>
-            <a
-              href="#"
-              className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-            >
-              <ExternalLink className="h-4 w-4" />
-              Live Demo
-            </a>
+          <div className="flex flex-wrap gap-3">
+            {project.github && (
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-lg border border-border bg-secondary px-4 py-2 text-sm font-medium text-secondary-foreground transition-colors hover:bg-secondary/80"
+              >
+                <Github className="h-4 w-4" />
+                {project.githubBackend ? "Frontend" : "GitHub"}
+              </a>
+            )}
+            {project.githubBackend && (
+              <a
+                href={project.githubBackend}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-lg border border-border bg-secondary px-4 py-2 text-sm font-medium text-secondary-foreground transition-colors hover:bg-secondary/80"
+              >
+                <Github className="h-4 w-4" />
+                Backend
+              </a>
+            )}
+            {project.demo && (
+              <a
+                href={project.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+              >
+                <ExternalLink className="h-4 w-4" />
+                Live Demo
+              </a>
+            )}
+            {!project.github && !project.demo && (
+              <>
+                <span className="inline-flex items-center gap-2 rounded-lg border border-border bg-secondary px-4 py-2 text-sm font-medium text-muted-foreground">
+                  <Github className="h-4 w-4" />
+                  GitHub
+                </span>
+                <span className="inline-flex items-center gap-2 rounded-lg bg-primary/50 px-4 py-2 text-sm font-medium text-primary-foreground/70">
+                  <ExternalLink className="h-4 w-4" />
+                  Live Demo
+                </span>
+              </>
+            )}
           </div>
         </div>
       </div>
