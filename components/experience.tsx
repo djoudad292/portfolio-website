@@ -39,9 +39,9 @@ export function Experience() {
     <section id="experience" className="px-6 py-24 lg:py-32">
       <div className="mx-auto max-w-3xl">
         <SectionHeading
-          label="EXPERIENCE"
-          title="Career Timeline"
-          description="My professional journey in software engineering."
+          label="TIMELINE"
+          title="Journey & Growth"
+          description="Key milestones and projects that shaped my skills as a full-stack developer."
         />
 
         <div className="relative">
