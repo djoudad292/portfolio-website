@@ -50,7 +50,7 @@ const projects: Project[] = [
     ],
     architecture:
       "Built with Next.js for server-side rendering and optimal performance. Tailwind CSS handles all styling for a modern, clean design. Pages are statically generated where possible for instant loading. The reservation system integrates with a backend API for booking management. Component-based architecture ensures maintainability and reusability.",
-    github: "https://github.com/djoudad292/jordan-client",
+    github: "https://github.com/djoudad292/jordan_client",
     demo: "https://landingpagerestaurent.netlify.app",
   },
   {
