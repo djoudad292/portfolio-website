@@ -13,6 +13,7 @@ import {
   Video,
   Shield,
   MessageCircle,
+  UtensilsCrossed,
 } from "lucide-react"
 
 interface Project {
@@ -28,6 +29,30 @@ interface Project {
 }
 
 const projects: Project[] = [
+  {
+    icon: UtensilsCrossed,
+    title: "Restaurant Landing Page",
+    description:
+      "A modern, responsive landing page for a restaurant startup built with Next.js and Tailwind CSS. Features an attractive hero section, menu showcase, reservation system, and customer testimonials.",
+    techStack: [
+      "Next.js",
+      "Tailwind CSS",
+      "TypeScript",
+      "Responsive Design",
+    ],
+    features: [
+      "Hero section with eye-catching call-to-action",
+      "Menu showcase with categorized dishes",
+      "Online reservation booking system",
+      "Customer testimonials and ratings",
+      "Mobile-first responsive design",
+      "Fast loading and SEO optimized",
+    ],
+    architecture:
+      "Built with Next.js for server-side rendering and optimal performance. Tailwind CSS handles all styling for a modern, clean design. Pages are statically generated where possible for instant loading. The reservation system integrates with a backend API for booking management. Component-based architecture ensures maintainability and reusability.",
+    github: "https://github.com/djoudad292/jordan-client",
+    demo: "https://landingpagerestaurent.netlify.app",
+  },
   {
     icon: MessageCircle,
     title: "AI Client Support Chatbot",
