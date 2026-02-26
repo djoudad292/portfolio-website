@@ -26,9 +26,9 @@ export default function Home() {
         position="bottom-right"
         toastOptions={{
           style: {
-            background: "oklch(0.17 0.005 260)",
-            border: "1px solid oklch(0.27 0.005 260)",
-            color: "oklch(0.95 0 0)",
+            background: "#1e293b",
+            border: "1px solid #334155",
+            color: "#e2e8f0",
           },
         }}
       />

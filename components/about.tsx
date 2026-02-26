@@ -2,28 +2,28 @@
 
 import { motion } from "framer-motion"
 import { SectionHeading } from "./section-heading"
-import { Server, Globe, Zap, Shield } from "lucide-react"
+import { Server, Globe, Zap, Smartphone } from "lucide-react"
 
 const highlights = [
   {
     icon: Server,
-    title: "Backend Systems",
-    description: "Designing robust, scalable server-side architectures with NestJS and Node.js.",
+    title: "Scalable Backends",
+    description: "Building robust, distributed systems with microservices, event-driven architecture, and intelligent API design.",
   },
   {
     icon: Globe,
-    title: "Modern Frontends",
-    description: "Creating responsive, performant user interfaces with React and Next.js.",
+    title: "Web Applications",
+    description: "Creating fast, responsive web experiences with React, Next.js, and modern performance optimization.",
+  },
+  {
+    icon: Smartphone,
+    title: "Mobile Apps",
+    description: "Shipping production-quality iOS and Android apps with React Native and seamless user experiences.",
   },
   {
     icon: Zap,
-    title: "Real-Time Apps",
-    description: "Building real-time communication systems with WebSockets and WebRTC.",
-  },
-  {
-    icon: Shield,
-    title: "Security First",
-    description: "Implementing secure authentication, rate limiting, and data protection.",
+    title: "Real-Time Systems",
+    description: "Building WebSocket-powered communication, live notifications, and collaborative features at scale.",
   },
 ]
 
@@ -33,8 +33,8 @@ export function About() {
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           label="ABOUT ME"
-          title="Who I Am"
-          description="I build scalable backend systems using NestJS and design modern frontends with React and Next.js. I enjoy working with microservices, real-time applications, and performance optimization."
+          title="Full-Stack Developer"
+          description="I craft end-to-end solutions for web and mobile platforms. From React Native apps to NestJS backends, I focus on building scalable, performant, and user-centric experiences with clean, maintainable code."
         />
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
