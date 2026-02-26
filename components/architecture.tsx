@@ -7,7 +7,6 @@ import {
   GitBranch,
   Database,
   Shield,
-  Smartphone,
   Monitor,
 } from "lucide-react"
 
@@ -25,12 +24,6 @@ const principles = [
       "Building performant, accessible web applications with server-side rendering, code splitting, and progressive enhancement.",
   },
   {
-    icon: Smartphone,
-    title: "Cross-Platform Mobile",
-    description:
-      "Shipping native-quality iOS and Android apps from a single React Native codebase with offline support and smooth animations.",
-  },
-  {
     icon: GitBranch,
     title: "Event-Driven Design",
     description:
@@ -40,7 +33,7 @@ const principles = [
     icon: Database,
     title: "Data Layer Mastery",
     description:
-      "Designing efficient database schemas, ORMs, caching strategies, and offline-first data sync for web and mobile.",
+      "Designing efficient database schemas, ORMs, caching strategies, and optimized queries for high-performance applications.",
   },
   {
     icon: Shield,
@@ -57,10 +50,10 @@ export function Architecture() {
         <SectionHeading
           label="ARCHITECTURE"
           title="Engineering Philosophy"
-          description="Core principles and patterns I follow when building web apps, mobile apps, and distributed systems."
+          description="Core principles and patterns I follow when building scalable web applications and distributed systems."
         />
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
           {principles.map((item, i) => (
             <motion.div
               key={item.title}

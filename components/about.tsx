@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import { SectionHeading } from "./section-heading"
-import { Server, Globe, Zap, Smartphone } from "lucide-react"
+import { Server, Globe, Zap, Shield } from "lucide-react"
 
 const highlights = [
   {
@@ -16,14 +16,14 @@ const highlights = [
     description: "Creating fast, responsive web experiences with React, Next.js, and modern performance optimization.",
   },
   {
-    icon: Smartphone,
-    title: "Mobile Apps",
-    description: "Shipping production-quality iOS and Android apps with React Native and seamless user experiences.",
-  },
-  {
     icon: Zap,
     title: "Real-Time Systems",
     description: "Building WebSocket-powered communication, live notifications, and collaborative features at scale.",
+  },
+  {
+    icon: Shield,
+    title: "Security & Performance",
+    description: "Implementing secure authentication, optimized databases, caching strategies, and production-ready deployments.",
   },
 ]
 
@@ -33,8 +33,8 @@ export function About() {
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           label="ABOUT ME"
-          title="Full-Stack Developer"
-          description="I craft end-to-end solutions for web and mobile platforms. From React Native apps to NestJS backends, I focus on building scalable, performant, and user-centric experiences with clean, maintainable code."
+          title="Full-Stack Web Developer"
+          description="I build modern web applications from database to browser. Focused on scalable backends, responsive frontends, and delivering high-performance solutions with clean, maintainable code."
         />
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">

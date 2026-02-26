@@ -19,7 +19,7 @@ export function Hero() {
           transition={{ duration: 0.5 }}
         >
           <p className="mb-4 font-mono text-sm tracking-widest text-primary">
-            DJAOUAD TECH &mdash; FULL-STACK WEB & MOBILE DEVELOPER
+            DJAOUAD TECH &mdash; FULL-STACK WEB DEVELOPER
           </p>
         </motion.div>
 
@@ -29,9 +29,9 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="text-balance text-5xl font-bold tracking-tight text-foreground sm:text-6xl lg:text-7xl"
         >
-          Building Web &
+          Building Scalable
           <br />
-          <span className="text-primary">Mobile Experiences</span>
+          <span className="text-primary">Web Applications</span>
         </motion.h1>
 
         <motion.p
@@ -40,9 +40,8 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="mx-auto mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground"
         >
-          Full-Stack Web & Mobile Developer crafting scalable systems, cross-platform
-          apps, and seamless user experiences. React, React Native, NestJS, Node.js,
-          and modern cloud architecture.
+          Full-Stack Web Developer specializing in modern web applications, scalable backends,
+          and performant frontends. React, Next.js, NestJS, Node.js, and distributed systems.
         </motion.p>
 
         <motion.div

@@ -12,7 +12,6 @@ import {
   ShoppingCart,
   Video,
   Shield,
-  Smartphone,
   MessageCircle,
 } from "lucide-react"
 
@@ -127,29 +126,6 @@ const projects: Project[] = [
       "The signaling server runs on Socket.io over WebSocket, facilitating WebRTC peer connection negotiation (SDP offer/answer, ICE candidates). Redis pub/sub enables horizontal scaling across multiple server instances. React handles the frontend with custom hooks for media stream management.",
   },
   {
-    icon: Smartphone,
-    title: "Cross-Platform Mobile App",
-    description:
-      "A feature-rich mobile application built with React Native and Expo, targeting both iOS and Android. Includes real-time data sync, push notifications, offline support, and smooth native animations.",
-    techStack: [
-      "React Native",
-      "Expo",
-      "TypeScript",
-      "Firebase",
-      "Redux",
-      "Reanimated",
-    ],
-    features: [
-      "Cross-platform iOS and Android from one codebase",
-      "Push notifications with Firebase Cloud Messaging",
-      "Offline-first with local data persistence",
-      "Smooth native animations with Reanimated",
-      "App Store and Google Play deployment",
-    ],
-    architecture:
-      "Built with Expo managed workflow for rapid development. State management via Redux Toolkit with RTK Query for API caching. Firebase provides auth, real-time database, and push notifications. Offline support uses AsyncStorage with a sync queue that reconciles when connectivity returns. Native animations are powered by Reanimated for 60fps performance on the UI thread.",
-  },
-  {
     icon: Shield,
     title: "Advanced Authentication System",
     description:
@@ -181,7 +157,7 @@ export function Projects() {
         <SectionHeading
           label="PROJECTS"
           title="Featured Work"
-          description="A selection of projects demonstrating full-stack web development, mobile apps, real-time systems, and distributed architecture."
+          description="A selection of projects demonstrating full-stack web development, real-time systems, and distributed architecture."
         />
 
         <div className="grid gap-6 lg:grid-cols-2">
