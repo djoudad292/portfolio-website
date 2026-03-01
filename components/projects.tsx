@@ -8,10 +8,6 @@ import {
   ExternalLink,
   ChevronDown,
   ChevronUp,
-  Server,
-  ShoppingCart,
-  Video,
-  Shield,
   MessageCircle,
   UtensilsCrossed,
   CreditCard,
@@ -133,100 +129,7 @@ const projects: Project[] = [
     githubBackend: "https://github.com/djoudad292/chatbot-temp",
     demo: "https://djaouad-chat.netlify.app",
   },
-  {
-    icon: Server,
-    title: "Microservices Car Rental System",
-    description:
-      "A fully distributed car rental platform built on microservices architecture. Each service operates independently with its own database, communicating through an API Gateway and Service Registry for seamless orchestration.",
-    techStack: [
-      "NestJS",
-      "Node.js",
-      "PostgreSQL",
-      "Docker",
-      "Redis",
-      "RabbitMQ",
-      "TypeORM",
-    ],
-    features: [
-      "API Gateway for centralized routing",
-      "Service Registry for dynamic discovery",
-      "Independent services with isolated databases",
-      "Database-per-service pattern",
-      "Fully containerized with Docker Compose",
-    ],
-    architecture:
-      "The system follows a microservices architecture with an API Gateway acting as the single entry point. Each service (Users, Cars, Bookings, Payments) has its own PostgreSQL database and communicates via RabbitMQ message queues. The Service Registry handles dynamic service discovery, and Docker Compose orchestrates all containers.",
-  },
-  {
-    icon: ShoppingCart,
-    title: "E-Commerce Platform",
-    description:
-      "A comprehensive e-commerce solution with secure authentication, admin dashboard, integrated payments, and role-based access control for managing products, orders, and users.",
-    techStack: [
-      "NestJS",
-      "React",
-      "PostgreSQL",
-      "JWT",
-      "Stripe",
-      "TypeORM",
-      "TailwindCSS",
-    ],
-    features: [
-      "JWT-based authentication system",
-      "Admin dashboard with analytics",
-      "Stripe payment integration",
-      "Role-based access control (RBAC)",
-      "Complete order management workflow",
-    ],
-    architecture:
-      "Built on a monolithic NestJS backend with clear module separation. Authentication uses JWT with access and refresh tokens. The admin panel is a separate React SPA communicating via REST APIs. Stripe handles payment processing with webhook-based order confirmation. Guards and decorators enforce role-based permissions throughout.",
-  },
-  {
-    icon: Video,
-    title: "Real-Time Communication App",
-    description:
-      "A real-time communication platform supporting peer-to-peer audio/video calls, WebSocket-based signaling, and live messaging with presence detection.",
-    techStack: [
-      "Node.js",
-      "WebRTC",
-      "WebSocket",
-      "React",
-      "Redis",
-      "Socket.io",
-    ],
-    features: [
-      "WebRTC peer-to-peer audio and video",
-      "WebSocket signaling server",
-      "Live text messaging",
-      "User presence detection",
-      "Room-based communication",
-    ],
-    architecture:
-      "The signaling server runs on Socket.io over WebSocket, facilitating WebRTC peer connection negotiation (SDP offer/answer, ICE candidates). Redis pub/sub enables horizontal scaling across multiple server instances. React handles the frontend with custom hooks for media stream management.",
-  },
-  {
-    icon: Shield,
-    title: "Advanced Authentication System",
-    description:
-      "A production-grade authentication system with access and refresh token rotation, rate limiting, email verification, and comprehensive security guards.",
-    techStack: [
-      "NestJS",
-      "PostgreSQL",
-      "JWT",
-      "Redis",
-      "Nodemailer",
-      "bcrypt",
-    ],
-    features: [
-      "Access and refresh token rotation",
-      "Custom NestJS guards and decorators",
-      "Rate limiting with Redis",
-      "Email verification flow",
-      "Brute-force protection",
-    ],
-    architecture:
-      "Implements a dual-token authentication pattern: short-lived access tokens (15min) paired with long-lived refresh tokens (7d) stored in Redis. Rate limiting uses a sliding window counter in Redis. Guards are composable NestJS decorators. Email verification uses time-limited signed URLs via Nodemailer.",
-  },
+
 ]
 
 export function Projects() {
