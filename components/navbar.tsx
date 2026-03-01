@@ -9,7 +9,6 @@ const navLinks = [
   { href: "#tech", label: "Tech Stack" },
   { href: "#projects", label: "Projects" },
   { href: "#architecture", label: "Architecture" },
-  { href: "#experience", label: "Experience" },
   { href: "#contact", label: "Contact" },
 ]
 

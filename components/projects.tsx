@@ -50,7 +50,7 @@ const clientProjects: Project[] = [
   },
   {
     icon: Globe,
-    title: "Cuvva",
+    title: "Cuvva Copy",
     category: "Progressive Web Platform",
     description:
       "Feature-rich PWA for British market with advanced automation: email workflows, dynamic PDF generation, certificate automation, and comprehensive document management.",
