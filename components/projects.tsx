@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
@@ -12,11 +12,13 @@ import {
   UtensilsCrossed,
   CreditCard,
   Globe,
+  Lock,
 } from "lucide-react"
 
 interface Project {
-  icon: typeof Server
+  icon: any
   title: string
+  category: string
   description: string
   techStack: string[]
   features: string[]
@@ -26,209 +28,173 @@ interface Project {
   demo?: string
 }
 
-const projects: Project[] = [
+// CLIENT PROJECTS - No links, confidential
+const clientProjects: Project[] = [
+  {
+    icon: CreditCard,
+    title: "LordHavale",
+    category: "Payment Gateway Provider",
+    description:
+      "Sophisticated payment gateway serving Turkish market with enterprise-grade security, HTTP API integration, and VPS deployment via Docker containerization.",
+    techStack: ["Next.js", "Nest.js", "PostgreSQL", "Docker", "TypeScript"],
+    features: [
+      "HTTP REST API with webhook integration",
+      "Turkish localization and compliance",
+      "AES-256 encryption for transactions",
+      "Docker containerized production deployment",
+      "Rate limiting and fraud detection",
+      "TLS/SSL security protocols",
+    ],
+    architecture:
+      "Next.js frontend with Nest.js microservices backend. PostgreSQL with ACID compliance handles transaction integrity. Docker Compose orchestrates containerized deployment on dedicated VPS. Security layer implements TLS encryption, request validation, and rate limiting middleware. Payment processing uses idempotency tokens and webhook verification.",
+  },
+  {
+    icon: Globe,
+    title: "Cuvva",
+    category: "Progressive Web Platform",
+    description:
+      "Feature-rich PWA for British market with advanced automation: email workflows, dynamic PDF generation, certificate automation, and comprehensive document management.",
+    techStack: ["Next.js", "Express.js", "MySQL", "PWA", "TypeScript"],
+    features: [
+      "Progressive Web App with offline support",
+      "Automated email notification system",
+      "Dynamic PDF and certificate generation",
+      "Interactive hyperlinked document features",
+      "MySQL-backed user data persistence",
+      "Service worker caching strategy",
+    ],
+    architecture:
+      "Next.js PWA framework with service workers for offline functionality. Express.js backend orchestrates automation workflows: Nodemailer for email templates, puppeteer for PDF generation, and custom certificate rendering. MySQL stores user profiles, documents, and transaction history. Frontend implements Redux state management with API caching for optimal performance.",
+  },
+]
+
+// PORTFOLIO PROJECTS - With live links
+const portfolioProjects: Project[] = [
   {
     icon: UtensilsCrossed,
     title: "Restaurant Landing Page",
+    category: "Landing Page & Booking System",
     description:
-      "A modern, responsive landing page for a restaurant startup built with Next.js and Tailwind CSS. Features an attractive hero section, menu showcase, reservation system, and customer testimonials.",
-    techStack: [
-      "Next.js",
-      "Tailwind CSS",
-      "TypeScript",
-      "Responsive Design",
-    ],
+      "Modern, SEO-optimized landing page for restaurant startup. Features hero section, menu showcase, online reservations, and testimonials built with Next.js and Tailwind CSS.",
+    techStack: ["Next.js", "Tailwind CSS", "TypeScript", "Responsive"],
     features: [
-      "Hero section with eye-catching call-to-action",
-      "Menu showcase with categorized dishes",
-      "Online reservation booking system",
-      "Customer testimonials and ratings",
+      "Server-side rendering for SEO optimization",
+      "Menu management system",
+      "Online reservation form integration",
+      "Customer testimonials section",
       "Mobile-first responsive design",
-      "Fast loading and SEO optimized",
+      "Fast static page generation",
     ],
     architecture:
-      "Built with Next.js for server-side rendering and optimal performance. Tailwind CSS handles all styling for a modern, clean design. Pages are statically generated where possible for instant loading. The reservation system integrates with a backend API for booking management. Component-based architecture ensures maintainability and reusability.",
+      "Next.js static site generation for optimal performance. Tailwind CSS provides responsive utility-first styling. Reservation system communicates with backend API for booking persistence. Component-based architecture enables easy content updates and maintenance.",
     github: "https://github.com/djoudad292/jordan_client",
     demo: "https://landingpagerestaurent.netlify.app",
   },
   {
-    icon: CreditCard,
-    title: "LordHavale - Payment Gateway",
-    description:
-      "A sophisticated payment provider gateway built for Turkish clients, offering seamless HTTP API integration with comprehensive security protocols. Deployed on VPS with Docker containerization for production reliability.",
-    techStack: [
-      "Next.js",
-      "Nest.js",
-      "PostgreSQL",
-      "Tailwind CSS",
-      "Docker",
-      "TypeScript",
-    ],
-    features: [
-      "HTTP REST API integration for payment processing",
-      "Turkish localization with Turkey branding",
-      "Production-grade security with encryption",
-      "Responsive design across all devices",
-      "Docker containerized deployment on VPS",
-      "Rate limiting and DDoS protection",
-      "Comprehensive error handling and logging",
-    ],
-    architecture:
-      "LordHavale uses a modern full-stack architecture with Next.js handling the responsive frontend and Nest.js providing a robust REST API backend. PostgreSQL manages transaction data with strict ACID compliance and encryption at rest. Docker Compose containerizes both frontend and backend for seamless VPS deployment. Security implements rate limiting, input validation, and TLS encryption. The payment processing layer handles HTTP callbacks with webhook verification and idempotency tokens.",
-    demo: "https://lordhavale.com",
-  },
-  {
-    icon: Globe,
-    title: "Cuvva - Progressive Web Platform",
-    description:
-      "A feature-rich progressive web application for British clients combining Next.js and Express.js with advanced automation capabilities including email workflows, PDF generation, and certificate management.",
-    techStack: [
-      "Next.js",
-      "Express.js",
-      "MySQL",
-      "Tailwind CSS",
-      "PWA",
-      "TypeScript",
-      "Automation Tools",
-    ],
-    features: [
-      "Progressive Web App with offline support",
-      "Fully responsive design for mobile and desktop",
-      "Automated email workflows and notifications",
-      "Dynamic PDF certificate generation",
-      "Hyperlinked interactive features",
-      "User-friendly document management",
-      "Advanced form handling and validation",
-    ],
-    architecture:
-      "Cuvva is architected as a Progressive Web App using Next.js with service workers for offline capabilities. The Express.js backend handles complex automation tasks: email workflows via Nodemailer with template engines, PDF generation using libraries like puppeteer or pdfkit, and certificate automation with dynamic data injection. MySQL stores user data, transactions, and generated documents. The frontend implements a responsive, accessible UI with hyperlinked features for certificate downloads, email confirmations, and document previews. State management uses Redux with API caching for optimal performance.",
-  },
-  {
     icon: MessageCircle,
     title: "AI Client Support Chatbot",
+    category: "AI Chatbot & Real-time Chat",
     description:
-      "A real-time AI-powered chatbot for client support, built with Next.js on the frontend and Express.js on the backend. Uses AI APIs to provide intelligent, context-aware responses to customer queries.",
-    techStack: [
-      "Next.js",
-      "Express.js",
-      "AI API",
-      "TypeScript",
-      "TailwindCSS",
-      "WebSocket",
-    ],
+      "Intelligent chatbot solution with real-time messaging. Next.js frontend paired with Express.js backend API, featuring AI-powered responses and conversation management.",
+    techStack: ["Next.js", "Express.js", "AI/LLM", "TypeScript", "WebSocket"],
     features: [
-      "Real-time AI-powered conversational responses",
-      "Clean, responsive chat interface",
-      "Express.js backend handling API orchestration",
-      "Context-aware message history",
-      "Deployed frontend on Netlify, backend independently",
+      "Real-time bidirectional chat",
+      "AI-powered response generation",
+      "Conversation history persistence",
+      "Multi-user session management",
+      "Responsive chat interface",
+      "Message delivery confirmation",
     ],
     architecture:
-      "The frontend is a Next.js app providing a polished chat UI with real-time message streaming. The Express.js backend acts as a middleware layer, handling user sessions, message routing, and AI API integration. Messages are processed server-side to maintain context history and deliver intelligent, relevant responses to client queries.",
+      "Next.js frontend with Socket.io for real-time communication. Express.js backend handles message routing, LLM API integration, and session management. Conversation context is maintained across sessions for coherent responses. Frontend deployed on Netlify, backend independently scaled.",
     github: "https://github.com/djoudad292/chatme",
     githubBackend: "https://github.com/djoudad292/chatbot-temp",
     demo: "https://djaouad-chat.netlify.app",
   },
-
 ]
-
-export function Projects() {
-  return (
-    <section id="projects" className="px-6 py-24 lg:py-32">
-      <div className="mx-auto max-w-6xl">
-        <SectionHeading
-          label="PROJECTS"
-          title="Featured Work"
-          description="A selection of projects demonstrating full-stack web development, real-time systems, and distributed architecture."
-        />
-
-        <div className="grid gap-6 lg:grid-cols-2">
-          {projects.map((project, i) => (
-            <ProjectCard key={project.title} project={project} index={i} />
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
 
 interface ProjectCardProps {
   project: Project
   index: number
+  isClient?: boolean
 }
 
-function ProjectCard({ project, index }: ProjectCardProps) {
+function ProjectCard({ project, index, isClient = false }: ProjectCardProps) {
   const [isExpanded, setIsExpanded] = useState(false)
+  const Icon = project.icon
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.4, delay: index * 0.1 }}
-      className="group flex flex-col rounded-xl border border-border bg-card transition-colors hover:border-primary/30"
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      className={`group flex flex-col rounded-lg border transition-all duration-300 ${
+        isClient
+          ? "border-primary/30 bg-card hover:border-primary/50"
+          : "border-border bg-card hover:border-primary/40"
+      }`}
     >
-      {/* Project screenshot placeholder */}
-      <div className="relative overflow-hidden rounded-t-xl border-b border-border bg-secondary/50">
-        <div className="flex h-48 items-center justify-center">
-          <div className="flex flex-col items-center gap-3 text-muted-foreground">
-            <project.icon className="h-10 w-10 text-primary/60" />
-            <span className="font-mono text-xs">{project.title}</span>
+      {/* Header */}
+      <div className="border-b border-border p-6">
+        <div className="flex items-start justify-between gap-4">
+          <div className="flex items-start gap-3 flex-1">
+            <div
+              className={`rounded-lg p-2.5 flex-shrink-0 ${
+                isClient ? "bg-primary/15" : "bg-primary/10"
+              }`}
+            >
+              <Icon className="h-5 w-5 text-primary" />
+            </div>
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center gap-2">
+                <h3 className="text-lg font-semibold text-foreground">{project.title}</h3>
+                {isClient && <Lock className="h-4 w-4 text-primary/60 flex-shrink-0" />}
+              </div>
+              <p className="text-xs uppercase tracking-wider text-muted-foreground mt-1">
+                {project.category}
+              </p>
+            </div>
           </div>
-        </div>
-        {/* Window chrome decoration */}
-        <div className="absolute left-4 top-4 flex gap-1.5">
-          <div className="h-2.5 w-2.5 rounded-full bg-muted-foreground/30" />
-          <div className="h-2.5 w-2.5 rounded-full bg-muted-foreground/30" />
-          <div className="h-2.5 w-2.5 rounded-full bg-muted-foreground/30" />
         </div>
       </div>
 
-      <div className="flex flex-1 flex-col p-6">
-        <h3 className="mb-2 text-lg font-semibold text-card-foreground">
-          {project.title}
-        </h3>
-        <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
+      <div className="flex flex-1 flex-col p-6 gap-4">
+        {/* Description */}
+        <p className="text-sm leading-relaxed text-muted-foreground">
           {project.description}
         </p>
 
-        {/* Tech stack badges */}
-        <div className="mb-4 flex flex-wrap gap-1.5">
+        {/* Tech Stack */}
+        <div className="flex flex-wrap gap-2">
           {project.techStack.map((tech) => (
             <span
               key={tech}
-              className="rounded-md bg-primary/10 px-2 py-1 font-mono text-xs text-primary"
+              className="inline-block rounded-full bg-secondary/60 px-3 py-1 text-xs font-medium text-secondary-foreground/80"
             >
               {tech}
             </span>
           ))}
         </div>
 
-        {/* Features list */}
-        <ul className="mb-4 space-y-1.5">
+        {/* Features */}
+        <ul className="space-y-1.5">
           {project.features.map((feature) => (
-            <li
-              key={feature}
-              className="flex items-start gap-2 text-sm text-muted-foreground"
-            >
-              <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-primary" />
-              {feature}
+            <li key={feature} className="flex items-start gap-2 text-sm text-muted-foreground">
+              <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-primary/60" />
+              <span>{feature}</span>
             </li>
           ))}
         </ul>
 
-        {/* Architecture expandable */}
-        <div className="mt-auto">
+        {/* Architecture Expandable */}
+        <div className="mt-2">
           <button
             onClick={() => setIsExpanded(!isExpanded)}
-            className="mb-3 flex items-center gap-1.5 text-sm font-medium text-primary transition-colors hover:text-primary/80"
+            className="flex items-center gap-2 text-sm font-medium text-primary/80 hover:text-primary transition-colors"
           >
-            Architecture Details
-            {isExpanded ? (
-              <ChevronUp className="h-3.5 w-3.5" />
-            ) : (
-              <ChevronDown className="h-3.5 w-3.5" />
-            )}
+            {isExpanded ? "Hide" : "View"} Technical Details
+            {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
           </button>
 
           <AnimatePresence>
@@ -238,28 +204,32 @@ function ProjectCard({ project, index }: ProjectCardProps) {
                 animate={{ opacity: 1, height: "auto" }}
                 exit={{ opacity: 0, height: 0 }}
                 transition={{ duration: 0.3 }}
-                className="overflow-hidden"
+                className="overflow-hidden mt-3"
               >
-                <div className="mb-4 rounded-lg border border-border bg-secondary/50 p-4">
-                  <p className="text-sm leading-relaxed text-muted-foreground">
+                <div className="rounded-lg border border-border/50 bg-secondary/30 p-4">
+                  <p className="text-xs leading-relaxed text-muted-foreground/90">
                     {project.architecture}
                   </p>
                 </div>
               </motion.div>
             )}
           </AnimatePresence>
+        </div>
+      </div>
 
-          {/* Action buttons */}
+      {/* Footer - Links only for portfolio projects */}
+      {!isClient && (
+        <div className="border-t border-border p-6 pt-4">
           <div className="flex flex-wrap gap-3">
             {project.github && (
               <a
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg border border-border bg-secondary px-4 py-2 text-sm font-medium text-secondary-foreground transition-colors hover:bg-secondary/80"
+                className="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium rounded-lg border border-primary/30 text-primary hover:bg-primary/10 transition-colors"
               >
-                <Github className="h-4 w-4" />
-                {project.githubBackend ? "Frontend" : "GitHub"}
+                <Github size={16} />
+                Frontend
               </a>
             )}
             {project.githubBackend && (
@@ -267,9 +237,9 @@ function ProjectCard({ project, index }: ProjectCardProps) {
                 href={project.githubBackend}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg border border-border bg-secondary px-4 py-2 text-sm font-medium text-secondary-foreground transition-colors hover:bg-secondary/80"
+                className="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium rounded-lg border border-primary/30 text-primary hover:bg-primary/10 transition-colors"
               >
-                <Github className="h-4 w-4" />
+                <Github size={16} />
                 Backend
               </a>
             )}
@@ -278,27 +248,80 @@ function ProjectCard({ project, index }: ProjectCardProps) {
                 href={project.demo}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+                className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors ml-auto"
               >
-                <ExternalLink className="h-4 w-4" />
+                <ExternalLink size={16} />
                 Live Demo
               </a>
             )}
-            {!project.github && !project.demo && (
-              <>
-                <span className="inline-flex items-center gap-2 rounded-lg border border-border bg-secondary px-4 py-2 text-sm font-medium text-muted-foreground">
-                  <Github className="h-4 w-4" />
-                  GitHub
-                </span>
-                <span className="inline-flex items-center gap-2 rounded-lg bg-primary/50 px-4 py-2 text-sm font-medium text-primary-foreground/70">
-                  <ExternalLink className="h-4 w-4" />
-                  Live Demo
-                </span>
-              </>
-            )}
+          </div>
+        </div>
+      )}
+
+      {isClient && (
+        <div className="border-t border-border p-6 pt-4">
+          <p className="text-xs text-muted-foreground/60 italic">Client project • Details available upon request</p>
+        </div>
+      )}
+    </motion.div>
+  )
+}
+
+export function Projects() {
+  return (
+    <section id="projects" className="relative py-20 lg:py-28">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <SectionHeading
+          label="WORK"
+          title="Projects & Experience"
+          description="A curated selection of professional work spanning client solutions and open-source experiments."
+        />
+
+        <div className="mt-20 space-y-20">
+          {/* CLIENT WORK SECTION */}
+          <div>
+            <div className="mb-10 border-b border-border pb-6">
+              <h3 className="text-xl font-semibold text-foreground flex items-center gap-2">
+                <span className="h-2 w-2 rounded-full bg-primary" />
+                Client Projects
+              </h3>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Production applications built for international clients. Details confidential.
+              </p>
+            </div>
+
+            <div className="grid gap-6 lg:grid-cols-2">
+              {clientProjects.map((project, index) => (
+                <ProjectCard
+                  key={project.title}
+                  project={project}
+                  index={index}
+                  isClient={true}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* PORTFOLIO SECTION */}
+          <div>
+            <div className="mb-10 border-b border-border pb-6">
+              <h3 className="text-xl font-semibold text-foreground flex items-center gap-2">
+                <span className="h-2 w-2 rounded-full bg-primary" />
+                Portfolio & Open Source
+              </h3>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Publicly available projects with live demos and source code access.
+              </p>
+            </div>
+
+            <div className="grid gap-6 lg:grid-cols-2">
+              {portfolioProjects.map((project, index) => (
+                <ProjectCard key={project.title} project={project} index={index} isClient={false} />
+              ))}
+            </div>
           </div>
         </div>
       </div>
-    </motion.div>
+    </section>
   )
 }
