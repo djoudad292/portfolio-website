@@ -51,20 +51,22 @@ const clientProjects: Project[] = [
   {
     icon: Globe,
     title: "Cuvva Copy",
-    category: "Progressive Web Platform",
+    category: "Policy Creation & Management Platform",
     description:
-      "Feature-rich PWA for British market with advanced automation: email workflows, dynamic PDF generation, certificate automation, and comprehensive document management.",
+      "Advanced policy creation platform for British market with intelligent automation: email workflows for policy confirmations, dynamic PDF policy document generation, digital certificate issuance, and comprehensive document management.",
     techStack: ["Next.js", "Express.js", "MySQL", "PWA", "TypeScript"],
     features: [
-      "Progressive Web App with offline support",
-      "Automated email notification system",
-      "Dynamic PDF and certificate generation",
-      "Interactive hyperlinked document features",
-      "MySQL-backed user data persistence",
-      "Service worker caching strategy",
+      "Progressive Web App with offline policy access",
+      "Intelligent policy creation wizard",
+      "Automated email policy confirmation workflow",
+      "Dynamic PDF policy document generation",
+      "Digital certificate and proof generation",
+      "Interactive hyperlinked policy documents",
+      "MySQL-backed policy data persistence",
+      "Service worker caching for offline access",
     ],
     architecture:
-      "Next.js PWA framework with service workers for offline functionality. Express.js backend orchestrates automation workflows: Nodemailer for email templates, puppeteer for PDF generation, and custom certificate rendering. MySQL stores user profiles, documents, and transaction history. Frontend implements Redux state management with API caching for optimal performance.",
+      "Next.js PWA framework with service workers enabling offline access to policy documents. Express.js backend manages policy creation workflows and automation: Nodemailer generates personalized policy confirmation emails, puppeteer renders dynamic PDF policy documents with user data, and custom certificate generation for policy proof. MySQL securely stores policy records, user profiles, and document history. Frontend uses Redux for policy state management with intelligent caching. Policy documents are hyperlinked for easy navigation and verification.",
   },
 ]
 
