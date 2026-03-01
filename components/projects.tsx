@@ -14,6 +14,8 @@ import {
   Shield,
   MessageCircle,
   UtensilsCrossed,
+  CreditCard,
+  Globe,
 } from "lucide-react"
 
 interface Project {
@@ -52,6 +54,58 @@ const projects: Project[] = [
       "Built with Next.js for server-side rendering and optimal performance. Tailwind CSS handles all styling for a modern, clean design. Pages are statically generated where possible for instant loading. The reservation system integrates with a backend API for booking management. Component-based architecture ensures maintainability and reusability.",
     github: "https://github.com/djoudad292/jordan_client",
     demo: "https://landingpagerestaurent.netlify.app",
+  },
+  {
+    icon: CreditCard,
+    title: "LordHavale - Payment Gateway",
+    description:
+      "A sophisticated payment provider gateway built for Turkish clients, offering seamless HTTP API integration with comprehensive security protocols. Deployed on VPS with Docker containerization for production reliability.",
+    techStack: [
+      "Next.js",
+      "Nest.js",
+      "PostgreSQL",
+      "Tailwind CSS",
+      "Docker",
+      "TypeScript",
+    ],
+    features: [
+      "HTTP REST API integration for payment processing",
+      "Turkish localization with Turkey branding",
+      "Production-grade security with encryption",
+      "Responsive design across all devices",
+      "Docker containerized deployment on VPS",
+      "Rate limiting and DDoS protection",
+      "Comprehensive error handling and logging",
+    ],
+    architecture:
+      "LordHavale uses a modern full-stack architecture with Next.js handling the responsive frontend and Nest.js providing a robust REST API backend. PostgreSQL manages transaction data with strict ACID compliance and encryption at rest. Docker Compose containerizes both frontend and backend for seamless VPS deployment. Security implements rate limiting, input validation, and TLS encryption. The payment processing layer handles HTTP callbacks with webhook verification and idempotency tokens.",
+    demo: "https://lordhavale.com",
+  },
+  {
+    icon: Globe,
+    title: "Cuvva - Progressive Web Platform",
+    description:
+      "A feature-rich progressive web application for British clients combining Next.js and Express.js with advanced automation capabilities including email workflows, PDF generation, and certificate management.",
+    techStack: [
+      "Next.js",
+      "Express.js",
+      "MySQL",
+      "Tailwind CSS",
+      "PWA",
+      "TypeScript",
+      "Automation Tools",
+    ],
+    features: [
+      "Progressive Web App with offline support",
+      "Fully responsive design for mobile and desktop",
+      "Automated email workflows and notifications",
+      "Dynamic PDF certificate generation",
+      "Hyperlinked interactive features",
+      "User-friendly document management",
+      "Advanced form handling and validation",
+    ],
+    architecture:
+      "Cuvva is architected as a Progressive Web App using Next.js with service workers for offline capabilities. The Express.js backend handles complex automation tasks: email workflows via Nodemailer with template engines, PDF generation using libraries like puppeteer or pdfkit, and certificate automation with dynamic data injection. MySQL stores user data, transactions, and generated documents. The frontend implements a responsive, accessible UI with hyperlinked features for certificate downloads, email confirmations, and document previews. State management uses Redux with API caching for optimal performance.",
   },
   {
     icon: MessageCircle,
