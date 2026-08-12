@@ -2,28 +2,32 @@
 
 import { motion } from "framer-motion"
 import { SectionHeading } from "./section-heading"
-import { Server, Globe, Zap, Shield } from "lucide-react"
+import { Globe, Smartphone, Bot, Server } from "lucide-react"
 
 const highlights = [
   {
-    icon: Server,
-    title: "Scalable Backends",
-    description: "Building robust, distributed systems with microservices, event-driven architecture, and intelligent API design.",
-  },
-  {
     icon: Globe,
     title: "Web Applications",
-    description: "Creating fast, responsive web experiences with React, Next.js, and modern performance optimization.",
+    description:
+      "Fast, accessible, SEO-friendly web apps with React, Next.js, TypeScript, and Tailwind — from landing pages to full SaaS dashboards.",
   },
   {
-    icon: Zap,
-    title: "Real-Time Systems",
-    description: "Building WebSocket-powered communication, live notifications, and collaborative features at scale.",
+    icon: Smartphone,
+    title: "Mobile Apps",
+    description:
+      "Cross-platform iOS & Android apps with React Native and Expo, including EAS builds, over-the-air updates, and APK distribution.",
   },
   {
-    icon: Shield,
-    title: "Security & Performance",
-    description: "Implementing secure authentication, optimized databases, caching strategies, and production-ready deployments.",
+    icon: Bot,
+    title: "AI Integration",
+    description:
+      "LLM-powered features built for production: chatbots, RAG knowledge bases with vector search, prompt engineering, and intelligent automation.",
+  },
+  {
+    icon: Server,
+    title: "Backend & Real-Time",
+    description:
+      "Scalable APIs and real-time systems with Node.js, NestJS, WebSockets, PostgreSQL, Redis, and Docker — secure and production-ready.",
   },
 ]
 
@@ -33,8 +37,8 @@ export function About() {
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           label="ABOUT ME"
-          title="Full-Stack Web Developer"
-          description="I build modern web applications from database to browser. Focused on scalable backends, responsive frontends, and delivering high-performance solutions with clean, maintainable code."
+          title="Full Stack Web & Mobile Developer with AI Integration"
+          description="I design and ship complete digital products — from the database to the browser, from the app store to the AI layer. I focus on clean architecture, great UX, and delivering real business value with modern technology."
         />
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">

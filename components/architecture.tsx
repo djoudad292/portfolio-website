@@ -7,7 +7,8 @@ import {
   GitBranch,
   Database,
   Shield,
-  Monitor,
+  Smartphone,
+  Bot,
 } from "lucide-react"
 
 const principles = [
@@ -15,31 +16,31 @@ const principles = [
     icon: Layers,
     title: "Scalable Architecture",
     description:
-      "Designing modular systems from microservices to monoliths, with clear domain boundaries and clean API contracts.",
+      "Designing modular systems from monoliths to microservices, with clear domain boundaries and clean API contracts that grow with the product.",
   },
   {
-    icon: Monitor,
-    title: "Responsive Web Apps",
+    icon: Smartphone,
+    title: "Web & Mobile Products",
     description:
-      "Building performant, accessible web applications with server-side rendering, code splitting, and progressive enhancement.",
+      "Building performant, accessible web apps and cross-platform mobile experiences with shared components and consistent UX across devices.",
+  },
+  {
+    icon: Bot,
+    title: "AI-First Features",
+    description:
+      "Integrating LLMs, RAG knowledge bases, embeddings, and intelligent automation into real products — grounded, observable, and production-ready.",
   },
   {
     icon: GitBranch,
-    title: "Event-Driven Design",
+    title: "Event-Driven & Real-Time",
     description:
-      "Leveraging message queues, real-time WebSockets, and event sourcing for responsive, loosely-coupled systems.",
+      "Leveraging real-time WebSockets, live notifications, and event-driven flows for responsive, loosely-coupled systems.",
   },
   {
     icon: Database,
-    title: "Data Layer Mastery",
+    title: "Security & Performance",
     description:
-      "Designing efficient database schemas, ORMs, caching strategies, and optimized queries for high-performance applications.",
-  },
-  {
-    icon: Shield,
-    title: "Security & Auth",
-    description:
-      "Implementing production-grade authentication, role-based access, token rotation, rate limiting, and secure API gateways.",
+      "Implementing production-grade authentication, role-based access, rate limiting, caching, and optimized queries for high-performance apps.",
   },
 ]
 
@@ -48,9 +49,9 @@ export function Architecture() {
     <section id="architecture" className="px-6 py-24 lg:py-32">
       <div className="mx-auto max-w-6xl">
         <SectionHeading
-          label="ARCHITECTURE"
-          title="Engineering Philosophy"
-          description="Core principles and patterns I follow when building scalable web applications and distributed systems."
+          label="ENGINEERING PHILOSOPHY"
+          title="How I Build"
+          description="Core principles and patterns I follow when building web, mobile, and AI-powered products."
         />
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">

@@ -7,8 +7,9 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const jetbrainsMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-jetbrains-mono' })
 
 export const metadata: Metadata = {
-  title: 'Djaouad Tech | Full-Stack Web Developer',
-  description: 'Full-Stack Web Developer specialized in scalable systems, performant frontends, and modern web technologies.',
+  title: 'Djaouad Frih | Full Stack Web & Mobile Developer with AI Integration',
+  description:
+    'Full Stack Web & Mobile Developer with AI Integration. I build React/Next.js web apps, React Native mobile apps, and AI-powered products — LLM chatbots, RAG knowledge bases, and intelligent automation.',
   icons: {
     icon: [
       {
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#1a1a2e',
+  themeColor: '#0f172a',
 }
 
 export default function RootLayout({

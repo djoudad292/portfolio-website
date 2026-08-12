@@ -2,12 +2,12 @@
 
 import { motion } from "framer-motion"
 import { SectionHeading } from "./section-heading"
-import { Server, Monitor, Cloud } from "lucide-react"
+import { Monitor, Smartphone, Server, BrainCircuit } from "lucide-react"
 
 const categories = [
   {
     icon: Monitor,
-    title: "Frontend",
+    title: "Web Frontend",
     techs: [
       "React",
       "Next.js",
@@ -17,43 +17,67 @@ const categories = [
       "HTML5",
       "CSS3",
       "JavaScript",
+      "PWA",
+    ],
+  },
+  {
+    icon: Smartphone,
+    title: "Mobile",
+    techs: [
+      "React Native",
+      "Expo",
+      "EAS Builds",
+      "Android APK",
+      "Push Notifications",
+      "Responsive Design",
     ],
   },
   {
     icon: Server,
-    title: "Backend",
+    title: "Backend & DevOps",
     techs: [
       "Node.js",
       "NestJS",
       "Express",
-      "TypeORM",
       "PostgreSQL",
       "MySQL",
       "Redis",
-      "Microservices",
-      "REST APIs",
       "WebSockets",
-      "WebRTC",
+      "REST APIs",
+      "Docker",
+      "GitHub Actions",
+      "Netlify",
+      "Render",
     ],
   },
   {
-    icon: Cloud,
-    title: "DevOps & Tools",
-    techs: ["Docker", "GitHub Actions", "Nginx", "Linux", "Firebase", "Git"],
+    icon: BrainCircuit,
+    title: "AI & Data",
+    techs: [
+      "LLM Integration",
+      "RAG (pgvector)",
+      "Embeddings",
+      "Vector Search",
+      "Prompt Engineering",
+      "OpenAI",
+      "Gemini / OpenRouter",
+      "AI Chatbots",
+      "Intelligent Automation",
+    ],
   },
 ]
 
 export function TechStack() {
   return (
-    <section id="tech" className="px-6 py-24 lg:py-32">
+    <section id="skills" className="px-6 py-24 lg:py-32">
       <div className="mx-auto max-w-6xl">
         <SectionHeading
-          label="TECH STACK"
+          label="SKILLS"
           title="Technologies I Work With"
-          description="My core toolkit for building production-grade web applications."
+          description="My toolkit for building production-grade web, mobile, and AI-powered applications."
         />
 
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2">
           {categories.map((cat, catIndex) => (
             <motion.div
               key={cat.title}

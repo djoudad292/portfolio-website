@@ -9,7 +9,7 @@ export function Footer() {
           <span className="font-mono text-sm">Djaouad Tech</span>
         </div>
         <p className="text-sm text-muted-foreground">
-          {"Built with Next.js, TypeScript & TailwindCSS"}
+          {"Built with Next.js, React Native & TailwindCSS"}
         </p>
       </div>
     </footer>
