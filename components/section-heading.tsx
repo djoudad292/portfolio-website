@@ -18,11 +18,12 @@ export function SectionHeading({ index, label, title, description }: SectionHead
       transition={{ duration: 0.5 }}
       className="mb-12 max-w-2xl lg:mb-16"
     >
-      <p className="mb-3 font-mono text-xs uppercase tracking-[0.2em] text-primary">
+      <p className="mb-4 flex items-center gap-3 font-mono text-xs uppercase tracking-[0.25em] text-primary">
         {index ? `${index} / ` : ""}
         {label}
+        <span aria-hidden className="h-px flex-1 bg-border" />
       </p>
-      <h2 className="font-display text-3xl font-semibold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+      <h2 className="font-display text-4xl leading-[1.05] tracking-tight text-foreground sm:text-5xl lg:text-6xl">
         {title}
       </h2>
       {description && (

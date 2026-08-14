@@ -31,11 +31,11 @@ export function Navbar() {
       }`}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <a href="#top" className="font-display text-lg font-semibold tracking-tight text-foreground">
+        <a href="#top" className="font-display text-2xl tracking-tight text-foreground">
           Djaouad Frih<span className="text-primary">.</span>
         </a>
 
-        <ul className="hidden items-center gap-7 md:flex">
+        <ul className="hidden items-center gap-8 md:flex">
           {navLinks.map((link) => (
             <li key={link.href}>
               <a
@@ -49,7 +49,7 @@ export function Navbar() {
           <li>
             <a
               href="#contact"
-              className="inline-flex items-center rounded-full bg-foreground px-4 py-1.5 text-sm font-medium text-background transition-opacity hover:opacity-80"
+              className="inline-flex items-center rounded-full bg-primary px-5 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
             >
               Say hi
             </a>

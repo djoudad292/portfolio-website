@@ -4,45 +4,45 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #faf8f4;
-  --foreground: #1c1a17;
-  --card: #ffffff;
-  --card-foreground: #1c1a17;
-  --popover: #ffffff;
-  --popover-foreground: #1c1a17;
-  --primary: #e8501f;
+  --background: #f4eee1;
+  --foreground: #1e211a;
+  --card: #fbf7ee;
+  --card-foreground: #1e211a;
+  --popover: #fbf7ee;
+  --popover-foreground: #1e211a;
+  --primary: #ef4f26;
   --primary-foreground: #ffffff;
-  --secondary: #f1ece4;
-  --secondary-foreground: #1c1a17;
-  --muted: #f1ece4;
-  --muted-foreground: #6f665c;
-  --accent: #e8501f;
+  --secondary: #e9e0cb;
+  --secondary-foreground: #1e211a;
+  --muted: #e9e0cb;
+  --muted-foreground: #6d6555;
+  --accent: #ef4f26;
   --accent-foreground: #ffffff;
-  --destructive: #c02626;
+  --destructive: #b3261e;
   --destructive-foreground: #ffffff;
-  --border: #e5ded3;
-  --input: #e5ded3;
-  --ring: #e8501f;
-  --chart-1: #e8501f;
+  --border: #d9ceb6;
+  --input: #d9ceb6;
+  --ring: #ef4f26;
+  --chart-1: #ef4f26;
   --chart-2: #7a5c34;
   --chart-3: #3a6b5a;
   --chart-4: #b23a48;
   --chart-5: #35618f;
   --radius: 0.375rem;
-  --sidebar: #faf8f4;
-  --sidebar-foreground: #1c1a17;
-  --sidebar-primary: #e8501f;
+  --sidebar: #f4eee1;
+  --sidebar-foreground: #1e211a;
+  --sidebar-primary: #ef4f26;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #f1ece4;
-  --sidebar-accent-foreground: #1c1a17;
-  --sidebar-border: #e5ded3;
-  --sidebar-ring: #e8501f;
+  --sidebar-accent: #e9e0cb;
+  --sidebar-accent-foreground: #1e211a;
+  --sidebar-border: #d9ceb6;
+  --sidebar-ring: #ef4f26;
 }
 
 @theme inline {
-  --font-sans: var(--font-inter), 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-space), 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-plex-mono), 'IBM Plex Mono', ui-monospace, monospace;
-  --font-display: var(--font-fraunces), 'Fraunces', ui-serif, Georgia, serif;
+  --font-display: var(--font-serif), 'Instrument Serif', Georgia, serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -90,9 +90,18 @@
   }
   body {
     @apply bg-background font-sans text-foreground;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
   }
   ::selection {
     background: var(--primary);
     color: var(--primary-foreground);
+  }
+  [id] {
+    scroll-margin-top: 5rem;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
   }
 }

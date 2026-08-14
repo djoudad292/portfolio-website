@@ -11,6 +11,7 @@ const testimonials = [
     country: "United Kingdom",
     reviewUrl: "https://www.facebook.com/share/r/18MiUF32rd/",
     profileUrl: "https://www.facebook.com/share/19Qx9MsT6b/",
+    indent: false,
   },
   {
     quote:
@@ -19,6 +20,7 @@ const testimonials = [
     country: "Cyprus",
     reviewUrl: "https://www.facebook.com/share/r/18MiUF32rd/",
     profileUrl: "https://www.facebook.com/share/1JTbdKi3oe/",
+    indent: true,
   },
 ]
 
@@ -26,13 +28,9 @@ export function Testimonials() {
   return (
     <section id="testimonials" className="px-6 py-24 lg:py-32">
       <div className="mx-auto max-w-4xl">
-        <SectionHeading
-          index="02"
-          label="Testimonials"
-          title="What clients said."
-        />
+        <SectionHeading index="02" label="Testimonials" title="What clients said." />
 
-        <div className="space-y-10">
+        <div className="space-y-14">
           {testimonials.map((t) => (
             <motion.blockquote
               key={t.name}
@@ -40,13 +38,13 @@ export function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.5 }}
-              className="border-l-2 border-primary pl-6 sm:pl-8"
+              className={`border-l-4 border-primary pl-6 sm:pl-8 ${t.indent ? "lg:ml-24" : ""}`}
             >
-              <p className="font-display text-xl font-medium leading-snug text-foreground sm:text-2xl">
+              <p className="font-display text-2xl leading-snug text-foreground sm:text-3xl">
                 “{t.quote}”
               </p>
-              <footer className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted-foreground">
-                <cite className="font-semibold not-italic text-foreground">{t.name}</cite>
+              <footer className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-sm text-muted-foreground">
+                <cite className="font-medium not-italic text-foreground">{t.name}</cite>
                 <span aria-hidden>·</span>
                 <span>{t.country}</span>
                 <span aria-hidden>·</span>
@@ -54,7 +52,7 @@ export function Testimonials() {
                   href={t.reviewUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-primary underline-offset-2 hover:underline"
+                  className="text-primary underline-offset-4 hover:underline"
                 >
                   Read on Facebook
                 </a>
@@ -62,7 +60,7 @@ export function Testimonials() {
                   href={t.profileUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="underline-offset-2 hover:underline"
+                  className="underline-offset-4 hover:underline"
                 >
                   profile
                 </a>

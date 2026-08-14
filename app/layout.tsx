@@ -1,10 +1,15 @@
 import type { Metadata, Viewport } from 'next'
-import { Inter, Fraunces, IBM_Plex_Mono } from 'next/font/google'
+import { Space_Grotesk, Instrument_Serif, IBM_Plex_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
-const fraunces = Fraunces({ subsets: ['latin'], variable: '--font-fraunces' })
+const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-space' })
+const instrumentSerif = Instrument_Serif({
+  subsets: ['latin'],
+  weight: '400',
+  style: ['normal', 'italic'],
+  variable: '--font-serif',
+})
 const plexMono = IBM_Plex_Mono({
   subsets: ['latin'],
   weight: ['400', '500'],
@@ -36,7 +41,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${fraunces.variable} ${plexMono.variable} font-sans antialiased`}>
+      <body className={`${spaceGrotesk.variable} ${instrumentSerif.variable} ${plexMono.variable} font-sans antialiased`}>
         {children}
         <Analytics />
       </body>

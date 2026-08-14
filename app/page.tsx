@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/navbar"
 import { Hero } from "@/components/hero"
+import { Ticker } from "@/components/ticker"
 import { Projects } from "@/components/projects"
 import { Testimonials } from "@/components/testimonials"
 import { About } from "@/components/about"
@@ -9,9 +10,10 @@ import { Toaster } from "sonner"
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen overflow-x-hidden">
       <Navbar />
       <Hero />
+      <Ticker />
       <Projects />
       <Testimonials />
       <About />
@@ -22,9 +24,9 @@ export default function Home() {
         position="bottom-right"
         toastOptions={{
           style: {
-            background: "#ffffff",
-            border: "1px solid #e5ded3",
-            color: "#1c1a17",
+            background: "#fbf7ee",
+            border: "1px solid #d9ceb6",
+            color: "#1e211a",
           },
         }}
       />

@@ -1,7 +1,8 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { ArrowRight } from "lucide-react"
+import { ArrowDown } from "lucide-react"
+import { WhatsAppIcon, whatsappHref } from "@/lib/socials"
 
 const meta = [
   { label: "Status", value: "Available for projects" },
@@ -12,36 +13,36 @@ const meta = [
 
 export function Hero() {
   return (
-    <section id="top" className="relative px-6 pb-20 pt-36 lg:pt-44">
+    <section id="top" className="relative px-6 pb-16 pt-36 lg:pt-44">
       <div className="mx-auto max-w-6xl">
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
-          className="mb-8 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground"
+          className="mb-8 font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground"
         >
-          Djaouad Frih — Full Stack Developer
+          Djaouad Frih — Full Stack Web &amp; Mobile Developer
         </motion.p>
 
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.05 }}
-          className="max-w-4xl font-display text-[2.6rem] font-medium leading-[1.05] tracking-tight text-foreground sm:text-6xl lg:text-7xl"
+          className="max-w-4xl font-display text-[3rem] font-normal leading-[1.02] tracking-tight text-foreground sm:text-7xl lg:text-[5.5rem]"
         >
-          I build web &amp; mobile products — and add{" "}
-          <span className="text-primary">AI where it actually helps</span>.
+          I build web &amp; mobile products —{" "}
+          <em className="text-primary">and make AI feel human.</em>
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.15 }}
-          className="mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground"
+          className="mt-7 max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground"
         >
-          I'm a full-stack developer who helps businesses ship complete products: React web apps,
-          React Native mobile apps, and AI features like chatbots and knowledge bases — grounded
-          in your own documents, never invented answers.
+          Web apps, native mobile apps, and AI features grounded in your own documents — never
+          invented answers. Delivered on scope, on schedule, and easy to talk to, for clients
+          worldwide.
         </motion.p>
 
         <motion.div
@@ -51,25 +52,26 @@ export function Hero() {
           className="mt-9 flex flex-wrap items-center gap-4"
         >
           <a
-            href="#work"
+            href="#contact"
             className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
           >
-            View the project
-            <ArrowRight className="h-4 w-4" />
-          </a>
-          <a
-            href="#contact"
-            className="inline-flex items-center rounded-full border border-border px-6 py-3 text-sm font-medium text-foreground transition-colors hover:border-foreground"
-          >
             Start a project
+            <ArrowDown className="h-4 w-4" />
           </a>
           <a
-            href="https://github.com/djoudad292"
+            href={whatsappHref}
             target="_blank"
             rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-medium text-foreground transition-colors hover:border-foreground"
+          >
+            <WhatsAppIcon className="h-4 w-4 text-primary" />
+            Message on WhatsApp
+          </a>
+          <a
+            href="#work"
             className="inline-flex items-center rounded-full px-4 py-3 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
           >
-            GitHub ↗
+            See the work ↗
           </a>
         </motion.div>
 
