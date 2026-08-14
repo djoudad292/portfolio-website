@@ -90,9 +90,10 @@ export function Contact() {
     <section id="contact" className="px-6 py-24 lg:py-32">
       <div className="mx-auto max-w-2xl">
         <SectionHeading
-          label="CONTACT"
-          title="Get In Touch"
-          description="Have a project in mind or want to discuss opportunities? I'd love to hear from you."
+          index="04"
+          label="Contact"
+          title="Let's build something."
+          description="Tell me what you're working on — I usually reply within a day."
         />
 
         <motion.form

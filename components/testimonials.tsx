@@ -2,117 +2,72 @@
 
 import { motion } from "framer-motion"
 import { SectionHeading } from "./section-heading"
-import { Quote, Star } from "lucide-react"
 
-interface Testimonial {
-  name: string
-  country: string
-  flag: string
-  quote: string
-  reviewUrl: string
-  profileUrl: string
-}
-
-const testimonials: Testimonial[] = [
+const testimonials = [
   {
+    quote:
+      "Great people, very good service. Made my website within 2 weeks in such a professional manner, very good communication skills would highly recommend!!",
     name: "Bilal Kadri",
     country: "United Kingdom",
-    flag: "🇬🇧",
-    quote:
-      "Great people, very good service made my website within 2 weeks in such a professional manner, very good communication skills would highly recommend!!",
     reviewUrl: "https://www.facebook.com/share/r/18MiUF32rd/",
     profileUrl: "https://www.facebook.com/share/19Qx9MsT6b/",
   },
   {
-    name: "Muhhamet Novruzov",
-    country: "Cyprus",
-    flag: "🇨🇾",
     quote:
       "Huge shout-out to djaouad! 🙌 Complete, fully functional full-stack build delivered right on schedule. That's how it's done! 💥 Star developer right here. ⭐",
+    name: "Muhhamet Novruzov",
+    country: "Cyprus",
     reviewUrl: "https://www.facebook.com/share/r/18MiUF32rd/",
     profileUrl: "https://www.facebook.com/share/1JTbdKi3oe/",
   },
 ]
-
-function initials(name: string) {
-  return name
-    .split(" ")
-    .map((p) => p[0])
-    .join("")
-    .slice(0, 2)
-    .toUpperCase()
-}
-
-function TestimonialCard({ t, index }: { t: Testimonial; index: number }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="relative flex flex-col rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary/30 sm:p-8"
-    >
-      <Quote className="absolute right-6 top-6 h-8 w-8 text-primary/15" />
-
-      <div className="mb-4 flex gap-1">
-        {Array.from({ length: 5 }).map((_, i) => (
-          <Star key={i} className="h-4 w-4 fill-primary text-primary" />
-        ))}
-      </div>
-
-      <p className="flex-1 text-pretty text-base leading-relaxed text-foreground/90">
-        “{t.quote}”
-      </p>
-
-      <div className="mt-6 flex items-center justify-between gap-4 border-t border-border pt-5">
-        <div className="flex items-center gap-3">
-          <div className="flex h-11 w-11 items-center justify-center rounded-full bg-primary/10 font-mono text-sm font-semibold text-primary">
-            {initials(t.name)}
-          </div>
-          <div>
-            <p className="font-semibold text-foreground">{t.name}</p>
-            <p className="text-xs text-muted-foreground">
-              {t.flag} {t.country}
-            </p>
-          </div>
-        </div>
-
-        <div className="flex flex-col items-end gap-1.5 text-xs">
-          <a
-            href={t.reviewUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-medium text-primary transition-colors hover:text-primary/80"
-          >
-            View on Facebook →
-          </a>
-          <a
-            href={t.profileUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-muted-foreground transition-colors hover:text-foreground"
-          >
-            Profile
-          </a>
-        </div>
-      </div>
-    </motion.div>
-  )
-}
 
 export function Testimonials() {
   return (
     <section id="testimonials" className="px-6 py-24 lg:py-32">
       <div className="mx-auto max-w-4xl">
         <SectionHeading
-          label="TESTIMONIALS"
-          title="What Clients Say"
-          description="Real feedback from people I've built products for."
+          index="02"
+          label="Testimonials"
+          title="What clients said."
         />
 
-        <div className="grid gap-6 md:grid-cols-2">
-          {testimonials.map((t, i) => (
-            <TestimonialCard key={t.name} t={t} index={i} />
+        <div className="space-y-10">
+          {testimonials.map((t) => (
+            <motion.blockquote
+              key={t.name}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.5 }}
+              className="border-l-2 border-primary pl-6 sm:pl-8"
+            >
+              <p className="font-display text-xl font-medium leading-snug text-foreground sm:text-2xl">
+                “{t.quote}”
+              </p>
+              <footer className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted-foreground">
+                <cite className="font-semibold not-italic text-foreground">{t.name}</cite>
+                <span aria-hidden>·</span>
+                <span>{t.country}</span>
+                <span aria-hidden>·</span>
+                <a
+                  href={t.reviewUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary underline-offset-2 hover:underline"
+                >
+                  Read on Facebook
+                </a>
+                <a
+                  href={t.profileUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline-offset-2 hover:underline"
+                >
+                  profile
+                </a>
+              </footer>
+            </motion.blockquote>
           ))}
         </div>
       </div>

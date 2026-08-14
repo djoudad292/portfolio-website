@@ -1,33 +1,19 @@
 "use client"
 
-import { motion } from "framer-motion"
 import { SectionHeading } from "./section-heading"
-import { Globe, Smartphone, Bot, Server } from "lucide-react"
 
-const highlights = [
+const focus = [
   {
-    icon: Globe,
-    title: "Web Applications",
-    description:
-      "Fast, accessible, SEO-friendly web apps with React, Next.js, TypeScript, and Tailwind — from landing pages to full SaaS dashboards.",
+    title: "Web apps",
+    text: "React and Next.js products with clean, accessible interfaces — from landing pages to full dashboards.",
   },
   {
-    icon: Smartphone,
-    title: "Mobile Apps",
-    description:
-      "Cross-platform iOS & Android apps with React Native and Expo, including EAS builds, over-the-air updates, and APK distribution.",
+    title: "Mobile apps",
+    text: "React Native and Expo apps shipped to the App Store and Google Play, built once and run on both.",
   },
   {
-    icon: Bot,
-    title: "AI Integration",
-    description:
-      "LLM-powered features built for production: chatbots, RAG knowledge bases with vector search, prompt engineering, and intelligent automation.",
-  },
-  {
-    icon: Server,
-    title: "Backend & Real-Time",
-    description:
-      "Scalable APIs and real-time systems with Node.js, NestJS, WebSockets, PostgreSQL, Redis, and Docker — secure and production-ready.",
+    title: "AI features",
+    text: "Chatbots, knowledge bases, and automation — grounded in real data, honest about what they don't know.",
   },
 ]
 
@@ -35,31 +21,29 @@ export function About() {
   return (
     <section id="about" className="px-6 py-24 lg:py-32">
       <div className="mx-auto max-w-6xl">
-        <SectionHeading
-          label="ABOUT ME"
-          title="Full Stack Web & Mobile Developer with AI Integration"
-          description="I design and ship complete digital products — from the database to the browser, from the app store to the AI layer. I focus on clean architecture, great UX, and delivering real business value with modern technology."
-        />
+        <SectionHeading index="03" label="About" title="A developer who ships the whole thing." />
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {highlights.map((item, i) => (
-            <motion.div
-              key={item.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="group rounded-xl border border-border bg-card p-6 transition-colors hover:border-primary/30 hover:bg-card/80"
-            >
-              <div className="mb-4 inline-flex rounded-lg bg-primary/10 p-3">
-                <item.icon className="h-5 w-5 text-primary" />
+        <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
+          <p className="text-pretty text-lg leading-relaxed text-muted-foreground">
+            I'm Djaouad, a full-stack developer who helps businesses and entrepreneurs ship
+            software that works — on schedule and to scope. Most recently I delivered a website
+            within two weeks for a client in the UK, and a complete full-stack build on schedule
+            for a client in Cyprus.
+            <br />
+            <br />
+            What you get is the whole picture: the interface, the API, the database, and — more
+            recently — the AI layer. The systems I build cite their sources and hand off to a
+            human when they're unsure.
+          </p>
+
+          <div className="flex flex-col gap-5">
+            {focus.map((item) => (
+              <div key={item.title} className="border-l-2 border-primary pl-5">
+                <h3 className="font-display text-lg font-semibold text-foreground">{item.title}</h3>
+                <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
               </div>
-              <h3 className="mb-2 font-semibold text-card-foreground">{item.title}</h3>
-              <p className="text-sm leading-relaxed text-muted-foreground">
-                {item.description}
-              </p>
-            </motion.div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
