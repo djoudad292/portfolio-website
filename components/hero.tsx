@@ -1,11 +1,10 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { ArrowDown } from "lucide-react"
 import { WhatsAppIcon, whatsappHref } from "@/lib/socials"
 
 const meta = [
-  { label: "Status", value: "Available for projects" },
+  { label: "Status", value: "Booking Q3 projects" },
   { label: "Location", value: "Remote, worldwide" },
   { label: "Projects", value: "Web · Mobile · AI · Documents" },
   { label: "Clients", value: "UK, Cyprus & beyond" },
@@ -52,20 +51,19 @@ export function Hero() {
           className="mt-9 flex flex-wrap items-center gap-4"
         >
           <a
-            href="#contact"
-            className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
-          >
-            Start a project
-            <ArrowDown className="h-4 w-4" />
-          </a>
-          <a
             href={whatsappHref}
             target="_blank"
             rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+          >
+            <WhatsAppIcon className="h-4 w-4" />
+            Book a free 15-min call
+          </a>
+          <a
+            href="#pricing"
             className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-medium text-foreground transition-colors hover:border-foreground"
           >
-            <WhatsAppIcon className="h-4 w-4 text-primary" />
-            Message on WhatsApp
+            See pricing
           </a>
           <a
             href="#work"

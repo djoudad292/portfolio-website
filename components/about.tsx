@@ -21,7 +21,7 @@ export function About() {
   return (
     <section id="about" className="px-6 py-24 lg:py-32">
       <div className="mx-auto max-w-6xl">
-        <SectionHeading index="03" label="About" title="A developer who ships the whole thing." />
+        <SectionHeading index="06" label="About" title="A developer who ships the whole thing." />
 
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
           <p className="text-pretty text-lg leading-relaxed text-muted-foreground">

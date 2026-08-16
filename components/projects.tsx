@@ -21,13 +21,13 @@ const projects: Project[] = [
     meta: "Next.js · NestJS · pgvector · React Native · Socket.io · Gemini",
     title: "AI Virtual Receptionist",
     description:
-      "A 24/7 receptionist that answers questions from your own documents, books appointments, captures leads, and hands off to a human the moment it should. Businesses get a receptionist that never sleeps — and never invents answers.",
+      "A 24/7 receptionist that talks to your customers in real time — books appointments, captures leads, routes to the right department, and hands off to a human the moment it should. Every answer is grounded in your knowledge base, so it never invents anything.",
     highlights: [
       "Real-time chat with streaming AI answers",
-      "Knowledge base (RAG) — every answer cites its source",
-      "Department routing and human takeover when needed",
+      "Department routing — sends visitors to the right team",
+      "Human takeover with an AI-drafted reply for your team",
       "Appointment booking and lead capture",
-      "Native Android app plus an embeddable widget",
+      "Native Android app",
     ],
     links: [
       { label: "Live demo", meta: "chat.djaouad.tech", href: "https://chat.djaouad.tech", isPrimary: true },
@@ -41,11 +41,11 @@ const projects: Project[] = [
     meta: "Next.js · NestJS · pgvector · pdf-parse · OpenRouter · JWT",
     title: "Smart PDF Workspace",
     description:
-      "A multi-tenant workspace to upload PDFs, ask AI questions about them with cited sources, generate summaries, and publish an embeddable ask-your-docs widget. RAG over your own documents, grounded and verifiable.",
+      "Upload PDFs, ask AI questions about them with cited sources, generate summaries, and publish an embeddable ask-your-docs widget. It turns your documents into the knowledge base that powers your AI products.",
     highlights: [
       "Multi-tenant JWT auth with refresh and token revocation",
       "PDF text extraction, chunking, and pgvector similarity search",
-      "RAG answers with similarity sources shown",
+      "RAG answers with cited sources shown",
       "One-click AI summaries, cached per document",
       "Embeddable ask-your-docs widget plus an Expo mobile app",
     ],
@@ -65,8 +65,8 @@ export function Projects() {
         <SectionHeading
           index="01"
           label="Selected work"
-          title="Two products, different problems."
-          description="One AI receptionist, one document workspace — both grounded in your data, both live, both built end-to-end from database to UI."
+          title="Two products, one pipeline."
+          description="The Smart PDF Workspace turns your documents into a searchable knowledge base; the AI Receptionist puts that knowledge to work in real conversations. One feeds the other — build once, talk to customers forever."
         />
 
         <div className="space-y-12">
