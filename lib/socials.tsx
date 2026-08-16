@@ -1,5 +1,5 @@
 export const whatsappNumber = "+213 78 06 88 125"
-export const whatsappHref = "https://wa.me/213780688125"
+export const whatsappHref = "https://wa.me/213780688125?text=" + encodeURIComponent("Hi Djaouad, I saw your portfolio and want to discuss a project.")
 export const email = "oufr29@gmail.com"
 
 export const socials = [
