@@ -11,7 +11,7 @@ interface Project {
   title: string
   description: string
   highlights: string[]
-  links: { label: string; meta: string; href: string; isPrimary?: boolean }[]
+  links: { label: string; meta: string; href: string; isPrimary?: boolean; fullWidth?: boolean }[]
 }
 
 const projects: Project[] = [
@@ -53,6 +53,7 @@ const projects: Project[] = [
       { label: "Live demo", meta: "smart-pdf.netlify.app", href: "https://smart-pdf.netlify.app", isPrimary: true },
       { label: "GitHub", meta: "github.com/djoudad292/smart-pdf-workspace", href: "https://github.com/djoudad292/smart-pdf-workspace" },
       { label: "Widget", meta: "docs.djaouad.tech", href: "https://docs.djaouad.tech" },
+      { label: "Android app", meta: "Download APK", href: "https://github.com/djoudad292/smart-pdf-workspace/releases/download/latest-apk/smart-pdf.apk", fullWidth: true },
     ],
   },
 ]
@@ -101,7 +102,7 @@ export function Projects() {
                         href={link.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`group min-w-0 rounded-xl border p-5 transition-colors ${
+                        className={`group min-w-0 rounded-xl border p-5 transition-colors ${link.fullWidth ? "sm:col-span-3 " : ""}${
                           link.isPrimary
                             ? "border-primary bg-primary text-primary-foreground hover:opacity-90"
                             : "border-border text-foreground hover:border-foreground"
