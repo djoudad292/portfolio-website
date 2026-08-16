@@ -8,6 +8,7 @@ import { FAQ } from "@/components/faq"
 import { Testimonials } from "@/components/testimonials"
 import { About } from "@/components/about"
 import { Contact } from "@/components/contact"
+import { ClosingCTA } from "@/components/closing-cta"
 import { Footer } from "@/components/footer"
 import { Toaster } from "sonner"
 
@@ -24,6 +25,7 @@ export default function Home() {
       <Testimonials />
       <About />
       <Contact />
+      <ClosingCTA />
       <Footer />
       <Toaster
         theme="light"
