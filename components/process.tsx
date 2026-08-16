@@ -14,13 +14,13 @@ const steps = [
     number: "02",
     title: "Fixed quote",
     description:
-      "Within 48 hours you get a fixed-price proposal: what I'll build, the timeline, and exactly what it costs. No hourly meters, no surprise invoices, no scope creep.",
+      "Within 24 hours you get a fixed-price proposal: what I'll build, the timeline, and exactly what it costs. No hourly meters, no surprise invoices, no scope creep.",
   },
   {
     number: "03",
     title: "Build & demo",
     description:
-      "I build in small weekly increments you can see and test. You review real progress, not promises. A milestone payment model means you only pay as you see value.",
+      "I build in small weekly increments you can see and test. AI-assisted development means faster delivery — 1–3 weeks instead of months. You review real progress, not promises.",
   },
   {
     number: "04",

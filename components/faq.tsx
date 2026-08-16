@@ -20,7 +20,7 @@ const faqs = [
   {
     question: "How long does a project take?",
     answer:
-      "A single AI feature takes about 2 weeks. A full product sprint runs 4–6 weeks, and a multi-feature AI product takes 6–10 weeks. You get weekly demos so you always know exactly where things stand.",
+      "AI-assisted development cuts timelines significantly. A single AI feature ships in about 1 week. A full product sprint runs 2–3 weeks. A multi-feature AI product takes 4–6 weeks. You get weekly demos so you always know exactly where things stand.",
   },
   {
     question: "Do you work with my existing code?",

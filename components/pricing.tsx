@@ -8,15 +8,15 @@ import { whatsappHref, email } from "@/lib/socials"
 const tiers = [
   {
     name: "AI Feature",
-    price: "$2,000",
+    price: "$500",
     priceNote: "starting at",
     description:
-      "One focused AI capability dropped into your existing product — a chatbot, a document assistant, or a smart form.",
+      "One focused AI capability dropped into your existing product — a chatbot, a document assistant, or a smart form. AI-assisted build means faster delivery at lower cost.",
     features: [
       "One AI feature (chat, RAG, or automation)",
       "Grounded in your own data & documents",
       "Deployed to your existing stack",
-      "2 weeks · weekly demos",
+      "1 week delivery · weekly demos",
       "7 days of post-launch support",
     ],
     cta: "Start here",
@@ -24,15 +24,15 @@ const tiers = [
   },
   {
     name: "Product Sprint",
-    price: "$6,000",
+    price: "$2,000",
     priceNote: "typical",
     description:
-      "A complete web or mobile product with one AI feature woven in — built, launched, and ready for real customers.",
+      "A complete web or mobile product with one AI feature woven in — built, launched, and ready for real customers. AI tools cut the timeline in half without cutting corners.",
     features: [
       "Full web or mobile app build",
       "AI integration + document grounding",
       "Auth, payments, admin, dashboard",
-      "4–6 weeks · weekly demos",
+      "2–3 weeks delivery · weekly demos",
       "14 days of post-launch support",
       "Source code + handover docs",
     ],
@@ -41,15 +41,15 @@ const tiers = [
   },
   {
     name: "AI Transformation",
-    price: "$15,000",
+    price: "$5,000",
     priceNote: "project-based",
     description:
-      "A multi-feature AI product — receptionist, knowledge base, and integrations — built end-to-end for teams.",
+      "A multi-feature AI product — receptionist, knowledge base, and integrations — built end-to-end. AI-assisted development lets me ship in weeks, not months.",
     features: [
       "Multi-feature AI product (e.g. AI receptionist)",
       "Knowledge base + human handoff flows",
       "Integrations, analytics, roles",
-      "6–10 weeks · weekly demos",
+      "4–6 weeks delivery · weekly demos",
       "30 days of post-launch support",
       "Priority support + training",
     ],
