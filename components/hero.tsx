@@ -7,7 +7,7 @@ import { WhatsAppIcon, whatsappHref } from "@/lib/socials"
 const meta = [
   { label: "Status", value: "Available for projects" },
   { label: "Location", value: "Remote, worldwide" },
-  { label: "Projects", value: "Web · Mobile · AI" },
+  { label: "Projects", value: "Web · Mobile · AI · Documents" },
   { label: "Clients", value: "UK, Cyprus & beyond" },
 ]
 
