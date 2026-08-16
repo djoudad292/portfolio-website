@@ -11,6 +11,7 @@ interface Project {
   title: string
   description: string
   highlights: string[]
+  metrics?: string[]
   links: { label: string; meta: string; href: string; isPrimary?: boolean; fullWidth?: boolean }[]
 }
 
@@ -28,6 +29,11 @@ const projects: Project[] = [
       "Human takeover with an AI-drafted reply for your team",
       "Appointment booking and lead capture",
       "Native Android app",
+    ],
+    metrics: [
+      "< 1s first response time",
+      "24/7 uptime with zero manual intervention",
+      "Deployed to production and serving live traffic",
     ],
     links: [
       { label: "Live demo", meta: "chat.djaouad.tech", href: "https://chat.djaouad.tech", isPrimary: true },
@@ -48,6 +54,11 @@ const projects: Project[] = [
       "RAG answers with cited sources shown",
       "One-click AI summaries, cached per document",
       "Embeddable ask-your-docs widget plus an Expo mobile app",
+    ],
+    metrics: [
+      "Sub-second PDF ingestion and search",
+      "Cost-free: fully self-hosted, zero API spend",
+      "Embeddable widget deployed and live",
     ],
     links: [
       { label: "Live demo", meta: "smart-pdf.netlify.app", href: "https://smart-pdf.netlify.app", isPrimary: true },
@@ -94,6 +105,19 @@ export function Projects() {
                   <p className="mt-5 text-pretty leading-relaxed text-muted-foreground">
                     {project.description}
                   </p>
+
+                  {project.metrics && (
+                    <div className="mt-5 flex flex-wrap gap-2">
+                      {project.metrics.map((m) => (
+                        <span
+                          key={m}
+                          className="rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-medium text-primary"
+                        >
+                          {m}
+                        </span>
+                      ))}
+                    </div>
+                  )}
 
                   <div className="mt-8 grid gap-3 sm:grid-cols-3">
                     {project.links.map((link) => (

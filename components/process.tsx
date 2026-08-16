@@ -63,6 +63,26 @@ export function Process() {
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="mt-10 flex flex-wrap items-center justify-center gap-3 rounded-2xl border border-border bg-card p-6"
+        >
+          <span className="relative flex h-2.5 w-2.5">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
+            <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-primary" />
+          </span>
+          <span className="text-sm font-medium text-foreground">
+            Currently booking projects for Q3 2026
+          </span>
+          <span className="text-sm text-muted-foreground">·</span>
+          <span className="text-sm text-muted-foreground">
+            Responds within 24 hours
+          </span>
+        </motion.div>
       </div>
     </section>
   )

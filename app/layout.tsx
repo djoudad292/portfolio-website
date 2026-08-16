@@ -19,6 +19,21 @@ export const metadata: Metadata = {
   title: 'Djaouad Frih | Full Stack Web & Mobile Developer with AI Integration',
   description:
     'Full Stack Web & Mobile Developer with AI Integration. I build React/Next.js web apps, React Native mobile apps, and AI-powered products — LLM chatbots, RAG knowledge bases, and intelligent automation.',
+  openGraph: {
+    title: 'Djaouad Frih | Web & Mobile Developer with AI Integration',
+    description:
+      'AI-powered web apps, native mobile apps, and document intelligence — grounded in your data. Fixed-price, milestone-based, remote worldwide.',
+    url: 'https://djaouad.netlify.app',
+    siteName: 'Djaouad Frih',
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Djaouad Frih | Web & Mobile Developer with AI Integration',
+    description:
+      'AI-powered web apps, native mobile apps, and document intelligence — grounded in your data.',
+  },
   icons: {
     icon: [
       {
