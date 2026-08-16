@@ -85,8 +85,8 @@ export function Projects() {
                 <span>{project.meta}</span>
               </div>
 
-              <div className="grid gap-10 p-7 sm:p-10 lg:grid-cols-[1.15fr_1fr] lg:gap-16">
-                <div>
+              <div className="grid min-w-0 gap-10 p-7 sm:p-10 lg:grid-cols-[1.15fr_1fr] lg:gap-16">
+                <div className="min-w-0">
                   <h3 className="font-display text-4xl tracking-tight text-foreground sm:text-5xl">
                     {project.title}
                   </h3>
@@ -101,7 +101,7 @@ export function Projects() {
                         href={link.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`group rounded-xl border p-5 transition-colors ${
+                        className={`group min-w-0 rounded-xl border p-5 transition-colors ${
                           link.isPrimary
                             ? "border-primary bg-primary text-primary-foreground hover:opacity-90"
                             : "border-border text-foreground hover:border-foreground"
@@ -123,7 +123,7 @@ export function Projects() {
                   </div>
                 </div>
 
-                <ul className="flex flex-col justify-center gap-4 border-t border-border pt-8 lg:border-l lg:border-t-0 lg:pl-12 lg:pt-0">
+                <ul className="flex min-w-0 flex-col justify-center gap-4 border-t border-border pt-8 lg:border-l lg:border-t-0 lg:pl-12 lg:pt-0">
                   {project.highlights.map((item, j) => (
                     <li key={item} className="flex gap-4 text-sm text-foreground">
                       <span className="font-mono text-xs text-primary">0{j + 1}</span>
