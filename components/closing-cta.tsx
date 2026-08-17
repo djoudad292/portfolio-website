@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import { WhatsAppIcon, whatsappHref, email } from "@/lib/socials"
+const CALENDLY_URL = "https://calendly.com/oufr29/30min"
 
 export function ClosingCTA() {
   return (
@@ -24,13 +25,20 @@ export function ClosingCTA() {
 
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <a
-              href={whatsappHref}
+              href={CALENDLY_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
             >
-              <WhatsAppIcon className="h-4 w-4" />
               Book a free 15-min call
+            </a>
+            <a
+              href="https://chat.djaouad.tech"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-background/20 px-7 py-3.5 text-sm font-medium text-background transition-colors hover:border-background/50"
+            >
+              Try the live demo
             </a>
             <a
               href={`mailto:${email}?subject=${encodeURIComponent("Project inquiry")}`}

@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion"
 import { WhatsAppIcon, whatsappHref } from "@/lib/socials"
+import { ArrowUpRight } from "lucide-react"
+const CALENDLY_URL = "https://calendly.com/oufr29/30min"
 
 const meta = [
   { label: "Status", value: "Booking Q3 projects" },
@@ -50,15 +52,18 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.25 }}
           className="mt-9 flex flex-wrap items-center gap-4"
         >
-          <a
-            href={whatsappHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
-          >
-            <WhatsAppIcon className="h-4 w-4" />
-            Book a free 15-min call
-          </a>
+            <a
+              href={CALENDLY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+            >
+              Book a free 15-min call
+              <ArrowUpRight className="h-4 w-4" />
+            </a>
+            <p className="w-full mt-1 text-xs text-muted-foreground/60">
+              Only 2 spots left for Q3 2026
+            </p>
           <a
             href="#pricing"
             className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-medium text-foreground transition-colors hover:border-foreground"

@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import { SectionHeading } from "./section-heading"
 import { Check } from "lucide-react"
 import { whatsappHref, email } from "@/lib/socials"
+const CALENDLY_URL = "https://calendly.com/oufr29/30min"
 
 const tiers = [
   {
@@ -109,7 +110,7 @@ export function Pricing() {
                 ))}
               </ul>
               <a
-                href={tier.featured ? whatsappHref : `mailto:${email}?subject=${encodeURIComponent(`Project inquiry: ${tier.name}`)}`}
+                href={tier.featured ? CALENDLY_URL : `mailto:${email}?subject=${encodeURIComponent(`Project inquiry: ${tier.name}`)}`}
                 target={tier.featured ? "_blank" : undefined}
                 rel={tier.featured ? "noopener noreferrer" : undefined}
                 className={`mt-8 inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-medium transition-colors ${

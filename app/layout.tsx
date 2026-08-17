@@ -27,12 +27,21 @@ export const metadata: Metadata = {
     siteName: 'Djaouad Frih',
     locale: 'en_US',
     type: 'website',
+    images: [
+      {
+        url: 'https://djaouad.netlify.app/og-image',
+        width: 1200,
+        height: 630,
+        alt: 'Djaouad Frih — Web & Mobile Developer with AI Integration',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Djaouad Frih | Web & Mobile Developer with AI Integration',
     description:
       'AI-powered web apps, native mobile apps, and document intelligence — grounded in your data.',
+    images: ['https://djaouad.netlify.app/og-image'],
   },
   icons: {
     icon: [
