@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import { WhatsAppIcon, whatsappHref } from "@/lib/socials"
-import { ArrowUpRight } from "lucide-react"
+import { ArrowUpRight, Download } from "lucide-react"
 const CALENDLY_URL = "https://calendly.com/oufr29/30min"
 
 const meta = [
@@ -72,9 +72,16 @@ export function Hero() {
           </a>
           <a
             href="#work"
-            className="inline-flex items-center rounded-full px-4 py-3 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+            className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:border-foreground hover:text-foreground"
           >
-            See the work ↗
+            See the work <ArrowUpRight className="h-4 w-4" />
+          </a>
+          <a
+            href="/Djaouad_Frih_CV.pdf"
+            download
+            className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:border-foreground hover:text-foreground"
+          >
+            Download CV <Download className="h-4 w-4" />
           </a>
         </motion.div>
 
