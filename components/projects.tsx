@@ -61,9 +61,8 @@ const projects: Project[] = [
       "Embeddable widget deployed and live",
     ],
     links: [
-      { label: "Live demo", meta: "smart-pdf.netlify.app", href: "https://smart-pdf.netlify.app", isPrimary: true },
+      { label: "Live demo", meta: "docs.djaouad.tech", href: "https://docs.djaouad.tech", isPrimary: true },
       { label: "GitHub", meta: "github.com/djoudad292/smart-pdf-workspace", href: "https://github.com/djoudad292/smart-pdf-workspace" },
-      { label: "Widget", meta: "docs.djaouad.tech", href: "https://docs.djaouad.tech" },
       { label: "Android app", meta: "Download APK", href: "https://github.com/djoudad292/smart-pdf-workspace/releases/download/latest-apk/smart-pdf.apk", fullWidth: true },
     ],
   },

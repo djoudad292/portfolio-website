@@ -66,6 +66,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${spaceGrotesk.variable} ${instrumentSerif.variable} ${plexMono.variable} font-sans antialiased`}>
         {children}
+        <script
+          src="https://ai-receptionist-backend-h14q.onrender.com/widget/widget.js"
+          data-company-id="66c5a08316c4f0b2f4833211"
+          async
+        ></script>
       </body>
     </html>
   )
