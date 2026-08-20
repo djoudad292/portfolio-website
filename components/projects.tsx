@@ -89,6 +89,7 @@ const projects: Project[] = [
     links: [
       { label: "Live demo", meta: "customer.djaouad.tech", href: "https://customer.djaouad.tech", isPrimary: true },
       { label: "GitHub", meta: "github.com/djoudad292/ai-customer-support-agent", href: "https://github.com/djoudad292/ai-customer-support-agent" },
+      { label: "Android app", meta: "Download APK", href: "https://github.com/djoudad292/ai-customer-support-agent/releases/download/latest-apk/ai-support.apk", fullWidth: true },
     ],
   },
 ]
