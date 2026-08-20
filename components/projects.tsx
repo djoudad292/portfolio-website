@@ -66,6 +66,31 @@ const projects: Project[] = [
       { label: "Android app", meta: "Download APK", href: "https://github.com/djoudad292/smart-pdf-workspace/releases/download/latest-apk/smart-pdf.apk", fullWidth: true },
     ],
   },
+  {
+    year: "2026",
+    label: "Featured project",
+    meta: "Next.js · NestJS · LangGraph · pgvector · OpenAI · TypeScript",
+    title: "AI Customer Support Agent",
+    description:
+      "A production-ready AI support agent that handles real customer conversations, creates support tickets, checks order statuses, searches a knowledge base using semantic vector search, and seamlessly escalates to human agents when needed — complete with an admin dashboard showing live conversation analytics and an embeddable widget companies can add to their site with one line of code.",
+    highlights: [
+      "Multi-turn conversations with context memory",
+      "Tool calling — create tickets, check orders, search FAQ",
+      "RAG-powered knowledge base with vector search",
+      "Human escalation with full conversation context",
+      "Admin dashboard with live analytics",
+      "Embeddable widget for any website",
+    ],
+    metrics: [
+      "Production-ready with real-time streaming",
+      "Self-hosted on Vercel + Supabase",
+      "Deployed and serving live traffic",
+    ],
+    links: [
+      { label: "Live demo", meta: "customer.djaouad.tech", href: "https://customer.djaouad.tech", isPrimary: true },
+      { label: "GitHub", meta: "github.com/djoudad292/ai-customer-support-agent", href: "https://github.com/djoudad292/ai-customer-support-agent" },
+    ],
+  },
 ]
 
 export function Projects() {
@@ -75,8 +100,8 @@ export function Projects() {
         <SectionHeading
           index="01"
           label="Selected work"
-          title="Two products, one pipeline."
-          description="The Smart PDF Workspace turns your documents into a searchable knowledge base; the AI Receptionist puts that knowledge to work in real conversations. One feeds the other — build once, talk to customers forever."
+          title="Three products, one pipeline."
+          description="The Smart PDF Workspace turns your documents into a searchable knowledge base; the AI Receptionist puts that knowledge to work in real conversations; the AI Support Agent handles customer conversations end-to-end. One feeds the other — build once, talk to customers forever."
         />
 
         <div className="space-y-12">
