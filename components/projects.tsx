@@ -10,6 +10,8 @@ interface Project {
   meta: string
   title: string
   description: string
+  image?: string
+  imageAlt?: string
   highlights: string[]
   metrics?: string[]
   links: { label: string; meta: string; href: string; isPrimary?: boolean; fullWidth?: boolean }[]
@@ -21,6 +23,8 @@ const projects: Project[] = [
     label: "Featured project",
     meta: "Next.js · NestJS · pgvector · React Native · Socket.io · Gemini",
     title: "AI Virtual Receptionist",
+    image: "/receptionist-hero.png",
+    imageAlt: "AI Virtual Receptionist — live chat demo showing a real conversation",
     description:
       "A 24/7 receptionist that talks to your customers in real time — books appointments, captures leads, routes to the right department, and hands off to a human the moment it should. Every answer is grounded in your knowledge base, so it never invents anything.",
     highlights: [
@@ -46,6 +50,8 @@ const projects: Project[] = [
     label: "Document AI",
     meta: "Next.js · NestJS · pgvector · pdf-parse · OpenRouter · JWT",
     title: "Smart PDF Workspace",
+    image: "/pdf-workspace-hero.png",
+    imageAlt: "Smart PDF Workspace — ask questions across your PDFs with cited sources",
     description:
       "Upload PDFs, ask AI questions about them with cited sources, generate summaries, and publish an embeddable ask-your-docs widget. It turns your documents into the knowledge base that powers your AI products.",
     highlights: [
@@ -71,6 +77,8 @@ const projects: Project[] = [
     label: "Featured project",
     meta: "Next.js · NestJS · LangGraph · pgvector · OpenAI · TypeScript",
     title: "AI Customer Support Agent",
+    image: "/support-agent-hero.png",
+    imageAlt: "AI Customer Support Agent — LangGraph-powered hero with live phone mockup",
     description:
       "A production-ready AI support agent that handles real customer conversations, creates support tickets, checks order statuses, searches a knowledge base using semantic vector search, and seamlessly escalates to human agents when needed — complete with an admin dashboard showing live conversation analytics and an embeddable widget companies can add to their site with one line of code.",
     highlights: [
@@ -121,6 +129,17 @@ export function Projects() {
                 </span>
                 <span>{project.meta}</span>
               </div>
+
+              {project.image && (
+                <a href={project.links.find((l) => l.isPrimary)?.href} target="_blank" rel="noopener noreferrer" className="group block">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={project.image}
+                    alt={project.imageAlt || project.title}
+                    className="aspect-[16/10] w-full border-b border-border object-cover object-top transition-opacity group-hover:opacity-90"
+                  />
+                </a>
+              )}
 
               <div className="grid min-w-0 gap-10 p-7 sm:p-10 lg:grid-cols-[1.15fr_1fr] lg:gap-16">
                 <div className="min-w-0">
