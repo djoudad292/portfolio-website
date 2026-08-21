@@ -15,6 +15,10 @@ const meta = [
 export function Hero() {
   return (
     <section id="top" className="relative px-6 pb-16 pt-36 lg:pt-44">
+      <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[42rem] overflow-hidden">
+        <div className="absolute left-1/2 top-[-18rem] h-[36rem] w-[54rem] -translate-x-1/2 rounded-full bg-primary/10 blur-[140px]" />
+        <div className="absolute right-[8%] top-[6rem] h-[16rem] w-[16rem] rounded-full bg-accent/10 blur-[110px]" />
+      </div>
       <div className="mx-auto max-w-6xl">
         <motion.p
           initial={{ opacity: 0 }}

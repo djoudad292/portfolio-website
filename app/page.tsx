@@ -30,13 +30,13 @@ export default function Home() {
       <ClosingCTA />
       <Footer />
       <Toaster
-        theme="light"
+        theme="dark"
         position="bottom-right"
         toastOptions={{
           style: {
-            background: "#fbf7ee",
-            border: "1px solid #d9ceb6",
-            color: "#1e211a",
+            background: "#11141b",
+            border: "1px solid #232936",
+            color: "#f4f6fb",
           },
         }}
       />
