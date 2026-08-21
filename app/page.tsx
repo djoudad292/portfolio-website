@@ -1,17 +1,11 @@
 import { Navbar } from "@/components/navbar"
 import { Hero } from "@/components/hero"
 import { LiveStatus } from "@/components/live-status"
-import { Ticker } from "@/components/ticker"
-import { SocialProof } from "@/components/social-proof"
 import { Projects } from "@/components/projects"
 import { AiTwin } from "@/components/ai-twin"
-import { Process } from "@/components/process"
 import { Pricing } from "@/components/pricing"
-import { FAQ } from "@/components/faq"
 import { Testimonials } from "@/components/testimonials"
-import { About } from "@/components/about"
 import { Contact } from "@/components/contact"
-import { ClosingCTA } from "@/components/closing-cta"
 import { Footer } from "@/components/footer"
 import { Toaster } from "sonner"
 
@@ -21,17 +15,11 @@ export default function Home() {
       <Navbar />
       <Hero />
       <LiveStatus />
-      <Ticker />
-      <SocialProof />
       <Projects />
       <AiTwin />
-      <Process />
       <Pricing />
-      <FAQ />
       <Testimonials />
-      <About />
       <Contact />
-      <ClosingCTA />
       <Footer />
       <Toaster
         theme="dark"
