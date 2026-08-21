@@ -6,6 +6,7 @@ import { Menu, X } from "lucide-react"
 import { CommandPalette } from "@/components/command-palette"
 
 const navLinks = [
+  { href: "#services", label: "Services" },
   { href: "#work", label: "Work" },
   { href: "#pricing", label: "Pricing" },
   { href: "#testimonials", label: "Reviews" },

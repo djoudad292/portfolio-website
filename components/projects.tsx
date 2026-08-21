@@ -107,7 +107,7 @@ export function Projects() {
     <section id="work" className="px-6 py-24 lg:py-32">
       <div className="mx-auto max-w-6xl">
         <SectionHeading
-          index="01"
+          index="02"
           label="Selected work"
           title="Three products, one pipeline."
           description="The Smart PDF Workspace turns your documents into a searchable knowledge base; the AI Receptionist puts that knowledge to work in real conversations; the AI Support Agent handles customer conversations end-to-end. One feeds the other — build once, talk to customers forever."

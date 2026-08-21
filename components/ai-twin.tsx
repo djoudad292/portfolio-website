@@ -15,7 +15,7 @@ export function AiTwin() {
     <section id="ask" className="px-6 py-24">
       <div className="mx-auto max-w-6xl">
         <SectionHeading
-          index="02"
+          index="03"
           label="The portfolio that talks back"
           title="Don't take my word for it. Ask it."
           description="I sell AI agents — so this site runs on one. It's trained on my real projects, pricing, and availability. Every answer you get is the same experience your customers would get."

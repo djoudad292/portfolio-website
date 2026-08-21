@@ -64,7 +64,7 @@ export function Pricing() {
     <section id="pricing" className="px-6 py-24 lg:py-32">
       <div className="mx-auto max-w-6xl">
         <SectionHeading
-          index="02"
+          index="04"
           label="Pricing"
           title="Fixed prices. No surprises."
           description="Free 15-min call → fixed quote within 24h → weekly demos while I build (1–3 weeks) → launch + post-launch support. You own the code. Milestone payments mean you only pay as you see working software."

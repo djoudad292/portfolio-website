@@ -76,7 +76,7 @@ export function Contact() {
       <div className="mx-auto max-w-6xl">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
           <div>
-            <SectionHeading index="04" label="Contact" title="Let's build something." />
+            <SectionHeading index="06" label="Contact" title="Let's build something." />
             <p className="mt-6 text-pretty leading-relaxed text-muted-foreground">
               Tell me what you're working on — a website, a mobile app, or an AI feature. I
               usually reply within a day, and I'm happy to jump on a quick call or WhatsApp.
