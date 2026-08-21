@@ -8,7 +8,7 @@ const SUGGESTED = [
 ]
 
 const WIDGET_URL =
-  "https://ai-customer-support-backend-ldbf.onrender.com/widget?company=ee76df35-7e1b-4a3f-91ff-f90389ee7822"
+  "https://ai-customer-support-backend-ldbf.onrender.com/widget?company=e207c632-ca30-48d2-a41b-87c76f3bc3fb"
 
 export function AiTwin() {
   return (

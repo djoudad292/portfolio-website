@@ -89,7 +89,7 @@ export default function RootLayout({
         <script src="https://ai-customer-support-backend-ldbf.onrender.com/widget.js" async></script>
         <script
           dangerouslySetInnerHTML={{
-            __html: "window.AI_SUPPORT_CONFIG = { companyId: 'ee76df35-7e1b-4a3f-91ff-f90389ee7822', theme: 'light' };",
+            __html: "window.AI_SUPPORT_CONFIG = { companyId: 'e207c632-ca30-48d2-a41b-87c76f3bc3fb', theme: 'light' };",
           }}
         />
       </body>

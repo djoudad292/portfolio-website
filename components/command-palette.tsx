@@ -6,7 +6,7 @@ import { ArrowUpRight, CornerDownLeft, Sparkles } from "lucide-react"
 
 const CALENDLY_URL = "https://calendly.com/oufr29/30min"
 
-const COMPANY_ID = "ee76df35-7e1b-4a3f-91ff-f90389ee7822"
+const COMPANY_ID = "e207c632-ca30-48d2-a41b-87c76f3bc3fb"
 const WS_URL = `wss://ai-customer-support-backend-ldbf.onrender.com/ws?company=${COMPANY_ID}`
 
 const ACTIONS = [
