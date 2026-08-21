@@ -3,6 +3,7 @@ import { Hero } from "@/components/hero"
 import { Ticker } from "@/components/ticker"
 import { SocialProof } from "@/components/social-proof"
 import { Projects } from "@/components/projects"
+import { AiTwin } from "@/components/ai-twin"
 import { Process } from "@/components/process"
 import { Pricing } from "@/components/pricing"
 import { FAQ } from "@/components/faq"
@@ -21,6 +22,7 @@ export default function Home() {
       <Ticker />
       <SocialProof />
       <Projects />
+      <AiTwin />
       <Process />
       <Pricing />
       <FAQ />

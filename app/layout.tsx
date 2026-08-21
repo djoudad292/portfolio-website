@@ -16,32 +16,32 @@ const plexMono = IBM_Plex_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Djaouad Frih | Full Stack Web & Mobile Developer with AI Integration',
+  title: 'Djaouad Frih | Full-Stack AI Engineer — AI Agents, RAG & Product Builds',
   description:
-    'Full Stack Web & Mobile Developer with AI Integration. I build React/Next.js web apps, React Native mobile apps, and AI-powered products — LLM chatbots, RAG knowledge bases, and intelligent automation.',
+    'Full-Stack AI Engineer. I build production AI agents, RAG systems, and the web/mobile products around them — Next.js, NestJS, React Native, pgvector. Fixed-price, remote worldwide.',
   openGraph: {
-    title: 'Djaouad Frih | Web & Mobile Developer with AI Integration',
+    title: 'Djaouad Frih | Full-Stack AI Engineer',
     description:
-      'AI-powered web apps, native mobile apps, and document intelligence — grounded in your data. Fixed-price, milestone-based, remote worldwide.',
-    url: 'https://djaouad.netlify.app',
+      'Production AI agents, RAG systems, and the products around them — shipped, not demoed. Fixed-price, milestone-based, remote worldwide.',
+    url: 'https://djaouad.tech',
     siteName: 'Djaouad Frih',
     locale: 'en_US',
     type: 'website',
     images: [
       {
-        url: 'https://djaouad.netlify.app/og-image',
+        url: 'https://djaouad.tech/og-image',
         width: 1200,
         height: 630,
-        alt: 'Djaouad Frih — Web & Mobile Developer with AI Integration',
+        alt: 'Djaouad Frih — Full-Stack AI Engineer',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Djaouad Frih | Web & Mobile Developer with AI Integration',
+    title: 'Djaouad Frih | Full-Stack AI Engineer',
     description:
-      'AI-powered web apps, native mobile apps, and document intelligence — grounded in your data.',
-    images: ['https://djaouad.netlify.app/og-image'],
+      'Production AI agents, RAG systems, and the products around them — shipped, not demoed.',
+    images: ['https://djaouad.tech/og-image'],
   },
   icons: {
     icon: [
@@ -67,10 +67,31 @@ export default function RootLayout({
       <body className={`${spaceGrotesk.variable} ${instrumentSerif.variable} ${plexMono.variable} font-sans antialiased`}>
         {children}
         <script
-          src="https://ai-receptionist-backend-h14q.onrender.com/widget/widget.js"
-          data-company-id="66c5a08316c4f0b2f4833211"
-          async
-        ></script>
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Person',
+              name: 'Djaouad Frih',
+              jobTitle: 'Full-Stack AI Engineer',
+              url: 'https://djaouad.tech',
+              email: 'mailto:djaouad.frih@gmail.com',
+              telephone: '+213780688125',
+              address: { '@type': 'PostalAddress', addressCountry: 'DZ' },
+              knowsAbout: ['AI agents', 'RAG', 'LLM integration', 'Next.js', 'NestJS', 'React Native', 'PostgreSQL', 'pgvector'],
+              sameAs: [
+                'https://github.com/djoudad292',
+                'https://linkedin.com/in/djaouad-frih',
+              ],
+            }),
+          }}
+        />
+        <script src="https://ai-customer-support-backend-ldbf.onrender.com/widget.js" async></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "window.AI_SUPPORT_CONFIG = { companyId: 'ee76df35-7e1b-4a3f-91ff-f90389ee7822', theme: 'light' };",
+          }}
+        />
       </body>
     </html>
   )
