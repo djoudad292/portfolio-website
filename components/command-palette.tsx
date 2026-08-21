@@ -10,13 +10,12 @@ const COMPANY_ID = "e207c632-ca30-48d2-a41b-87c76f3bc3fb"
 const WS_URL = `wss://ai-customer-support-backend-ldbf.onrender.com/ws?company=${COMPANY_ID}`
 
 const ACTIONS = [
-  { label: "See the work", hint: "projects", href: "#work" },
-  { label: "How I work", hint: "process", href: "#process" },
-  { label: "Pricing", hint: "cost, rates", href: "#pricing" },
-  { label: "FAQ", hint: "questions", href: "#faq" },
-  { label: "Testimonials", hint: "reviews", href: "#testimonials" },
-  { label: "About me", hint: "who", href: "#about" },
-  { label: "Contact", hint: "hire, email", href: "#contact" },
+  { label: "Briefing", hint: "about, who", view: "briefing" },
+  { label: "See the work", hint: "projects", view: "work" },
+  { label: "Ask my AI", hint: "chat, agent", view: "assistant" },
+  { label: "Scope a project", hint: "intake, quote", view: "intake" },
+  { label: "Process & pricing", hint: "terms, cost, rates", view: "terms" },
+  { label: "Book a call", hint: "calendly, hire", view: null },
 ]
 
 type Mode = "idle" | "thinking" | "answered" | "error"
@@ -113,7 +112,8 @@ export function CommandPalette() {
       (a) => a.label.toLowerCase() === q.toLowerCase() || a.hint.split(", ").includes(q.toLowerCase()),
     )
     if (exact && mode === "idle") {
-      window.location.hash = exact.href
+      if (exact.view) window.dispatchEvent(new CustomEvent("console:navigate", { detail: exact.view }))
+      else window.open(CALENDLY_URL, "_blank", "noopener,noreferrer")
       close()
       return
     }
@@ -203,17 +203,33 @@ export function CommandPalette() {
                         Jump to
                       </p>
                     )}
-                    {filtered.map((a) => (
-                      <a
-                        key={a.href}
-                        href={a.href}
-                        onClick={close}
-                        className="flex items-center justify-between rounded-lg px-4 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-                      >
-                        {a.label}
-                        <CornerDownLeft className="h-3 w-3 opacity-40" />
-                      </a>
-                    ))}
+                    {filtered.map((a) =>
+                      a.view ? (
+                        <button
+                          key={a.label}
+                          onClick={() => {
+                            window.dispatchEvent(new CustomEvent("console:navigate", { detail: a.view }))
+                            close()
+                          }}
+                          className="flex w-full items-center justify-between rounded-lg px-4 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                        >
+                          {a.label}
+                          <CornerDownLeft className="h-3 w-3 opacity-40" />
+                        </button>
+                      ) : (
+                        <a
+                          key={a.label}
+                          href={CALENDLY_URL}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={close}
+                          className="flex items-center justify-between rounded-lg px-4 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                        >
+                          {a.label}
+                          <ArrowUpRight className="h-3 w-3 opacity-40" />
+                        </a>
+                      ),
+                    )}
                   </>
                 )}
               </div>

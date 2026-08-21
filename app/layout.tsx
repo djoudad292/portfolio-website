@@ -18,7 +18,7 @@ const plexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   title: 'Djaouad Frih | Full-Stack AI Engineer — AI Agents, RAG & Product Builds',
   description:
-    'Full-Stack AI Engineer. I build production AI agents, RAG systems, and the web/mobile products around them — Next.js, NestJS, React Native, pgvector. Fixed-price, remote worldwide.',
+    'Full-Stack AI Engineer. This portfolio runs on my own AI agent — ask it about my work, pricing and availability, or hand it your project brief for a fixed quote. Next.js, NestJS, React Native, pgvector.',
   openGraph: {
     title: 'Djaouad Frih | Full-Stack AI Engineer',
     description:
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#faf8f4',
+  themeColor: '#0a0c10',
 }
 
 export default function RootLayout({
@@ -84,12 +84,6 @@ export default function RootLayout({
                 'https://linkedin.com/in/djaouad-frih',
               ],
             }),
-          }}
-        />
-        <script src="https://ai-customer-support-backend-ldbf.onrender.com/widget.js" async></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: "window.AI_SUPPORT_CONFIG = { companyId: 'e207c632-ca30-48d2-a41b-87c76f3bc3fb', theme: 'light' };",
           }}
         />
       </body>
