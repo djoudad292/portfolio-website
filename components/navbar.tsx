@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 import { Menu, X } from "lucide-react"
+import { CommandPalette } from "@/components/command-palette"
 
 const navLinks = [
   { href: "#work", label: "Work" },
@@ -48,6 +49,9 @@ export function Navbar() {
               </a>
             </li>
           ))}
+          <li>
+            <CommandPalette />
+          </li>
           <li>
             <a
               href="#contact"

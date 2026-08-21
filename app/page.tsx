@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/navbar"
 import { Hero } from "@/components/hero"
+import { LiveStatus } from "@/components/live-status"
 import { Ticker } from "@/components/ticker"
 import { SocialProof } from "@/components/social-proof"
 import { Projects } from "@/components/projects"
@@ -19,6 +20,7 @@ export default function Home() {
     <main className="min-h-screen overflow-x-hidden">
       <Navbar />
       <Hero />
+      <LiveStatus />
       <Ticker />
       <SocialProof />
       <Projects />

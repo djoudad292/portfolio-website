@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { WhatsAppIcon, whatsappHref } from "@/lib/socials"
 import { ArrowUpRight, Download } from "lucide-react"
+import { HeroCanvas } from "@/components/hero-canvas"
 const CALENDLY_URL = "https://calendly.com/oufr29/30min"
 
 const meta = [
@@ -19,6 +20,7 @@ export function Hero() {
         <div className="absolute left-1/2 top-[-18rem] h-[36rem] w-[54rem] -translate-x-1/2 rounded-full bg-primary/10 blur-[140px]" />
         <div className="absolute right-[8%] top-[6rem] h-[16rem] w-[16rem] rounded-full bg-accent/10 blur-[110px]" />
       </div>
+      <HeroCanvas />
       <div className="mx-auto max-w-6xl">
         <motion.p
           initial={{ opacity: 0 }}
