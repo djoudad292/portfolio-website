@@ -8,10 +8,11 @@ import {
   Home,
   MessageSquareText,
   PenLine,
+  Plug,
   Sparkles,
 } from "lucide-react"
 import { PRODUCTS, WHATSAPP } from "./data"
-import { BriefingView, TermsView, WorkView } from "./views"
+import { BriefingView, ConnectView, TermsView, WorkView } from "./views"
 import { ChatView } from "./chat-view"
 import { IntakeWizard } from "./wizard"
 import { WhatsAppIcon } from "@/lib/socials"
@@ -20,7 +21,7 @@ const CALENDLY_URL = "https://calendly.com/oufr29/30min"
 const GITHUB = "https://github.com/djoudad292"
 const LINKEDIN = "https://linkedin.com/in/djaouad-frih"
 
-type View = "briefing" | "work" | "assistant" | "intake" | "terms"
+type View = "briefing" | "work" | "assistant" | "intake" | "terms" | "connect"
 
 const NAV: { id: View; num: string; label: string; hint: string }[] = [
   { id: "briefing", num: "01", label: "Briefing", hint: "who I am & what I do" },
@@ -28,6 +29,7 @@ const NAV: { id: View; num: string; label: string; hint: string }[] = [
   { id: "assistant", num: "03", label: "Ask my AI", hint: "chat with my agent" },
   { id: "intake", num: "04", label: "Scope a project", hint: "get a fixed quote" },
   { id: "terms", num: "05", label: "Process & terms", hint: "how we'd work" },
+  { id: "connect", num: "06", label: "Connect via MCP", hint: "let AI hire me" },
 ]
 
 const VALID = new Set(NAV.map((n) => n.id))
@@ -261,6 +263,7 @@ export function Shell() {
                 </div>
               )}
               {view === "terms" && <TermsView />}
+              {view === "connect" && <ConnectView />}
             </motion.div>
           </AnimatePresence>
         </main>
@@ -276,7 +279,8 @@ export function Shell() {
             n.id === "briefing" ? Home :
             n.id === "work" ? Briefcase :
             n.id === "assistant" ? MessageSquareText :
-            n.id === "intake" ? PenLine : FileText
+            n.id === "intake" ? PenLine :
+            n.id === "connect" ? Plug : FileText
           return (
             <button
               key={n.id}

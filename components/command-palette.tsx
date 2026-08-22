@@ -15,6 +15,7 @@ const ACTIONS = [
   { label: "Ask my AI", hint: "chat, agent", view: "assistant" },
   { label: "Scope a project", hint: "intake, quote", view: "intake" },
   { label: "Process & pricing", hint: "terms, cost, rates", view: "terms" },
+  { label: "Connect via MCP", hint: "hireme, agent hire", view: "connect" },
   { label: "Book a call", hint: "calendly, hire", view: null },
 ]
 

@@ -1,5 +1,6 @@
 "use client"
 
+import React, { useEffect, useState } from "react"
 import Image from "next/image"
 import { motion } from "framer-motion"
 import {
@@ -250,8 +251,141 @@ export function WorkView() {
 }
 
 /* ------------------------------------------------------------------ */
-/* Terms & process                                                     */
+/* Connect — HireMe MCP                                                */
 /* ------------------------------------------------------------------ */
+
+const MCP_URL = "https://mcp.djaouad.tech";
+
+const CLAUDE_CONFIG = JSON.stringify(
+  { mcpServers: { "hireme-mcp": { url: `${MCP_URL}/mcp` } } },
+  null,
+  2,
+);
+const CLI_CMD = `claude mcp add --transport http hireme-mcp ${MCP_URL}/mcp`;
+
+function CopyChip({ text }: { text: string }) {
+  return (
+    <button
+      onClick={() => navigator.clipboard?.writeText(text)}
+      className="rounded-md border border-border bg-secondary px-2 py-1 font-mono text-[10px] uppercase tracking-wider text-muted-foreground transition-colors hover:border-primary hover:text-foreground"
+    >
+      copy
+    </button>
+  );
+}
+
+export function ConnectView() {
+  const [tools, setTools] = useState<string[] | null>(null);
+
+  useEffect(() => {
+    fetch(`${MCP_URL}/api/tools`)
+      .then((r) => r.json())
+      .then((d) => setTools((d.tools ?? []).map((t: { id: string }) => t.id)))
+      .catch(() => setTools(null));
+  }, []);
+
+  return (
+    <div className="space-y-12">
+      <header>
+        <h1 className="font-display text-4xl tracking-tight">
+          Hire me <em className="italic text-primary">through an AI agent</em>
+        </h1>
+        <p className="mt-4 max-w-[64ch] text-sm leading-relaxed text-muted-foreground">
+          My portfolio runs as an open MCP (Model Context Protocol) server. Plug
+          one URL into Claude, Cursor or any MCP client — your AI can read my
+          real profile, search my shipped work, check pricing and availability,
+          and even{" "}
+          <span className="text-foreground">file a project brief on your behalf</span>.
+          You wake up to a fixed quote.
+        </p>
+        <div className="mt-6 flex flex-wrap gap-3">
+          <a
+            href={MCP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 rounded-full bg-primary px-5 py-2.5 text-xs font-medium text-primary-foreground transition-opacity hover:opacity-90"
+          >
+            Open the MCP console <ArrowUpRight className="h-3 w-3" />
+          </a>
+          <a
+            href="https://github.com/djoudad292/hireme-mcp"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 rounded-full border border-border px-5 py-2.5 text-xs transition-colors hover:border-primary"
+          >
+            Source
+          </a>
+        </div>
+      </header>
+
+      {/* Live tool status */}
+      <section aria-labelledby="mcp-tools-h">
+        <h2 id="mcp-tools-h" className="font-mono text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
+          Tools your AI gets
+        </h2>
+        <div className="mt-5 grid gap-3 sm:grid-cols-2">
+          {(tools ?? ["get_profile", "search_projects", "get_pricing", "get_next_slot", "submit_project_brief"]).map(
+            (t) => (
+              <div
+                key={t}
+                className="flex items-center justify-between rounded-xl border border-border bg-card px-4 py-3 font-mono text-xs"
+              >
+                <span>{t}</span>
+                <span className={`h-1.5 w-1.5 rounded-full ${tools ? "bg-primary animate-pulse" : "bg-muted-foreground/40"}`} />
+              </div>
+            ),
+          )}
+        </div>
+        <p className="mt-3 font-mono text-[11px] text-muted-foreground/70">
+          {tools ? "live from the server" : "server unreachable right now (free tier may be cold-starting)"}
+        </p>
+      </section>
+
+      {/* Config */}
+      <section aria-labelledby="mcp-config-h">
+        <h2 id="mcp-config-h" className="font-mono text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
+          One-paste setup
+        </h2>
+        <div className="mt-5 space-y-4">
+          <div className="overflow-hidden rounded-2xl border border-border bg-card">
+            <div className="flex items-center justify-between border-b border-border px-4 py-2.5">
+              <p className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+                Claude Desktop · Cursor
+              </p>
+              <CopyChip text={CLAUDE_CONFIG} />
+            </div>
+            <pre className="overflow-x-auto px-4 py-3 font-mono text-xs leading-relaxed text-foreground/90">
+              {CLAUDE_CONFIG}
+            </pre>
+          </div>
+          <div className="overflow-hidden rounded-2xl border border-border bg-card">
+            <div className="flex items-center justify-between border-b border-border px-4 py-2.5">
+              <p className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+                Claude Code / CLI
+              </p>
+              <CopyChip text={CLI_CMD} />
+            </div>
+            <pre className="overflow-x-auto px-4 py-3 font-mono text-xs leading-relaxed text-foreground/90">
+              {CLI_CMD}
+            </pre>
+          </div>
+        </div>
+      </section>
+
+      {/* Try prompt */}
+      <section aria-labelledby="mcp-try-h">
+        <h2 id="mcp-try-h" className="font-mono text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
+          Then tell your AI
+        </h2>
+        <blockquote className="mt-5 rounded-2xl border-l-2 border-l-primary border border-border bg-card p-5 text-sm leading-relaxed">
+          &ldquo;Claude — I need a freelance AI engineer to build a support chatbot under $2k. Use
+          the hireme-mcp server: vet Djaouad&apos;s work, check his pricing, and file a brief with my
+          requirements.&rdquo;
+        </blockquote>
+      </section>
+    </div>
+  );
+}
 
 export function TermsView() {
   return (
