@@ -57,7 +57,7 @@ function useOps() {
         PRODUCTS.map(async (p) => {
           const t0 = performance.now()
           try {
-            await fetch(p.url, { mode: "no-cors", cache: "no-store", signal: AbortSignal.timeout(15000) })
+            await fetch(p.ping ?? p.url, { mode: "no-cors", cache: "no-store", signal: AbortSignal.timeout(15000) })
             const ms = Math.round(performance.now() - t0)
             if (!cancelled) setStatuses((s) => ({ ...s, [p.name]: { state: ms < 2500 ? "up" : "slow", ms } }))
           } catch {

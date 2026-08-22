@@ -8,7 +8,11 @@ export const EMAIL = "djaouad.frih@gmail.com";
 export const PRODUCTS = [
   { name: "AI Receptionist", url: "https://chat.djaouad.tech" },
   { name: "PDF Workspace", url: "https://docs.djaouad.tech" },
-  { name: "Support Agent", url: "https://ai-customer-support-backend-ldbf.onrender.com/health" },
+  {
+    name: "Support Agent",
+    url: "https://customer.djaouad.tech",
+    ping: "https://ai-customer-support-backend-ldbf.onrender.com/health",
+  },
 ];
 
 export const PROCESS = [
