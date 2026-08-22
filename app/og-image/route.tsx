@@ -12,7 +12,7 @@ export async function GET() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          backgroundColor: "#faf8f4",
+          backgroundColor: "#0a0c10",
           padding: "80px 100px",
           position: "relative",
         }}
@@ -22,65 +22,64 @@ export async function GET() {
             position: "absolute",
             top: "60px",
             left: "100px",
-            width: "60px",
-            height: "4px",
-            backgroundColor: "#c5a55a",
-            borderRadius: "2px",
+            display: "flex",
+            alignItems: "center",
+            gap: "14px",
           }}
-        />
+        >
+          <div style={{ width: "14px", height: "14px", borderRadius: "9999px", backgroundColor: "#a3e635" }} />
+          <div style={{ fontSize: "20px", color: "#8b94a7", letterSpacing: "4px" }}>
+            DJAOUAD.TECH CONSOLE
+          </div>
+        </div>
         <div
           style={{
-            fontSize: "72px",
+            fontSize: "84px",
             fontWeight: "bold",
-            color: "#1e211a",
+            color: "#f4f6fb",
             lineHeight: 1.05,
             letterSpacing: "-2px",
-            marginBottom: "16px",
+            marginBottom: "18px",
           }}
         >
           Djaouad Frih.
         </div>
         <div
           style={{
-            fontSize: "32px",
-            color: "#8a8578",
-            fontWeight: 400,
-            lineHeight: 1.3,
-            marginBottom: "40px",
-            maxWidth: "800px",
+            fontSize: "40px",
+            color: "#a3e635",
+            fontWeight: 600,
+            lineHeight: 1.2,
+            marginBottom: "24px",
           }}
         >
-          Web & Mobile Developer with AI Integration
+          Full-Stack AI Engineer
         </div>
-        <div style={{ display: "flex", gap: "16px" }}>
-          {["React / Next.js", "React Native", "AI / LLM", "Full Stack"].map((tag) => (
-            <div
-              key={tag}
-              style={{
-                backgroundColor: "#c5a55a15",
-                border: "1px solid #c5a55a40",
-                color: "#8a7a4a",
-                padding: "10px 24px",
-                borderRadius: "100px",
-                fontSize: "18px",
-                fontWeight: 500,
-              }}
-            >
-              {tag}
-            </div>
-          ))}
+        <div
+          style={{
+            fontSize: "28px",
+            color: "#8b94a7",
+            lineHeight: 1.4,
+            maxWidth: "900px",
+          }}
+        >
+          AI agents · RAG · MCP · Web &amp; Mobile — shipped, not demoed
         </div>
         <div
           style={{
             position: "absolute",
             bottom: "60px",
-            right: "100px",
-            fontSize: "18px",
-            color: "#b0a99a",
-            fontWeight: 400,
+            left: "100px",
+            display: "flex",
+            gap: "22px",
+            fontSize: "19px",
+            color: "#8b94a7",
           }}
         >
-          djaouad.netlify.app
+          <span>chat.djaouad.tech</span>
+          <span>docs.djaouad.tech</span>
+          <span>customer.djaouad.tech</span>
+          <span style={{ color: "#a3e635" }}>mcp.djaouad.tech</span>
         </div>
       </div>
     ),
