@@ -11,13 +11,13 @@ import {
   Github,
 } from "lucide-react"
 import {
+  BUILD_STACK,
   CALENDLY_URL,
   EMAIL,
   PROCESS,
   PRODUCTS,
   PROJECTS,
   SERVICES,
-  TESTIMONIALS,
   WHATSAPP,
 } from "./data"
 
@@ -138,22 +138,17 @@ export function BriefingView() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section aria-labelledby="reviews-h">
-        <h2 id="reviews-h" className="font-mono text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
-          Client reviews
+      {/* How I build */}
+      <section aria-labelledby="stack-h">
+        <h2 id="stack-h" className="font-mono text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
+          How I build — no black boxes
         </h2>
-        <div className="mt-5 grid gap-3 md:grid-cols-2">
-          {TESTIMONIALS.map((t) => (
-            <blockquote
-              key={t.name}
-              className="rounded-2xl border-l-2 border-l-primary border border-border bg-card p-5"
-            >
-              <p className="text-sm leading-relaxed text-foreground">&ldquo;{t.quote}&rdquo;</p>
-              <footer className="mt-3 font-mono text-[11px] text-muted-foreground">
-                {t.name} — {t.country}
-              </footer>
-            </blockquote>
+        <div className="mt-5 grid gap-3 sm:grid-cols-2">
+          {BUILD_STACK.map((s) => (
+            <div key={s.title} className="rounded-2xl border border-border bg-card p-5">
+              <h3 className="font-mono text-xs uppercase tracking-wider text-primary">{s.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.detail}</p>
+            </div>
           ))}
         </div>
       </section>
@@ -175,6 +170,45 @@ export function WorkView() {
           Each one is the same foundation I deploy for client builds.
         </p>
       </header>
+
+      {/* Featured case study */}
+      <section aria-labelledby="case-h" className="rounded-2xl border border-primary/30 bg-card p-6 sm:p-8">
+        <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-primary">
+          Case study — my longest-running deployment
+        </p>
+        <h2 id="case-h" className="mt-3 font-display text-3xl tracking-tight">AI Virtual Receptionist</h2>
+
+        <div className="mt-6 grid gap-6 md:grid-cols-3">
+          <div>
+            <h3 className="font-mono text-xs uppercase tracking-wider text-muted-foreground">Problem</h3>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              Small businesses lose leads after hours. Hiring cover is expensive, and generic
+              chatbots hallucinate answers they were never given.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-mono text-xs uppercase tracking-wider text-muted-foreground">Approach</h3>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              RAG grounded strictly on the business&apos; own content (pgvector), tool-calling for
+              bookings and lead capture, department routing — and human handoff when confidence drops.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-mono text-xs uppercase tracking-wider text-muted-foreground">Outcome</h3>
+            <ul className="mt-2 space-y-1.5 text-sm text-muted-foreground">
+              <li>· First response in under 1 second, around the clock</li>
+              <li>· Runs unattended 24/7 since launch</li>
+              <li>· Published Android app on its release channel</li>
+              <li>· Same architecture now powers HireMe MCP</li>
+            </ul>
+          </div>
+        </div>
+
+        <p className="mt-6 border-t border-border pt-4 text-xs leading-relaxed text-muted-foreground/70">
+          Measured on my own deployment — I don&apos;t invent client numbers. Client builds ship with
+          their own success metrics agreed up front.
+        </p>
+      </section>
 
       {PROJECTS.map((p, i) => (
         <motion.article

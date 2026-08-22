@@ -103,23 +103,42 @@ export const PROJECTS = [
 ];
 
 export const SERVICES = [
-  { title: "AI agents & chatbots", desc: "Trained on your content — answer, book, qualify, escalate.", price: "From $500", eta: "~1–2 weeks" },
-  { title: "Document intelligence (RAG)", desc: "Your docs become cited, searchable answers — internal or embedded.", price: "From $500", eta: "~1–2 weeks" },
-  { title: "Full-stack SaaS builds", desc: "Multi-tenant products: auth, payments, dashboards, real-time.", price: "Fixed quote", eta: "2–6 weeks" },
-  { title: "Mobile apps", desc: "One React Native codebase to both stores, push-ready.", price: "Fixed quote", eta: "2–4 weeks" },
+  {
+    title: "Starter — AI chatbot or agent",
+    desc: "Trained on your content: answers, books, qualifies, escalates. Deployed to your domain with an embeddable widget.",
+    price: "From $500",
+    eta: "~1–2 weeks",
+  },
+  {
+    title: "Professional — production AI system",
+    desc: "Everything in Starter plus RAG pipeline, tool calling, admin dashboard and live analytics — the full stack behind my own live demos.",
+    price: "From $2,500",
+    eta: "2–4 weeks",
+  },
+  {
+    title: "Custom — SaaS & multi-service products",
+    desc: "Multi-tenant platforms with payments, dashboards, React Native apps and third-party integrations. Scoped on a free call.",
+    price: "Fixed quote",
+    eta: "2–8 weeks",
+  },
 ];
 
-export const TESTIMONIALS = [
+export const BUILD_STACK = [
   {
-    quote:
-      "Great people, very good service. Made my website within 2 weeks in such a professional manner, very good communication skills would highly recommend!!",
-    name: "Bilal Kadri",
-    country: "United Kingdom",
+    title: "Models",
+    detail: "Gemini · OpenAI · OpenRouter — chosen per task, latency and cost. Swappable without rewrites.",
   },
   {
-    quote:
-      "Huge shout-out to djaouad! Complete, fully functional full-stack build delivered right on schedule. That's how it's done! Star developer right here.",
-    name: "Muhhamet Novruzov",
-    country: "Cyprus",
+    title: "Retrieval (RAG)",
+    detail: "PostgreSQL + pgvector: ingestion → chunking → embeddings → cited answers. No hallucinated sources.",
+  },
+  {
+    title: "Frameworks",
+    detail: "Next.js · NestJS · LangGraph · WebSocket · React Native (Expo) for one codebase to both stores.",
+  },
+  {
+    title: "Delivery",
+    detail: "Render · Vercel · Docker · GitHub Actions CI. Your source code, your domains, monitored from day one.",
   },
 ];
+
