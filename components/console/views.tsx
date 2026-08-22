@@ -171,7 +171,7 @@ export function WorkView() {
       <header>
         <h1 className="font-display text-4xl tracking-tight">Proof of work</h1>
         <p className="mt-3 max-w-[60ch] text-sm leading-relaxed text-muted-foreground">
-          Three production systems — every demo link is live, every repo is real.
+          Four production systems — every demo link is live, every repo is real.
           Each one is the same foundation I deploy for client builds.
         </p>
       </header>
