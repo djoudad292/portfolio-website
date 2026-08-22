@@ -13,6 +13,11 @@ export const PRODUCTS = [
     url: "https://customer.djaouad.tech",
     ping: "https://ai-customer-support-backend-ldbf.onrender.com/health",
   },
+  {
+    name: "HireMe MCP",
+    url: "https://mcp.djaouad.tech",
+    ping: "https://hireme-mcp-backend.onrender.com/health",
+  },
 ];
 
 export const PROCESS = [
