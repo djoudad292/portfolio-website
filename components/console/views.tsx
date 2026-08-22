@@ -122,7 +122,7 @@ export function BriefingView() {
         <h2 id="proof-h" className="font-mono text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
           Not screenshots — products running right now
         </h2>
-        <div className="mt-5 grid gap-3 sm:grid-cols-3">
+        <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {PRODUCTS.map((p) => (
             <a
               key={p.name}

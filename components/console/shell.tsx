@@ -42,7 +42,7 @@ function readViewFromUrl(): View {
 }
 
 /* ------------------------------------------------------------------ */
-/* Live ops strip — real health of the three deployed products         */
+/* Live ops strip — real health of the four deployed products        */
 /* ------------------------------------------------------------------ */
 
 type Status = { state: "checking" | "up" | "slow" | "down"; ms: number }
