@@ -81,6 +81,20 @@ export const PROJECTS = [
     github: "https://github.com/djoudad292/ai-customer-support-agent",
     apk: "https://github.com/djoudad292/ai-customer-support-agent/releases/download/latest-apk/ai-support.apk",
   },
+  {
+    id: "hireme-mcp",
+    title: "HireMe MCP",
+    year: "2026",
+    stack: "MCP · TypeScript · Express · Netlify · Render",
+    image: "/hireme-mcp-hero.png",
+    alt: "HireMe MCP console",
+    description:
+      "The first portfolio AI agents can hire. An open MCP server exposing my profile, shipped work, pricing and a project-brief intake — Claude, Cursor or ChatGPT can vet me and file a brief on your behalf.",
+    metrics: ["5 tools over MCP", "Works in Claude & Cursor", "Brief intake → fixed quote"],
+    demo: { label: "mcp.djaouad.tech", href: "https://mcp.djaouad.tech" },
+    github: "https://github.com/djoudad292/hireme-mcp",
+    apk: "https://github.com/djoudad292/hireme-mcp/releases/download/latest-apk/hireme-mcp.apk",
+  },
 ];
 
 export const SERVICES = [
