@@ -1,73 +1,109 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { CalendarCheck, Languages, Database, ShieldCheck, PhoneMissed, Check } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "AI Receptionist for Clinics — Books Patients 24/7 | Djaouad Frih",
   description:
-    "Never miss a patient call again. AI receptionist for clinics: answers in Arabic/French/English, books appointments, captures leads. Live demo — fixed price from $500.",
-  keywords: ["AI receptionist clinic", "medical chatbot", "clinic appointment booking AI", "AI for doctors"],
+    "Never miss a patient call again. An AI receptionist for clinics that answers in Arabic, French and English, books appointments and captures leads. Live demo, fixed price.",
 };
 
 const features = [
-  ["🗓️", "Books appointments 24/7", "Patients book at midnight. Calendar syncs instantly — no phone tag, no lost calls."],
-  ["🌐", "Arabic · French · English", "Your patients speak all three. So does your receptionist."],
-  ["🩺", "Trained on YOUR clinic", "Services, prices, doctors' schedules, FAQ — answers only from your real information."],
-  ["🔐", "Patient-data conscious", "Qualifies on non-sensitive fields only, hands off to staff when needed."],
+  { icon: CalendarCheck, title: "Books appointments 24/7", body: "Patients book at midnight and the calendar updates instantly. No phone tag, no voicemail, no lost slots." },
+  { icon: Languages, title: "Arabic · French · English", body: "Your patients switch languages mid-sentence. The receptionist follows without breaking stride." },
+  { icon: Database, title: "Trained on your clinic only", body: "Services, prices, doctors' schedules, insurance and FAQ — answers come strictly from your real information, with sources." },
+  { icon: ShieldCheck, title: "Patient-data conscious", body: "Qualifies on non-sensitive fields only and hands the conversation to your staff whenever a human should take over." },
 ];
 
-export default function Clinics() {
+export default function ClinicsPage() {
   return (
-    <main style={{ background: "#0a0a0f", color: "#e8e8ef", minHeight: "100vh", fontFamily: "-apple-system, 'Segoe UI', Roboto, Arial, sans-serif" }}>
-      <div style={{ maxWidth: 760, margin: "0 auto", padding: "56px 20px 80px" }}>
-        <a href="/" style={{ color: "#5b5b6b", fontSize: 13, textDecoration: "none" }}>← djaouad.tech</a>
+    <main className="min-h-screen bg-background text-foreground">
+      <div className="mx-auto max-w-4xl px-6 py-16 lg:py-24">
+        <Link href="/" className="font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground transition-colors hover:text-primary">
+          ← djaouad.tech
+        </Link>
 
-        <div style={{ marginTop: 28, display: "inline-block", border: "1px solid #1d5e3d", background: "#0e1f18", color: "#34d399", borderRadius: 99, padding: "6px 14px", fontSize: 12, fontWeight: 700 }}>
-          ● FOR CLINICS & DOCTORS
-        </div>
-
-        <h1 style={{ fontSize: "clamp(30px,6vw,44px)", lineHeight: 1.15, marginTop: 18, letterSpacing: "-0.5px" }}>
-          Your next patient just called.<br />
-          <span style={{ color: "#34d399" }}>Nobody answered.</span>
+        <p className="mb-4 mt-12 flex items-center gap-3 font-mono text-xs uppercase tracking-[0.25em] text-primary">
+          01 / For clinics &amp; doctors
+          <span aria-hidden className="h-px flex-1 bg-border" />
+        </p>
+        <h1 className="max-w-3xl font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
+          Your next patient just called.
+          <span className="block text-muted-foreground">Nobody answered.</span>
         </h1>
-
-        <p style={{ color: "#a5a5b4", fontSize: 17, lineHeight: 1.7, marginTop: 18 }}>
-          Studies show ~30% of patient calls go unanswered during busy hours — each one books
-          with the next clinic instead. This AI receptionist answers <b style={{ color: "#e8e8ef" }}>every
-          call and message</b>, in your patients' language, and books them straight into your calendar.
+        <p className="mt-6 max-w-2xl text-pretty leading-relaxed text-muted-foreground">
+          Around 30% of patient calls go unanswered during busy hours — each one books with the next
+          clinic instead. This receptionist answers every call and message, in your patients&apos;
+          language, and books them straight into your calendar. It already runs live on my own
+          infrastructure, so you test exactly what you buy.
         </p>
 
-        <div style={{ display: "flex", gap: 16, flexWrap: "wrap", marginTop: 26 }}>
-          <a href="https://chat.djaouad.tech" style={{ background: "#059669", color: "#fff", fontWeight: 800, fontSize: 15, padding: "15px 26px", borderRadius: 11, textDecoration: "none" }}>
-            🎙️ Test the live receptionist →
+        <div className="mt-8 flex flex-wrap gap-4">
+          <a href="https://chat.djaouad.tech" className="rounded-lg bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90">
+            Test the live receptionist
           </a>
-          <a href="https://calendly.com/oufr29/30min" style={{ border: "1px solid #2c2c38", color: "#e8e8ef", fontWeight: 700, fontSize: 15, padding: "15px 26px", borderRadius: 11, textDecoration: "none" }}>
-            📅 Book a free scoping call
+          <a href="https://calendly.com/oufr29/30min" className="rounded-lg border border-border px-6 py-3.5 text-sm font-semibold transition-colors hover:border-primary">
+            Book a free scoping call
           </a>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))", gap: 14, marginTop: 40 }}>
-          {features.map(([icon, t, d]) => (
-            <div key={t as string} style={{ background: "#14141c", border: "1px solid #23232e", borderRadius: 13, padding: 20 }}>
-              <div style={{ fontSize: 24 }}>{icon}</div>
-              <div style={{ fontWeight: 800, marginTop: 10 }}>{t}</div>
-              <div style={{ color: "#9c9cad", fontSize: 13.5, lineHeight: 1.65, marginTop: 8 }}>{d}</div>
+        <p className="mb-4 mt-20 flex items-center gap-3 font-mono text-xs uppercase tracking-[0.25em] text-primary">
+          02 / What it does
+          <span aria-hidden className="h-px flex-1 bg-border" />
+        </p>
+        <div className="grid gap-4 sm:grid-cols-2">
+          {features.map(({ icon: Icon, title, body }) => (
+            <div key={title} className="rounded-2xl border border-border bg-card p-7">
+              <Icon className="h-5 w-5 text-primary" aria-hidden />
+              <h2 className="mt-4 font-display text-lg tracking-tight">{title}</h2>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{body}</p>
             </div>
           ))}
         </div>
 
-        <div style={{ background: "#101a14", border: "1px solid #1d3a2a", borderRadius: 13, padding: "22px 24px", marginTop: 34 }}>
-          <div style={{ fontWeight: 800, color: "#34d399", fontSize: 14 }}>FIXED PRICE — NO SURPRISES</div>
-          <div style={{ display: "flex", gap: 22, flexWrap: "wrap", marginTop: 12, fontSize: 14, color: "#c9cdd6", lineHeight: 1.7 }}>
-            <div><b style={{ color: "#fff" }}>$500</b> setup<br />receptionist live on your site & WhatsApp</div>
-            <div><b style={{ color: "#fff" }}>+$50/mo</b> hosting & updates<br />or $2,500 full patient-intake system</div>
-            <div><b style={{ color: "#fff" }}>7 days</b> typical launch<br />source code yours</div>
+        <p className="mb-4 mt-20 flex items-center gap-3 font-mono text-xs uppercase tracking-[0.25em] text-primary">
+          03 / Fixed prices. No surprises.
+          <span aria-hidden className="h-px flex-1 bg-border" />
+        </p>
+        <div className="grid gap-4 sm:grid-cols-2">
+          <div className="rounded-2xl border border-border bg-card p-7">
+            <h3 className="font-display text-lg tracking-tight">AI Feature</h3>
+            <p className="mt-4 flex items-baseline gap-2">
+              <span className="font-display text-4xl tracking-tight">$500</span>
+              <span className="text-sm text-muted-foreground">starting at</span>
+            </p>
+            <ul className="mt-5 space-y-2.5 text-sm">
+              {["Receptionist live on your site and WhatsApp", "Arabic, French, English", "Launch in about a week"].map((f) => (
+                <li key={f} className="flex gap-2.5"><Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden />{f}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="relative rounded-2xl border border-primary bg-card p-7 shadow-lg">
+            <span className="absolute -top-3 left-6 rounded-full bg-primary px-3 py-1 text-xs font-medium text-primary-foreground">Most popular</span>
+            <h3 className="font-display text-lg tracking-tight">Product Sprint</h3>
+            <p className="mt-4 flex items-baseline gap-2">
+              <span className="font-display text-4xl tracking-tight">$2,000</span>
+              <span className="text-sm text-muted-foreground">typical</span>
+            </p>
+            <ul className="mt-5 space-y-2.5 text-sm">
+              {["Full patient-intake flow with booking", "Knowledge base plus human handoff", "Admin dashboard for your staff", "2–3 weeks, weekly demos, code yours"].map((f) => (
+                <li key={f} className="flex gap-2.5"><Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden />{f}</li>
+              ))}
+            </ul>
           </div>
         </div>
 
-        <p style={{ color: "#5b5b6b", fontSize: 12.5, marginTop: 36, lineHeight: 1.8 }}>
-          Built by Djaouad Frih — Full-Stack AI Engineer. The same stack runs my own products
-          (chat.djaouad.tech · docs.djaouad.tech), so you test exactly what you buy.
-          Prefer an agent to verify me? Point any AI assistant at mcp.djaouad.tech/mcp.
-        </p>
+        <div className="mt-16 rounded-2xl border border-border bg-secondary/50 p-7">
+          <p className="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.25em] text-primary">
+            <PhoneMissed className="h-4 w-4" aria-hidden />
+            The verification habit
+          </p>
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+            Don&apos;t take this page&apos;s word for anything. Every product I sell runs on my own domains
+            first — test them, then decide. Prefer an agent? Point any AI assistant at{" "}
+            <span className="font-mono text-foreground">mcp.djaouad.tech/mcp</span> and let it inspect my work directly.
+          </p>
+        </div>
       </div>
     </main>
   );
