@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 import { trackEvent } from "@/lib/track";
 
 export const runtime = "nodejs";
@@ -10,12 +10,14 @@ export async function GET(req: NextRequest) {
   const target = params.get("to");
 
   if (!target || !/^https?:\/\//i.test(target)) {
-    return NextResponse.redirect("https://djaouad.tech", 302);
+    return new Response(null, { status: 302, headers: { Location: "https://djaouad.tech" } });
   }
 
   await trackEvent({ lead, kind: "click", link, target, ua: req.headers.get("user-agent") });
 
-  const res = NextResponse.redirect(target, 302);
-  res.headers.set("Cache-Control", "no-store");
-  return res;
+  // Raw Response avoids search-param merging some platforms apply to NextResponse.redirect
+  return new Response(null, {
+    status: 302,
+    headers: { Location: target, "Cache-Control": "no-store" },
+  });
 }
