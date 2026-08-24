@@ -17,6 +17,7 @@ const plexMono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   verification: {
+    google: "2-f-fZA5ktbCA2ZxyVF2aZE0unAd1EsHsMbW7MO1XEc",
     other: {
       "msvalidate.01": "C51CDA99ED5014CBAB8480F6E66FC408",
     },
