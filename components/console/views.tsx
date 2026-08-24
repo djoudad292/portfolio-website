@@ -421,6 +421,62 @@ export function ConnectView() {
   );
 }
 
+export function TestimonialsView() {
+  return (
+    <div className="space-y-14">
+      <header>
+        <h1 className="font-display text-4xl tracking-tight">What clients said</h1>
+        <p className="mt-3 max-w-[60ch] text-sm leading-relaxed text-muted-foreground">
+          Real builds, real deadlines, verifiable reviews. Every quote links to the original.
+        </p>
+      </header>
+
+<section aria-labelledby="testimonials-h">
+        <h2 id="testimonials-h" className="font-mono text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
+          What clients said
+        </h2>
+        <div className="mt-5 space-y-4">
+          <blockquote className="rounded-xl border border-border bg-card p-6">
+            <p className="font-display text-lg leading-snug text-foreground">
+              &ldquo;Great people, very good service. Made my website within 2 weeks in such a
+              professional manner, very good communication skills — would highly recommend!&rdquo;
+            </p>
+            <footer className="mt-4 flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-xs text-muted-foreground">
+              <a href="https://www.facebook.com/share/19Qx9MsT6b/" target="_blank" rel="noopener noreferrer" className="font-medium not-italic text-foreground hover:text-primary">
+                Bilal Kadri
+              </a>
+              <span aria-hidden>·</span>
+              <span>United Kingdom</span>
+              <span aria-hidden>·</span>
+              <a href="https://www.facebook.com/share/r/18MiUF32rd/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                original review
+              </a>
+            </footer>
+          </blockquote>
+
+          <blockquote className="rounded-xl border border-border bg-card p-6 sm:ml-16">
+            <p className="font-display text-lg leading-snug text-foreground">
+              &ldquo;Huge shout-out to Djaouad! Complete, fully functional full-stack build delivered
+              right on schedule. That&apos;s how it&apos;s done. Star developer right here.&rdquo;
+            </p>
+            <footer className="mt-4 flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-xs text-muted-foreground">
+              <a href="https://www.facebook.com/share/1JTbdKi3oe/" target="_blank" rel="noopener noreferrer" className="font-medium not-italic text-foreground hover:text-primary">
+                Muhhamet Novruzov
+              </a>
+              <span aria-hidden>·</span>
+              <span>Cyprus</span>
+              <span aria-hidden>·</span>
+              <a href="https://www.facebook.com/share/r/18MiUF32rd/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                original review
+              </a>
+            </footer>
+          </blockquote>
+        </div>
+      </section>
+    </div>
+  );
+}
+
 export function TermsView() {
   return (
     <div className="space-y-14">
@@ -471,50 +527,6 @@ export function TermsView() {
               </div>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section aria-labelledby="testimonials-h">
-        <h2 id="testimonials-h" className="font-mono text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
-          What clients said
-        </h2>
-        <div className="mt-5 space-y-4">
-          <blockquote className="rounded-xl border border-border bg-card p-6">
-            <p className="font-display text-lg leading-snug text-foreground">
-              &ldquo;Great people, very good service. Made my website within 2 weeks in such a
-              professional manner, very good communication skills — would highly recommend!&rdquo;
-            </p>
-            <footer className="mt-4 flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-xs text-muted-foreground">
-              <a href="https://www.facebook.com/share/19Qx9MsT6b/" target="_blank" rel="noopener noreferrer" className="font-medium not-italic text-foreground hover:text-primary">
-                Bilal Kadri
-              </a>
-              <span aria-hidden>·</span>
-              <span>United Kingdom</span>
-              <span aria-hidden>·</span>
-              <a href="https://www.facebook.com/share/r/18MiUF32rd/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
-                original review
-              </a>
-            </footer>
-          </blockquote>
-
-          <blockquote className="rounded-xl border border-border bg-card p-6 sm:ml-16">
-            <p className="font-display text-lg leading-snug text-foreground">
-              &ldquo;Huge shout-out to Djaouad! Complete, fully functional full-stack build delivered
-              right on schedule. That&apos;s how it&apos;s done. Star developer right here.&rdquo;
-            </p>
-            <footer className="mt-4 flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-xs text-muted-foreground">
-              <a href="https://www.facebook.com/share/1JTbdKi3oe/" target="_blank" rel="noopener noreferrer" className="font-medium not-italic text-foreground hover:text-primary">
-                Muhhamet Novruzov
-              </a>
-              <span aria-hidden>·</span>
-              <span>Cyprus</span>
-              <span aria-hidden>·</span>
-              <a href="https://www.facebook.com/share/r/18MiUF32rd/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
-                original review
-              </a>
-            </footer>
-          </blockquote>
         </div>
       </section>
 

@@ -12,7 +12,7 @@ import {
   Sparkles,
 } from "lucide-react"
 import { PRODUCTS, WHATSAPP } from "./data"
-import { BriefingView, ConnectView, TermsView, WorkView } from "./views"
+import { BriefingView, ConnectView, TermsView, TestimonialsView, WorkView } from "./views"
 import { ChatView } from "./chat-view"
 import { IntakeWizard } from "./wizard"
 import { WhatsAppIcon } from "@/lib/socials"
@@ -21,15 +21,16 @@ const CALENDLY_URL = "https://calendly.com/oufr29/30min"
 const GITHUB = "https://github.com/djoudad292"
 const LINKEDIN = "https://linkedin.com/in/djaouad-frih"
 
-type View = "briefing" | "work" | "assistant" | "intake" | "terms" | "connect"
+type View = "briefing" | "work" | "assistant" | "intake" | "testimonials" | "terms" | "connect"
 
 const NAV: { id: View; num: string; label: string; hint: string }[] = [
   { id: "briefing", num: "01", label: "Briefing", hint: "who I am & what I do" },
   { id: "work", num: "02", label: "Proof of work", hint: "live products" },
   { id: "assistant", num: "03", label: "Ask my AI", hint: "chat with my agent" },
   { id: "intake", num: "04", label: "Scope a project", hint: "get a fixed quote" },
-  { id: "terms", num: "05", label: "Process & terms", hint: "how we'd work" },
-  { id: "connect", num: "06", label: "Connect via MCP", hint: "let AI hire me" },
+  { id: "testimonials", num: "05", label: "Reviews", hint: "what clients said" },
+  { id: "terms", num: "06", label: "Process & terms", hint: "how we'd work" },
+  { id: "connect", num: "07", label: "Connect via MCP", hint: "let AI hire me" },
 ]
 
 const VALID = new Set(NAV.map((n) => n.id))
@@ -262,6 +263,7 @@ export function Shell() {
                   <IntakeWizard />
                 </div>
               )}
+              {view === "testimonials" && <TestimonialsView />}
               {view === "terms" && <TermsView />}
               {view === "connect" && <ConnectView />}
             </motion.div>
