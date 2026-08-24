@@ -10,7 +10,7 @@ const CHAPTERS = [
   { id: "ask", num: "03", label: "Ask my AI" },
   { id: "pricing", num: "04", label: "Terms" },
   { id: "testimonials", num: "05", label: "Reviews" },
-  { id: "contact", num: "06", label: "Start" },
+  { id: "connect", num: "07", label: "Start" },
 ]
 
 const CALENDLY_URL = "https://calendly.com/oufr29/30min"
