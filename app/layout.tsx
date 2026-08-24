@@ -16,6 +16,11 @@ const plexMono = IBM_Plex_Mono({
 })
 
 export const metadata: Metadata = {
+  verification: {
+    other: {
+      "msvalidate.01": "C51CDA99ED5014CBAB8480F6E66FC408",
+    },
+  },
   title: 'Djaouad Frih | Full-Stack AI Engineer — AI Agents, RAG & Product Builds',
   description:
     'Full-Stack AI Engineer. This portfolio runs on my own AI agent — ask it about my work, pricing and availability, or hand it your project brief for a fixed quote. Next.js, NestJS, React Native, pgvector.',
