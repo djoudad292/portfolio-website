@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react"
 import Image from "next/image"
+import Link from "next/link"
 import { motion } from "framer-motion"
 import {
   ArrowUpRight,
@@ -559,6 +560,14 @@ export function TermsView() {
             Email <ArrowUpRight className="h-4 w-4 text-muted-foreground" />
           </a>
         </div>
+        <p className="mt-4 text-sm text-muted-foreground">
+          Building in a specific industry? See the{" "}
+          <a href="/industries" className="text-primary underline underline-offset-4">
+            industry-ready agents
+          </a>{" "}
+          — clinics, restaurants, real estate and more. Also on the{" "}
+          <Link href="/blog" className="text-primary underline underline-offset-4">notes</Link> page.
+        </p>
       </section>
     </div>
   )
