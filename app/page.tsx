@@ -37,6 +37,23 @@ export default function Home() {
         </a>
       </div>
 
+      {/* About */}
+      <section className="mt-12 flex items-center gap-4 rounded-2xl border border-border bg-card p-5">
+        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-primary font-display text-lg font-bold text-primary-foreground">DF</div>
+        <div className="text-sm leading-relaxed text-muted-foreground">
+          <b className="text-foreground">Djaouad Frih</b> — AI engineer from Oran, Algeria.
+          Speaks Arabic, French and English. Builds for clients worldwide.
+          Replies within hours.
+        </div>
+        <a href="/cv/Djaouad_Frih_CV.pdf" download
+           className="ml-auto hidden shrink-0 rounded-lg border border-border px-4 py-2.5 text-xs font-semibold hover:border-primary sm:block">
+          Download CV
+        </a>
+      </section>
+      <a href="/cv/Djaouad_Frih_CV.pdf" download className="mt-3 block rounded-xl border border-border px-4 py-3 text-center text-sm font-semibold sm:hidden">
+        Download my CV (PDF)
+      </a>
+
       {/* Work — visual cards */}
       <h2 className="mt-14 font-display text-2xl tracking-tight">Running right now</h2>
       <div className="mt-5 grid gap-4 sm:grid-cols-2">
@@ -67,6 +84,17 @@ export default function Home() {
         </a>
       </div>
 
+      {/* How it works */}
+      <h2 className="mt-14 font-display text-2xl tracking-tight">How it works</h2>
+      <div className="mt-4 grid gap-3 sm:grid-cols-4">
+        {[["1", "Free call"], ["2", "Fixed quote in 24h"], ["3", "I build, you watch demos"], ["4", "Launch + you own code"]].map(([n, t]) => (
+          <div key={n} className="rounded-xl border border-border bg-card p-4 text-center">
+            <p className="font-mono text-xs text-primary">{n}</p>
+            <p className="mt-1 text-sm font-medium">{t}</p>
+          </div>
+        ))}
+      </div>
+
       {/* Pricing — one clean line */}
       <h2 className="mt-14 font-display text-2xl tracking-tight">Simple pricing</h2>
       <div className="mt-4 grid gap-3 sm:grid-cols-3">
@@ -87,6 +115,15 @@ export default function Home() {
           "Complete full-stack build delivered right on schedule. Star developer."
           <span className="block pt-1 font-mono text-xs text-muted-foreground">Muhhamet, Cyprus</span>
         </p>
+      </div>
+
+      {/* FAQ */}
+      <h2 className="mt-14 font-display text-2xl tracking-tight">Common questions</h2>
+      <div className="mt-4 space-y-3 text-sm leading-relaxed">
+        <p><b>I'm not technical. Is that a problem?</b><br />No — you get a finished product on your domain. I handle everything.</p>
+        <p><b>Do I own the code?</b><br />Yes, fully. Source code and accounts are yours at launch.</p>
+        <p><b>What about my data?</b><br />Your agent only uses your own content. Nothing is shared with other clients.</p>
+        <p><b>Languages?</b><br />Arabic, French, English — your customers can switch anytime.</p>
       </div>
 
       {/* Contact */}
