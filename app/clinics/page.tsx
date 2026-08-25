@@ -32,9 +32,8 @@ export default function ClinicsPage() {
           <span className="block text-muted-foreground">Nobody answered.</span>
         </h1>
         <p className="mt-6 max-w-2xl text-pretty leading-relaxed text-muted-foreground">
-          Most clinics miss patient calls during busy hours. Those patients book somewhere else. This receptionist answers every call and message, speaks your patients' language, and books them into your calendar. It runs live on my own site — try it before you decide anything. It already runs live on my own
-          infrastructure, so you test exactly what you buy.
-        </p>
+          Most clinics miss patient calls during busy hours. Those patients book somewhere else. This receptionist answers every call and message, speaks your patients' language, and books them into your calendar. It runs live on my own site — try it before you decide anything.
+          </p>
 
         <div className="mt-8 flex flex-wrap gap-4">
           <a href="https://chat.djaouad.tech" className="rounded-lg bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90">
