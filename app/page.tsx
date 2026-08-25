@@ -54,11 +54,11 @@ export default function Home() {
 
           <div className="mt-8 flex flex-wrap gap-3">
             <a href="https://chat.djaouad.tech"
-               className="rounded-xl bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-[0_0_28px_-6px] shadow-primary/50 transition-transform hover:-translate-y-0.5">
+               className="rounded-xl bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-colors hover:opacity-90">
               Try the live demo →
             </a>
             <a href="https://calendly.com/oufr29/30min"
-               className="rounded-xl border border-border bg-card/60 px-6 py-3.5 text-sm font-semibold backdrop-blur transition-colors hover:border-primary">
+               className="rounded-xl border border-border bg-card px-6 py-3.5 text-sm font-semibold transition-colors hover:border-primary">
               Book a free call
             </a>
           </div>
@@ -78,10 +78,10 @@ export default function Home() {
           <div className="grid gap-5 sm:grid-cols-2">
             {work.map((w) => (
               <div key={w.name}
-                   className="group relative overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-[0_16px_50px_-12px_rgba(163,230,53,0.15)]">
+                   className="group relative overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:border-primary">
                 <a href={w.url} target="_blank" rel="noopener noreferrer">
                   <img src={w.img} alt={w.name}
-                       className="aspect-video w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]" />
+                       className="aspect-video w-full object-cover object-top " />
                 </a>
                 <div className="p-5 pt-4">
                   <div className="flex items-center justify-between gap-2">
@@ -94,9 +94,9 @@ export default function Home() {
                   <p className="mt-1 text-xs leading-snug text-muted-foreground">{w.desc}</p>
                   <div className="mt-3 flex gap-2 font-mono text-[10px]">
                     <a href={w.repo} target="_blank" rel="noopener noreferrer"
-                       className="rounded-md border border-border bg-background/70 px-2 py-1 backdrop-blur transition-colors hover:border-primary hover:text-primary">code</a>
+                       className="rounded-md border border-border bg-background px-2 py-1 transition-colors hover:border-primary hover:text-primary">code</a>
                     <a href={w.apk} target="_blank" rel="noopener noreferrer"
-                       className="rounded-md border border-border bg-background/70 px-2 py-1 backdrop-blur transition-colors hover:border-primary hover:text-primary">android ↓</a>
+                       className="rounded-md border border-border bg-background px-2 py-1 transition-colors hover:border-primary hover:text-primary">android ↓</a>
                   </div>
                 </div>
               </div>
@@ -143,7 +143,7 @@ export default function Home() {
               { q: "Made my website within 2 weeks, very professional, great communication. Would highly recommend.", n: "Bilal Kadri · UK" },
               { q: "Complete full-stack build delivered right on schedule. That's how it's done. Star developer.", n: "Muhhamet Novruzov · Cyprus" },
             ].map((r) => (
-              <blockquote key={r.n} className="rounded-2xl border border-border bg-card/60 p-6 backdrop-blur">
+              <blockquote key={r.n} className="rounded-2xl border border-border bg-card p-6">
                 <p className="leading-relaxed text-foreground">&ldquo;{r.q}&rdquo;</p>
                 <footer className="mt-4 font-mono text-xs text-muted-foreground">{r.n}</footer>
               </blockquote>
@@ -153,7 +153,7 @@ export default function Home() {
 
         {/* CONTACT */}
         <section className="pb-24">
-          <div className="rounded-3xl border border-border bg-gradient-to-b from-card to-background p-8 sm:p-10">
+          <div className="rounded-2xl border border-border bg-card p-8 sm:p-10">
             <h2 className="font-display text-3xl tracking-tight">Talk to me</h2>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
               I reply fast — usually within an hour. Prefer a call? Grab any slot.
@@ -164,11 +164,11 @@ export default function Home() {
                 Book a free call <ArrowUpRight className="h-4 w-4" />
               </a>
               <a href="https://wa.me/213780688125"
-                 className="flex items-center justify-between rounded-xl border border-border bg-background/60 px-5 py-3.5 text-sm backdrop-blur transition-colors hover:border-primary">
+                 className="flex items-center justify-between rounded-xl border border-border bg-background px-5 py-3.5 text-sm transition-colors hover:border-primary">
                 WhatsApp +213 780 68 81 25 <ArrowUpRight className="h-4 w-4 text-muted-foreground" />
               </a>
               <a href="mailto:oufr29@gmail.com"
-                 className="flex items-center justify-between rounded-xl border border-border bg-background/60 px-5 py-3.5 text-sm backdrop-blur transition-colors hover:border-primary">
+                 className="flex items-center justify-between rounded-xl border border-border bg-background px-5 py-3.5 text-sm transition-colors hover:border-primary">
                 oufr29@gmail.com <ArrowUpRight className="h-4 w-4 text-muted-foreground" />
               </a>
             </div>
