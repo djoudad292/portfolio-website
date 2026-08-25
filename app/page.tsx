@@ -21,143 +21,172 @@ const work = [
 
 export default function Home() {
   return (
-    <main className="mx-auto min-h-screen max-w-3xl px-6 py-14 text-foreground">
-      {/* Hero */}
-      <p className="font-mono text-xs uppercase tracking-widest text-primary">● Booking projects — next slot early September</p>
-      <h1 className="mt-4 font-display text-4xl leading-tight tracking-tight sm:text-5xl">
-        I'm Djaouad. I build AI assistants<br className="hidden sm:block" /> for businesses.
-      </h1>
-      <p className="mt-4 max-w-lg leading-relaxed text-muted-foreground">
-      If your customers message you at 2 AM, something should answer.
-        I build that thing. Last one took me nine days. Fixed price,
-        no hourly billing, and when it&apos;s done the code is yours.
-      </p>
+    <main className="relative min-h-screen overflow-hidden text-foreground">
+      {/* ambient glows */}
+      <div aria-hidden className="pointer-events-none absolute -top-40 right-[-10%] h-[420px] w-[420px] rounded-full bg-primary/15 blur-[120px]" />
+      <div aria-hidden className="pointer-events-none absolute top-[38%] left-[-12%] h-[380px] w-[380px] rounded-full bg-accent/10 blur-[120px]" />
 
-      <div className="mt-6 flex flex-wrap gap-3">
-        <a href="https://chat.djaouad.tech" className="rounded-xl bg-primary px-6 py-3.5 font-semibold text-primary-foreground hover:opacity-90">
-          Try the live demo
-        </a>
-        <a href="https://calendly.com/oufr29/30min" className="rounded-xl border border-border px-6 py-3.5 font-semibold hover:border-primary">
-          Book a free call
-        </a>
-      </div>
+      <div className="relative mx-auto max-w-4xl px-6">
 
-      {/* About */}
-      <section className="mt-12 flex items-center gap-4 rounded-2xl border border-border bg-card p-5">
-        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-primary font-display text-lg font-bold text-primary-foreground">DF</div>
-        <div className="text-sm leading-relaxed text-muted-foreground">
-          <b className="text-foreground">Djaouad Frih</b> — AI engineer from Oran, Algeria.
-          Speaks Arabic, French and English. Builds for clients worldwide.
-          Replies within hours.
-        </div>
-        <a href="/cv/Djaouad_Frih_CV.pdf" download
-           className="ml-auto hidden shrink-0 rounded-lg border border-border px-4 py-2.5 text-xs font-semibold hover:border-primary sm:block">
-          Download CV
-        </a>
-      </section>
-      <a href="/cv/Djaouad_Frih_CV.pdf" download className="mt-3 block rounded-xl border border-border px-4 py-3 text-center text-sm font-semibold sm:hidden">
-        Download my CV (PDF)
-      </a>
+        {/* HERO */}
+        <section className="pt-20 pb-16">
+          <p className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/10 px-4 py-1.5 font-mono text-xs tracking-wide text-primary">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-60" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
+            </span>
+            Booking projects — next slot early September
+          </p>
 
-      {/* Work — visual cards */}
-      <h2 className="mt-14 font-display text-2xl tracking-tight">Things I built</h2>
-      <div className="mt-5 grid gap-4 sm:grid-cols-2">
-        {work.map((w) => (
-          <div key={w.name} className="overflow-hidden rounded-2xl border border-border bg-card transition-colors hover:border-primary">
-            <a href={w.url} target="_blank" rel="noopener noreferrer">
-              <img src={w.img} alt={w.name} className="aspect-video w-full object-cover object-top" />
+          <h1 className="mt-6 font-display text-5xl leading-[1.04] tracking-tight sm:text-6xl">
+            I&apos;m Djaouad. I build{" "}
+            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              AI assistants
+            </span>{" "}
+            for businesses.
+          </h1>
+
+          <p className="mt-6 max-w-lg text-lg leading-relaxed text-muted-foreground">
+            If your customers message you at 2 AM, something should answer.
+            I build that thing. Last one took me nine days. Fixed price,
+            no hourly billing, and when it&apos;s done the code is yours.
+          </p>
+
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a href="https://chat.djaouad.tech"
+               className="rounded-xl bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-[0_0_28px_-6px] shadow-primary/50 transition-transform hover:-translate-y-0.5">
+              Try the live demo →
             </a>
-            <div className="p-4 pt-3">
-              <div className="flex items-center justify-between gap-2">
-                <a href={w.url} target="_blank" rel="noopener noreferrer" className="text-sm font-bold group-hover:text-primary">
-                  {w.name}
+            <a href="https://calendly.com/oufr29/30min"
+               className="rounded-xl border border-border bg-card/60 px-6 py-3.5 text-sm font-semibold backdrop-blur transition-colors hover:border-primary">
+              Book a free call
+            </a>
+          </div>
+
+          <p className="mt-6 font-mono text-xs text-muted-foreground">
+            GMT+1 · Oran · usually replies within an hour
+          </p>
+        </section>
+
+        {/* WORK */}
+        <section className="pb-20">
+          <div className="mb-8 flex items-center gap-4">
+            <h2 className="font-display text-3xl tracking-tight">Things I built</h2>
+            <span aria-hidden className="h-px flex-1 bg-border" />
+          </div>
+
+          <div className="grid gap-5 sm:grid-cols-2">
+            {work.map((w) => (
+              <div key={w.name}
+                   className="group relative overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-[0_16px_50px_-12px_rgba(163,230,53,0.15)]">
+                <a href={w.url} target="_blank" rel="noopener noreferrer">
+                  <img src={w.img} alt={w.name}
+                       className="aspect-video w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]" />
                 </a>
-                <a href={w.url} target="_blank" rel="noopener noreferrer" aria-label={w.name}>
-                  <ArrowUpRight className="h-4 w-4 shrink-0 text-muted-foreground group-hover:text-primary" />
-                </a>
+                <div className="p-5 pt-4">
+                  <div className="flex items-center justify-between gap-2">
+                    <a href={w.url} target="_blank" rel="noopener noreferrer"
+                       className="font-display text-base tracking-tight group-hover:text-primary">
+                      {w.name}
+                    </a>
+                    <ArrowUpRight className="h-4 w-4 shrink-0 text-muted-foreground group-hover:text-primary" />
+                  </div>
+                  <p className="mt-1 text-xs leading-snug text-muted-foreground">{w.desc}</p>
+                  <div className="mt-3 flex gap-2 font-mono text-[10px]">
+                    <a href={w.repo} target="_blank" rel="noopener noreferrer"
+                       className="rounded-md border border-border bg-background/70 px-2 py-1 backdrop-blur transition-colors hover:border-primary hover:text-primary">code</a>
+                    <a href={w.apk} target="_blank" rel="noopener noreferrer"
+                       className="rounded-md border border-border bg-background/70 px-2 py-1 backdrop-blur transition-colors hover:border-primary hover:text-primary">android ↓</a>
+                  </div>
+                </div>
               </div>
-              <p className="mt-0.5 text-xs leading-snug text-muted-foreground">{w.desc}</p>
-              <div className="mt-2.5 flex gap-2 font-mono text-[10px]">
-                <a href={w.repo} target="_blank" rel="noopener noreferrer"
-                   className="rounded-md bg-background px-2 py-1 border border-border hover:border-primary hover:text-primary">code</a>
-                <a href={w.apk} target="_blank" rel="noopener noreferrer"
-                   className="rounded-md bg-background px-2 py-1 border border-border hover:border-primary hover:text-primary">android ↓</a>
+            ))}
+          </div>
+        </section>
+
+        {/* PRICING */}
+        <section className="pb-20">
+          <div className="mb-8 flex items-center gap-4">
+            <h2 className="font-display text-3xl tracking-tight">Pricing</h2>
+            <span aria-hidden className="h-px flex-1 bg-border" />
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-3">
+            {[
+              { p: "$500", t: "Chatbot on your content", f: false },
+              { p: "$2,000", t: "Full build + dashboard", f: true },
+              { p: "Quote", t: "Custom products", f: false },
+            ].map((x) => (
+              <div key={x.p}
+                   className={`rounded-2xl border p-6 backdrop-blur transition-all duration-300 hover:-translate-y-1 ${
+                     x.f ? "border-primary/60 bg-card shadow-[0_0_40px_-12px] shadow-primary/30" : "border-border bg-card/60"
+                   }`}>
+                <p className="font-display text-3xl tracking-tight">{x.p}</p>
+                <p className="mt-2 text-sm text-muted-foreground">{x.t}</p>
               </div>
+            ))}
+          </div>
+          <p className="mt-4 font-mono text-xs text-muted-foreground">
+            Free call → fixed quote in 24h. Industry-specific?{" "}
+            <Link href="/industries" className="text-primary hover:underline">see it applied →</Link>
+          </p>
+        </section>
+
+        {/* REVIEWS */}
+        <section className="pb-20">
+          <div className="mb-8 flex items-center gap-4">
+            <h2 className="font-display text-3xl tracking-tight">Two clients, verbatim</h2>
+            <span aria-hidden className="h-px flex-1 bg-border" />
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {[
+              { q: "Made my website within 2 weeks, very professional, great communication. Would highly recommend.", n: "Bilal Kadri · UK" },
+              { q: "Complete full-stack build delivered right on schedule. That's how it's done. Star developer.", n: "Muhhamet Novruzov · Cyprus" },
+            ].map((r) => (
+              <blockquote key={r.n} className="rounded-2xl border border-border bg-card/60 p-6 backdrop-blur">
+                <p className="leading-relaxed text-foreground">&ldquo;{r.q}&rdquo;</p>
+                <footer className="mt-4 font-mono text-xs text-muted-foreground">{r.n}</footer>
+              </blockquote>
+            ))}
+          </div>
+        </section>
+
+        {/* CONTACT */}
+        <section className="pb-24">
+          <div className="rounded-3xl border border-border bg-gradient-to-b from-card to-background p-8 sm:p-10">
+            <h2 className="font-display text-3xl tracking-tight">Talk to me</h2>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              I reply fast — usually within an hour. Prefer a call? Grab any slot.
+            </p>
+            <div className="mt-6 grid max-w-md gap-3">
+              <a href="https://calendly.com/oufr29/30min"
+                 className="flex items-center justify-between rounded-xl bg-primary px-5 py-3.5 text-sm font-semibold text-primary-foreground shadow-[0_0_28px_-8px] shadow-primary/50 transition-transform hover:-translate-y-0.5">
+                Book a free call <ArrowUpRight className="h-4 w-4" />
+              </a>
+              <a href="https://wa.me/213780688125"
+                 className="flex items-center justify-between rounded-xl border border-border bg-background/60 px-5 py-3.5 text-sm backdrop-blur transition-colors hover:border-primary">
+                WhatsApp +213 780 68 81 25 <ArrowUpRight className="h-4 w-4 text-muted-foreground" />
+              </a>
+              <a href="mailto:oufr29@gmail.com"
+                 className="flex items-center justify-between rounded-xl border border-border bg-background/60 px-5 py-3.5 text-sm backdrop-blur transition-colors hover:border-primary">
+                oufr29@gmail.com <ArrowUpRight className="h-4 w-4 text-muted-foreground" />
+              </a>
             </div>
           </div>
-        ))}
+
+          <p className="mt-10 font-mono text-xs text-muted-foreground">
+            GitHub <a href="https://github.com/djoudad292" className="hover:text-primary">djoudad292</a>
+            {" · "}LinkedIn <a href="https://linkedin.com/in/djaouad-frih" className="hover:text-primary">djaouad-frih</a>
+            {" · "}Blog <Link href="/blog" className="hover:text-primary">notes</Link>
+            {" · "}Android apps on every project above
+          </p>
+          <p className="mt-3 space-x-4 font-mono text-[11px] text-muted-foreground/70">
+            <Link href="/industries" className="hover:text-primary">Industries</Link>
+            <Link href="/privacy" className="hover:text-primary">Privacy</Link>
+            <Link href="/terms" className="hover:text-primary">Terms</Link>
+          </p>
+        </section>
       </div>
-
-      {/* App + repo */}
-      <div className="mt-6 flex flex-wrap gap-3">
-        <a href="https://github.com/djoudad292/hireme-mcp/releases/download/latest-apk/hireme-mcp.apk"
-           className="flex items-center gap-2 rounded-xl border border-border px-5 py-3 text-sm font-semibold hover:border-primary">
-          📱 Download Android app
-        </a>
-        <a href="https://github.com/djoudad292/hireme-mcp"
-           className="flex items-center gap-2 rounded-xl border border-border px-5 py-3 text-sm font-semibold hover:border-primary">
-          ⭐ Open source on GitHub
-        </a>
-      </div>
-
-      {/* How it works */}
-      <h2 className="mt-14 font-display text-2xl tracking-tight">How it works</h2>
-      <div className="mt-4 grid gap-3 sm:grid-cols-4">
-        {[["1", "Free call"], ["2", "Fixed quote in 24h"], ["3", "I build, you watch demos"], ["4", "Launch + you own code"]].map(([n, t]) => (
-          <div key={n} className="rounded-xl border border-border bg-card p-4 text-center">
-            <p className="font-mono text-xs text-primary">{n}</p>
-            <p className="mt-1 text-sm font-medium">{t}</p>
-          </div>
-        ))}
-      </div>
-
-      {/* Pricing — one clean line */}
-      <h2 className="mt-14 font-display text-2xl tracking-tight">Pricing</h2>
-      <div className="mt-4 grid gap-3 sm:grid-cols-3">
-        <div className="rounded-xl border border-border bg-card p-4"><b>$500</b><p className="mt-1 text-xs text-muted-foreground">Chatbot on your content</p></div>
-        <div className="rounded-xl border border-primary bg-card p-4"><b>$2,000</b><p className="mt-1 text-xs text-muted-foreground">Full build + dashboard ★</p></div>
-        <div className="rounded-xl border border-border bg-card p-4"><b>Quote</b><p className="mt-1 text-xs text-muted-foreground">Custom products</p></div>
-      </div>
-      <p className="mt-3 text-xs text-muted-foreground">Free call → fixed quote in 24h. For your industry? <Link href="/industries" className="text-primary hover:underline">See it applied →</Link></p>
-
-      {/* Reviews */}
-      <h2 className="mt-14 font-display text-2xl tracking-tight">Two clients, verbatim</h2>
-      <div className="mt-4 space-y-3">
-        <p className="rounded-xl border border-border bg-card p-4 text-sm leading-relaxed">
-          "Made my website within 2 weeks, very professional. Would highly recommend."
-          <span className="block pt-1 font-mono text-xs text-muted-foreground">Bilal, UK</span>
-        </p>
-        <p className="rounded-xl border border-border bg-card p-4 text-sm leading-relaxed">
-          "Complete full-stack build delivered right on schedule. Star developer."
-          <span className="block pt-1 font-mono text-xs text-muted-foreground">Muhhamet, Cyprus</span>
-        </p>
-      </div>
-
-      {/* FAQ */}
-      <h2 className="mt-14 font-display text-2xl tracking-tight">Common questions</h2>
-      <div className="mt-4 space-y-3 text-sm leading-relaxed">
-        <p><b>I'm not technical. Is that a problem?</b><br />No — you get a finished product on your domain. I handle everything.</p>
-        <p><b>Do I own the code?</b><br />Yes, fully. Source code and accounts are yours at launch.</p>
-        <p><b>What about my data?</b><br />Your agent only uses your own content. Nothing is shared with other clients.</p>
-        <p><b>Languages?</b><br />Arabic, French, English — your customers can switch anytime.</p>
-      </div>
-
-      {/* Contact */}
-      <h2 className="mt-14 font-display text-2xl tracking-tight">Talk to me</h2>
-      <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-        I reply fast — usually within an hour (I&apos;m GMT+1, Oran).
-        Free call: <a className="text-primary hover:underline" href="https://calendly.com/oufr29/30min">calendly.com/oufr29/30min</a><br />
-        WhatsApp: <a className="text-primary hover:underline" href="https://wa.me/213780688125">+213 780 68 81 25</a><br />
-        Email: <a className="text-primary hover:underline" href="mailto:oufr29@gmail.com">oufr29@gmail.com</a>
-      </p>
-
-      <p className="mt-12 border-t border-border pt-6 font-mono text-[11px] text-muted-foreground">
-        Djaouad Frih · Full-stack AI engineer ·{" "}
-        <a className="hover:text-primary" href="https://github.com/djoudad292">GitHub</a> ·{" "}
-        <a className="hover:text-primary" href="https://linkedin.com/in/djaouad-frih">LinkedIn</a> ·{" "}
-        <Link className="hover:text-primary" href="/blog">Blog</Link> ·{" "}
-        <Link className="hover:text-primary" href="/privacy">Privacy</Link>
-      </p>
     </main>
   );
 }
