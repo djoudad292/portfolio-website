@@ -9,10 +9,14 @@ export const metadata: Metadata = {
 };
 
 const work = [
-  { name: "AI Receptionist", desc: "Books appointments, captures leads, answers 24/7.", url: "https://chat.djaouad.tech", img: "/shots/kit-receptionist.png" },
-  { name: "PDF Workspace", desc: "Ask your documents anything. Cited answers.", url: "https://docs.djaouad.tech", img: "/shots/kit-pdf-workspace.png" },
-  { name: "Support Agent", desc: "Trained on your policies. Escalates when needed.", url: "https://customer.djaouad.tech", img: "/shots/kit-support-agent.png" },
-  { name: "HireMe MCP", desc: "My portfolio as a server AI can read.", url: "https://mcp.djaouad.tech", img: "/shots/kit-hireme-mcp.png" },
+  { name: "AI Receptionist", desc: "Books appointments, captures leads, answers 24/7.", url: "https://chat.djaouad.tech", img: "/shots/kit-receptionist.png",
+    repo: "https://github.com/djoudad292/ai-virtual-receptionist", apk: "https://github.com/djoudad292/ai-virtual-receptionist/releases/download/latest-apk-receptionist/ai-receptionist.apk" },
+  { name: "PDF Workspace", desc: "Ask your documents anything. Cited answers.", url: "https://docs.djaouad.tech", img: "/shots/kit-pdf-workspace.png",
+    repo: "https://github.com/djoudad292/smart-pdf-workspace", apk: "https://github.com/djoudad292/smart-pdf-workspace/releases/download/latest-apk-pdf/smart-pdf.apk" },
+  { name: "Support Agent", desc: "Trained on your policies. Escalates when needed.", url: "https://customer.djaouad.tech", img: "/shots/kit-support-agent.png",
+    repo: "https://github.com/djoudad292/ai-customer-support-agent", apk: "https://github.com/djoudad292/ai-customer-support-agent/releases/download/latest-apk/ai-customer-support.apk" },
+  { name: "HireMe MCP", desc: "My portfolio as a server AI can read.", url: "https://mcp.djaouad.tech", img: "/shots/kit-hireme-mcp.png",
+    repo: "https://github.com/djoudad292/hireme-mcp", apk: "https://github.com/djoudad292/hireme-mcp/releases/download/latest-apk/hireme-mcp.apk" },
 ];
 
 export default function Home() {
@@ -58,17 +62,28 @@ export default function Home() {
       <h2 className="mt-14 font-display text-2xl tracking-tight">Running right now</h2>
       <div className="mt-5 grid gap-4 sm:grid-cols-2">
         {work.map((w) => (
-          <a key={w.name} href={w.url} target="_blank" rel="noopener noreferrer"
-             className="group overflow-hidden rounded-2xl border border-border bg-card transition-colors hover:border-primary">
-            <img src={w.img} alt={w.name} className="aspect-video w-full object-cover object-top" />
-            <div className="flex items-center justify-between gap-2 p-4">
-              <div>
-                <b className="text-sm">{w.name}</b>
-                <p className="mt-0.5 text-xs leading-snug text-muted-foreground">{w.desc}</p>
+          <div key={w.name} className="overflow-hidden rounded-2xl border border-border bg-card transition-colors hover:border-primary">
+            <a href={w.url} target="_blank" rel="noopener noreferrer">
+              <img src={w.img} alt={w.name} className="aspect-video w-full object-cover object-top" />
+            </a>
+            <div className="p-4 pt-3">
+              <div className="flex items-center justify-between gap-2">
+                <a href={w.url} target="_blank" rel="noopener noreferrer" className="text-sm font-bold group-hover:text-primary">
+                  {w.name}
+                </a>
+                <a href={w.url} target="_blank" rel="noopener noreferrer" aria-label={w.name}>
+                  <ArrowUpRight className="h-4 w-4 shrink-0 text-muted-foreground group-hover:text-primary" />
+                </a>
               </div>
-              <ArrowUpRight className="h-4 w-4 shrink-0 text-muted-foreground group-hover:text-primary" />
+              <p className="mt-0.5 text-xs leading-snug text-muted-foreground">{w.desc}</p>
+              <div className="mt-2.5 flex gap-2 font-mono text-[10px]">
+                <a href={w.repo} target="_blank" rel="noopener noreferrer"
+                   className="rounded-md bg-background px-2 py-1 border border-border hover:border-primary hover:text-primary">code</a>
+                <a href={w.apk} target="_blank" rel="noopener noreferrer"
+                   className="rounded-md bg-background px-2 py-1 border border-border hover:border-primary hover:text-primary">android ↓</a>
+              </div>
             </div>
-          </a>
+          </div>
         ))}
       </div>
 
