@@ -20,6 +20,8 @@ import {
   PROJECTS,
   SERVICES,
   WHATSAPP,
+  GITHUB,
+  LINKEDIN,
 } from "./data"
 
 const goto = (view: string) =>
@@ -58,10 +60,9 @@ export function BriefingView() {
           transition={{ delay: 0.1 }}
           className="mt-6 max-w-[62ch] text-base leading-relaxed text-muted-foreground"
         >
-          I&apos;m Djaouad Frih. I build production AI agents, RAG systems and the
-          web/mobile products around them — solo, end-to-end, shipped not demoed.
-          Every agent on this site is my own deployment: ask it anything, or hand
-          it your project brief.
+          I&apos;m Djaouad. I build AI chatbots, agents and the apps around them.
+          Everything on this site is mine and running right now. Try it,
+          then send me your project.
         </motion.p>
 
         <motion.div
@@ -116,6 +117,34 @@ export function BriefingView() {
             </motion.div>
           ))}
         </div>
+      </section>
+
+      {/* Reviews teaser */}
+      <section aria-labelledby="reviews-teaser-h">
+        <h2 id="reviews-teaser-h" className="font-mono text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
+          Clients said
+        </h2>
+        <div className="mt-5 space-y-3">
+          <blockquote className="rounded-2xl border border-border bg-card p-5">
+            <p className="text-sm leading-relaxed text-foreground">
+              &ldquo;Made my website within 2 weeks, very professional, great communication.
+              Would highly recommend.&rdquo;
+            </p>
+            <footer className="mt-2 font-mono text-xs text-muted-foreground">Bilal Kadri · UK</footer>
+          </blockquote>
+          <blockquote className="rounded-2xl border border-border bg-card p-5">
+            <p className="text-sm leading-relaxed text-foreground">
+              &ldquo;Complete full-stack build delivered right on schedule. Star developer.&rdquo;
+            </p>
+            <footer className="mt-2 font-mono text-xs text-muted-foreground">Muhhamet Novruzov · Cyprus</footer>
+          </blockquote>
+        </div>
+        <button
+          onClick={() => goto("testimonials")}
+          className="mt-4 font-mono text-xs uppercase tracking-[0.25em] text-primary hover:underline"
+        >
+          Read all reviews →
+        </button>
       </section>
 
       {/* Proof of production */}
@@ -559,6 +588,12 @@ export function TermsView() {
           >
             Email <ArrowUpRight className="h-4 w-4 text-muted-foreground" />
           </a>
+        </div>
+        <div className="mt-6 flex flex-wrap gap-3 font-mono text-xs">
+          <a href={GITHUB} target="_blank" rel="noopener noreferrer" className="rounded-lg border border-border px-4 py-2.5 hover:border-primary">GitHub</a>
+          <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" className="rounded-lg border border-border px-4 py-2.5 hover:border-primary">LinkedIn</a>
+          <a href="https://www.facebook.com/share/r/18MiUF32rd/" target="_blank" rel="noopener noreferrer" className="rounded-lg border border-border px-4 py-2.5 hover:border-primary">Facebook reviews</a>
+          <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="rounded-lg border border-border px-4 py-2.5 hover:border-primary">WhatsApp</a>
         </div>
         <p className="mt-4 text-sm text-muted-foreground">
           Building in a specific industry? See the{" "}
