@@ -55,6 +55,18 @@ export default function Home() {
         ))}
       </div>
 
+      {/* App + repo */}
+      <div className="mt-6 flex flex-wrap gap-3">
+        <a href="https://github.com/djoudad292/hireme-mcp/releases/download/latest-apk/hireme-mcp.apk"
+           className="flex items-center gap-2 rounded-xl border border-border px-5 py-3 text-sm font-semibold hover:border-primary">
+          📱 Download Android app
+        </a>
+        <a href="https://github.com/djoudad292/hireme-mcp"
+           className="flex items-center gap-2 rounded-xl border border-border px-5 py-3 text-sm font-semibold hover:border-primary">
+          ⭐ Open source on GitHub
+        </a>
+      </div>
+
       {/* Pricing — one clean line */}
       <h2 className="mt-14 font-display text-2xl tracking-tight">Simple pricing</h2>
       <div className="mt-4 grid gap-3 sm:grid-cols-3">
