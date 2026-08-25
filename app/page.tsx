@@ -59,7 +59,7 @@ export default function Home() {
           </div>
 
           <p className="mt-6 font-mono text-xs text-muted-foreground">
-            GMT+1 · Oran · usually replies within an hour
+            Remote · overlaps US/EU hours · usually replies within an hour
           </p>
         </section>
 
