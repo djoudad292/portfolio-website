@@ -23,8 +23,6 @@ export default function Home() {
   return (
     <main className="relative min-h-screen overflow-hidden text-foreground">
       {/* ambient glows */}
-      <div aria-hidden className="pointer-events-none absolute -top-40 right-[-10%] h-[420px] w-[420px] rounded-full bg-primary/15 blur-[120px]" />
-      <div aria-hidden className="pointer-events-none absolute top-[38%] left-[-12%] h-[380px] w-[380px] rounded-full bg-accent/10 blur-[120px]" />
 
       <div className="relative mx-auto max-w-4xl px-6">
 
@@ -118,7 +116,7 @@ export default function Home() {
               { p: "Quote", t: "Custom products", f: false },
             ].map((x) => (
               <div key={x.p}
-                   className={`rounded-2xl border p-6 backdrop-blur transition-all duration-300 hover:-translate-y-1 ${
+                   className={`rounded-2xl border p-6 transition-colors ${
                      x.f ? "border-primary/60 bg-card shadow-[0_0_40px_-12px] shadow-primary/30" : "border-border bg-card/60"
                    }`}>
                 <p className="font-display text-3xl tracking-tight">{x.p}</p>
@@ -160,7 +158,7 @@ export default function Home() {
             </p>
             <div className="mt-6 grid max-w-md gap-3">
               <a href="https://calendly.com/oufr29/30min"
-                 className="flex items-center justify-between rounded-xl bg-primary px-5 py-3.5 text-sm font-semibold text-primary-foreground shadow-[0_0_28px_-8px] shadow-primary/50 transition-transform hover:-translate-y-0.5">
+                 className="flex items-center justify-between rounded-xl bg-primary px-5 py-3.5 text-sm font-semibold text-primary-foreground transition-colors hover:opacity-90">
                 Book a free call <ArrowUpRight className="h-4 w-4" />
               </a>
               <a href="https://wa.me/213780688125"
