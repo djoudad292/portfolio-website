@@ -31,7 +31,7 @@ export default function Page() {
           <span className="block text-muted-foreground">They hired whoever replied first.</span>
         </h1>
         <p className="mt-6 max-w-2xl text-pretty leading-relaxed text-muted-foreground">
-          Potential clients contact three firms and retain the first that responds seriously. This agent replies in seconds: explains your practice areas, asks the right intake questions, keeps everything confidential, and books consultations into your calendar.
+          People contact three law firms and hire whoever answers first. This agent answers right away, asks the right questions and books the consultation.
         </p>
 
         <div className="mt-8 flex flex-wrap gap-4">

@@ -31,7 +31,7 @@ export default function Page() {
           <span className="block text-muted-foreground">crown for your competitor.</span>
         </h1>
         <p className="mt-6 max-w-2xl text-pretty leading-relaxed text-muted-foreground">
-          Dental patients book with whoever answers first. This receptionist picks up every call and message, explains treatments from your own price list, checks your real availability and books the chair - nights, weekends and rush hours included.
+          Patients call. If nobody answers, they call another dentist. This receptionist always answers, explains your treatments and prices, and books the appointment.
         </p>
 
         <div className="mt-8 flex flex-wrap gap-4">

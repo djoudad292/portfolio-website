@@ -52,7 +52,7 @@ export const PROJECTS = [
     image: "/receptionist-hero.png",
     alt: "AI Virtual Receptionist interface",
     description:
-      "24/7 receptionist trained on a business's own content — answers customers in under a second, books appointments, captures leads, routes by department, hands off to humans when it should.",
+      "Answers customers in under a second, books appointments, captures leads and passes hard questions to your staff. Runs 24/7.",
     metrics: ["<1s first response", "24/7 unattended", "Android app published"],
     demo: { label: "chat.djaouad.tech", href: "https://chat.djaouad.tech" },
     github: "https://github.com/djoudad292/ai-virtual-receptionist",
@@ -66,7 +66,7 @@ export const PROJECTS = [
     image: "/pdf-workspace-hero.png",
     alt: "Smart PDF Workspace interface",
     description:
-      "Upload documents, ask questions with cited answers, generate summaries, publish an ask-your-docs widget. Multi-tenant teams, token revocation, one-click embeds.",
+      "Upload your documents, ask anything, get answers that show their source. Add it to your site with one line of code.",
     metrics: ["Cited RAG answers", "Multi-tenant teams", "Embeddable widget"],
     demo: { label: "docs.djaouad.tech", href: "https://docs.djaouad.tech" },
     github: "https://github.com/djoudad292/smart-pdf-workspace",
@@ -80,7 +80,7 @@ export const PROJECTS = [
     image: "/support-agent-hero.png",
     alt: "AI Customer Support Agent dashboard",
     description:
-      "Tool-calling support agent: creates tickets, checks orders, searches knowledge, escalates to humans with full context. Admin dashboard with live analytics; one-line embeddable widget.",
+      "Support agent that checks orders, finds answers in your help docs and opens tickets. Passes tricky cases to your team.",
     metrics: ["5 tools wired to the agent", "Live admin analytics", "One-line embed"],
     demo: { label: "customer.djaouad.tech", href: "https://customer.djaouad.tech" },
     github: "https://github.com/djoudad292/ai-customer-support-agent",
@@ -94,7 +94,7 @@ export const PROJECTS = [
     image: "/hireme-mcp-hero.png",
     alt: "HireMe MCP console",
     description:
-      "The first portfolio AI agents can hire. An open MCP server exposing my profile, shipped work, pricing and a project-brief intake — Claude, Cursor or ChatGPT can vet me and file a brief on your behalf.",
+      "My portfolio as an MCP server. AI assistants like Claude or Cursor can read my work, check prices and send me a project brief.",
     metrics: ["5 tools over MCP", "Works in Claude & Cursor", "Brief intake → fixed quote"],
     demo: { label: "mcp.djaouad.tech", href: "https://mcp.djaouad.tech" },
     github: "https://github.com/djoudad292/hireme-mcp",
@@ -105,19 +105,19 @@ export const PROJECTS = [
 export const SERVICES = [
   {
     title: "Starter — AI chatbot or agent",
-    desc: "Trained on your content: answers, books, qualifies, escalates. Deployed to your domain with an embeddable widget.",
+    desc: "A chatbot that knows your business. It answers customers, books jobs and sends you the leads. Lives on your website.",
     price: "From $500",
     eta: "~1–2 weeks",
   },
   {
     title: "Professional — production AI system",
-    desc: "Everything in Starter plus RAG pipeline, tool calling, admin dashboard and live analytics — the full stack behind my own live demos.",
+    desc: "Bigger build: chatbot + document search + dashboard for your team + analytics. Same tech that powers my own site.",
     price: "From $2,500",
     eta: "2–4 weeks",
   },
   {
     title: "Custom — SaaS & multi-service products",
-    desc: "Multi-tenant platforms with payments, dashboards, React Native apps and third-party integrations. Scoped on a free call.",
+    desc: "Full products: SaaS platforms, payments, mobile apps, connections to other tools. We plan it together on a free call.",
     price: "Fixed quote",
     eta: "2–8 weeks",
   },

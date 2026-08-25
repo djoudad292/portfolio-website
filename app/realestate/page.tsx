@@ -32,10 +32,7 @@ export default function RealEstatePage() {
           <span className="block text-muted-foreground">the apartment? Gone by morning.</span>
         </h1>
         <p className="mt-6 max-w-2xl text-pretty leading-relaxed text-muted-foreground">
-          Property buyers message five agencies at once and visit whoever answers first. This agent
-          replies in seconds — from your actual listings — qualifies the buyer, and books the
-          viewing into your calendar while competitors sleep on it. It already runs live on my own
-          infrastructure, so you test exactly what you buy.
+          Buyers message five agencies and visit whoever replies first. This agent replies in seconds from your listings, filters serious buyers and books viewings.
         </p>
 
         <div className="mt-8 flex flex-wrap gap-4">

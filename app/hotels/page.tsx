@@ -31,7 +31,7 @@ export default function Page() {
           <span className="block text-muted-foreground">went to the hotel next door.</span>
         </h1>
         <p className="mt-6 max-w-2xl text-pretty leading-relaxed text-muted-foreground">
-          Travelers message five properties and reserve wherever someone answers. This agent confirms availability from your real room inventory, takes bookings, answers the usual hundred questions, and sells late checkouts and airport transfers while you sleep.
+          Guests message five hotels and book wherever someone answers. This agent checks your real rooms, takes bookings and sells late checkouts while you sleep.
         </p>
 
         <div className="mt-8 flex flex-wrap gap-4">

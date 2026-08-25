@@ -31,7 +31,7 @@ export default function Page() {
           <span className="block text-muted-foreground">You replied Sunday.</span>
         </h1>
         <p className="mt-6 max-w-2xl text-pretty leading-relaxed text-muted-foreground">
-          Salon bookings are impulse decisions - whoever confirms first wins the appointment. This agent checks your stylists' real availability, books the slot, sends reminders, and quietly fills quiet days by offering open times to regulars.
+          Whoever confirms first wins the booking. This agent checks your stylists' real availability, books the slot and sends reminders.
         </p>
 
         <div className="mt-8 flex flex-wrap gap-4">

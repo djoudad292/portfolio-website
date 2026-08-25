@@ -513,8 +513,8 @@ export function TermsView() {
       <header>
         <h1 className="font-display text-4xl tracking-tight">How we&apos;d work together</h1>
         <p className="mt-3 max-w-[60ch] text-sm leading-relaxed text-muted-foreground">
-          Fixed-price milestones, weekly live demos, full source ownership.
-          No agencies, no account managers — you talk to the person writing the code.
+          Fixed price, weekly demos, you own the code.
+          No agencies. You talk directly to the person writing your code.
         </p>
       </header>
 

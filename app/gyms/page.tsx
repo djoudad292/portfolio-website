@@ -31,7 +31,7 @@ export default function Page() {
           <span className="block text-muted-foreground">You saw the message at noon.</span>
         </h1>
         <p className="mt-6 max-w-2xl text-pretty leading-relaxed text-muted-foreground">
-          Most gym memberships are decided within hours of first interest. This agent answers instantly: plans and prices from your real offer, class schedules from your timetable, trial sessions booked straight into your calendar - plus polite follow-ups that recover people who went quiet.
+          People decide on a gym within hours. This agent answers right away, books trial sessions and follows up with the ones who go quiet.
         </p>
 
         <div className="mt-8 flex flex-wrap gap-4">

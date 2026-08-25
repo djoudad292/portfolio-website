@@ -32,10 +32,7 @@ export default function RestaurantsPage() {
           <span className="block text-muted-foreground">just booked elsewhere.</span>
         </h1>
         <p className="mt-6 max-w-2xl text-pretty leading-relaxed text-muted-foreground">
-          During service, the phone is the first thing that gets dropped — and every dropped call is a
-          table eating somewhere else tonight. This agent picks up every order and reservation,
-          instantly, on your website and WhatsApp. It already runs live on my own infrastructure,
-          so you test exactly what you buy.
+          During rush hour the phone gets ignored - and that is a table lost. This agent takes every order and reservation on your website and WhatsApp, right away.
         </p>
 
         <div className="mt-8 flex flex-wrap gap-4">

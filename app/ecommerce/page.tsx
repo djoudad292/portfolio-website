@@ -31,7 +31,7 @@ export default function Page() {
           <span className="block text-muted-foreground">Asked 40 times today. Answered fast zero times.</span>
         </h1>
         <p className="mt-6 max-w-2xl text-pretty leading-relaxed text-muted-foreground">
-          Support volume grows with every sale, and slow answers kill repeat purchases. This agent resolves order status, product questions and return policy instantly from your catalog and order system - and hands edge cases to your team with full context.
+          More sales means more support messages. This agent handles order status, product questions and returns instantly, using your catalog.
         </p>
 
         <div className="mt-8 flex flex-wrap gap-4">
