@@ -3,7 +3,7 @@ export const COMPANY_ID = "e207c632-ca30-48d2-a41b-87c76f3bc3fb";
 export const WS_URL = `wss://ai-customer-support-backend-ldbf.onrender.com/ws?company=${COMPANY_ID}`;
 export const CALENDLY_URL = "https://calendly.com/oufr29/30min";
 export const WHATSAPP = "https://wa.me/213780688125";
-export const EMAIL = "djaouad.frih@gmail.com";
+export const EMAIL = "oufr29@gmail.com";
 
 export const PRODUCTS = [
   { name: "AI Receptionist", url: "https://chat.djaouad.tech" },

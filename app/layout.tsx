@@ -81,7 +81,7 @@ export default function RootLayout({
               name: 'Djaouad Frih',
               jobTitle: 'Full-Stack AI Engineer',
               url: 'https://djaouad.tech',
-              email: 'mailto:djaouad.frih@gmail.com',
+              email: 'mailto:oufr29@gmail.com',
               telephone: '+213780688125',
               address: { '@type': 'PostalAddress', addressCountry: 'DZ' },
               knowsAbout: ['AI agents', 'RAG', 'LLM integration', 'Model Context Protocol (MCP)', 'Next.js', 'NestJS', 'React Native', 'PostgreSQL', 'pgvector'],
