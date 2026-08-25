@@ -7,15 +7,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const pages = [
     "",
     "/industries",
-    "/clinics",
-    "/dentists",
-    "/restaurants",
-    "/realestate",
-    "/lawyers",
-    "/hotels",
-    "/gyms",
-    "/ecommerce",
-    "/salons",
     "/privacy",
     "/terms",
   ];

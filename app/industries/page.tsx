@@ -2,61 +2,58 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "AI Agents by Industry — Clinics, Restaurants, Real Estate & More | Djaouad Frih",
+  title: "AI Agents for Your Industry | Djaouad Frih",
   description:
-    "Production AI agents tailored per industry: clinics, dental, restaurants, real estate, law firms, hotels, gyms, e-commerce and salons. Live demos, fixed prices.",
+    "AI receptionists and booking agents for clinics, dentists, restaurants, real estate, law firms, hotels, gyms, online stores and salons. Live demo, fixed price from $500.",
 };
 
-const doors = [
-  { slug: "clinics", name: "Clinics & doctors", line: "AI receptionist that books patients 24/7" },
-  { slug: "dentists", name: "Dental clinics", line: "Chair booking, treatment FAQs, recalls" },
-  { slug: "restaurants", name: "Restaurants & cafés", line: "Orders and reservations at rush hour" },
-  { slug: "realestate", name: "Real estate", line: "Buyer qualification from your listings" },
-  { slug: "lawyers", name: "Law firms", line: "Confidential client intake & screening" },
-  { slug: "hotels", name: "Hotels & riads", line: "Bookings, concierge upsells, guest requests" },
-  { slug: "gyms", name: "Gyms & studios", line: "Trials, class booking, churn recovery" },
-  { slug: "ecommerce", name: "E-commerce stores", line: "Order status, returns, cart recovery" },
-  { slug: "salons", name: "Salons & barbershops", line: "Stylist-level booking, no-show killers" },
+const industries = [
+  { name: "Clinics & doctors", text: "Most clinics miss patient calls during busy hours. Those patients book somewhere else. Your receptionist answers every call and message and books them into your calendar." },
+  { name: "Dental clinics", text: "Patients call. If nobody answers, they call another dentist. Yours always answers, explains your treatments and prices, and books the appointment." },
+  { name: "Restaurants & cafés", text: "During rush hour the phone gets ignored - and that is a table lost. Your agent takes every order and reservation on your website and WhatsApp, right away." },
+  { name: "Real estate", text: "Buyers message five agencies and visit whoever replies first. Your agent replies in seconds from your listings, filters serious buyers and books viewings." },
+  { name: "Law firms", text: "People contact three law firms and hire whoever answers first. Your agent answers right away, asks the right questions and books the consultation." },
+  { name: "Hotels & riads", text: "Guests message five hotels and book wherever someone answers. Your agent checks your real rooms, takes bookings and sells late checkouts while you sleep." },
+  { name: "Gyms & studios", text: "People decide on a gym within hours. Your agent answers right away, books trial sessions and follows up with the ones who go quiet." },
+  { name: "Online stores", text: "More sales means more support messages. Your agent handles order status, product questions and returns instantly, using your catalog." },
+  { name: "Salons & barbershops", text: "Whoever confirms first wins the booking. Your agent checks your stylists' real availability, books the slot and sends reminders." },
 ];
 
 export default function IndustriesPage() {
   return (
     <main className="min-h-screen bg-background text-foreground">
-      <div className="mx-auto max-w-4xl px-6 py-16 lg:py-24">
-        <Link href="/" className="font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground transition-colors hover:text-primary">
+      <div className="mx-auto max-w-3xl px-6 py-16 lg:py-24">
+        <Link href="/" className="font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground hover:text-primary">
           ← djaouad.tech
         </Link>
 
         <p className="mb-4 mt-12 flex items-center gap-3 font-mono text-xs uppercase tracking-[0.25em] text-primary">
-          01 / Pick your industry
+          For your business
           <span aria-hidden className="h-px flex-1 bg-border" />
         </p>
-        <h1 className="max-w-3xl font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
-          One agent.
-          <span className="block text-muted-foreground">Built for how your industry actually works.</span>
+        <h1 className="font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl">
+          An AI agent that knows your work.
         </h1>
-        <p className="mt-6 max-w-2xl text-pretty leading-relaxed text-muted-foreground">
-          Generic chatbots answer generic questions. These are configured per industry — real
-          booking flows, your data, your languages — running live on my own infrastructure first.
+        <p className="mt-5 max-w-xl leading-relaxed text-muted-foreground">
+          Same idea everywhere: it answers your customers in seconds, books them,
+          and passes the hard cases to you. Built per industry, running live on my
+          own site first.
         </p>
 
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {doors.map((d) => (
-            <Link key={d.slug} href={`/${d.slug}`}
-              className="group rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary">
-              <h2 className="font-display text-lg tracking-tight group-hover:text-primary">{d.name}</h2>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{d.line}</p>
-              <p className="mt-4 font-mono text-xs uppercase tracking-[0.25em] text-primary opacity-0 transition-opacity group-hover:opacity-100">
-                See it →
-              </p>
-            </Link>
+        <div className="mt-10 space-y-4">
+          {industries.map((i) => (
+            <div key={i.name} className="rounded-2xl border border-border bg-card p-6">
+              <h2 className="font-display text-lg tracking-tight">{i.name}</h2>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{i.text}</p>
+            </div>
           ))}
         </div>
 
-        <p className="mt-14 text-sm leading-relaxed text-muted-foreground">
-          Your industry not listed? The pattern transfers to almost any service business —{" "}
-          <a href="https://calendly.com/oufr29/30min" className="text-primary underline underline-offset-4">book a call</a> and we scope yours.
-        </p>
+        <div className="mt-10 rounded-2xl bg-primary px-6 py-4 text-center">
+          <a href="https://calendly.com/oufr29/30min" className="font-semibold text-primary-foreground">
+            Book a free call — fixed price from $500
+          </a>
+        </div>
       </div>
     </main>
   );
