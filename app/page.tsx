@@ -9,13 +9,13 @@ export const metadata: Metadata = {
 };
 
 const work = [
-  { name: "AI Receptionist", desc: "Books appointments, captures leads, answers 24/7.", url: "https://chat.djaouad.tech", img: "/shots/kit-receptionist.png",
+  { name: "AI Receptionist", desc: "Made for clinics and salons: answers in under a second, books the slot, sends reminders.", url: "https://chat.djaouad.tech", img: "/shots/kit-receptionist.png",
     repo: "https://github.com/djoudad292/ai-virtual-receptionist", apk: "https://github.com/djoudad292/ai-virtual-receptionist/releases/download/latest-apk-receptionist/ai-receptionist.apk" },
-  { name: "PDF Workspace", desc: "Ask your documents anything. Cited answers.", url: "https://docs.djaouad.tech", img: "/shots/kit-pdf-workspace.png",
+  { name: "PDF Workspace", desc: "Drop a 40-page contract, ask what the payment terms are. It replies with page numbers.", url: "https://docs.djaouad.tech", img: "/shots/kit-pdf-workspace.png",
     repo: "https://github.com/djoudad292/smart-pdf-workspace", apk: "https://github.com/djoudad292/smart-pdf-workspace/releases/download/latest-apk-pdf/smart-pdf.apk" },
-  { name: "Support Agent", desc: "Trained on your policies. Escalates when needed.", url: "https://customer.djaouad.tech", img: "/shots/kit-support-agent.png",
+  { name: "Support Agent", desc: "Reads your return policy once, then handles the same question 400 times without complaining.", url: "https://customer.djaouad.tech", img: "/shots/kit-support-agent.png",
     repo: "https://github.com/djoudad292/ai-customer-support-agent", apk: "https://github.com/djoudad292/ai-customer-support-agent/releases/download/latest-apk/ai-customer-support.apk" },
-  { name: "HireMe MCP", desc: "My portfolio as a server AI can read.", url: "https://mcp.djaouad.tech", img: "/shots/kit-hireme-mcp.png",
+  { name: "HireMe MCP", desc: "This whole site, readable by Claude and ChatGPT. Listed in the official registry.", url: "https://mcp.djaouad.tech", img: "/shots/kit-hireme-mcp.png",
     repo: "https://github.com/djoudad292/hireme-mcp", apk: "https://github.com/djoudad292/hireme-mcp/releases/download/latest-apk/hireme-mcp.apk" },
 ];
 
@@ -23,13 +23,14 @@ export default function Home() {
   return (
     <main className="mx-auto min-h-screen max-w-3xl px-6 py-14 text-foreground">
       {/* Hero */}
-      <p className="font-mono text-xs uppercase tracking-widest text-primary">● Available now</p>
+      <p className="font-mono text-xs uppercase tracking-widest text-primary">● Booking projects — next slot early September</p>
       <h1 className="mt-4 font-display text-4xl leading-tight tracking-tight sm:text-5xl">
-        AI assistant for<br />your business.
+        I'm Djaouad. I build AI assistants<br className="hidden sm:block" /> for businesses.
       </h1>
       <p className="mt-4 max-w-lg leading-relaxed text-muted-foreground">
-        Answers your customers and books appointments 24/7.
-        Built in 1–2 weeks, fixed price from $500, you own the code.
+      If your customers message you at 2 AM, something should answer.
+        I build that thing. Last one took me nine days. Fixed price,
+        no hourly billing, and when it&apos;s done the code is yours.
       </p>
 
       <div className="mt-6 flex flex-wrap gap-3">
@@ -59,7 +60,7 @@ export default function Home() {
       </a>
 
       {/* Work — visual cards */}
-      <h2 className="mt-14 font-display text-2xl tracking-tight">Running right now</h2>
+      <h2 className="mt-14 font-display text-2xl tracking-tight">Things I built</h2>
       <div className="mt-5 grid gap-4 sm:grid-cols-2">
         {work.map((w) => (
           <div key={w.name} className="overflow-hidden rounded-2xl border border-border bg-card transition-colors hover:border-primary">
@@ -111,7 +112,7 @@ export default function Home() {
       </div>
 
       {/* Pricing — one clean line */}
-      <h2 className="mt-14 font-display text-2xl tracking-tight">Simple pricing</h2>
+      <h2 className="mt-14 font-display text-2xl tracking-tight">Pricing</h2>
       <div className="mt-4 grid gap-3 sm:grid-cols-3">
         <div className="rounded-xl border border-border bg-card p-4"><b>$500</b><p className="mt-1 text-xs text-muted-foreground">Chatbot on your content</p></div>
         <div className="rounded-xl border border-primary bg-card p-4"><b>$2,000</b><p className="mt-1 text-xs text-muted-foreground">Full build + dashboard ★</p></div>
@@ -120,7 +121,7 @@ export default function Home() {
       <p className="mt-3 text-xs text-muted-foreground">Free call → fixed quote in 24h. For your industry? <Link href="/industries" className="text-primary hover:underline">See it applied →</Link></p>
 
       {/* Reviews */}
-      <h2 className="mt-14 font-display text-2xl tracking-tight">Clients said</h2>
+      <h2 className="mt-14 font-display text-2xl tracking-tight">Two clients, verbatim</h2>
       <div className="mt-4 space-y-3">
         <p className="rounded-xl border border-border bg-card p-4 text-sm leading-relaxed">
           "Made my website within 2 weeks, very professional. Would highly recommend."
@@ -142,8 +143,9 @@ export default function Home() {
       </div>
 
       {/* Contact */}
-      <h2 className="mt-14 font-display text-2xl tracking-tight">Start this week</h2>
+      <h2 className="mt-14 font-display text-2xl tracking-tight">Talk to me</h2>
       <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+        I reply fast — usually within an hour (I&apos;m GMT+1, Oran).
         Free call: <a className="text-primary hover:underline" href="https://calendly.com/oufr29/30min">calendly.com/oufr29/30min</a><br />
         WhatsApp: <a className="text-primary hover:underline" href="https://wa.me/213780688125">+213 780 68 81 25</a><br />
         Email: <a className="text-primary hover:underline" href="mailto:oufr29@gmail.com">oufr29@gmail.com</a>
