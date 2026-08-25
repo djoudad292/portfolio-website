@@ -1,17 +1,18 @@
 import { NextRequest } from "next/server";
+import { getDatabaseUrl } from "@/lib/track";
 import { Pool } from "pg";
 
 export const runtime = "nodejs";
 
 export async function GET(_req: NextRequest) {
-  const url = process.env.DATABASE_URL;
+  const url = getDatabaseUrl();
   const base = {
-    hasDatabaseUrl: Boolean(url),
-    dbUrlLength: url ? url.length : 0,
+    rawPresent: Boolean(process.env.DATABASE_URL),
+    sanitized: Boolean(url),
     dbHostPart: url ? (() => { try { return new URL(url).host; } catch { return "unparseable"; } })() : null,
     time: new Date().toISOString(),
   };
-  if (!url) return Response.json({ ...base, writeTest: "skipped — no DATABASE_URL" });
+  if (!url) return Response.json({ ...base, writeTest: "skipped — no clean DATABASE_URL" });
   const pool = new Pool({ connectionString: url, max: 1, ssl: { rejectUnauthorized: false } });
   try {
     await pool.query(

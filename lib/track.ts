@@ -2,9 +2,19 @@ import { Pool } from "pg";
 
 let pool: Pool | null = null;
 
+// Netlify env values sometimes pick up stray whitespace/control chars when
+// pasted by hand — strip anything outside printable ASCII before using it.
+export function getDatabaseUrl(): string | null {
+  const raw = process.env.DATABASE_URL;
+  if (!raw) return null;
+  const clean = raw.replace(/[^\x21-\x7E]/g, "");
+  return clean.startsWith("postgresql://") || clean.startsWith("postgres://") ? clean : null;
+}
+
 function getPool(): Pool | null {
-  if (!process.env.DATABASE_URL) return null;
-  if (!pool) pool = new Pool({ connectionString: process.env.DATABASE_URL, max: 3 });
+  const url = getDatabaseUrl();
+  if (!url) return null;
+  if (!pool) pool = new Pool({ connectionString: url, max: 3 });
   return pool;
 }
 
