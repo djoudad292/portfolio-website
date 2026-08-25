@@ -22,7 +22,7 @@ const work = [
 export default function Home() {
   return (
     <main className="relative min-h-screen overflow-hidden text-foreground">
-      {/* ambient glows */}
+      
 
       <div className="relative mx-auto max-w-4xl px-6">
 
@@ -37,11 +37,7 @@ export default function Home() {
           </p>
 
           <h1 className="mt-6 font-display text-5xl leading-[1.04] tracking-tight sm:text-6xl">
-            I&apos;m Djaouad. I build{" "}
-            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              AI assistants
-            </span>{" "}
-            for businesses.
+            I&apos;m Djaouad. I build AI assistants for businesses.
           </h1>
 
           <p className="mt-6 max-w-lg text-lg leading-relaxed text-muted-foreground">
