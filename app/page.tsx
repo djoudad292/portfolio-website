@@ -166,14 +166,31 @@ export default function Home() {
                  className="flex items-center justify-between rounded-xl border border-border bg-background px-5 py-3.5 text-sm transition-colors hover:border-primary">
                 oufr29@gmail.com <ArrowUpRight className="h-4 w-4 text-muted-foreground" />
               </a>
+              <div className="mt-2 flex flex-wrap gap-2">
+                {[
+                  { n: "GitHub", u: "https://github.com/djoudad292" },
+                  { n: "LinkedIn", u: "https://linkedin.com/in/djaouad-frih" },
+                  { n: "DEV.to", u: "https://dev.to/djoudad292" },
+                  { n: "Telegram", u: "https://t.me/djaouadfrih_bot" },
+                  { n: "Bluesky", u: "https://bsky.app/profile/djaouadfrih.bsky.social" },
+                  { n: "Mastodon", u: "https://mastodon.social/@djaouadfrih" },
+                ].map((s) => (
+                  <a key={s.n} href={s.u} target="_blank" rel="noopener noreferrer"
+                     className="rounded-lg border border-border bg-background px-3.5 py-2 text-xs font-medium transition-colors hover:border-primary hover:text-primary">
+                    {s.n}
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
 
           <p className="mt-10 font-mono text-xs text-muted-foreground">
             GitHub <a href="https://github.com/djoudad292" className="hover:text-primary">djoudad292</a>
+            {" · "}DEV.to <a href="https://dev.to/djoudad292" className="hover:text-primary">@djoudad292</a>
             {" · "}LinkedIn <a href="https://linkedin.com/in/djaouad-frih" className="hover:text-primary">djaouad-frih</a>
+            {" · "}Bluesky <a href="https://bsky.app/profile/djaouadfrih.bsky.social" className="hover:text-primary">@djaouadfrih</a>
+            {" · "}Mastodon <a href="https://mastodon.social/@djaouadfrih" className="hover:text-primary">@djaouadfrih</a>
             {" · "}Blog <Link href="/blog" className="hover:text-primary">notes</Link>
-            {" · "}Android apps on every project above
           </p>
           <p className="mt-3 space-x-4 font-mono text-[11px] text-muted-foreground/70">
             <Link href="/industries" className="hover:text-primary">Industries</Link>
