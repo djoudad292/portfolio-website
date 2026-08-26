@@ -19,7 +19,7 @@ import { WhatsAppIcon } from "@/lib/socials"
 
 const CALENDLY_URL = "https://calendly.com/oufr29/30min"
 const GITHUB = "https://github.com/djoudad292"
-const LINKEDIN = "https://linkedin.com/in/djaouad-frih"
+const LINKEDIN = "https://linkedin.com/in/djaouad-frih-16ab7323a"
 
 type View = "briefing" | "work" | "assistant" | "intake" | "testimonials" | "terms" | "connect"
 

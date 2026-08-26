@@ -169,7 +169,7 @@ export default function Home() {
               <div className="mt-2 flex flex-wrap gap-2">
                 {[
                   { n: "GitHub", u: "https://github.com/djoudad292" },
-                  { n: "LinkedIn", u: "https://linkedin.com/in/djaouad-frih" },
+                  { n: "LinkedIn", u: "https://linkedin.com/in/djaouad-frih-16ab7323a" },
                   { n: "DEV.to", u: "https://dev.to/djoudad292" },
                   { n: "Telegram", u: "https://t.me/djaouadfrih_bot" },
                   { n: "Bluesky", u: "https://bsky.app/profile/djaouadfrih.bsky.social" },
@@ -187,7 +187,7 @@ export default function Home() {
           <p className="mt-10 font-mono text-xs text-muted-foreground">
             GitHub <a href="https://github.com/djoudad292" className="hover:text-primary">djoudad292</a>
             {" · "}DEV.to <a href="https://dev.to/djoudad292" className="hover:text-primary">@djoudad292</a>
-            {" · "}LinkedIn <a href="https://linkedin.com/in/djaouad-frih" className="hover:text-primary">djaouad-frih</a>
+            {" · "}LinkedIn <a href="https://linkedin.com/in/djaouad-frih-16ab7323a" className="hover:text-primary">djaouad-frih-16ab7323a</a>
             {" · "}Bluesky <a href="https://bsky.app/profile/djaouadfrih.bsky.social" className="hover:text-primary">@djaouadfrih</a>
             {" · "}Mastodon <a href="https://mastodon.social/@djaouadfrih" className="hover:text-primary">@djaouadfrih</a>
             {" · "}Blog <Link href="/blog" className="hover:text-primary">notes</Link>
