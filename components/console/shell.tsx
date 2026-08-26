@@ -30,7 +30,7 @@ const NAV: { id: View; num: string; label: string; hint: string }[] = [
   { id: "intake", num: "04", label: "Scope a project", hint: "get a fixed quote" },
   { id: "testimonials", num: "05", label: "Reviews", hint: "what clients said" },
   { id: "terms", num: "06", label: "Process & terms", hint: "how we'd work" },
-  { id: "connect", num: "07", label: "Connect via MCP", hint: "let AI hire me" },
+  { id: "connect", num: "07", label: "AI-Ready Portfolio", hint: "your AI can vet me" },
 ]
 
 const VALID = new Set(NAV.map((n) => n.id))

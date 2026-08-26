@@ -48,10 +48,9 @@ export function BriefingView() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.05 }}
-          className="mt-4 max-w-[20ch] font-display text-5xl leading-[1.05] tracking-tight sm:text-6xl"
+          className="mt-4 max-w-[24ch] font-display text-5xl leading-[1.05] tracking-tight sm:text-6xl"
         >
-          The portfolio that <em className="italic text-primary">runs</em> on the
-          product it sells.
+          I build AI systems that <em className="italic text-primary">work for your business</em>.
         </motion.h1>
 
         <motion.p
@@ -60,9 +59,10 @@ export function BriefingView() {
           transition={{ delay: 0.1 }}
           className="mt-6 max-w-[62ch] text-base leading-relaxed text-muted-foreground"
         >
-          I&apos;m Djaouad. I build AI chatbots, agents and the apps around them.
-          Everything on this site is mine and running right now. Try it,
-          then send me your project.
+          AI agents, knowledge bases, and full-stack products — built on your
+          documents, deployed to your domain, source code yours. Fixed-price
+          projects, no hourly surprises. Every live demo on this site is my own
+          production deployment.
         </motion.p>
 
         <motion.div
@@ -72,32 +72,60 @@ export function BriefingView() {
           className="mt-8 flex flex-wrap items-center gap-3"
         >
           <button
-            onClick={() => goto("assistant")}
+            onClick={() => goto("intake")}
             className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
           >
-            Ask my AI anything <ArrowUpRight className="h-4 w-4" />
+            Get a fixed quote <ArrowUpRight className="h-4 w-4" />
           </button>
           <button
-            onClick={() => goto("intake")}
+            onClick={() => goto("work")}
             className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-medium text-foreground transition-colors hover:border-primary"
           >
-            Scope my project
+            See live demos
           </button>
           <p className="flex items-center gap-2 pl-1 font-mono text-[11px] text-muted-foreground">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-60" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
             </span>
-            Booking projects — starts within days
+            Available for projects — starts within days
           </p>
         </motion.div>
       </header>
+
+      {/* Trust strip */}
+      <motion.section
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.1 }}
+        aria-label="Trust signals"
+        className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6"
+      >
+        {[
+          { icon: "⚡", label: "4 live products", sub: "running in production" },
+          { icon: "📦", label: "Source code yours", sub: "no vendor lock-in" },
+          { icon: "💰", label: "Fixed pricing", sub: "no hourly surprises" },
+          { icon: "🌍", label: "Remote worldwide", sub: "international clients" },
+          { icon: "🚀", label: "Weeks, not months", sub: "fast delivery" },
+          { icon: "🛡️", label: "30-day warranty", sub: "post-launch support" },
+        ].map((item) => (
+          <div
+            key={item.label}
+            className="flex flex-col items-center rounded-2xl border border-border bg-card px-3 py-4 text-center"
+          >
+            <span className="text-lg" aria-hidden>{item.icon}</span>
+            <p className="mt-1.5 text-xs font-medium text-foreground">{item.label}</p>
+            <p className="mt-0.5 font-mono text-[10px] text-muted-foreground">{item.sub}</p>
+          </div>
+        ))}
+      </motion.section>
 
       {/* Services */}
       <section aria-labelledby="services-h">
         <div className="flex items-baseline justify-between">
           <h2 id="services-h" className="font-mono text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
-            What I do — fixed quotes, no hourly surprises
+            What I build — fixed quotes, no hourly billing
           </h2>
         </div>
         <div className="mt-5 grid gap-3 sm:grid-cols-2">
@@ -182,6 +210,41 @@ export function BriefingView() {
           ))}
         </div>
       </section>
+
+      {/* What you own */}
+      <motion.section
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.05 }}
+        aria-labelledby="ownership-h"
+        className="rounded-2xl border border-border bg-card p-6"
+      >
+        <h2 id="ownership-h" className="font-mono text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
+          What you own after the project
+        </h2>
+        <p className="mt-3 max-w-[56ch] text-sm leading-relaxed text-muted-foreground">
+          You are not renting a black box. When the project is done, you receive:
+        </p>
+        <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-3">
+          {[
+            "Source code",
+            "Your domains & deployment",
+            "Database & data",
+            "Documentation",
+            "API & integrations",
+            "Monitoring setup",
+          ].map((item) => (
+            <div key={item} className="flex items-center gap-2 text-sm text-foreground">
+              <span className="font-mono text-xs text-primary">✓</span>
+              {item}
+            </div>
+          ))}
+        </div>
+        <p className="mt-4 text-xs text-muted-foreground/70">
+          No unnecessary vendor lock-in. The system is built for your business, and it stays yours.
+        </p>
+      </motion.section>
     </div>
   )
 }
@@ -197,14 +260,14 @@ export function WorkView() {
         <h1 className="font-display text-4xl tracking-tight">Proof of work</h1>
         <p className="mt-3 max-w-[60ch] text-sm leading-relaxed text-muted-foreground">
           Four production systems — every demo link is live, every repo is real.
-          Each one is the same foundation I deploy for client builds.
+          Each one demonstrates the same foundation I deploy for client builds.
         </p>
       </header>
 
       {/* Featured case study */}
       <section aria-labelledby="case-h" className="rounded-2xl border border-primary/30 bg-card p-6 sm:p-8">
         <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-primary">
-          Case study — my longest-running deployment
+          Case study — longest-running deployment
         </p>
         <h2 id="case-h" className="mt-3 font-display text-3xl tracking-tight">AI Virtual Receptionist</h2>
 
@@ -212,24 +275,24 @@ export function WorkView() {
           <div>
             <h3 className="font-mono text-xs uppercase tracking-wider text-muted-foreground">Problem</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              Small businesses lose leads after hours. Hiring cover is expensive, and generic
-              chatbots hallucinate answers they were never given.
+              Small businesses lose leads after hours. Hiring phone cover is expensive, and generic
+              chatbots hallucinate answers they were never given — damaging trust instead of building it.
             </p>
           </div>
           <div>
-            <h3 className="font-mono text-xs uppercase tracking-wider text-muted-foreground">Approach</h3>
+            <h3 className="font-mono text-xs uppercase tracking-wider text-muted-foreground">Solution</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              RAG grounded strictly on the business&apos; own content (pgvector), tool-calling for
-              bookings and lead capture, department routing — and human handoff when confidence drops.
+              A RAG-powered receptionist grounded strictly on the business&apos;s own content. Tool-calling
+              for bookings and lead capture, department routing, and human handoff when the AI&apos;s confidence drops.
             </p>
           </div>
           <div>
             <h3 className="font-mono text-xs uppercase tracking-wider text-muted-foreground">Outcome</h3>
             <ul className="mt-2 space-y-1.5 text-sm text-muted-foreground">
-              <li>· First response in under 1 second, around the clock</li>
-              <li>· Runs unattended 24/7 since launch</li>
+              <li>· First response under 1 second, around the clock</li>
+              <li>· Running unattended 24/7 since launch</li>
               <li>· Published Android app on its release channel</li>
-              <li>· Same architecture now powers HireMe MCP</li>
+              <li>· Same architecture now powers client AI systems</li>
             </ul>
           </div>
         </div>
@@ -352,12 +415,12 @@ export function ConnectView() {
     <div className="space-y-12">
       <header>
         <h1 className="font-display text-4xl tracking-tight">
-          Hire me <em className="italic text-primary">through an AI agent</em>
+          Let AI <em className="italic text-primary">introduce me</em>
         </h1>
         <p className="mt-4 max-w-[64ch] text-sm leading-relaxed text-muted-foreground">
           My portfolio runs as an open MCP (Model Context Protocol) server. Plug
-          one URL into Claude, Cursor or any MCP client — your AI can read my
-          real profile, search my shipped work, check pricing and availability,
+          one URL into Claude, Cursor, or any MCP client — your AI can read my
+          profile, search my shipped work, check pricing and availability,
           and even{" "}
           <span className="text-foreground">file a project brief on your behalf</span>.
           You wake up to a fixed quote.
@@ -381,6 +444,26 @@ export function ConnectView() {
           </a>
         </div>
       </header>
+
+      {/* How it works — simplified */}
+      <section aria-labelledby="mcp-how-h">
+        <h2 id="mcp-how-h" className="font-mono text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
+          How it works
+        </h2>
+        <div className="mt-5 grid gap-3 sm:grid-cols-3">
+          {[
+            { step: "1", title: "Connect", desc: "Add one URL to your AI client (Claude, Cursor, etc.)" },
+            { step: "2", title: "Ask", desc: "Your AI reads my profile, work, pricing, and availability" },
+            { step: "3", title: "Brief", desc: "Your AI files a project brief — I reply with a fixed quote" },
+          ].map((item) => (
+            <div key={item.step} className="rounded-2xl border border-border bg-card p-5">
+              <p className="font-mono text-xs text-primary">{item.step}</p>
+              <h3 className="mt-2 font-medium">{item.title}</h3>
+              <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
 
       {/* Live tool status */}
       <section aria-labelledby="mcp-tools-h">
@@ -442,7 +525,7 @@ export function ConnectView() {
           Then tell your AI
         </h2>
         <blockquote className="mt-5 rounded-2xl border-l-2 border-l-primary border border-border bg-card p-5 text-sm leading-relaxed">
-          &ldquo;Claude — I need a freelance AI engineer to build a support chatbot under $2k. Use
+          &ldquo;Claude — I need a freelance AI engineer to build a support chatbot under $5k. Use
           the hireme-mcp server: vet Djaouad&apos;s work, check his pricing, and file a brief with my
           requirements.&rdquo;
         </blockquote>
@@ -513,15 +596,15 @@ export function TermsView() {
       <header>
         <h1 className="font-display text-4xl tracking-tight">How we&apos;d work together</h1>
         <p className="mt-3 max-w-[60ch] text-sm leading-relaxed text-muted-foreground">
-          Fixed price, weekly demos, you own the code.
-          No agencies. You talk directly to the person writing your code.
+          Fixed-price milestones, weekly live demos, full source ownership.
+          No agencies, no account managers — you talk directly to the person writing the code.
         </p>
       </header>
 
       {/* Process */}
       <section aria-labelledby="process-h">
         <h2 id="process-h" className="font-mono text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
-          The process
+          The process — from first call to launch
         </h2>
         <ol className="mt-5 grid gap-3 md:grid-cols-2">
           {PROCESS.map((s) => (
@@ -534,10 +617,32 @@ export function TermsView() {
         </ol>
       </section>
 
+      {/* What you get */}
+      <section aria-labelledby="deliverables-h">
+        <h2 id="deliverables-h" className="font-mono text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
+          What you get at the end
+        </h2>
+        <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3">
+          {[
+            { title: "Source code", desc: "Full ownership — modify, deploy, or hand off to any developer." },
+            { title: "Your domain", desc: "Deployed to your domain with SSL and monitoring." },
+            { title: "Documentation", desc: "Setup guide, architecture docs, and runbook." },
+            { title: "Handover call", desc: "Walkthrough of the system, deployment, and next steps." },
+            { title: "30-day warranty", desc: "Fixes included after launch at no extra cost." },
+            { title: "Optional retainer", desc: "Monthly support for iterations and new features." },
+          ].map((item) => (
+            <div key={item.title} className="rounded-2xl border border-border bg-card p-4">
+              <h3 className="text-sm font-medium text-foreground">{item.title}</h3>
+              <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* Pricing */}
       <section aria-labelledby="pricing-h">
         <h2 id="pricing-h" className="font-mono text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
-          Pricing
+          Pricing — starting from $2,000
         </h2>
         <div className="mt-5 overflow-hidden rounded-2xl border border-border">
           {SERVICES.map((s, i) => (
@@ -558,13 +663,20 @@ export function TermsView() {
             </div>
           ))}
         </div>
+        <p className="mt-3 text-xs text-muted-foreground/70">
+          Every project is unique. Tell me about yours and get a free, no-obligation quote within 24 hours.
+        </p>
       </section>
 
       {/* Contact */}
       <section aria-labelledby="contact-h">
         <h2 id="contact-h" className="font-mono text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
-          Reach me directly
+          Ready to start?
         </h2>
+        <p className="mt-3 max-w-[56ch] text-sm leading-relaxed text-muted-foreground">
+          Tell me what you&apos;re trying to build — a business problem, an AI feature, a full product.
+          I&apos;ll reply with a fixed quote and timeline within 24 hours.
+        </p>
         <div className="mt-5 grid gap-3 sm:grid-cols-3">
           <a
             href={CALENDLY_URL}

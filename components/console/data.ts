@@ -23,21 +23,26 @@ export const PRODUCTS = [
 export const PROCESS = [
   {
     step: "01",
-    title: "Brief",
+    title: "Discuss",
     desc: "You fill the intake or talk to my agent. I reply with a fixed quote and start date within 24 hours.",
   },
   {
     step: "02",
+    title: "Scope",
+    desc: "We agree on deliverables, milestones, and success criteria before any code is written.",
+  },
+  {
+    step: "03",
     title: "Build",
     desc: "Weekly demos on a live URL from day one — you watch it grow, no black box.",
   },
   {
-    step: "03",
-    title: "Launch",
+    step: "04",
+    title: "Deploy",
     desc: "Deployed to your domain, monitored, documented. Handover call + source code is yours.",
   },
   {
-    step: "04",
+    step: "05",
     title: "Support",
     desc: "30 days of fixes included. Optional monthly retainer for iterations and new features.",
   },
@@ -52,8 +57,8 @@ export const PROJECTS = [
     image: "/receptionist-hero.png",
     alt: "AI Virtual Receptionist interface",
     description:
-      "Answers customers in under a second, books appointments, captures leads and passes hard questions to your staff. Runs 24/7.",
-    metrics: ["<1s first response", "24/7 unattended", "Android app published"],
+      "Businesses lose leads after hours and spend hours answering repetitive questions. This AI receptionist handles customer conversations 24/7 — answers questions from the business's own knowledge base, books appointments, captures leads, routes to the right department, and hands off to a human when it should.",
+    metrics: ["<1s first response time", "24/7 unattended", "Android app published"],
     demo: { label: "chat.djaouad.tech", href: "https://chat.djaouad.tech" },
     github: "https://github.com/djoudad292/ai-virtual-receptionist",
     apk: "https://github.com/djoudad292/ai-virtual-receptionist/releases/download/latest-apk/ai-receptionist.apk",
@@ -66,7 +71,7 @@ export const PROJECTS = [
     image: "/pdf-workspace-hero.png",
     alt: "Smart PDF Workspace interface",
     description:
-      "Upload your documents, ask anything, get answers that show their source. Add it to your site with one line of code.",
+      "Teams waste hours searching through documents for answers. Upload any PDF and get cited, AI-powered answers in seconds — summaries, Q&A, and an embeddable widget you can add to any website. Multi-tenant, secure, and self-hosted.",
     metrics: ["Cited RAG answers", "Multi-tenant teams", "Embeddable widget"],
     demo: { label: "docs.djaouad.tech", href: "https://docs.djaouad.tech" },
     github: "https://github.com/djoudad292/smart-pdf-workspace",
@@ -80,7 +85,7 @@ export const PROJECTS = [
     image: "/support-agent-hero.png",
     alt: "AI Customer Support Agent dashboard",
     description:
-      "Support agent that checks orders, finds answers in your help docs and opens tickets. Passes tricky cases to your team.",
+      "Customer support teams handle the same questions hundreds of times. This AI agent resolves common issues automatically — creates tickets, checks orders, searches the knowledge base, and escalates to humans with full context when needed. One line to embed on any website.",
     metrics: ["5 tools wired to the agent", "Live admin analytics", "One-line embed"],
     demo: { label: "customer.djaouad.tech", href: "https://customer.djaouad.tech" },
     github: "https://github.com/djoudad292/ai-customer-support-agent",
@@ -94,7 +99,7 @@ export const PROJECTS = [
     image: "/hireme-mcp-hero.png",
     alt: "HireMe MCP console",
     description:
-      "My portfolio as an MCP server. AI assistants like Claude or Cursor can read my work, check prices and send me a project brief.",
+      "An AI agent that can vet me, check my pricing, and file a project brief on a client's behalf — through the MCP protocol. It's the first portfolio that AI assistants can hire from directly, demonstrating the kind of automation I build for clients.",
     metrics: ["5 tools over MCP", "Works in Claude & Cursor", "Brief intake → fixed quote"],
     demo: { label: "mcp.djaouad.tech", href: "https://mcp.djaouad.tech" },
     github: "https://github.com/djoudad292/hireme-mcp",
@@ -105,40 +110,40 @@ export const PROJECTS = [
 export const SERVICES = [
   {
     title: "Starter — AI chatbot or agent",
-    desc: "A chatbot that knows your business. It answers customers, books jobs and sends you the leads. Lives on your website.",
-    price: "From $500",
+    desc: "A chatbot that knows your business. Answers customers, books jobs, sends you the leads. Lives on your website. Fixed price, no surprises.",
+    price: "From $2,000",
     eta: "~1–2 weeks",
   },
   {
     title: "Professional — production AI system",
-    desc: "Bigger build: chatbot + document search + dashboard for your team + analytics. Same tech that powers my own site.",
-    price: "From $2,500",
+    desc: "Full build: chatbot + document search + team dashboard + analytics. Same tech that powers my own products. Source code is yours.",
+    price: "From $5,000",
     eta: "2–4 weeks",
   },
   {
     title: "Custom — SaaS & multi-service products",
-    desc: "Full products: SaaS platforms, payments, mobile apps, connections to other tools. We plan it together on a free call.",
-    price: "Fixed quote",
+    desc: "Full products: SaaS platforms, payments, mobile apps, integrations. We plan it together on a free call. You own everything.",
+    price: "From $10,000+",
     eta: "2–8 weeks",
   },
 ];
 
 export const BUILD_STACK = [
   {
-    title: "Models",
-    detail: "Gemini · OpenAI · OpenRouter — chosen per task, latency and cost. Swappable without rewrites.",
+    title: "AI Models",
+    detail: "Gemini, OpenAI, OpenRouter — I choose the right model per task for latency, cost, and quality. You can swap providers without rewriting anything.",
   },
   {
-    title: "Retrieval (RAG)",
-    detail: "PostgreSQL + pgvector: ingestion → chunking → embeddings → cited answers. No hallucinated sources.",
+    title: "Knowledge & Retrieval (RAG)",
+    detail: "PostgreSQL + pgvector: your documents are chunked, embedded, and searched. Every AI answer cites its source — no hallucinated information.",
   },
   {
-    title: "Frameworks",
-    detail: "Next.js · NestJS · LangGraph · WebSocket · React Native (Expo) for one codebase to both stores.",
+    title: "Frameworks & Code",
+    detail: "Next.js, NestJS, LangGraph, WebSocket, React Native. One developer, one codebase, one invoice — full-stack from database to UI.",
   },
   {
-    title: "Delivery",
-    detail: "Render · Vercel · Docker · GitHub Actions CI. Your source code, your domains, monitored from day one.",
+    title: "Delivery & Ownership",
+    detail: "Render, Vercel, Docker, GitHub Actions CI. You get the source code, your domains, your deployment. Monitored from day one.",
   },
 ];
 
