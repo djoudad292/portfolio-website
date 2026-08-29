@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "AI Agents for Your Industry | Djaouad Frih",
   description:
-    "AI receptionists and booking agents for clinics, dentists, restaurants, real estate, law firms, hotels, gyms, online stores and salons. Live demo, fixed price from $500.",
+    "AI agents and RAG applied to real businesses — clinics, real estate, law firms, hospitality, e-commerce and more. Grounded in your own data, live demos, fixed-price and milestone-based.",
 };
 
 const industries = [
@@ -51,7 +51,7 @@ export default function IndustriesPage() {
 
         <div className="mt-10 rounded-2xl bg-primary px-6 py-4 text-center">
           <a href="https://calendly.com/oufr29/30min" className="font-semibold text-primary-foreground">
-            Book a free call — fixed price from $500
+            Book a free call — get a fixed quote within 24h
           </a>
         </div>
       </div>

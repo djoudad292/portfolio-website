@@ -4,9 +4,9 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Djaouad Frih — AI chatbots for your business",
+  title: "Djaouad Frih — AI-Powered Full-Stack Engineering for High-Growth SaaS",
   description:
-    "I build AI assistants that answer customers and book appointments 24/7. Fixed price from $500, live in 1-2 weeks. Try the live demo first.",
+    "I bridge the gap between complex AI capabilities and real-world business outcomes — scalable, secure, production-ready applications that drive efficiency and revenue. AI agents, RAG systems, and the products around them. Try the live work first.",
 };
 
 const work = [
@@ -38,13 +38,14 @@ export default function Home() {
           </p>
 
           <h1 className="mt-6 font-display text-5xl leading-[1.04] tracking-tight sm:text-6xl">
-            I&apos;m Djaouad. I build AI assistants for businesses.
+            AI-Powered Full-Stack Engineering for High-Growth SaaS
           </h1>
 
           <p className="mt-6 max-w-lg text-lg leading-relaxed text-muted-foreground">
-            If your customers message you at 2 AM, something should answer.
-            I build that thing. Last one took me nine days. Fixed price,
-            no hourly billing, and when it&apos;s done the code is yours.
+            I bridge the gap between complex AI capabilities and real-world
+            business outcomes — scalable, secure, production-ready applications
+            that drive efficiency and revenue. Fixed price, milestone-based,
+            and when it&apos;s done the code is yours.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
@@ -66,7 +67,7 @@ export default function Home() {
         {/* WORK */}
         <section className="pb-20">
           <div className="mb-8 flex items-center gap-4">
-            <h2 className="font-display text-3xl tracking-tight">Things I built</h2>
+            <h2 className="font-display text-3xl tracking-tight">Proof of work — live in production</h2>
             <span aria-hidden className="h-px flex-1 bg-border" />
           </div>
 
@@ -108,9 +109,9 @@ export default function Home() {
 
           <div className="grid gap-4 sm:grid-cols-3">
             {[
-              { p: "$500", t: "Chatbot on your content", f: false },
-              { p: "$2,000", t: "Full build + dashboard", f: true },
-              { p: "Quote", t: "Custom products", f: false },
+              { p: "$2,000+", t: "AI agent on your content + embeddable widget", f: false },
+              { p: "$3,500+", t: "Full product build + admin dashboard", f: true },
+              { p: "Project", t: "Multi-tenant SaaS and custom platforms", f: false },
             ].map((x) => (
               <div key={x.p}
                    className={`rounded-2xl border p-6 transition-colors ${
