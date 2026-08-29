@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Djaouad Frih | Full-Stack AI Engineer',
     description:
-      'Production AI agents, RAG systems, and the products around them — shipped, not demoed. Fixed-price, milestone-based, remote worldwide.',
+      'AI-powered full-stack engineering for high-growth SaaS — scalable, secure, production-ready applications that drive efficiency and revenue. Fixed-price, milestone-based, remote worldwide.',
     url: 'https://djaouad.tech',
     siteName: 'Djaouad Frih',
     locale: 'en_US',
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Djaouad Frih | Full-Stack AI Engineer',
     description:
-      'Production AI agents, RAG systems, and the products around them — shipped, not demoed.',
+      'AI-powered full-stack engineering for high-growth SaaS — scalable, secure, production-ready applications that drive revenue.',
     images: ['https://djaouad.tech/og-image'],
   },
   icons: {

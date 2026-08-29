@@ -63,7 +63,7 @@ export async function GET() {
             maxWidth: "900px",
           }}
         >
-          AI agents · RAG · MCP · Web &amp; Mobile — shipped, not demoed
+          AI agents · RAG · MCP · Web &amp; Mobile — turning AI into business outcomes
         </div>
         <div
           style={{

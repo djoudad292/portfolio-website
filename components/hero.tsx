@@ -28,8 +28,8 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.05 }}
           className="max-w-4xl font-display text-[3rem] font-normal leading-[1.02] tracking-tight text-foreground sm:text-7xl lg:text-[5.5rem]"
         >
-          I build AI agents &amp; the products around them —{" "}
-          <em className="text-primary">shipped, not demoed.</em>
+          AI-Powered Full-Stack Engineering{" "}
+          <em className="text-primary">for High-Growth SaaS</em>
         </motion.h1>
 
         <motion.p
@@ -38,9 +38,9 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.15 }}
           className="mt-7 max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground"
         >
-          AI agents, RAG systems, and the web &amp; mobile products around them — grounded in
-          your own documents, never invented answers. Delivered on scope, on schedule, for
-          clients worldwide.
+          I bridge the gap between complex AI capabilities and real-world business outcomes. I
+          build scalable, secure, and production-ready applications that drive efficiency and
+          revenue.
         </motion.p>
 
         <motion.div

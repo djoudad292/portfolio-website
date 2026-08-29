@@ -47,8 +47,8 @@ export function Rail() {
           Full-Stack AI Engineer
         </p>
         <p className="mt-6 max-w-[26ch] text-sm leading-relaxed text-muted-foreground">
-          I build production AI agents, RAG systems, and the products around
-          them — solo, end-to-end, shipped not demoed.
+          I bridge complex AI with real business outcomes — scalable, secure,
+          production-ready applications built end-to-end and shipped.
         </p>
       </div>
 
