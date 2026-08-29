@@ -6,6 +6,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
   const pages = [
     "",
+    "/cv",
+    "/hire-ai-developer",
+    "/ai-agents",
     "/industries",
     "/privacy",
     "/terms",
@@ -14,6 +17,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${BASE}${p}`,
     lastModified: now,
     changeFrequency: p === "" ? "weekly" : "monthly",
-    priority: p === "" ? 1 : p === "/industries" ? 0.9 : 0.8,
+    priority: p === "" ? 1 : p === "/hire-ai-developer" || p === "/ai-agents" ? 0.9 : p === "/industries" ? 0.8 : 0.7,
   }));
 }
