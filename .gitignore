@@ -13,5 +13,5 @@ node_modules/
 tsconfig.tsbuildinfo
 .next/
 
-# Local Netlify folder
-.netlify
+# Netlify CLI local cache
+.netlify/

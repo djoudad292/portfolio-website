@@ -56,7 +56,10 @@ export function Footer() {
 
         <div className="mt-10 flex flex-col items-start justify-between gap-3 border-t border-background/15 pt-6 font-mono text-xs text-background/50 sm:flex-row sm:items-center">
           <p>© 2026 Djaouad Frih — Full-Stack AI Engineer</p>
-          <p>Built with Next.js &amp; deployed to production.</p>
+          <div className="flex items-center gap-5">
+            <a href="/cv" className="transition-colors hover:text-primary">CV</a>
+            <p>Built with Next.js &amp; deployed to production.</p>
+          </div>
         </div>
       </div>
     </footer>
