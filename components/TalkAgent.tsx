@@ -91,7 +91,9 @@ export default function TalkAgent({
           </div>
         </div>
         <a
-          href="https://calendly.com/oufr29/30min"
+          href="https://calendly.com/oufr29/30min?utm_source=talk-agent&utm_medium=header"
+          target="_blank"
+          rel="noopener noreferrer"
           style={{
             padding: "9px 16px",
             background: "#2563eb",
@@ -257,10 +259,11 @@ export default function TalkAgent({
         }}
       >
         {[
-          ["🌐 djaouad.tech", "https://djaouad.tech"],
-          ["📄 PDF Workspace", "https://docs.djaouad.tech"],
-          ["🤖 Receptionist", "https://chat.djaouad.tech"],
-          ["💬 WhatsApp", "https://wa.me/213780688125"],
+          ["📅 Book free call", "https://calendly.com/oufr29/30min?utm_source=talk-agent&utm_medium=footer"],
+          ["🌐 djaouad.tech", "https://djaouad.tech?utm_source=talk-agent&utm_medium=footer"],
+          ["📄 PDF Workspace", "https://docs.djaouad.tech?utm_source=talk-agent&utm_medium=footer"],
+          ["🤖 Receptionist", "https://chat.djaouad.tech?utm_source=talk-agent&utm_medium=footer"],
+          ["💬 WhatsApp", "https://wa.me/213780688125?text=Hi%20Djaouad%2C%20I%20tried%20the%20live%20agent%20demo"],
         ].map(([label, url]) => (
           <a
             key={url}

@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react"
 import { COMPANY_ID, WS_URL } from "./console/data"
 
-type Msg = { role: "user" | "agent"; text: string }
+type Msg = { role: "user" | "agent"; text: string; done?: boolean }
 
 export function FloatingAI() {
   const [open, setOpen] = useState(false)
@@ -12,6 +12,20 @@ export function FloatingAI() {
   const [thinking, setThinking] = useState(false)
   const wsRef = useRef<WebSocket | null>(null)
   const listRef = useRef<HTMLDivElement>(null)
+  const conversationIdRef = useRef<string>("")
+
+  useEffect(() => {
+    try {
+      let id = localStorage.getItem("djaouad-chat-id")
+      if (!id) {
+        id = typeof crypto !== "undefined" && "randomUUID" in crypto ? crypto.randomUUID() : `c-${Date.now()}-${Math.random().toString(36).slice(2)}`
+        localStorage.setItem("djaouad-chat-id", id)
+      }
+      conversationIdRef.current = id
+    } catch {
+      if (!conversationIdRef.current) conversationIdRef.current = `c-${Date.now()}`
+    }
+  }, [])
 
   useEffect(() => {
     listRef.current?.scrollTo({ top: listRef.current.scrollHeight })
@@ -24,15 +38,22 @@ export function FloatingAI() {
     setMessages((m) => [...m, { role: "user", text }])
     setInput("")
     setThinking(true)
-    wsRef.current?.close()
 
     let settled = false
-    const ws = new WebSocket(WS_URL)
+    const existing = wsRef.current
+    const ws = existing && existing.readyState === WebSocket.OPEN ? existing : new WebSocket(WS_URL)
     wsRef.current = ws
 
-    ws.onopen = () => {
-      ws.send(JSON.stringify({ event: "chat", data: { message: text, conversationId: null, companyId: COMPANY_ID } }))
+    const payload = JSON.stringify({ event: "chat", data: { message: text, conversationId: conversationIdRef.current || null, companyId: COMPANY_ID } })
+    const deliver = () => {
+      try { ws.send(payload) } catch {
+        setThinking(false)
+        setMessages((m) => [...m, { role: "agent", text: "I’m offline right now — book a free call and I’ll reply within an hour.", done: true }])
+      }
     }
+
+    ws.onopen = () => deliver()
+    if (ws.readyState === WebSocket.OPEN) deliver()
     ws.onmessage = (ev) => {
       try {
         const msg = JSON.parse(ev.data)
@@ -57,7 +78,7 @@ export function FloatingAI() {
     ws.onerror = () => {
       if (!settled) {
         setThinking(false)
-        setMessages((m) => [...m, { role: "agent", text: "The agent is waking up (free hosting) — ask again in ~30 seconds.", done: true }])
+        setMessages((m) => [...m, { role: "agent", text: "I’m offline right now — book a free call and I’ll reply within an hour.", done: true }])
       }
     }
   }
@@ -120,7 +141,7 @@ export function FloatingAI() {
 
           <form
             onSubmit={(e) => { e.preventDefault(); send(input); }}
-            className="flex gap-2 border-t border-border p-3"
+            className="flex gap-2 border-t border-border p-3 pb-1.5"
           >
             <input
               value={input}
@@ -133,6 +154,9 @@ export function FloatingAI() {
               →
             </button>
           </form>
+          <p className="px-3 pb-2.5 text-center font-mono text-[10px] text-muted-foreground">
+            Prefer a call? <a href="https://calendly.com/oufr29/30min?utm_source=floating-ai&utm_medium=chat" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Book free call</a>
+          </p>
         </div>
       )}
     </>

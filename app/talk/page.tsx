@@ -69,9 +69,9 @@ export default async function TalkPage({
         </p>
         <div style={{ display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap" }}>
           {[
-            ["AI Receptionist", "https://chat.djaouad.tech"],
-            ["PDF Workspace", "https://docs.djaouad.tech"],
-            ["Support Agent", "https://customer.djaouad.tech"],
+            ["AI Receptionist", "https://chat.djaouad.tech?utm_source=talk&utm_medium=fallback"],
+            ["PDF Workspace", "https://docs.djaouad.tech?utm_source=talk&utm_medium=fallback"],
+            ["Support Agent", "https://customer.djaouad.tech?utm_source=talk&utm_medium=fallback"],
           ].map(([name, url]) => (
             <a
               key={url}
@@ -91,6 +91,52 @@ export default async function TalkPage({
             </a>
           ))}
         </div>
+        <p style={{ color: "#5b5b6b", fontSize: 12, marginTop: 22, marginBottom: 10 }}>
+          Want yours? Paste your website — I’ll spin your demo before our call:
+        </p>
+        <form
+          action="/talk"
+          method="get"
+          style={{ display: "flex", gap: 8, justifyContent: "center", flexWrap: "wrap" }}
+        >
+          <input
+            name="s"
+            type="url"
+            required
+            placeholder="https://your-site.com"
+            style={{
+              padding: "10px 14px",
+              borderRadius: 8,
+              border: "1px solid #26262f",
+              background: "#181820",
+              color: "#e8e8ef",
+              fontSize: 13,
+              minWidth: 220,
+              outline: "none",
+            }}
+          />
+          <input type="hidden" name="l" value="direct" />
+          <button
+            type="submit"
+            style={{
+              padding: "10px 16px",
+              borderRadius: 8,
+              border: "none",
+              background: "#2563eb",
+              color: "#fff",
+              fontSize: 13,
+              fontWeight: 800,
+              cursor: "pointer",
+            }}
+          >
+            Preview my agent →
+          </button>
+        </form>
+        <p style={{ marginTop: 16, fontSize: 12 }}>
+          <a href="https://calendly.com/oufr29/30min?utm_source=talk&utm_medium=fallback" style={{ color: "#34d399", textDecoration: "none", fontWeight: 700 }}>
+            Book free call — fixed quote in 24h →
+          </a>
+        </p>
       </div>
     </main>
   );

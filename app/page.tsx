@@ -34,7 +34,7 @@ export default function Home() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-60" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
             </span>
-            Booking projects — next slot early September
+            Booking projects — next slot late September
           </p>
 
           <h1 className="mt-6 font-display text-5xl leading-[1.04] tracking-tight sm:text-6xl">
@@ -76,7 +76,7 @@ export default function Home() {
               <div key={w.name}
                    className="group relative overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:border-primary">
                 <a href={w.url} target="_blank" rel="noopener noreferrer">
-                  <img src={w.img} alt={w.name}
+                  <img src={w.img} alt={w.name} loading="lazy" decoding="async"
                        className="aspect-video w-full object-cover object-top " />
                 </a>
                 <div className="p-5 pt-4">
@@ -136,8 +136,8 @@ export default function Home() {
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
             {[
-              { q: "Made my website within 2 weeks, very professional, great communication. Would highly recommend.", n: "Bilal Kadri · UK" },
-              { q: "Complete full-stack build delivered right on schedule. That's how it's done. Star developer.", n: "Muhhamet Novruzov · Cyprus" },
+              { q: "Made my website within 2 weeks, very professional, great communication. Would highly recommend.", n: "Bilal Kadri · UK — website, 2-week delivery" },
+              { q: "Complete full-stack build delivered right on schedule. That's how it's done. Star developer.", n: "Muhhamet Novruzov · Cyprus — full-stack build" },
             ].map((r) => (
               <blockquote key={r.n} className="rounded-2xl border border-border bg-card p-6">
                 <p className="leading-relaxed text-foreground">&ldquo;{r.q}&rdquo;</p>
