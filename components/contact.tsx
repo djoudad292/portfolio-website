@@ -28,12 +28,19 @@ export function Contact() {
     <section className="px-6 py-24 lg:py-32">
       <div className="mx-auto max-w-4xl">
         <div className="rounded-2xl border border-border bg-card p-8 sm:p-10">
-          <SectionHeading index="07" label="Get in touch" title="Ready to start?" />
+          <SectionHeading index="09" label="Get in touch" title="Have a project you need built?" />
           <p className="mt-6 text-pretty leading-relaxed text-muted-foreground">
-            I reply fast — usually within an hour. Prefer a call? Grab any slot.
+            Tell me what you&apos;re building and I&apos;ll get back to you within a few hours with next steps.
+            Prefer a call? Grab any slot below.
           </p>
 
           <div className="mt-8 grid max-w-md gap-3">
+            <a
+              href="#project-intake"
+              className="flex items-center justify-between rounded-xl border border-primary bg-primary/10 px-5 py-3.5 text-sm font-medium text-primary transition-colors hover:bg-primary/15"
+            >
+              Describe your project <ArrowUpRight className="h-4 w-4" />
+            </a>
             <a
               href="https://calendly.com/oufr29/30min"
               target="_blank"

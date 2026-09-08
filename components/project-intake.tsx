@@ -2,261 +2,240 @@
 
 import { useState, type FormEvent } from "react"
 import { motion } from "framer-motion"
+import { CheckCircle2 } from "lucide-react"
 import { SectionHeading } from "./section-heading"
-import { Send, Loader2, ArrowUpRight } from "lucide-react"
-import { email } from "@/lib/socials"
 import emailjs from "@emailjs/browser"
 import { toast } from "sonner"
 
-const inputClass =
-  "w-full rounded-md border border-border bg-card px-4 py-2.5 text-sm text-foreground placeholder-muted-foreground outline-none transition-colors focus:border-primary focus:ring-1 focus:ring-primary"
+interface FormData {
+  name: string
+  email: string
+  company: string
+  whatShouldItDo: string
+  projectType: string
+  contactMethod: string
+}
+
+const PROJECT_TYPES = [
+  "AI Integration",
+  "Custom AI System",
+  "AI-Powered Product",
+  "Full-Stack Build",
+  "Mobile App",
+  "Other / Not sure",
+]
+
+const CONTACT_PREFERENCES = [
+  "Email",
+  "WhatsApp",
+  "Calendly call",
+]
 
 export function ProjectIntake() {
-  const [name, setName] = useState("")
-  const [emailAddress, setEmailAddress] = useState("")
-  const [company, setCompany] = useState("")
-  const [projectDesc, setProjectDesc] = useState("")
-  const [existingProduct, setExistingProduct] = useState("")
-  const [integrations, setIntegrations] = useState("")
-  const [deadline, setDeadline] = useState("")
-  const [budget, setBudget] = useState("")
-  const [additional, setAdditional] = useState("")
-  const [isSending, setIsSending] = useState(false)
+  const [formData, setFormData] = useState<FormData>({
+    name: "",
+    email: "",
+    company: "",
+    whatShouldItDo: "",
+    projectType: "",
+    contactMethod: "Email",
+  })
+  const [submitting, setSubmitting] = useState(false)
+  const [submitted, setSubmitted] = useState(false)
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
 
-    if (!name.trim() || !emailAddress.trim() || !projectDesc.trim()) {
-      toast.error("Please fill in your name, email, and project description.")
+    if (!formData.name.trim() || !formData.email.trim() || !formData.projectType) {
+      toast.error("Please fill in the required fields.")
       return
     }
 
-    setIsSending(true)
-    try {
-      const message = [
-        `Project: ${projectDesc}`,
-        existingProduct && `Existing product: ${existingProduct}`,
-        integrations && `Integrations: ${integrations}`,
-        deadline && `Deadline: ${deadline}`,
-        budget && `Budget: ${budget}`,
-        additional && `Additional context: ${additional}`,
-      ]
-        .filter(Boolean)
-        .join("\n")
+    setSubmitting(true)
 
+    try {
       await emailjs.send(
         "service_h4fap1u",
         "template_03xa579",
         {
-          name,
-          email: emailAddress,
-          time: new Date().toLocaleString(),
-          title: `Project inquiry from ${name}${company ? ` (${company})` : ""}`,
-          message,
+          from_name: formData.name,
+          from_email: formData.email,
+          company: formData.company || "—",
+          what_should_it_do: formData.whatShouldItDo || "—",
+          project_type: formData.projectType,
+          contact_method: formData.contactMethod,
+          message: `[Project Intake] Name: ${formData.name}, Email: ${formData.email}, Company: ${formData.company || "—"}, What it should do: ${formData.whatShouldItDo || "—"}, Project type: ${formData.projectType}, Preferred contact: ${formData.contactMethod}`,
         },
-        "3x5_0D_b9liuJXcsr"
+        { publicKey: "3x5_0D_b9liuJXcsr" }
       )
-      toast.success("Project brief sent! I'll review the scope and respond within 24h.")
-      setName("")
-      setEmailAddress("")
-      setCompany("")
-      setProjectDesc("")
-      setExistingProduct("")
-      setIntegrations("")
-      setDeadline("")
-      setBudget("")
-      setAdditional("")
-    } catch (error) {
-      console.error("Failed to send:", error)
-      toast.error("Failed to send. Please try again or email directly.")
+
+      setSubmitted(true)
+    } catch {
+      toast.error("Something went wrong. Please try again or reach out directly.")
     } finally {
-      setIsSending(false)
+      setSubmitting(false)
     }
   }
 
-  return (
-    <section id="contact" className="px-6 py-24 lg:py-32">
-      <div className="mx-auto max-w-4xl">
-        <div className="rounded-2xl border border-border bg-card p-8 sm:p-10">
+  if (submitted) {
+    return (
+      <section id="project-intake" className="px-6 py-24 lg:py-32">
+        <div className="mx-auto max-w-3xl">
           <SectionHeading
-            index="04"
-            label="Start a project"
-            title="Have a specific project in mind?"
-            description="Tell me what you're trying to build, what it needs to connect to, and what outcome you need. I'll review the scope and respond with a realistic implementation plan and fixed quote."
+            index="08"
+            label="Project intake"
+            title="Tell me what you need built."
           />
-
-          <motion.form
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="mt-8 flex flex-col justify-center gap-5"
-            onSubmit={handleSubmit}
+            className="rounded-2xl border border-primary/25 bg-primary/5 p-10 text-center"
           >
-            <div className="grid gap-5 sm:grid-cols-2">
+            <CheckCircle2 className="mx-auto h-12 w-12 text-primary" />
+            <h3 className="mt-4 font-display text-2xl text-foreground">
+              Project brief received.
+            </h3>
+            <p className="mt-3 text-muted-foreground">
+              I&apos;ll review the requirements and get back to you with the next step — usually within a few hours.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+    )
+  }
+
+  return (
+    <section id="project-intake" className="px-6 py-24 lg:py-32">
+      <div className="mx-auto max-w-3xl">
+        <SectionHeading
+          index="08"
+          label="Project intake"
+          title="Tell me what you need built."
+          description="Share the basics. I'll review the scope and get back to you with a clear plan — or questions if anything needs clarification."
+        />
+
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+        >
+          <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Name + Email */}
+            <div className="grid gap-6 sm:grid-cols-2">
               <div>
-                <label htmlFor="intake-name" className="mb-1.5 block text-sm font-medium text-foreground">
+                <label htmlFor="intake-name" className="mb-2 block font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
                   Name <span className="text-primary">*</span>
                 </label>
                 <input
                   id="intake-name"
                   type="text"
                   required
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   placeholder="Your name"
-                  className={inputClass}
+                  className="w-full rounded-xl border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none"
                 />
               </div>
               <div>
-                <label htmlFor="intake-email" className="mb-1.5 block text-sm font-medium text-foreground">
+                <label htmlFor="intake-email" className="mb-2 block font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
                   Email <span className="text-primary">*</span>
                 </label>
                 <input
                   id="intake-email"
                   type="email"
                   required
-                  value={emailAddress}
-                  onChange={(e) => setEmailAddress(e.target.value)}
-                  placeholder="your@email.com"
-                  className={inputClass}
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  placeholder="you@company.com"
+                  className="w-full rounded-xl border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none"
                 />
               </div>
             </div>
 
+            {/* Company */}
             <div>
-              <label htmlFor="intake-company" className="mb-1.5 block text-sm font-medium text-foreground">
-                Company <span className="text-muted-foreground">(optional)</span>
+              <label htmlFor="intake-company" className="mb-2 block font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                Company
               </label>
               <input
                 id="intake-company"
                 type="text"
-                value={company}
-                onChange={(e) => setCompany(e.target.value)}
-                placeholder="Your company"
-                className={inputClass}
+                value={formData.company}
+                onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                placeholder="Company or team name"
+                className="w-full rounded-xl border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none"
               />
             </div>
 
+            {/* What should it do? */}
             <div>
-              <label htmlFor="intake-project" className="mb-1.5 block text-sm font-medium text-foreground">
-                What do you want to build? <span className="text-primary">*</span>
+              <label htmlFor="intake-what" className="mb-2 block font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                What should it do?
               </label>
               <textarea
-                id="intake-project"
+                id="intake-what"
                 rows={4}
-                required
-                value={projectDesc}
-                onChange={(e) => setProjectDesc(e.target.value)}
-                placeholder="Describe the system, feature, or product you need built..."
-                className={`${inputClass} resize-none`}
+                value={formData.whatShouldItDo}
+                onChange={(e) => setFormData({ ...formData, whatShouldItDo: e.target.value })}
+                placeholder="Describe the problem, the workflow, or what you're trying to achieve. Even a rough idea helps."
+                className="w-full resize-none rounded-xl border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none"
               />
             </div>
 
-            <div className="grid gap-5 sm:grid-cols-2">
-              <div>
-                <label htmlFor="intake-existing" className="mb-1.5 block text-sm font-medium text-foreground">
-                  Existing product/system <span className="text-muted-foreground">(optional)</span>
-                </label>
-                <input
-                  id="intake-existing"
-                  type="text"
-                  value={existingProduct}
-                  onChange={(e) => setExistingProduct(e.target.value)}
-                  placeholder="e.g. SaaS app, mobile app, internal tool"
-                  className={inputClass}
-                />
-              </div>
-              <div>
-                <label htmlFor="intake-integrations" className="mb-1.5 block text-sm font-medium text-foreground">
-                  What should it integrate with? <span className="text-muted-foreground">(optional)</span>
-                </label>
-                <input
-                  id="intake-integrations"
-                  type="text"
-                  value={integrations}
-                  onChange={(e) => setIntegrations(e.target.value)}
-                  placeholder="e.g. Stripe, Salesforce, PostgreSQL, APIs"
-                  className={inputClass}
-                />
-              </div>
-            </div>
-
-            <div className="grid gap-5 sm:grid-cols-2">
-              <div>
-                <label htmlFor="intake-deadline" className="mb-1.5 block text-sm font-medium text-foreground">
-                  Desired deadline <span className="text-muted-foreground">(optional)</span>
-                </label>
-                <input
-                  id="intake-deadline"
-                  type="text"
-                  value={deadline}
-                  onChange={(e) => setDeadline(e.target.value)}
-                  placeholder="e.g. 3 weeks, end of October"
-                  className={inputClass}
-                />
-              </div>
-              <div>
-                <label htmlFor="intake-budget" className="mb-1.5 block text-sm font-medium text-foreground">
-                  Budget range <span className="text-muted-foreground">(optional)</span>
-                </label>
-                <input
-                  id="intake-budget"
-                  type="text"
-                  value={budget}
-                  onChange={(e) => setBudget(e.target.value)}
-                  placeholder="e.g. $2,000 - $5,000"
-                  className={inputClass}
-                />
-              </div>
-            </div>
-
+            {/* Project Type */}
             <div>
-              <label htmlFor="intake-additional" className="mb-1.5 block text-sm font-medium text-foreground">
-                Additional context <span className="text-muted-foreground">(optional)</span>
+              <label htmlFor="intake-type" className="mb-2 block font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                Project type <span className="text-primary">*</span>
               </label>
-              <textarea
-                id="intake-additional"
-                rows={3}
-                value={additional}
-                onChange={(e) => setAdditional(e.target.value)}
-                placeholder="Anything else I should know — technical constraints, preferences, prior work..."
-                className={`${inputClass} resize-none`}
-              />
+              <select
+                id="intake-type"
+                required
+                value={formData.projectType}
+                onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
+                className="w-full appearance-none rounded-xl border border-border bg-card px-4 py-3 text-sm text-foreground focus:border-primary focus:outline-none"
+              >
+                <option value="" disabled>Select project type</option>
+                {PROJECT_TYPES.map((type) => (
+                  <option key={type} value={type}>{type}</option>
+                ))}
+              </select>
             </div>
 
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-              <button
-                type="submit"
-                disabled={isSending}
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
-              >
-                {isSending ? (
-                  <>
-                    <Loader2 className="h-4 w-4 animate-spin" />
-                    Sending...
-                  </>
-                ) : (
-                  <>
-                    <Send className="h-4 w-4" />
-                    Describe your project
-                  </>
-                )}
-              </button>
-              <span className="text-xs text-muted-foreground">
-                or{" "}
-                <a
-                  href="https://calendly.com/oufr29/30min"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary hover:underline"
-                >
-                  book a call <ArrowUpRight className="inline h-3 w-3" />
-                </a>
-              </span>
+            {/* Preferred Contact */}
+            <div>
+              <p className="mb-3 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                Preferred contact method
+              </p>
+              <div className="flex flex-wrap gap-3">
+                {CONTACT_PREFERENCES.map((method) => (
+                  <button
+                    key={method}
+                    type="button"
+                    onClick={() => setFormData({ ...formData, contactMethod: method })}
+                    className={`rounded-xl border px-4 py-2.5 text-sm transition-colors ${
+                      formData.contactMethod === method
+                        ? "border-primary bg-primary/10 text-primary"
+                        : "border-border text-muted-foreground hover:border-foreground"
+                    }`}
+                  >
+                    {method}
+                  </button>
+                ))}
+              </div>
             </div>
-          </motion.form>
-        </div>
+
+            {/* Submit */}
+            <button
+              type="submit"
+              disabled={submitting}
+              className="w-full rounded-xl bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 disabled:opacity-50"
+            >
+              {submitting ? "Sending…" : "Send project brief"}
+            </button>
+          </form>
+        </motion.div>
       </div>
     </section>
   )

@@ -17,7 +17,7 @@ export function Hero() {
           transition={{ duration: 0.5 }}
           className="mb-8 font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground"
         >
-          AI / full-stack engineer
+          AI &amp; full-stack developer
         </motion.p>
 
         <motion.h1
@@ -26,8 +26,8 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.05 }}
           className="max-w-4xl font-display text-[3rem] font-normal leading-[1.02] tracking-tight text-foreground sm:text-7xl lg:text-[5.5rem]"
         >
-          Have a project to build?{" "}
-          <em className="text-primary">I&apos;ll scope it and ship it.</em>
+          Build the AI system you{" "}
+          <em className="text-primary">already have in mind.</em>
         </motion.h1>
 
         <motion.p
@@ -36,20 +36,32 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.15 }}
           className="mt-7 max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground"
         >
-          I build AI integrations, custom AI systems, and AI-powered products for
-          teams that already know what they need. From requirements through
-          architecture, implementation, and deployment — fixed-price,
-          milestone-based, production-ready code handed over to you.
+          I&apos;m Djaouad — an AI developer for teams that already know what they
+          need built. AI integrations, custom systems, AI-powered products — from
+          requirements through deployment. Fixed-price, milestone-based, remote
+          worldwide.
+        </motion.p>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mt-3 max-w-2xl font-mono text-sm text-muted-foreground"
+        >
+          Already have requirements?{" "}
+          <a href="#project-intake" className="text-primary hover:underline">
+            Skip the sales pitch and tell me what you&apos;re building.
+          </a>
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.25 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-9 flex flex-wrap items-center gap-4"
         >
           <a
-            href="#contact"
+            href="#project-intake"
             className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
           >
             Describe your project
@@ -66,7 +78,7 @@ export function Hero() {
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
           className="mt-6 font-mono text-xs text-muted-foreground"
         >
           Remote · overlaps US/EU hours · usually replies within an hour

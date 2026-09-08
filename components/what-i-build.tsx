@@ -2,25 +2,36 @@
 
 import { motion } from "framer-motion"
 import { SectionHeading } from "./section-heading"
+import { Bot, Layers, FileSearch, Smartphone } from "lucide-react"
 
 const categories = [
   {
-    index: "01",
+    icon: Bot,
     title: "AI Integrations",
-    text: "Connect AI to your existing products, APIs, CRMs, databases, and business systems. Add intelligent features — chat, search, extraction, automation — without rebuilding what you already have.",
-    examples: ["RAG over your internal docs", "AI chatbot in your SaaS", "Automated data extraction"],
+    description:
+      "Add AI capabilities to what you already have — connect models to your APIs, CRMs, databases, or internal tools. Chat, search, extraction, automation — without rebuilding your stack.",
+    bestFor: "Teams with existing products that need AI added — chat, search, extraction, or automation connected to their current tools and data.",
   },
   {
-    index: "02",
+    icon: FileSearch,
     title: "Custom AI Systems",
-    text: "Build AI systems that use your business data, tools, APIs, and workflows to perform real tasks. Multi-step agents, knowledge bases, support systems, and automation pipelines.",
-    examples: ["AI receptionist with booking", "Customer support agent", "Document Q&A system"],
+    description:
+      "End-to-end systems where AI is the core — agents, knowledge bases, support automation, document processing. Built around your data, your workflows, your business rules.",
+    bestFor: "Projects where the AI system IS the product — agents, knowledge bases, automation pipelines that use your own data and workflows.",
   },
   {
-    index: "03",
-    title: "AI Products & Internal Tools",
-    text: "Complete production-ready applications built around a specific AI use case. Full-stack web or mobile apps with auth, dashboards, payments, and real-time features.",
-    examples: ["SaaS platform with AI core", "Internal ops dashboard", "Mobile app with AI features"],
+    icon: Layers,
+    title: "AI-Powered Products",
+    description:
+      "Full production applications built around an AI use case — dashboards, internal tools, SaaS products. Full-stack with auth, real-time features, and deployment.",
+    bestFor: "Founders and teams building a product where AI is central — dashboards, internal tools, SaaS apps with auth and real-time features.",
+  },
+  {
+    icon: Smartphone,
+    title: "Mobile Apps",
+    description:
+      "React Native apps for iOS and Android — connected to your backend, integrated with AI features, shipped to both app stores.",
+    bestFor: "Teams that need a mobile front-end for their AI system or product — shipped to both app stores from one codebase.",
   },
 ]
 
@@ -30,44 +41,29 @@ export function WhatIBuild() {
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           index="01"
-          label="What I get hired to build"
-          title="Three types of systems."
-          description="Each one is already live in production. I take your project from requirements through architecture, implementation, and deployment."
+          label="What I build"
+          title="AI systems, integrations, and production builds."
+          description="Four categories — most projects span two or more."
         />
 
-        <div className="space-y-6">
+        <div className="grid gap-5 sm:grid-cols-2">
           {categories.map((cat, i) => (
             <motion.div
               key={cat.title}
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
+              viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="rounded-2xl border border-border bg-card p-8 sm:p-10"
+              className="rounded-2xl border border-border bg-card p-7 sm:p-8"
             >
-              <div className="flex items-start justify-between gap-4">
-                <div className="max-w-2xl">
-                  <span className="font-mono text-xs uppercase tracking-[0.25em] text-primary">
-                    {cat.index}
-                  </span>
-                  <h3 className="mt-3 font-display text-3xl tracking-tight text-foreground sm:text-4xl">
-                    {cat.title}
-                  </h3>
-                  <p className="mt-4 text-pretty leading-relaxed text-muted-foreground">
-                    {cat.text}
-                  </p>
-                </div>
-              </div>
-              <div className="mt-6 flex flex-wrap gap-2">
-                {cat.examples.map((ex) => (
-                  <span
-                    key={ex}
-                    className="rounded-full border border-primary/20 bg-primary/5 px-3.5 py-1.5 text-xs font-medium text-primary"
-                  >
-                    {ex}
-                  </span>
-                ))}
-              </div>
+              <cat.icon className="mb-4 h-6 w-6 text-primary" />
+              <h3 className="font-display text-2xl text-foreground">{cat.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                {cat.description}
+              </p>
+              <p className="mt-4 border-t border-border pt-4 font-mono text-xs leading-relaxed text-muted-foreground">
+                <span className="text-primary">Best for:</span> {cat.bestFor}
+              </p>
             </motion.div>
           ))}
         </div>

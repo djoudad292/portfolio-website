@@ -43,6 +43,18 @@ export function Pricing() {
           description="Every project starts with a free scope review. I assess what's needed, define the architecture, and send a fixed-price proposal. Development proceeds in milestones — you see working software at each step."
         />
 
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="mb-10 text-center font-mono text-sm text-muted-foreground"
+        >
+          Projects typically start from{" "}
+          <span className="text-primary">$800 – $1,500</span>{" "}
+          depending on scope.
+        </motion.p>
+
         <div className="grid gap-6 lg:grid-cols-2">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -64,7 +76,7 @@ export function Pricing() {
             </ul>
             <div className="mt-8">
               <a
-                href="#contact"
+                href="#project-intake"
                 className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
               >
                 Describe your project
@@ -102,7 +114,7 @@ export function Pricing() {
         >
           Every project is different — tell me about yours and get a{" "}
           <a
-            href="#contact"
+            href="#project-intake"
             className="underline decoration-primary underline-offset-4 hover:text-foreground"
           >
             free, no-obligation quote within 24 hours

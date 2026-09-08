@@ -22,7 +22,7 @@ export const metadata: Metadata = {
       "msvalidate.01": "C51CDA99ED5014CBAB8480F6E66FC408",
     },
   },
-  title: 'Djaouad Frih | AI Developer — Custom AI Systems, Integrations & Full-Stack Builds',
+  title: 'Djaouad Frih | AI Developer — Build the AI System You Already Have in Mind',
   description:
     'I build AI integrations, custom AI systems, and AI-powered products for teams that already know what they need. Fixed-price, milestone-based, production-ready. Tell me what you need built.',
   openGraph: {
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Djaouad Frih | AI Developer — Custom AI Systems & Full-Stack Builds',
+    title: 'Djaouad Frih | AI Developer — Build the AI System You Already Have in Mind',
     description:
       'AI integrations, custom AI systems, and AI-powered products — fixed-price, milestone-based, production-ready.',
     images: ['https://djaouad.tech/og-image'],

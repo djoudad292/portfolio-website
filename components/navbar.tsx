@@ -6,14 +6,10 @@ import { Menu, X } from "lucide-react"
 import { CommandPalette } from "@/components/command-palette"
 
 const navLinks = [
-  { href: "#services", label: "What I Build" },
   { href: "#work", label: "Work" },
-  { href: "#how-it-works", label: "Process" },
-  { href: "#pricing", label: "Pricing" },
-  { href: "#testimonials", label: "Reviews" },
-  { href: "/hire-ai-developer", label: "Hire me" },
-  { href: "/cv", label: "CV" },
-  { href: "#contact", label: "Contact" },
+  { href: "#services", label: "What I Build" },
+  { href: "#how-it-works", label: "How It Works" },
+  { href: "/cv", label: "About" },
 ]
 
 export function Navbar() {
@@ -56,10 +52,10 @@ export function Navbar() {
           </li>
           <li>
             <a
-              href="#contact"
+              href="#project-intake"
               className="inline-flex items-center rounded-full bg-primary px-5 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
             >
-              Describe your project
+              Start a Project
             </a>
           </li>
         </ul>
