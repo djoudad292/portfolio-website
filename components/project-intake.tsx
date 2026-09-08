@@ -10,35 +10,14 @@ import { toast } from "sonner"
 interface FormData {
   name: string
   email: string
-  company: string
   whatShouldItDo: string
-  projectType: string
-  contactMethod: string
 }
-
-const PROJECT_TYPES = [
-  "AI Integration",
-  "Custom AI System",
-  "AI-Powered Product",
-  "Full-Stack Build",
-  "Mobile App",
-  "Other / Not sure",
-]
-
-const CONTACT_PREFERENCES = [
-  "Email",
-  "WhatsApp",
-  "Calendly call",
-]
 
 export function ProjectIntake() {
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
-    company: "",
     whatShouldItDo: "",
-    projectType: "",
-    contactMethod: "Email",
   })
   const [submitting, setSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
@@ -46,8 +25,8 @@ export function ProjectIntake() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
 
-    if (!formData.name.trim() || !formData.email.trim() || !formData.projectType) {
-      toast.error("Please fill in the required fields.")
+    if (!formData.name.trim() || !formData.email.trim() || !formData.whatShouldItDo.trim()) {
+      toast.error("Please fill in all fields.")
       return
     }
 
@@ -60,11 +39,7 @@ export function ProjectIntake() {
         {
           from_name: formData.name,
           from_email: formData.email,
-          company: formData.company || "—",
-          what_should_it_do: formData.whatShouldItDo || "—",
-          project_type: formData.projectType,
-          contact_method: formData.contactMethod,
-          message: `[Project Intake] Name: ${formData.name}, Email: ${formData.email}, Company: ${formData.company || "—"}, What it should do: ${formData.whatShouldItDo || "—"}, Project type: ${formData.projectType}, Preferred contact: ${formData.contactMethod}`,
+          message: `[Project Brief] From: ${formData.name} (${formData.email})\n\nWhat it should do:\n${formData.whatShouldItDo}`,
         },
         { publicKey: "3x5_0D_b9liuJXcsr" }
       )
@@ -121,9 +96,8 @@ export function ProjectIntake() {
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Name + Email */}
-            <div className="grid gap-6 sm:grid-cols-2">
+          <form onSubmit={handleSubmit} className="space-y-5">
+            <div className="grid gap-5 sm:grid-cols-2">
               <div>
                 <label htmlFor="intake-name" className="mb-2 block font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
                   Name <span className="text-primary">*</span>
@@ -154,29 +128,14 @@ export function ProjectIntake() {
               </div>
             </div>
 
-            {/* Company */}
-            <div>
-              <label htmlFor="intake-company" className="mb-2 block font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
-                Company
-              </label>
-              <input
-                id="intake-company"
-                type="text"
-                value={formData.company}
-                onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                placeholder="Company or team name"
-                className="w-full rounded-xl border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none"
-              />
-            </div>
-
-            {/* What should it do? */}
             <div>
               <label htmlFor="intake-what" className="mb-2 block font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
-                What should it do?
+                What should it do? <span className="text-primary">*</span>
               </label>
               <textarea
                 id="intake-what"
-                rows={4}
+                rows={5}
+                required
                 value={formData.whatShouldItDo}
                 onChange={(e) => setFormData({ ...formData, whatShouldItDo: e.target.value })}
                 placeholder="Describe the problem, the workflow, or what you're trying to achieve. Even a rough idea helps."
@@ -184,49 +143,6 @@ export function ProjectIntake() {
               />
             </div>
 
-            {/* Project Type */}
-            <div>
-              <label htmlFor="intake-type" className="mb-2 block font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
-                Project type <span className="text-primary">*</span>
-              </label>
-              <select
-                id="intake-type"
-                required
-                value={formData.projectType}
-                onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
-                className="w-full appearance-none rounded-xl border border-border bg-card px-4 py-3 text-sm text-foreground focus:border-primary focus:outline-none"
-              >
-                <option value="" disabled>Select project type</option>
-                {PROJECT_TYPES.map((type) => (
-                  <option key={type} value={type}>{type}</option>
-                ))}
-              </select>
-            </div>
-
-            {/* Preferred Contact */}
-            <div>
-              <p className="mb-3 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
-                Preferred contact method
-              </p>
-              <div className="flex flex-wrap gap-3">
-                {CONTACT_PREFERENCES.map((method) => (
-                  <button
-                    key={method}
-                    type="button"
-                    onClick={() => setFormData({ ...formData, contactMethod: method })}
-                    className={`rounded-xl border px-4 py-2.5 text-sm transition-colors ${
-                      formData.contactMethod === method
-                        ? "border-primary bg-primary/10 text-primary"
-                        : "border-border text-muted-foreground hover:border-foreground"
-                    }`}
-                  >
-                    {method}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Submit */}
             <button
               type="submit"
               disabled={submitting}
