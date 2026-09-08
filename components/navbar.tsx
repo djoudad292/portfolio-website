@@ -6,8 +6,9 @@ import { Menu, X } from "lucide-react"
 import { CommandPalette } from "@/components/command-palette"
 
 const navLinks = [
-  { href: "#services", label: "Services" },
+  { href: "#services", label: "What I Build" },
   { href: "#work", label: "Work" },
+  { href: "#how-it-works", label: "Process" },
   { href: "#pricing", label: "Pricing" },
   { href: "#testimonials", label: "Reviews" },
   { href: "/hire-ai-developer", label: "Hire me" },
@@ -58,7 +59,7 @@ export function Navbar() {
               href="#contact"
               className="inline-flex items-center rounded-full bg-primary px-5 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
             >
-              Say hi
+              Describe your project
             </a>
           </li>
         </ul>

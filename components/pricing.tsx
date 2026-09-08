@@ -3,60 +3,33 @@
 import { motion } from "framer-motion"
 import { SectionHeading } from "./section-heading"
 import { Check } from "lucide-react"
-import { whatsappHref, email } from "@/lib/socials"
-const CALENDLY_URL = "https://calendly.com/oufr29/30min"
+import { email } from "@/lib/socials"
 
-const tiers = [
+const processItems = [
   {
-    name: "AI Feature",
-    price: "$500",
-    priceNote: "starting at",
-    description:
-      "One focused AI capability dropped into your existing product — a chatbot, a document assistant, or a smart form. AI-assisted build means faster delivery at lower cost.",
-    features: [
-      "One AI feature (chat, RAG, or automation)",
-      "Grounded in your own data & documents",
-      "Deployed to your existing stack",
-      "1 week delivery · weekly demos",
-      "7 days of post-launch support",
-    ],
-    cta: "Start here",
-    featured: false,
+    title: "Fixed-price projects",
+    text: "No hourly surprises. You get a fixed quote before development begins.",
   },
   {
-    name: "Product Sprint",
-    price: "$2,000",
-    priceNote: "typical",
-    description:
-      "A complete web or mobile product with one AI feature woven in — built, launched, and ready for real customers. AI tools cut the timeline in half without cutting corners.",
-    features: [
-      "Full web or mobile app build",
-      "AI integration + document grounding",
-      "Auth, payments, admin, dashboard",
-      "2–3 weeks delivery · weekly demos",
-      "14 days of post-launch support",
-      "Source code + handover docs",
-    ],
-    cta: "Book a free call",
-    featured: true,
+    title: "Milestone-based delivery",
+    text: "Pay as you see working software. Each milestone is a real deliverable.",
   },
   {
-    name: "AI Transformation",
-    price: "$5,000",
-    priceNote: "project-based",
-    description:
-      "A multi-feature AI product — receptionist, knowledge base, and integrations — built end-to-end. AI-assisted development lets me ship in weeks, not months.",
-    features: [
-      "Multi-feature AI product (e.g. AI receptionist)",
-      "Knowledge base + human handoff flows",
-      "Integrations, analytics, roles",
-      "4–6 weeks delivery · weekly demos",
-      "30 days of post-launch support",
-      "Priority support + training",
-    ],
-    cta: "Let's talk",
-    featured: false,
+    title: "Scope reviewed before development",
+    text: "I assess feasibility, define architecture, and confirm scope before writing code.",
   },
+  {
+    title: "Code and deployment handed over to you",
+    text: "Source code, deployment, documentation — everything is yours.",
+  },
+]
+
+const features = [
+  "Free scope review and fixed quote",
+  "Weekly demos at each milestone",
+  "Working software before you pay the next milestone",
+  "Source code and deployment handed over",
+  "Post-launch support included",
 ]
 
 export function Pricing() {
@@ -64,65 +37,60 @@ export function Pricing() {
     <section id="pricing" className="px-6 py-24 lg:py-32">
       <div className="mx-auto max-w-6xl">
         <SectionHeading
-          index="04"
-          label="Pricing"
-          title="Fixed prices. No surprises."
-          description="Free 15-min call → fixed quote within 24h → weekly demos while I build (1–3 weeks) → launch + post-launch support. You own the code. Milestone payments mean you only pay as you see working software."
+          index="05"
+          label="How pricing works"
+          title="Fixed scope. No surprises."
+          description="Every project starts with a free scope review. I assess what's needed, define the architecture, and send a fixed-price proposal. Development proceeds in milestones — you see working software at each step."
         />
 
-        <div className="grid gap-6 lg:grid-cols-3">
-          {tiers.map((tier, i) => (
-            <motion.div
-              key={tier.name}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-              className={`relative flex min-w-0 flex-col rounded-2xl border p-8 ${
-                tier.featured
-                  ? "border-primary bg-card shadow-lg"
-                  : "border-border bg-card"
-              }`}
-            >
-              {tier.featured && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-primary px-3 py-1 text-xs font-medium text-primary-foreground">
-                  Most popular
-                </span>
-              )}
-              <h3 className="font-display text-xl tracking-tight text-foreground">
-                {tier.name}
-              </h3>
-              <p className="mt-4 text-pretty text-sm leading-relaxed text-muted-foreground">
-                {tier.description}
-              </p>
-              <p className="mt-6 flex items-baseline gap-2">
-                <span className="font-display text-4xl tracking-tight text-foreground">
-                  {tier.price}
-                </span>
-                <span className="text-sm text-muted-foreground">{tier.priceNote}</span>
-              </p>
-              <ul className="mt-6 flex-1 space-y-3">
-                {tier.features.map((feature) => (
-                  <li key={feature} className="flex gap-3 text-sm text-foreground">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
+        <div className="grid gap-6 lg:grid-cols-2">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.5 }}
+            className="rounded-2xl border border-border bg-card p-8 sm:p-10"
+          >
+            <h3 className="font-display text-2xl tracking-tight text-foreground sm:text-3xl">
+              What you get
+            </h3>
+            <ul className="mt-6 flex-1 space-y-4">
+              {features.map((feature) => (
+                <li key={feature} className="flex gap-3 text-sm text-foreground">
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden />
+                  {feature}
+                </li>
+              ))}
+            </ul>
+            <div className="mt-8">
               <a
-                href={tier.featured ? CALENDLY_URL : `mailto:${email}?subject=${encodeURIComponent(`Project inquiry: ${tier.name}`)}`}
-                target={tier.featured ? "_blank" : undefined}
-                rel={tier.featured ? "noopener noreferrer" : undefined}
-                className={`mt-8 inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-medium transition-colors ${
-                  tier.featured
-                    ? "bg-primary text-primary-foreground hover:opacity-90"
-                    : "border border-border text-foreground hover:border-foreground"
-                }`}
+                href="#contact"
+                className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
               >
-                {tier.cta}
+                Describe your project
               </a>
-            </motion.div>
-          ))}
+            </div>
+          </motion.div>
+
+          <div className="space-y-4">
+            {processItems.map((item, i) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                className="rounded-2xl border border-border bg-card p-6"
+              >
+                <h4 className="font-display text-lg tracking-tight text-foreground">
+                  {item.title}
+                </h4>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  {item.text}
+                </p>
+              </motion.div>
+            ))}
+          </div>
         </div>
 
         <motion.p
@@ -134,10 +102,10 @@ export function Pricing() {
         >
           Every project is different — tell me about yours and get a{" "}
           <a
-            href={`mailto:${email}?subject=${encodeURIComponent("Project inquiry")}`}
+            href="#contact"
             className="underline decoration-primary underline-offset-4 hover:text-foreground"
           >
-            free, no-obligation quote within 48 hours
+            free, no-obligation quote within 24 hours
           </a>
           .
         </motion.p>

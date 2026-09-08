@@ -9,24 +9,26 @@ interface Project {
   label: string
   meta: string
   title: string
-  description: string
+  problem: string
+  built: string
+  capability: string
   image?: string
   imageAlt?: string
   highlights: string[]
-  metrics?: string[]
   links: { label: string; meta: string; href: string; isPrimary?: boolean; fullWidth?: boolean }[]
 }
 
 const projects: Project[] = [
   {
     year: "2025",
-    label: "Featured project",
+    label: "Custom AI System",
     meta: "Next.js · NestJS · pgvector · React Native · Socket.io · Gemini",
     title: "AI Virtual Receptionist",
     image: "/receptionist-hero.png",
     imageAlt: "AI Virtual Receptionist — live chat demo showing a real conversation",
-    description:
-      "A 24/7 receptionist that talks to your customers in real time — books appointments, captures leads, routes to the right department, and hands off to a human the moment it should. Every answer is grounded in your knowledge base, so it never invents anything.",
+    problem: "Businesses lose customers when calls and messages go unanswered during busy hours. Missed calls mean lost bookings.",
+    built: "A 24/7 AI receptionist connected to appointment and lead-capture workflows. Real-time streaming chat, department routing, and human handoff with AI-drafted replies.",
+    capability: "Answers questions, handles booking and reminders, captures leads, and routes to the right team — all grounded in the business's own knowledge base.",
     highlights: [
       "Real-time chat with streaming AI answers",
       "Department routing — sends visitors to the right team",
@@ -34,26 +36,22 @@ const projects: Project[] = [
       "Appointment booking and lead capture",
       "Native Android app",
     ],
-    metrics: [
-      "< 1s first response time",
-      "24/7 uptime with zero manual intervention",
-      "Deployed to production and serving live traffic",
-    ],
     links: [
       { label: "Live demo", meta: "chat.djaouad.tech", href: "https://chat.djaouad.tech", isPrimary: true },
       { label: "GitHub", meta: "github.com/djoudad292/ai-virtual-receptionist", href: "https://github.com/djoudad292/ai-virtual-receptionist" },
-      { label: "Android app", meta: "Download APK", href: "https://github.com/djoudad292/ai-virtual-receptionist/releases/download/latest-apk/ai-receptionist.apk" },
+      { label: "Android app", meta: "Download APK", href: "https://github.com/djoudad292/ai-virtual-receptionist/releases/download/latest-apk-receptionist/ai-receptionist.apk" },
     ],
   },
   {
     year: "2025",
-    label: "Document AI",
+    label: "AI Integration",
     meta: "Next.js · NestJS · pgvector · pdf-parse · OpenRouter · JWT",
     title: "Smart PDF Workspace",
     image: "/pdf-workspace-hero.png",
     imageAlt: "Smart PDF Workspace — ask questions across your PDFs with cited sources",
-    description:
-      "Upload PDFs, ask AI questions about them with cited sources, generate summaries, and publish an embeddable ask-your-docs widget. It turns your documents into the knowledge base that powers your AI products.",
+    problem: "Teams need reliable answers from long business documents — contracts, reports, manuals — but searching manually is slow and unreliable.",
+    built: "A document intelligence system that extracts, chunks, and embeds PDFs into pgvector. RAG-powered Q&A with cited source references and one-click summaries.",
+    capability: "Answers questions with page citations from any uploaded document. Embeddable as a widget or used as a standalone knowledge base.",
     highlights: [
       "Multi-tenant JWT auth with refresh and token revocation",
       "PDF text extraction, chunking, and pgvector similarity search",
@@ -61,26 +59,22 @@ const projects: Project[] = [
       "One-click AI summaries, cached per document",
       "Embeddable ask-your-docs widget plus an Expo mobile app",
     ],
-    metrics: [
-      "Sub-second PDF ingestion and search",
-      "Cost-free: fully self-hosted, zero API spend",
-      "Embeddable widget deployed and live",
-    ],
     links: [
       { label: "Live demo", meta: "docs.djaouad.tech", href: "https://docs.djaouad.tech", isPrimary: true },
       { label: "GitHub", meta: "github.com/djoudad292/smart-pdf-workspace", href: "https://github.com/djoudad292/smart-pdf-workspace" },
-      { label: "Android app", meta: "Download APK", href: "https://github.com/djoudad292/smart-pdf-workspace/releases/download/latest-apk/smart-pdf.apk", fullWidth: true },
+      { label: "Android app", meta: "Download APK", href: "https://github.com/djoudad292/smart-pdf-workspace/releases/download/latest-apk-pdf/smart-pdf.apk", fullWidth: true },
     ],
   },
   {
     year: "2026",
-    label: "Featured project",
+    label: "Custom AI System",
     meta: "Next.js · NestJS · LangGraph · pgvector · OpenAI · TypeScript",
     title: "AI Customer Support Agent",
     image: "/support-agent-hero.png",
     imageAlt: "AI Customer Support Agent — LangGraph-powered hero with live phone mockup",
-    description:
-      "A production-ready AI support agent that handles real customer conversations, creates support tickets, checks order statuses, searches a knowledge base using semantic vector search, and seamlessly escalates to human agents when needed — complete with an admin dashboard showing live conversation analytics and an embeddable widget companies can add to their site with one line of code.",
+    problem: "Customer support teams answer the same questions repeatedly — order status, return policies, product details. Manual handling doesn't scale.",
+    built: "A production-ready AI support agent using LangGraph with tool calling, RAG knowledge base, and human escalation. Admin dashboard with live conversation analytics.",
+    capability: "Handles repeated support questions using company knowledge, creates tickets, checks order status, and escalates to humans when needed — embedded via a one-line widget.",
     highlights: [
       "Multi-turn conversations with context memory",
       "Tool calling — create tickets, check orders, search FAQ",
@@ -89,15 +83,10 @@ const projects: Project[] = [
       "Admin dashboard with live analytics",
       "Embeddable widget for any website",
     ],
-    metrics: [
-      "Production-ready with real-time streaming",
-      "Self-hosted on Vercel + Supabase",
-      "Deployed and serving live traffic",
-    ],
     links: [
       { label: "Live demo", meta: "customer.djaouad.tech", href: "https://customer.djaouad.tech", isPrimary: true },
       { label: "GitHub", meta: "github.com/djoudad292/ai-customer-support-agent", href: "https://github.com/djoudad292/ai-customer-support-agent" },
-      { label: "Android app", meta: "Download APK", href: "https://github.com/djoudad292/ai-customer-support-agent/releases/download/latest-apk/ai-support.apk", fullWidth: true },
+      { label: "Android app", meta: "Download APK", href: "https://github.com/djoudad292/ai-customer-support-agent/releases/download/latest-apk/ai-customer-support.apk", fullWidth: true },
     ],
   },
 ]
@@ -108,9 +97,9 @@ export function Projects() {
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           index="02"
-          label="Selected work"
-          title="Three products, one pipeline."
-          description="The Smart PDF Workspace turns your documents into a searchable knowledge base; the AI Receptionist puts that knowledge to work in real conversations; the AI Support Agent handles customer conversations end-to-end. One feeds the other — build once, talk to customers forever."
+          label="Proof of work"
+          title="Real systems, live in production."
+          description="Each project started with a specific problem and was built end-to-end — from requirements through deployment. These are not demos. They're production systems handling real traffic."
         />
 
         <div className="space-y-12">
@@ -146,22 +135,21 @@ export function Projects() {
                   <h3 className="font-display text-4xl tracking-tight text-foreground sm:text-5xl">
                     {project.title}
                   </h3>
-                  <p className="mt-5 text-pretty leading-relaxed text-muted-foreground">
-                    {project.description}
-                  </p>
 
-                  {project.metrics && (
-                    <div className="mt-5 flex flex-wrap gap-2">
-                      {project.metrics.map((m) => (
-                        <span
-                          key={m}
-                          className="rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-medium text-primary"
-                        >
-                          {m}
-                        </span>
-                      ))}
+                  <div className="mt-6 space-y-4">
+                    <div>
+                      <span className="font-mono text-xs uppercase tracking-[0.2em] text-primary">Problem</span>
+                      <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{project.problem}</p>
                     </div>
-                  )}
+                    <div>
+                      <span className="font-mono text-xs uppercase tracking-[0.2em] text-primary">Built</span>
+                      <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{project.built}</p>
+                    </div>
+                    <div>
+                      <span className="font-mono text-xs uppercase tracking-[0.2em] text-primary">Capability</span>
+                      <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{project.capability}</p>
+                    </div>
+                  </div>
 
                   <div className="mt-8 grid gap-3 sm:grid-cols-3">
                     {project.links.map((link) => (

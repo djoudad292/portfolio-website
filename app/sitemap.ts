@@ -22,6 +22,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${BASE}${p}`,
     lastModified: now,
     changeFrequency: p === "" ? "weekly" : "monthly",
-    priority: p === "" ? 1 : p === "/hire-ai-developer" || p === "/ai-agents" ? 0.9 : p === "/industries" ? 0.8 : 0.7,
+    priority: p === "" ? 1 : p === "/hire-ai-developer" ? 0.9 : p === "/ai-agents" || p === "/industries" ? 0.8 : 0.7,
   }));
 }

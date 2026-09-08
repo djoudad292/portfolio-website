@@ -22,13 +22,13 @@ export const metadata: Metadata = {
       "msvalidate.01": "C51CDA99ED5014CBAB8480F6E66FC408",
     },
   },
-  title: 'Djaouad Frih | Full-Stack AI Engineer — AI Agents, RAG & Product Builds',
+  title: 'Djaouad Frih | AI Developer — Custom AI Systems, Integrations & Full-Stack Builds',
   description:
-    'Full-Stack AI Engineer. This portfolio runs on my own AI agent — ask it about my work, pricing and availability, or hand it your project brief for a fixed quote. Next.js, NestJS, React Native, pgvector.',
+    'I build AI integrations, custom AI systems, and AI-powered products for teams that already know what they need. Fixed-price, milestone-based, production-ready. Tell me what you need built.',
   openGraph: {
-    title: 'Djaouad Frih | Full-Stack AI Engineer',
+    title: 'Djaouad Frih | AI Developer — Custom AI Systems & Full-Stack Builds',
     description:
-      'AI-powered full-stack engineering for high-growth SaaS — scalable, secure, production-ready applications that drive efficiency and revenue. Fixed-price, milestone-based, remote worldwide.',
+      'AI integrations, custom AI systems, and AI-powered products — built end-to-end from requirements through deployment. Fixed-price, milestone-based, remote worldwide.',
     url: 'https://djaouad.tech',
     siteName: 'Djaouad Frih',
     locale: 'en_US',
@@ -38,15 +38,15 @@ export const metadata: Metadata = {
         url: 'https://djaouad.tech/og-image',
         width: 1200,
         height: 630,
-        alt: 'Djaouad Frih — Full-Stack AI Engineer',
+        alt: 'Djaouad Frih — AI Developer',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Djaouad Frih | Full-Stack AI Engineer',
+    title: 'Djaouad Frih | AI Developer — Custom AI Systems & Full-Stack Builds',
     description:
-      'AI-powered full-stack engineering for high-growth SaaS — scalable, secure, production-ready applications that drive revenue.',
+      'AI integrations, custom AI systems, and AI-powered products — fixed-price, milestone-based, production-ready.',
     images: ['https://djaouad.tech/og-image'],
   },
   icons: {
@@ -79,12 +79,12 @@ export default function RootLayout({
               '@context': 'https://schema.org',
               '@type': 'Person',
               name: 'Djaouad Frih',
-              jobTitle: 'Full-Stack AI Engineer',
+              jobTitle: 'AI Developer',
               url: 'https://djaouad.tech',
               email: 'mailto:oufr29@gmail.com',
               telephone: '+213780688125',
               address: { '@type': 'PostalAddress', addressRegion: 'Remote — worldwide' },
-              knowsAbout: ['AI agents', 'RAG', 'LLM integration', 'Model Context Protocol (MCP)', 'Next.js', 'NestJS', 'React Native', 'PostgreSQL', 'pgvector'],
+              knowsAbout: ['AI integration', 'custom AI development', 'AI agent development', 'RAG', 'LLM integration', 'Next.js', 'NestJS', 'React Native', 'PostgreSQL', 'pgvector'],
               sameAs: [
                 'https://github.com/djoudad292',
                 'https://linkedin.com/in/djaouad-frih-16ab7323a',
@@ -92,7 +92,6 @@ export default function RootLayout({
             }),
           }}
         />
-        {/* Cloudflare Web Analytics */}
         <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "9320c98188e747f0ad98120cbbba7351"}' />
       </body>
     </html>

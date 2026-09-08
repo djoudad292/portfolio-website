@@ -9,6 +9,7 @@ const testimonials = [
       "Great people, very good service. Made my website within 2 weeks in such a professional manner, very good communication skills would highly recommend!!",
     name: "Bilal Kadri",
     country: "United Kingdom",
+    context: "Website build — 2-week delivery",
     reviewUrl: "https://www.facebook.com/share/r/18MiUF32rd/",
     profileUrl: "https://www.facebook.com/share/19Qx9MsT6b/",
     indent: false,
@@ -18,6 +19,7 @@ const testimonials = [
       "Huge shout-out to djaouad! 🙌 Complete, fully functional full-stack build delivered right on schedule. That's how it's done! 💥 Star developer right here. ⭐",
     name: "Muhhamet Novruzov",
     country: "Cyprus",
+    context: "Full-stack product build — delivered on schedule",
     reviewUrl: "https://www.facebook.com/share/r/18MiUF32rd/",
     profileUrl: "https://www.facebook.com/share/1JTbdKi3oe/",
     indent: true,
@@ -28,7 +30,7 @@ export function Testimonials() {
   return (
     <section id="testimonials" className="px-6 py-24 lg:py-32">
       <div className="mx-auto max-w-4xl">
-        <SectionHeading index="05" label="Testimonials" title="What clients said." />
+        <SectionHeading index="06" label="Client feedback" title="What clients said." />
 
         <div className="space-y-14">
           {testimonials.map((t) => (
@@ -41,12 +43,14 @@ export function Testimonials() {
               className={`border-l-4 border-primary pl-6 sm:pl-8 ${t.indent ? "lg:ml-24" : ""}`}
             >
               <p className="font-display text-2xl leading-snug text-foreground sm:text-3xl">
-                “{t.quote}”
+                &ldquo;{t.quote}&rdquo;
               </p>
               <footer className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-sm text-muted-foreground">
                 <cite className="font-medium not-italic text-foreground">{t.name}</cite>
                 <span aria-hidden>·</span>
                 <span>{t.country}</span>
+                <span aria-hidden>·</span>
+                <span>{t.context}</span>
                 <span aria-hidden>·</span>
                 <a
                   href={t.reviewUrl}
@@ -55,14 +59,6 @@ export function Testimonials() {
                   className="text-primary underline-offset-4 hover:underline"
                 >
                   Read on Facebook
-                </a>
-                <a
-                  href={t.profileUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline-offset-4 hover:underline"
-                >
-                  profile
                 </a>
               </footer>
             </motion.blockquote>

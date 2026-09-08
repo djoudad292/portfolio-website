@@ -48,7 +48,7 @@ export function FloatingAI() {
     const deliver = () => {
       try { ws.send(payload) } catch {
         setThinking(false)
-        setMessages((m) => [...m, { role: "agent", text: "I’m offline right now — book a free call and I’ll reply within an hour.", done: true }])
+        setMessages((m) => [...m, { role: "agent", text: "I'm offline right now — book a call and I'll reply within an hour.", done: true }])
       }
     }
 
@@ -78,7 +78,7 @@ export function FloatingAI() {
     ws.onerror = () => {
       if (!settled) {
         setThinking(false)
-        setMessages((m) => [...m, { role: "agent", text: "I’m offline right now — book a free call and I’ll reply within an hour.", done: true }])
+        setMessages((m) => [...m, { role: "agent", text: "I'm offline right now — book a call and I'll reply within an hour.", done: true }])
       }
     }
   }
@@ -113,7 +113,7 @@ export function FloatingAI() {
           <div ref={listRef} className="flex-1 space-y-3 overflow-y-auto p-4">
             {messages.length === 0 && (
               <div className="space-y-2 pt-6 text-center">
-                <p className="text-sm text-muted-foreground">Ask about my work, prices or availability.</p>
+                <p className="text-sm text-muted-foreground">Ask about my work, pricing, or availability.</p>
                 <div className="flex flex-wrap justify-center gap-2 pt-2">
                   {["What do you build?", "Pricing?", "Available when?"].map((q) => (
                     <button key={q} onClick={() => send(q)}
@@ -155,7 +155,7 @@ export function FloatingAI() {
             </button>
           </form>
           <p className="px-3 pb-2.5 text-center font-mono text-[10px] text-muted-foreground">
-            Prefer a call? <a href="https://calendly.com/oufr29/30min?utm_source=floating-ai&utm_medium=chat" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Book free call</a>
+            Prefer a call? <a href="https://calendly.com/oufr29/30min?utm_source=floating-ai&utm_medium=chat" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Book a call</a>
           </p>
         </div>
       )}
