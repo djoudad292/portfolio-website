@@ -4,7 +4,7 @@ export const email = "oufr29@gmail.com"
 
 export const socials = [
   { label: "GitHub", href: "https://github.com/djoudad292" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/djaouad-frih-16ab7323a" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/djaouad-frih" },
   { label: "Facebook", href: "https://www.facebook.com/share/1849VngCuR/" },
   { label: "WhatsApp", href: whatsappHref },
   { label: "Email", href: `mailto:${email}` },

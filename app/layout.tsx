@@ -87,7 +87,7 @@ export default function RootLayout({
               knowsAbout: ['AI integration', 'custom AI development', 'AI agent development', 'RAG', 'LLM integration', 'Next.js', 'NestJS', 'React Native', 'PostgreSQL', 'pgvector'],
               sameAs: [
                 'https://github.com/djoudad292',
-                'https://linkedin.com/in/djaouad-frih-16ab7323a',
+                'https://linkedin.com/in/djaouad-frih',
               ],
             }),
           }}

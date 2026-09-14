@@ -149,4 +149,4 @@ export const BUILD_STACK = [
 
 
 export const GITHUB = "https://github.com/djoudad292"
-export const LINKEDIN = "https://linkedin.com/in/djaouad-frih-16ab7323a"
+export const LINKEDIN = "https://linkedin.com/in/djaouad-frih"

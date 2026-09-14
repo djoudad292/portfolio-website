@@ -15,7 +15,7 @@ const CHAPTERS = [
 
 const CALENDLY_URL = "https://calendly.com/oufr29/30min"
 const GITHUB = "https://github.com/djoudad292"
-const LINKEDIN = "https://linkedin.com/in/djaouad-frih-16ab7323a"
+const LINKEDIN = "https://linkedin.com/in/djaouad-frih"
 
 export function Rail() {
   const [active, setActive] = useState("services")
