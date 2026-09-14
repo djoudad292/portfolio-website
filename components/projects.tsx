@@ -35,6 +35,7 @@ const projects: Project[] = [
       "Human takeover with an AI-drafted reply for your team",
       "Appointment booking and lead capture",
       "Native Android app",
+      "Outcome: live demo verified HTTP 200 — web dashboard, Android app, and widget off one backend",
     ],
     links: [
       { label: "Live demo", meta: "chat.djaouad.tech", href: "https://chat.djaouad.tech", isPrimary: true },
@@ -58,6 +59,7 @@ const projects: Project[] = [
       "RAG answers with cited sources shown",
       "One-click AI summaries, cached per document",
       "Embeddable ask-your-docs widget plus an Expo mobile app",
+      "Outcome: live demo verified HTTP 200 — page-cited answers over user-uploaded PDFs",
     ],
     links: [
       { label: "Live demo", meta: "docs.djaouad.tech", href: "https://docs.djaouad.tech", isPrimary: true },
@@ -82,11 +84,32 @@ const projects: Project[] = [
       "Human escalation with full conversation context",
       "Admin dashboard with live analytics",
       "Embeddable widget for any website",
+      "Outcome: live demo verified HTTP 200 — web, widget, and Android APK off one backend",
     ],
     links: [
       { label: "Live demo", meta: "customer.djaouad.tech", href: "https://customer.djaouad.tech", isPrimary: true },
       { label: "GitHub", meta: "github.com/djoudad292/ai-customer-support-agent", href: "https://github.com/djoudad292/ai-customer-support-agent" },
       { label: "Android app", meta: "Download APK", href: "https://github.com/djoudad292/ai-customer-support-agent/releases/download/latest-apk/ai-customer-support.apk", fullWidth: true },
+    ],
+  },
+  {
+    year: "2026",
+    label: "Agent Interface",
+    meta: "Express · Model Context Protocol · Next.js · Expo · Render",
+    title: "HireMe MCP Server",
+    problem: "Founders and recruiters delegate vetting to AI agents — but portfolios are unreadable to agents.",
+    built: "An open MCP server exposing real profile, shipped projects, fixed pricing, and a project-brief intake — so Claude, Cursor, or ChatGPT can vet the work and file a brief. The server is itself the demo.",
+    capability: "5 tools: get_profile, search_projects, get_pricing, get_next_slot, submit_project_brief (rate-limited, persisted + emailed). Same handlers over REST + embeddable widget + Expo app.",
+    highlights: [
+      "MCP endpoint live: mcp.djaouad.tech/mcp — one-paste client config",
+      "Write tool with abuse controls: per-IP rate limit, persisted briefs, email notify",
+      "Console with live playground + connection configs",
+      "Outcome: agent-to-agent hiring loop working end to end",
+    ],
+    links: [
+      { label: "Live demo", meta: "mcp.djaouad.tech", href: "https://mcp.djaouad.tech", isPrimary: true },
+      { label: "GitHub", meta: "github.com/djoudad292/hireme-mcp", href: "https://github.com/djoudad292/hireme-mcp" },
+      { label: "Android app", meta: "Download APK", href: "https://github.com/djoudad292/hireme-mcp/releases/download/latest-apk/hireme-mcp.apk", fullWidth: true },
     ],
   },
 ]

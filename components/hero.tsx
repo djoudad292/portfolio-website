@@ -13,7 +13,7 @@ export function Hero() {
           transition={{ duration: 0.5 }}
           className="mb-8 font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground"
         >
-          AI &amp; full-stack developer
+          AI &amp; full-stack developer — rescue, internal tools, integrations
         </motion.p>
 
         <motion.h1
@@ -22,8 +22,8 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.05 }}
           className="max-w-4xl font-display text-[3rem] font-normal leading-[1.02] tracking-tight text-foreground sm:text-7xl lg:text-[5.5rem]"
         >
-          Build the AI system you{" "}
-          <em className="text-primary">already have in mind.</em>
+          Stalled app, spreadsheet chaos,{" "}
+          <em className="text-primary">systems that don&apos;t talk?</em>
         </motion.h1>
 
         <motion.p
@@ -32,10 +32,10 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.15 }}
           className="mt-7 max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground"
         >
-          I&apos;m Djaouad — an AI developer for teams that already know what they
-          need built. AI integrations, custom systems, AI-powered products — from
-          requirements through deployment. Fixed-price, milestone-based, remote
-          worldwide.
+          I&apos;m Djaouad — I take over existing web and mobile codebases,
+          replace spreadsheet-driven ops with internal tools your team
+          actually uses, and connect the systems that don&apos;t talk to each
+          other. Fixed-price, milestone-based, remote worldwide.
         </motion.p>
 
         <motion.p
@@ -44,9 +44,9 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mt-3 max-w-2xl font-mono text-sm text-muted-foreground"
         >
-          Already have requirements?{" "}
+          Developer gone quiet? Something half-built?{" "}
           <a href="#project-intake" className="text-primary hover:underline">
-            Skip the sales pitch and tell me what you&apos;re building.
+            Skip the sales pitch and show me what&apos;s stuck.
           </a>
         </motion.p>
 
@@ -60,7 +60,7 @@ export function Hero() {
             href="#project-intake"
             className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
           >
-            Describe your project
+            Describe what&apos;s stuck
             <ArrowUpRight className="h-4 w-4" />
           </a>
           <a

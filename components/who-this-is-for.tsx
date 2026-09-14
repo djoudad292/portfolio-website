@@ -6,20 +6,20 @@ import { Check } from "lucide-react"
 
 const criteria = [
   {
-    title: "You already know what you want built",
-    description: "You have a clear idea, requirements, or a workflow that needs AI. You don't need someone to discover the problem — you need someone to solve it.",
+    title: "Something already exists — and it's stuck",
+    description: "A half-built app, a developer who went quiet, a system nobody can change. You don't need a fresh start — you need someone who can read what's there and finish it.",
   },
   {
-    title: "You have an existing product or workflow",
-    description: "There's already something running — an app, a process, a system. You want AI integrated into it, not a rewrite from scratch.",
+    title: "Your team runs on spreadsheets and manual work",
+    description: "Copy-paste Mondays, five tools that don't talk, reports built by hand. You want one reliable tool instead — built around your data and your rules.",
   },
   {
     title: "You need custom implementation",
     description: "Off-the-shelf tools don't fit. You need something built around your data, your rules, your stack — not a generic template.",
   },
   {
-    title: "You need someone who handles both AI and full-stack",
-    description: "The project spans AI model integration, backend APIs, databases, auth, and deployment. You need one person who can own the full scope.",
+    title: "You need one person who owns the whole fix",
+    description: "Codebase, APIs, database, deployment — plus the AI layer where it pays. One person who reads the mess, ranks the fixes, and ships them.",
   },
 ]
 

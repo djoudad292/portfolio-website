@@ -1,29 +1,29 @@
 import { SectionHeading } from "@/components/section-heading"
-import { Bot, FileSearch, Layers, Smartphone } from "lucide-react"
+import { Bot, LayoutDashboard, Plug, Smartphone } from "lucide-react"
 
 const services = [
   {
+    icon: Plug,
+    title: "Rescue & takeover",
+    text: "Developer gone? Half-built app? I take over your existing web or mobile codebase, stabilize it, and ship what is missing — starting with a written read of what exists and what it costs to fix.",
+    price: "Fixed quote",
+  },
+  {
+    icon: LayoutDashboard,
+    title: "Internal tools & dashboards",
+    text: "Replace spreadsheet chaos with tools your team actually uses — admin panels, operational dashboards, approval flows on your own live data. No per-seat tax, you own the code.",
+    price: "From $500",
+  },
+  {
     icon: Bot,
-    title: "AI agents & chatbots",
-    text: "Customer-facing agents trained on your own content — they answer, book, qualify leads, and hand off to humans when it matters. Never invent answers.",
-    price: "From $500",
-  },
-  {
-    icon: FileSearch,
-    title: "Document intelligence (RAG)",
-    text: "Your PDFs and docs become a cited, searchable knowledge base — for your team or embedded into your product as an ask-your-docs widget.",
-    price: "From $500",
-  },
-  {
-    icon: Layers,
-    title: "Full-stack SaaS builds",
-    text: "Multi-tenant products end-to-end: auth, payments, dashboards, real-time features. Next.js + NestJS + PostgreSQL, deployed and handed over.",
+    title: "System integrations + AI layer",
+    text: "Connect the tools that don't talk — APIs, CRMs, payments, data sync — then add AI where it pays: cited answers from your docs, lead capture, and handoff to humans when it matters.",
     price: "Fixed quote",
   },
   {
     icon: Smartphone,
-    title: "Mobile apps",
-    text: "One React Native codebase shipped to both app stores — connected to your backend, push-ready, built to update fast.",
+    title: "Mobile rescue & builds",
+    text: "Finish a stalled React Native app or build once for both stores — connected to your backend, store submission handled, with post-release support.",
     price: "Fixed quote",
   },
 ]
