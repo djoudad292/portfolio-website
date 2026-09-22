@@ -8,8 +8,8 @@ const sections = [
   ["What is never collected", "No payment card data on this site (payments happen via agreed invoices). No sensitive personal data through chat agents. No selling or renting your data — ever."],
   ["How data is used", "Exclusively to respond to inquiries, deliver contracted work, and send project updates. Occasional follow-up emails are sent per legitimate business interest and stop immediately on request."],
   ["Third parties", "Hosting: Vercel, Render. Database: Neon/PostgreSQL. Email: Gmail. AI processing: model providers (Google Gemini, OpenAI) under their enterprise data terms. Each processes data under its own privacy policy."],
-  ["Your rights", "Email oufr29@gmail.com at any time to access, correct or delete your data. Requests are honored within 72 hours."],
-  ["Contact", "Djaouad Frih — oufr29@gmail.com — WhatsApp +213 78 06 88 125"],
+  ["Your rights", "Email contact@djaouad.is-a.dev at any time to access, correct or delete your data. Requests are honored within 72 hours."],
+  ["Contact", "Djaouad Frih — contact@djaouad.is-a.dev — WhatsApp +213 78 06 88 125"],
 ];
 
 export default function Privacy() {
