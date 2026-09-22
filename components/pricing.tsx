@@ -3,7 +3,6 @@
 import { motion } from "framer-motion"
 import { SectionHeading } from "./section-heading"
 import { Check } from "lucide-react"
-import { email } from "@/lib/socials"
 
 const processItems = [
   {

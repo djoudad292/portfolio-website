@@ -81,8 +81,8 @@ export default function CVPage() {
 
           <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 font-mono text-xs text-muted-foreground">
             <span className="inline-flex items-center gap-2"><MapPin className="h-3.5 w-3.5 text-primary" />Mascara, Algeria</span>
-            <a href="mailto:djaouad.frih@gmail.com" className="inline-flex items-center gap-2 transition-colors hover:text-foreground"><Mail className="h-3.5 w-3.5 text-primary" />djaouad.frih@gmail.com</a>
-            <a href="tel:+213780688125" className="inline-flex items-center gap-2 transition-colors hover:text-foreground"><Phone className="h-3.5 w-3.5 text-primary" />+213 780 688 125</a>
+            <a href="mailto:oufr29@gmail.com" className="inline-flex items-center gap-2 transition-colors hover:text-foreground"><Mail className="h-3.5 w-3.5 text-primary" />oufr29@gmail.com</a>
+            <a href="tel:+213780688125" className="inline-flex items-center gap-2 transition-colors hover:text-foreground"><Phone className="h-3.5 w-3.5 text-primary" />+213 78 06 88 125</a>
             <a href="https://github.com/djoudad292" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 transition-colors hover:text-foreground"><Github className="h-3.5 w-3.5 text-primary" />github.com/djoudad292</a>
             <a href="https://www.linkedin.com/in/djaouad-frih" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 transition-colors hover:text-foreground"><Linkedin className="h-3.5 w-3.5 text-primary" />linkedin.com/in/djaouad-frih</a>
             <a href="https://djaouad.tech" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 transition-colors hover:text-foreground"><ArrowUpRight className="h-3.5 w-3.5 text-primary" />djaouad.tech</a>

@@ -5,32 +5,6 @@ export const metadata: Metadata = { title: "Live AI Agent Demo — djaouad.tech"
 
 export const runtime = "nodejs";
 
-type LeadRow = { slug: string; company: string; site: string };
-
-let pool: ReturnType<typeof import("pg").Pool> | null = null;
-function db() {
-  if (!process.env.DATABASE_URL) return null;
-  if (!pool) {
-    const { Pool } = require("pg");
-    pool = new Pool({ connectionString: process.env.DATABASE_URL, max: 3 });
-  }
-  return pool;
-}
-
-async function findLead(slug: string): Promise<LeadRow | null> {
-  const conn = db();
-  if (!conn) return null;
-  try {
-    const res = await conn.query(
-      "SELECT slug, company, site FROM chat_leads WHERE slug = $1",
-      [slug]
-    );
-    return (res.rows[0] as LeadRow) ?? null;
-  } catch {
-    return null;
-  }
-}
-
 export default async function TalkPage({
   searchParams,
 }: {
@@ -43,7 +17,9 @@ export default async function TalkPage({
     let host = sp.s;
     try {
       host = new URL(sp.s).host;
-    } catch {}
+    } catch {
+      // ignore — malformed URL
+    }
     return <TalkAgent lead={sp.l} site={sp.s} company={sp.c || host} />;
   }
 

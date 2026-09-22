@@ -1,26 +1,62 @@
 import { NextRequest } from "next/server";
 import { trackEvent } from "@/lib/track";
 
+type Chunk = { url: string; text: string };
+type SiteCache = { host: string; chunks: Chunk[]; fetchedAt: number; pages: number };
+const siteCache = new Map<string, SiteCache>();
+const SITE_TTL_MS = 1000 * 60 * 30;
+
 export const runtime = "nodejs";
 export const maxDuration = 45;
 
 const ALLOWED_HOSTS = new Set([
   "https://djaouad.tech",
   "https://www.djaouad.tech",
-  "https://mail.google.com",
-  "https://mail.yahoo.com",
-  "https://outlook.live.com",
-  "https://outlook.office.com",
 ]);
 
-type Chunk = { url: string; text: string };
-type SiteCache = { host: string; chunks: Chunk[]; fetchedAt: number; pages: number };
-const siteCache = new Map<string, SiteCache>();
-const SITE_TTL_MS = 1000 * 60 * 30;
+const BLOCKED_PATTERNS = [
+  /169\.254\.\d{1,3}\.\d{1,3}/,
+  /100\.64\.\d{1,3}\.\d{1,3}/,
+  /^127\./,
+  /^0\./,
+];
+
+const RATE_LIMIT_MAX = 10;
+const RATE_LIMIT_WINDOW_MS = 60_000;
+const rateLimitStore = new Map<string, number[]>();
+
+function checkRateLimit(ip: string): { allowed: boolean; remaining: number } {
+  const now = Date.now();
+  const timestamps = rateLimitStore.get(ip) ?? [];
+  const windowStart = now - RATE_LIMIT_WINDOW_MS;
+  const recent = timestamps.filter((t) => t > windowStart);
+  recent.push(now);
+  rateLimitStore.set(ip, recent);
+  if (recent.length > RATE_LIMIT_MAX) {
+    return { allowed: false, remaining: 0 };
+  }
+  return { allowed: true, remaining: RATE_LIMIT_MAX - recent.length };
+}
+
+function isBlockedUrl(url: string): boolean {
+  let parsed: URL;
+  try {
+    parsed = new URL(url);
+  } catch {
+    return true;
+  }
+  const host = parsed.hostname;
+  if (host === "localhost" || host === "127.0.0.1") return true;
+  for (const pattern of BLOCKED_PATTERNS) {
+    if (pattern.test(host)) return true;
+  }
+  if (/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/.test(host)) return true;
+  return false;
+}
 
 function cors(origin: string | null, sourceOrigin: string | null): Record<string, string> {
   const headers: Record<string, string> = {
-    "Access-Control-Allow-Origin": origin && ALLOWED_HOSTS.has(origin) ? origin : "*",
+    "Access-Control-Allow-Origin": origin && ALLOWED_HOSTS.has(origin) ? origin : "https://djaouad.tech",
     "Access-Control-Allow-Headers": "Content-Type",
     "Access-Control-Allow-Methods": "POST, OPTIONS",
     "Cache-Control": "no-store",
@@ -112,7 +148,9 @@ async function ensureSite(siteUrl: string): Promise<SiteCache | null> {
       if (!e) continue;
       chunks.push(...chunkText(e.t).map((text) => ({ url: e.abs, text })));
     }
-  } catch {}
+  } catch {
+    // ignore — depth crawl is best-effort
+  }
 
   const cacheEntry: SiteCache = { host: parsed.host, chunks, fetchedAt: Date.now(), pages: chunks.length ? 1 + Math.min(4, Math.floor(chunks.length / 8)) : 1 };
   siteCache.set(key, cacheEntry);
@@ -143,7 +181,7 @@ async function reason(host: string, question: string, context: Chunk[]): Promise
   const model = process.env.LLM_MODEL || "gemini-2.5-flash";
   if (!apiKey) {
     // Extractive fallback so the demo never dead-ends
-    const best = context.slice(0, 2).map((c) => `“${c.text.slice(0, 220)}…”`).join("\n");
+    const best = context.slice(0, 2).map((c) => `${c.text.slice(0, 220)}…`).join("\n");
     return {
       answer: `Here's what ${host} says that's most relevant:\n${best}`,
       provider: "extractive",
@@ -186,6 +224,17 @@ export async function POST(req: NextRequest) {
   const url = new URL(req.url);
   const headers = cors(req.headers.get("origin"), url.searchParams.get("__amp_source_origin"));
   try {
+    const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim()
+      || req.headers.get("x-real-ip")
+      || "unknown";
+    const rate = checkRateLimit(ip);
+    if (!rate.allowed) {
+      return Response.json(
+        { error: "Too many requests. Try again in a moment." },
+        { status: 429, headers: { ...headers, "Retry-After": "60" } }
+      );
+    }
+
     const body = await req.json().catch(() => ({}));
     const question = typeof body?.question === "string" ? body.question.slice(0, 500) : "";
     const lead = typeof body?.l === "string" ? body.l : url.searchParams.get("l") ?? "unknown";
@@ -193,6 +242,13 @@ export async function POST(req: NextRequest) {
 
     if (!question.trim()) {
       return Response.json({ error: "Type a question first." }, { status: 400, headers });
+    }
+
+    if (!site || isBlockedUrl(site)) {
+      return Response.json(
+        { error: "Invalid site URL." },
+        { status: 400, headers }
+      );
     }
 
     const siteCacheEntry = await ensureSite(site);
@@ -205,7 +261,6 @@ export async function POST(req: NextRequest) {
 
     const top = rankChunks(siteCacheEntry.chunks, question);
     const trace = [
-      `Browsed ${siteCacheEntry.host} (${siteCacheEntry.pages}+ pages)`,
       `Matched ${top.length} relevant sections`,
     ];
 
@@ -215,18 +270,20 @@ export async function POST(req: NextRequest) {
       answer = r.answer;
       trace.push(`Reasoned via ${r.provider}`);
     } catch {
-      const best = top[0];
-      answer = `From ${siteCacheEntry.host}: “${best.text.slice(0, 260)}…”`;
+      answer = `I'm not sure based on what I can see — would you like me to connect you with the team?`;
       trace.push("LLM busy — returned direct excerpt");
     }
 
     await trackEvent({ lead, kind: "chat", link: "in-email-agent-test", target: question.slice(0, 200) });
 
-    return Response.json({ answer, trace, sources: [...new Set(top.map((c) => c.url))].slice(0, 3) }, { headers });
+    return Response.json(
+      { answer, trace, sources: [...new Set(top.map((c) => c.url))].slice(0, 3) },
+      { headers: { ...headers, "X-RateLimit-Remaining": String(rate.remaining) } }
+    );
   } catch {
     return Response.json(
-      { error: "The agent is warming up — try again in a moment, or use the buttons below." },
-      { status: 502, headers }
+      { error: "Something went wrong. Please try again." },
+      { status: 500, headers }
     );
   }
 }

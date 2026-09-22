@@ -20,7 +20,7 @@ function getPool(): Pool | null {
 
 export type TrackEvent = {
   lead: string;
-  kind: "open" | "click";
+  kind: "open" | "click" | "chat";
   link?: string | null;
   target?: string | null;
   ua?: string | null;
@@ -51,6 +51,6 @@ export async function trackEvent(ev: TrackEvent): Promise<boolean> {
     console.error(JSON.stringify({ evt: "track_error", error: String(err), lead: ev.lead }));
   }
   // Always log to stdout so events are visible in Vercel logs even without DATABASE_URL
-  console.log(JSON.stringify({ evt: ev.kind, lead: ev.lead, link: ev.link, ts: Date.now() }));
+  console.log(JSON.stringify({ evt: ev.kind, link: ev.link, ts: Date.now() }));
   return true;
 }

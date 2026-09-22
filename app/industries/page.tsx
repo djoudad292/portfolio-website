@@ -56,12 +56,10 @@ export default function IndustriesPage() {
           <p className="mt-2 text-sm text-muted-foreground">
             Tell me what you need built. I&apos;ll review the scope and send a fixed quote.
           </p>
-          <a
-            href="/#contact"
-            className="mt-6 inline-flex items-center rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
-          >
+          <Link href="/#contact"
+            className="mt-6 inline-flex items-center rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90">
             Describe your project
-          </a>
+          </Link>
         </div>
       </div>
     </main>
