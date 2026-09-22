@@ -10,9 +10,9 @@ import { Contact } from "@/components/contact"
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Djaouad Frih | AI Developer — Build the AI System You Already Have in Mind",
+  title: "Djaouad Frih — I Finish & Fix Business Software: Rescue, Internal Tools, Integrations",
   description:
-    "I build AI integrations, custom AI systems, and AI-powered products for teams that already know what they need. Fixed-price, milestone-based, production-ready. Tell me what you need built.",
+    "Stalled app? Developer gone? Spreadsheet chaos? I take over existing web/mobile codebases, replace manual ops with internal tools, and connect systems that don't talk. Fixed-price, milestone-based. Show me what's stuck.",
 };
 
 export default function Home() {

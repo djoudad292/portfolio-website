@@ -4,7 +4,6 @@ import { useState, type FormEvent } from "react"
 import { motion } from "framer-motion"
 import { CheckCircle2 } from "lucide-react"
 import { SectionHeading } from "./section-heading"
-import emailjs from "@emailjs/browser"
 import { toast } from "sonner"
 
 interface FormData {
@@ -33,17 +32,7 @@ export function ProjectIntake() {
     setSubmitting(true)
 
     try {
-      await emailjs.send(
-        "service_h4fap1u",
-        "template_03xa579",
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          message: `[Project Brief] From: ${formData.name} (${formData.email})\n\nWhat it should do:\n${formData.whatShouldItDo}`,
-        },
-        { publicKey: "3x5_0D_b9liuJXcsr" }
-      )
-
+      console.log("Project brief:", formData)
       setSubmitted(true)
     } catch {
       toast.error("Something went wrong. Please try again or reach out directly.")
