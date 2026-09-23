@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { Sparkles } from "lucide-react"
+import { Sparkles, Mail, Github, Linkedin, ArrowUpRight } from "lucide-react"
 
 const CHAPTERS = [
   { id: "services", num: "01", label: "What I do" },
@@ -14,6 +14,13 @@ const CHAPTERS = [
 
 const GITHUB = "https://github.com/djoudad292"
 const LINKEDIN = "https://linkedin.com/in/djaouad-frih"
+const EMAIL = "contact@djaouad.is-a.dev"
+
+const contactLinks = [
+  { label: EMAIL, href: `mailto:${EMAIL}`, icon: Mail },
+  { label: "GitHub", href: GITHUB, icon: Github },
+  { label: "LinkedIn", href: LINKEDIN, icon: Linkedin },
+]
 
 export function Rail() {
   const [active, setActive] = useState("services")
@@ -94,14 +101,24 @@ export function Rail() {
           Booking projects — starts within days
         </p>
 
-        <div className="mt-5 flex items-center gap-4 text-xs text-muted-foreground">
-          <a href={GITHUB} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-foreground">
-            GitHub
-          </a>
-          <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-foreground">
-            LinkedIn
-          </a>
-        </div>
+        <ul className="mt-5 flex flex-col gap-3">
+          {contactLinks.map((link) => (
+            <li key={link.label}>
+              <a
+                href={link.href}
+                target={link.href.startsWith("mailto:") ? undefined : "_blank"}
+                rel={link.href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+                className="inline-flex items-center justify-between gap-4 rounded-xl border border-border px-4 py-2.5 text-xs text-muted-foreground transition-colors hover:border-primary hover:text-foreground"
+              >
+                <span className="inline-flex items-center gap-2">
+                  <link.icon className="h-3.5 w-3.5 text-primary" />
+                  {link.label}
+                </span>
+                <ArrowUpRight className="h-3.5 w-3.5 text-muted-foreground" />
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   )

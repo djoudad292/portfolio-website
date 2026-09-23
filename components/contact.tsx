@@ -1,15 +1,14 @@
 "use client"
 
-import { type ComponentType } from "react"
 import { SectionHeading } from "./section-heading"
 import { Mail, Github, Linkedin, ArrowUpRight } from "lucide-react"
 import { socials, email } from "@/lib/socials"
 
-const iconFor: Record<string, ComponentType<{ className?: string }>> = {
-  GitHub: Github,
-  LinkedIn: Linkedin,
-  Email: Mail,
-}
+const contactLinks = [
+  { label: email, href: `mailto:${email}`, icon: Mail },
+  { label: "GitHub", href: socials.find(s => s.label === "GitHub")?.href || "https://github.com/djoudad292", icon: Github },
+  { label: "LinkedIn", href: socials.find(s => s.label === "LinkedIn")?.href || "https://www.linkedin.com/in/djaouad-frih", icon: Linkedin },
+]
 
 export function Contact() {
   return (
@@ -22,33 +21,21 @@ export function Contact() {
           </p>
 
           <div className="mt-8 grid max-w-md gap-3">
-            <a
-              href={`mailto:${email}`}
-              className="flex items-center justify-between rounded-xl border border-border bg-background px-5 py-3.5 text-sm transition-colors hover:border-primary"
-            >
-              {email} <ArrowUpRight className="h-4 w-4 text-muted-foreground" />
-            </a>
-          </div>
-
-          <p className="mb-3 mt-10 font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground">
-            Elsewhere
-          </p>
-          <div className="flex flex-wrap gap-3">
-            {socials.map((social) => {
-              const Icon = iconFor[social.label] ?? ArrowUpRight
-              return (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-primary hover:text-primary"
-                >
-                  <Icon className="h-4 w-4" />
-                  {social.label}
-                </a>
-              )
-            })}
+            {contactLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                target={link.href.startsWith("mailto:") ? undefined : "_blank"}
+                rel={link.href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+                className="flex items-center justify-between rounded-xl border border-border bg-background px-5 py-3.5 text-sm transition-colors hover:border-primary"
+              >
+                <span className="inline-flex items-center gap-2">
+                  <link.icon className="h-4 w-4 text-muted-foreground" />
+                  {link.label}
+                </span>
+                <ArrowUpRight className="h-4 w-4 text-muted-foreground" />
+              </a>
+            ))}
           </div>
         </div>
       </div>

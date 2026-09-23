@@ -1,12 +1,11 @@
-import type { ComponentType } from "react"
 import { Github, Linkedin, Mail, ArrowUpRight } from "lucide-react"
-import { socials } from "@/lib/socials"
+import { socials, email } from "@/lib/socials"
 
-const iconFor: Record<string, ComponentType<{ className?: string }>> = {
-  GitHub: Github,
-  LinkedIn: Linkedin,
-  Email: Mail,
-}
+const contactLinks = [
+  { label: email, href: `mailto:${email}`, icon: Mail },
+  { label: "GitHub", href: socials.find(s => s.label === "GitHub")?.href || "https://github.com/djoudad292", icon: Github },
+  { label: "LinkedIn", href: socials.find(s => s.label === "LinkedIn")?.href || "https://www.linkedin.com/in/djaouad-frih", icon: Linkedin },
+]
 
 export function Footer() {
   return (
@@ -22,23 +21,23 @@ export function Footer() {
             </p>
           </div>
 
-          <ul className="flex flex-wrap gap-x-6 gap-y-3">
-            {socials.map((social) => {
-              const Icon = iconFor[social.label] ?? ArrowUpRight
-              return (
-                <li key={social.label}>
-                  <a
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-sm text-background/80 transition-colors hover:text-primary"
-                  >
-                    <Icon className="h-4 w-4" />
-                    {social.label}
-                  </a>
-                </li>
-              )
-            })}
+          <ul className="flex flex-col gap-3">
+            {contactLinks.map((link) => (
+              <li key={link.label}>
+                <a
+                  href={link.href}
+                  target={link.href.startsWith("mailto:") ? undefined : "_blank"}
+                  rel={link.href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+                  className="inline-flex items-center justify-between gap-4 rounded-xl border border-background/20 px-4 py-2.5 text-sm text-background/80 transition-colors hover:border-primary hover:text-primary"
+                >
+                  <span className="inline-flex items-center gap-2">
+                    <link.icon className="h-4 w-4 text-primary" />
+                    {link.label}
+                  </span>
+                  <ArrowUpRight className="h-4 w-4 text-muted-foreground" />
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
 
@@ -46,7 +45,7 @@ export function Footer() {
           <p>&copy; 2026 Djaouad Frih — AI Developer</p>
           <div className="flex items-center gap-5">
             <a href="/cv" className="transition-colors hover:text-primary">CV</a>
-            <p>Built with Next.js &amp; deployed to production.</p>
+            <p>Built with Next.js & deployed to production.</p>
           </div>
         </div>
       </div>

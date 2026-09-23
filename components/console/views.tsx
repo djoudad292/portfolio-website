@@ -9,6 +9,8 @@ import {
   Download,
   ExternalLink,
   Github,
+  Linkedin,
+  Mail,
 } from "lucide-react"
 import {
   BUILD_STACK,
@@ -674,24 +676,28 @@ export function TermsView() {
           Tell me what you&apos;re trying to build — a business problem, an AI feature, a full product.
           I&apos;ll reply with a fixed quote and timeline within 24 hours.
         </p>
-        <div className="mt-5 grid gap-3 sm:grid-cols-2">
-          <a
-            href={`mailto:${EMAIL}`}
-            className="flex items-center justify-between rounded-2xl bg-primary px-5 py-4 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
-          >
-            Email me <ArrowUpRight className="h-4 w-4" />
-          </a>
-          <a
-            href={`mailto:${EMAIL}`}
-            className="flex items-center justify-between rounded-2xl border border-border px-5 py-4 text-sm transition-colors hover:border-primary"
-          >
-            Email <ArrowUpRight className="h-4 w-4 text-muted-foreground" />
-          </a>
-        </div>
-        <div className="mt-6 flex flex-wrap gap-3 font-mono text-xs">
-          <a href={GITHUB} target="_blank" rel="noopener noreferrer" className="rounded-lg border border-border px-4 py-2.5 hover:border-primary">GitHub</a>
-          <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" className="rounded-lg border border-border px-4 py-2.5 hover:border-primary">LinkedIn</a>
-        </div>
+        <ul className="mt-5 flex flex-col gap-3">
+          {[
+            { label: EMAIL, href: `mailto:${EMAIL}`, icon: Mail },
+            { label: "GitHub", href: GITHUB, icon: Github },
+            { label: "LinkedIn", href: LINKEDIN, icon: Linkedin },
+          ].map((link) => (
+            <li key={link.label}>
+              <a
+                href={link.href}
+                target={link.href.startsWith("mailto:") ? undefined : "_blank"}
+                rel={link.href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+                className="flex items-center justify-between gap-4 rounded-2xl border border-border bg-background/60 px-5 py-4 text-sm transition-colors hover:border-primary"
+              >
+                <span className="inline-flex items-center gap-2">
+                  <link.icon className="h-4 w-4 text-muted-foreground" />
+                  {link.label}
+                </span>
+                <ArrowUpRight className="h-4 w-4 text-muted-foreground" />
+              </a>
+            </li>
+          ))}
+        </ul>
         <p className="mt-4 text-sm text-muted-foreground">
           Building in a specific industry? See the{" "}
           <a href="/industries" className="text-primary underline underline-offset-4">
