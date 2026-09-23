@@ -44,7 +44,7 @@ const projects = [
   {
     title: "Developer Portfolio",
     stack: "Next.js · Tailwind CSS · Framer Motion · Netlify",
-    desc: "High-conversion portfolio engineered for client acquisition — direct booking via Calendly, social-proof metrics, urgency-driven CTAs, and a live AI chatbot demo embedded directly on the page.",
+    desc: "High-conversion portfolio engineered for client acquisition — social-proof metrics, urgency-driven CTAs, and clear paths to contact. Fixed-price, milestone-based, remote worldwide.",
     link: "djaouad.tech",
     href: "https://djaouad.tech",
     git: null,

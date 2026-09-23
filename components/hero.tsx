@@ -1,7 +1,6 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { ArrowUpRight } from "lucide-react"
 
 export function Hero() {
   return (
@@ -44,10 +43,7 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mt-3 max-w-2xl font-mono text-sm text-muted-foreground"
         >
-          Developer gone quiet? Something half-built?{" "}
-          <a href="#project-intake" className="text-primary hover:underline">
-            Skip the sales pitch and show me what&apos;s stuck.
-          </a>
+          Developer gone quiet? Something half-built?
         </motion.p>
 
         <motion.div
@@ -56,13 +52,6 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-9 flex flex-wrap items-center gap-4"
         >
-          <a
-            href="#project-intake"
-            className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
-          >
-            Describe what&apos;s stuck
-            <ArrowUpRight className="h-4 w-4" />
-          </a>
           <a
             href="#work"
             className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:border-foreground hover:text-foreground"

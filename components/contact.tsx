@@ -23,12 +23,6 @@ export function Contact() {
 
           <div className="mt-8 grid max-w-md gap-3">
             <a
-              href="#project-intake"
-              className="flex items-center justify-between rounded-xl border border-primary bg-primary/10 px-5 py-3.5 text-sm font-medium text-primary transition-colors hover:bg-primary/15"
-            >
-              Describe your project <ArrowUpRight className="h-4 w-4" />
-            </a>
-            <a
               href={`mailto:${email}`}
               className="flex items-center justify-between rounded-xl border border-border bg-background px-5 py-3.5 text-sm transition-colors hover:border-primary"
             >
