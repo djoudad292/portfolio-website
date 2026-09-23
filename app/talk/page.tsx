@@ -109,8 +109,8 @@ export default async function TalkPage({
           </button>
         </form>
         <p style={{ marginTop: 16, fontSize: 12 }}>
-          <a href="https://calendly.com/oufr29/30min?utm_source=talk&utm_medium=fallback" style={{ color: "#34d399", textDecoration: "none", fontWeight: 700 }}>
-            Book free call — fixed quote in 24h →
+          <a href="mailto:contact@djaouad.is-a.dev" style={{ color: "#34d399", textDecoration: "none", fontWeight: 700 }}>
+            Email me — fixed quote in 24h →
           </a>
         </p>
       </div>

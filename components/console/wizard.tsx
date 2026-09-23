@@ -2,8 +2,8 @@
 
 import { useMemo, useState } from "react"
 import { motion } from "framer-motion"
-import { ArrowLeft, ArrowRight, CalendarPlus, Check, Mail, MessageCircle } from "lucide-react"
-import { CALENDLY_URL, EMAIL, WHATSAPP } from "./data"
+import { ArrowLeft, ArrowRight, Check, Mail } from "lucide-react"
+import { EMAIL } from "./data"
 
 type Answers = {
   type: string
@@ -93,7 +93,6 @@ export function IntakeWizard() {
     [a],
   )
 
-  const waHref = `${WHATSAPP}?text=${encodeURIComponent("Hi Djaouad! Here is my project brief:\n\n" + brief)}`
   const mailHref = `mailto:${EMAIL}?subject=${encodeURIComponent("Project brief — " + a.type)}&body=${encodeURIComponent(brief)}`
 
   const toggleFeature = (f: string) =>
@@ -114,15 +113,12 @@ export function IntakeWizard() {
         <p className="mt-4 text-sm text-muted-foreground">
           Send it however you prefer — you&apos;ll get a fixed quote and start date back within 24 hours.
         </p>
-        <div className="mt-6 grid gap-3 sm:grid-cols-3">
-          <a href={waHref} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 rounded-xl bg-primary px-4 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90">
-            <MessageCircle className="h-4 w-4" /> WhatsApp it
+        <div className="mt-6 grid gap-3 sm:grid-cols-2">
+          <a href={mailHref} className="flex items-center justify-center gap-2 rounded-xl bg-primary px-4 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90">
+            <Mail className="h-4 w-4" /> Email it
           </a>
           <a href={mailHref} className="flex items-center justify-center gap-2 rounded-xl border border-border px-4 py-3 text-sm text-foreground transition-colors hover:border-foreground">
             <Mail className="h-4 w-4" /> Email it
-          </a>
-          <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 rounded-xl border border-border px-4 py-3 text-sm text-foreground transition-colors hover:border-foreground">
-            <CalendarPlus className="h-4 w-4" /> Book a call
           </a>
         </div>
         <button onClick={() => { setDone(false); setStep(0); setA({ type: "", features: [], timeline: "", budget: "", name: "", contact: "", notes: "" }) }} className="mt-5 text-xs text-muted-underline text-muted-foreground underline-offset-4 hover:underline">
@@ -216,7 +212,7 @@ export function IntakeWizard() {
             <input
               value={a.contact}
               onChange={(e) => setA((s) => ({ ...s, contact: e.target.value }))}
-              placeholder="Email or WhatsApp number"
+              placeholder="Email address"
               className="rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground outline-none placeholder:text-muted-foreground/50 focus:border-primary"
             />
             <textarea

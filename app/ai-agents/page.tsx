@@ -46,14 +46,14 @@ export default function AiAgentsPage() {
             customers actually use them. Fixed-price and milestone-based.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="https://calendly.com/oufr29/30min" target="_blank" rel="noopener noreferrer"
-              className="rounded-xl bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-colors hover:opacity-90">
-              Book a free call
-            </Link>
             <Link href="https://chat.djaouad.tech" target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-xl border border-border bg-card px-6 py-3.5 text-sm font-semibold transition-colors hover:border-primary">
               Try a live agent <ArrowUpRight className="h-4 w-4" />
             </Link>
+            <a href="mailto:contact@djaouad.is-a.dev"
+              className="inline-flex items-center gap-2 rounded-xl border border-primary bg-primary/10 px-6 py-3.5 text-sm font-semibold text-primary transition-colors hover:bg-primary/15">
+              Email me <ArrowUpRight className="h-4 w-4" />
+            </a>
           </div>
         </section>
 

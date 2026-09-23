@@ -6,20 +6,17 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 import {
   ArrowUpRight,
-  CalendarPlus,
   Download,
   ExternalLink,
   Github,
 } from "lucide-react"
 import {
   BUILD_STACK,
-  CALENDLY_URL,
   EMAIL,
   PROCESS,
   PRODUCTS,
   PROJECTS,
   SERVICES,
-  WHATSAPP,
   GITHUB,
   LINKEDIN,
 } from "./data"
@@ -677,22 +674,12 @@ export function TermsView() {
           Tell me what you&apos;re trying to build — a business problem, an AI feature, a full product.
           I&apos;ll reply with a fixed quote and timeline within 24 hours.
         </p>
-        <div className="mt-5 grid gap-3 sm:grid-cols-3">
+        <div className="mt-5 grid gap-3 sm:grid-cols-2">
           <a
-            href={CALENDLY_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={`mailto:${EMAIL}`}
             className="flex items-center justify-between rounded-2xl bg-primary px-5 py-4 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
           >
-            Book a free call <CalendarPlus className="h-4 w-4" />
-          </a>
-          <a
-            href={WHATSAPP}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-between rounded-2xl border border-border px-5 py-4 text-sm transition-colors hover:border-primary"
-          >
-            WhatsApp <ArrowUpRight className="h-4 w-4 text-muted-foreground" />
+            Email me <ArrowUpRight className="h-4 w-4" />
           </a>
           <a
             href={`mailto:${EMAIL}`}
@@ -704,8 +691,6 @@ export function TermsView() {
         <div className="mt-6 flex flex-wrap gap-3 font-mono text-xs">
           <a href={GITHUB} target="_blank" rel="noopener noreferrer" className="rounded-lg border border-border px-4 py-2.5 hover:border-primary">GitHub</a>
           <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" className="rounded-lg border border-border px-4 py-2.5 hover:border-primary">LinkedIn</a>
-          <a href="https://www.facebook.com/share/r/18MiUF32rd/" target="_blank" rel="noopener noreferrer" className="rounded-lg border border-border px-4 py-2.5 hover:border-primary">Facebook reviews</a>
-          <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="rounded-lg border border-border px-4 py-2.5 hover:border-primary">WhatsApp</a>
         </div>
         <p className="mt-4 text-sm text-muted-foreground">
           Building in a specific industry? See the{" "}

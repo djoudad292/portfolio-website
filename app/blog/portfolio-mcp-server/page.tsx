@@ -87,7 +87,7 @@ export default function Post() {
           <p>
             Want yours? I build agent-presence systems for service businesses —{" "}
             <Link href="/industries" className="!no-underline">see the industry pages</Link> or{" "}
-            <a href="https://calendly.com/oufr29/30min">grab a slot</a>.
+            <a href="mailto:contact@djaouad.is-a.dev">email me</a>.
           </p>
         </div>
       </article>

@@ -155,7 +155,7 @@ export function FloatingAI() {
             </button>
           </form>
           <p className="px-3 pb-2.5 text-center font-mono text-[10px] text-muted-foreground">
-            Prefer a call? <a href="https://calendly.com/oufr29/30min?utm_source=floating-ai&utm_medium=chat" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Book a call</a>
+            Prefer a call? <a href="mailto:contact@djaouad.is-a.dev" className="text-primary hover:underline">Email me</a>
           </p>
         </div>
       )}

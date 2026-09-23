@@ -2,8 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import { motion } from "framer-motion"
-import { ArrowUpRight, CalendarPlus, CornerDownLeft, Sparkles } from "lucide-react"
-import { CALENDLY_URL } from "./data"
+import { ArrowUpRight, CornerDownLeft, Sparkles } from "lucide-react"
 import { useConsoleChat } from "./chat"
 
 const SUGGESTED = [
@@ -108,19 +107,17 @@ export function ChatView() {
       {/* answer CTA */}
       {messages.some((m) => m.role === "agent" && m.done) && (
         <div className="flex flex-wrap gap-2 border-t border-border pt-4 mt-4">
-          <a
-            href={CALENDLY_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-xs font-medium text-primary-foreground transition-opacity hover:opacity-90"
-          >
-            <CalendarPlus className="h-3.5 w-3.5" /> Book a free call
-          </a>
           <button
             onClick={() => window.dispatchEvent(new CustomEvent("console:navigate", { detail: "intake" }))}
             className="inline-flex items-center gap-1.5 rounded-full border border-border px-4 py-2 text-xs text-foreground transition-colors hover:border-primary"
           >
             Scope my project <ArrowUpRight className="h-3 w-3" />
+          </button>
+          <button
+            onClick={() => window.dispatchEvent(new CustomEvent("console:navigate", { detail: "connect" }))}
+            className="inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-xs font-medium text-primary-foreground transition-opacity hover:opacity-90"
+          >
+            Email me <ArrowUpRight className="h-3 w-3" />
           </button>
         </div>
       )}

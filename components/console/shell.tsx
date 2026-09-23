@@ -11,13 +11,11 @@ import {
   Plug,
   Sparkles,
 } from "lucide-react"
-import { PRODUCTS, WHATSAPP } from "./data"
+import { PRODUCTS } from "./data"
 import { BriefingView, ConnectView, TermsView, TestimonialsView, WorkView } from "./views"
 import { ChatView } from "./chat-view"
 import { IntakeWizard } from "./wizard"
-import { WhatsAppIcon } from "@/lib/socials"
 
-const CALENDLY_URL = "https://calendly.com/oufr29/30min"
 const GITHUB = "https://github.com/djoudad292"
 const LINKEDIN = "https://linkedin.com/in/djaouad-frih"
 
@@ -187,15 +185,6 @@ export function Shell() {
             Ask this portfolio anything
             <kbd className="ml-auto rounded border border-border bg-muted px-1.5 py-0.5 font-mono text-[10px]">⌘K</kbd>
           </button>
-
-          <a
-            href={CALENDLY_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-3 flex w-full items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
-          >
-            Book a free call
-          </a>
         </div>
 
         <div className="space-y-4">
@@ -206,9 +195,6 @@ export function Shell() {
             </a>
             <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-foreground">
               LinkedIn
-            </a>
-            <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 transition-colors hover:text-foreground">
-              <WhatsAppIcon className="h-3.5 w-3.5" /> WhatsApp
             </a>
           </div>
         </div>

@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react"
 import { Sparkles } from "lucide-react"
-import { WhatsAppIcon } from "@/lib/socials"
 
 const CHAPTERS = [
   { id: "services", num: "01", label: "What I do" },
@@ -13,7 +12,6 @@ const CHAPTERS = [
   { id: "connect", num: "07", label: "Start" },
 ]
 
-const CALENDLY_URL = "https://calendly.com/oufr29/30min"
 const GITHUB = "https://github.com/djoudad292"
 const LINKEDIN = "https://linkedin.com/in/djaouad-frih"
 
@@ -88,15 +86,6 @@ export function Rail() {
           </kbd>
         </button>
 
-        <a
-          href={CALENDLY_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex w-full items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
-        >
-          Book a free call
-        </a>
-
         <p className="mt-4 flex items-center gap-2 font-mono text-[11px] text-muted-foreground">
           <span className="relative flex h-2 w-2">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-60" />
@@ -111,14 +100,6 @@ export function Rail() {
           </a>
           <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-foreground">
             LinkedIn
-          </a>
-          <a
-            href="https://wa.me/213780688125"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 transition-colors hover:text-foreground"
-          >
-            <WhatsAppIcon className="h-3.5 w-3.5" /> WhatsApp
           </a>
         </div>
       </div>

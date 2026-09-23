@@ -56,7 +56,7 @@ export default function Post() {
 
           <p>
             If your org has an agent pilot that&apos;s been &ldquo;almost ready&rdquo; for two months, this is
-            solvable in weeks. <a href="https://calendly.com/oufr29/30min">Bring me the demo</a>; I&apos;ll bring
+            solvable in weeks. <a href="mailto:contact@djaouad.is-a.dev">Bring me the demo</a>; I&apos;ll bring
             the checklist.
           </p>
         </div>
