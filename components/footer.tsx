@@ -2,7 +2,7 @@ import { Github, Linkedin, Mail, ArrowUpRight } from "lucide-react"
 import { socials, email } from "@/lib/socials"
 
 const contactLinks = [
-  { label: email, href: `mailto:${email}`, icon: Mail },
+  { label: "E-mail", href: `mailto:${email}`, icon: Mail },
   { label: "GitHub", href: socials.find(s => s.label === "GitHub")?.href || "https://github.com/djoudad292", icon: Github },
   { label: "LinkedIn", href: socials.find(s => s.label === "LinkedIn")?.href || "https://www.linkedin.com/in/djaouad-frih", icon: Linkedin },
 ]

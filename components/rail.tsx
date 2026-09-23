@@ -17,7 +17,7 @@ const LINKEDIN = "https://linkedin.com/in/djaouad-frih"
 const EMAIL = "contact@djaouad.is-a.dev"
 
 const contactLinks = [
-  { label: EMAIL, href: `mailto:${EMAIL}`, icon: Mail },
+  { label: "E-mail", href: `mailto:${EMAIL}`, icon: Mail },
   { label: "GitHub", href: GITHUB, icon: Github },
   { label: "LinkedIn", href: LINKEDIN, icon: Linkedin },
 ]

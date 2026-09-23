@@ -678,7 +678,7 @@ export function TermsView() {
         </p>
         <ul className="mt-5 flex flex-col gap-3">
           {[
-            { label: EMAIL, href: `mailto:${EMAIL}`, icon: Mail },
+            { label: "E-mail", href: `mailto:${EMAIL}`, icon: Mail },
             { label: "GitHub", href: GITHUB, icon: Github },
             { label: "LinkedIn", href: LINKEDIN, icon: Linkedin },
           ].map((link) => (
