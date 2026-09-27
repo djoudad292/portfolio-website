@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react"
 
 const PRODUCTS = [
-  { name: "AI Receptionist", url: "https://chat.djaouad.tech" },
-  { name: "PDF Workspace", url: "https://docs.djaouad.tech" },
+  { name: "AI Receptionist", url: "https://chat.djaouad.is-a.dev" },
+  { name: "PDF Workspace", url: "https://docs.djaouad.is-a.dev" },
   { name: "Support Agent", url: "https://ai-customer-support-backend-ldbf.onrender.com/health" },
 ]
 

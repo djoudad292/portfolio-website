@@ -34,7 +34,7 @@ export default function Post() {
             Expose my real professional profile — shipped products, fixed pricing, availability — as
             tools on a <a href="https://modelcontextprotocol.io">Model Context Protocol</a> server, plus one
             gated write tool that lets an agent file a project brief on the founder&apos;s behalf. The
-            result lives at <a href="https://mcp.djaouad.tech">mcp.djaouad.tech</a>, and the code is{" "}
+            result lives at <a href="https://mcp.djaouad.is-a.dev">mcp.djaouad.is-a.dev</a>, and the code is{" "}
             <a href="https://github.com/djoudad292/hireme-mcp">open source</a>.
           </p>
 

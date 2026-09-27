@@ -78,7 +78,7 @@ export function IntakeWizard() {
   const brief = useMemo(
     () =>
       [
-        `PROJECT BRIEF — generated on djaouad.tech`,
+        `PROJECT BRIEF — generated on djaouad.is-a.dev`,
         ``,
         `Build: ${a.type}`,
         `Features: ${a.features.length ? a.features.join(", ") : "open to suggestions"}`,

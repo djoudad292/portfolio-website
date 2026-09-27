@@ -10,7 +10,7 @@ export async function GET(req: NextRequest) {
   const target = params.get("to");
 
   if (!target || !/^https?:\/\//i.test(target)) {
-    return new Response(null, { status: 302, headers: { Location: "https://djaouad.tech" } });
+    return new Response(null, { status: 302, headers: { Location: "https://djaouad.is-a.dev" } });
   }
 
   await trackEvent({ lead, kind: "click", link, target, ua: req.headers.get("user-agent") });

@@ -6,11 +6,11 @@ export const metadata: Metadata = {
   title: "AI Agents for Business | Build & Integrate — Djaouad Frih",
   description:
     "Build AI agents for your business: customer support agents, appointment-booking receptionists, document/RAG assistants, and lead capture. Live demos, fixed-price, shipped to production.",
-  alternates: { canonical: "https://djaouad.tech/ai-agents" },
+  alternates: { canonical: "https://djaouad.is-a.dev/ai-agents" },
   openGraph: {
     title: "AI Agents for Business — Djaouad Frih",
     description: "Build and integrate AI agents: support, receptionist, document assistants, lead capture. Live in production.",
-    url: "https://djaouad.tech/ai-agents",
+    url: "https://djaouad.is-a.dev/ai-agents",
     type: "website",
   },
 };
@@ -46,7 +46,7 @@ export default function AiAgentsPage() {
             customers actually use them. Fixed-price and milestone-based.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="https://chat.djaouad.tech" target="_blank" rel="noopener noreferrer"
+            <Link href="https://chat.djaouad.is-a.dev" target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-xl border border-border bg-card px-6 py-3.5 text-sm font-semibold transition-colors hover:border-primary">
               Try a live agent <ArrowUpRight className="h-4 w-4" />
             </Link>
@@ -89,7 +89,7 @@ export default function AiAgentsPage() {
             <p className="max-w-md text-muted-foreground">
               The agent on this site is a live product, trained on my real business data. Ask it about pricing or your project.
             </p>
-            <Link href="https://chat.djaouad.tech" target="_blank" rel="noopener noreferrer"
+            <Link href="https://chat.djaouad.is-a.dev" target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-colors hover:opacity-90">
               Try the live demo <ArrowUpRight className="h-4 w-4" />
             </Link>

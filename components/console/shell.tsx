@@ -213,7 +213,7 @@ export function Shell() {
         {/* Desktop ops bar */}
         <div className="hidden items-center justify-between border-b border-border px-8 py-2.5 lg:flex xl:px-12">
           <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
-            djaouad.tech console
+            djaouad.is-a.dev console
           </p>
           <p className="flex items-center gap-2 font-mono text-[10px] text-muted-foreground">
             <span className="relative flex h-1.5 w-1.5">

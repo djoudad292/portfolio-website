@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://djaouad.tech/sitemap.xml
+Sitemap: https://djaouad.is-a.dev/sitemap.xml

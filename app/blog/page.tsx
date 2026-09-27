@@ -21,7 +21,7 @@ export default function Blog() {
   return (
     <main className="min-h-screen bg-background text-foreground">
       <div className="mx-auto max-w-2xl px-6 py-16 lg:py-24">
-        <Link href="/" className="font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground hover:text-primary">← djaouad.tech</Link>
+        <Link href="/" className="font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground hover:text-primary">← djaouad.is-a.dev</Link>
         <p className="mb-4 mt-12 flex items-center gap-3 font-mono text-xs uppercase tracking-[0.25em] text-primary">
           Notes / <span aria-hidden className="h-px flex-1 bg-border" />
         </p>

@@ -6,11 +6,11 @@ export const metadata: Metadata = {
   title: "Hire an AI Developer | Djaouad Frih — Custom AI Systems & Full-Stack Builds",
   description:
     "Hire an AI developer to build AI integrations, custom AI systems, and AI-powered products — end-to-end from requirements through deployment. Fixed-price, milestone-based, production-ready.",
-  alternates: { canonical: "https://djaouad.tech/hire-ai-developer" },
+  alternates: { canonical: "https://djaouad.is-a.dev/hire-ai-developer" },
   openGraph: {
     title: "Hire an AI Developer — Djaouad Frih",
     description: "AI integrations, custom AI systems, and production builds — fixed-price, milestone-based.",
-    url: "https://djaouad.tech/hire-ai-developer",
+    url: "https://djaouad.is-a.dev/hire-ai-developer",
     type: "website",
   },
 };
@@ -91,13 +91,13 @@ export default function HirePage() {
         <section className="pb-16">
           <h2 className="font-display text-3xl tracking-tight">Proof of work — live in production</h2>
           <div className="mt-6 grid gap-5">
-            <DemoCard title="AI Receptionist" link="chat.djaouad.tech" href="https://chat.djaouad.tech"
+            <DemoCard title="AI Receptionist" link="chat.djaouad.is-a.dev" href="https://chat.djaouad.is-a.dev"
               git="github.com/djoudad292/ai-virtual-receptionist"
               desc="24/7 AI receptionist that answers in real time, books appointments, captures leads, and hands off to humans — grounded in the business's own knowledge base." />
-            <DemoCard title="Smart PDF Workspace" link="docs.djaouad.tech" href="https://docs.djaouad.tech"
+            <DemoCard title="Smart PDF Workspace" link="docs.djaouad.is-a.dev" href="https://docs.djaouad.is-a.dev"
               git="github.com/djoudad292/smart-pdf-workspace"
               desc="Document intelligence system that answers questions from PDFs with cited sources. Embeddable as a widget or used standalone." />
-            <DemoCard title="AI Customer Support Agent" link="customer.djaouad.tech" href="https://customer.djaouad.tech"
+            <DemoCard title="AI Customer Support Agent" link="customer.djaouad.is-a.dev" href="https://customer.djaouad.is-a.dev"
               git="github.com/djoudad292/ai-customer-support-agent"
               desc="Handles repeated support questions using company knowledge, creates tickets, checks orders, and escalates to humans when needed." />
           </div>

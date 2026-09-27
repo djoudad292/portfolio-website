@@ -30,13 +30,13 @@ export const metadata: Metadata = {
     title: 'Djaouad Frih | AI Developer — Custom AI Systems & Full-Stack Builds',
     description:
       'AI integrations, custom AI systems, and AI-powered products — built end-to-end from requirements through deployment. Fixed-price, milestone-based, remote worldwide.',
-    url: 'https://djaouad.tech',
+    url: 'https://djaouad.is-a.dev',
     siteName: 'Djaouad Frih',
     locale: 'en_US',
     type: 'website',
     images: [
       {
-        url: 'https://djaouad.tech/og-image',
+        url: 'https://djaouad.is-a.dev/og-image',
         width: 1200,
         height: 630,
         alt: 'Djaouad Frih — AI Developer',
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     title: 'Djaouad Frih | AI Developer — Build the AI System You Already Have in Mind',
     description:
       'AI integrations, custom AI systems, and AI-powered products — fixed-price, milestone-based, production-ready.',
-    images: ['https://djaouad.tech/og-image'],
+    images: ['https://djaouad.is-a.dev/og-image'],
   },
   icons: {
     icon: [
@@ -83,7 +83,7 @@ export default function RootLayout({
               '@type': 'Person',
               name: 'Djaouad Frih',
               jobTitle: 'AI Developer',
-              url: 'https://djaouad.tech',
+              url: 'https://djaouad.is-a.dev',
               email: 'mailto:contact@djaouad.is-a.dev',
               telephone: '+213780688125',
               address: { '@type': 'PostalAddress', addressRegion: 'Remote — worldwide' },

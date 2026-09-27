@@ -76,10 +76,10 @@ export async function GET() {
             color: "#8b94a7",
           }}
         >
-          <span>chat.djaouad.tech</span>
-          <span>docs.djaouad.tech</span>
-          <span>customer.djaouad.tech</span>
-          <span style={{ color: "#a3e635" }}>mcp.djaouad.tech</span>
+          <span>chat.djaouad.is-a.dev</span>
+          <span>docs.djaouad.is-a.dev</span>
+          <span>customer.djaouad.is-a.dev</span>
+          <span style={{ color: "#a3e635" }}>mcp.djaouad.is-a.dev</span>
         </div>
       </div>
     ),

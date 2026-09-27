@@ -21,32 +21,32 @@ const projects = [
     title: "AI Virtual Receptionist",
     stack: "Next.js · NestJS · pgvector · React Native · Socket.io · Gemini",
     desc: "A 24/7 AI receptionist that ensures no inbound lead is ever missed — books appointments, captures and qualifies leads, routes conversations to the right department, and hands off to humans with AI-drafted replies. Real-time streaming chat, RAG knowledge base, native Android app, and embeddable widget. Deployed to production.",
-    link: "chat.djaouad.tech",
-    href: "https://chat.djaouad.tech",
+    link: "chat.djaouad.is-a.dev",
+    href: "https://chat.djaouad.is-a.dev",
     git: "github.com/djoudad292/ai-virtual-receptionist",
   },
   {
     title: "Smart PDF Workspace",
     stack: "Next.js · NestJS · pgvector · Gemini · WebSocket",
     desc: "Turns static documents into a working knowledge base: upload PDFs, auto-extract text, chunk and embed into pgvector, then ask natural-language questions grounded in your own files — no more hunting through folders. Team management, publishable embeddable widget, and real-time analytics dashboard.",
-    link: "docs.djaouad.tech",
-    href: "https://docs.djaouad.tech",
+    link: "docs.djaouad.is-a.dev",
+    href: "https://docs.djaouad.is-a.dev",
     git: "github.com/djoudad292/smart-pdf-workspace",
   },
   {
     title: "AI Customer Support Agent",
     stack: "Next.js · NestJS · LangGraph · pgvector · OpenAI · TypeScript",
     desc: "Automates the repetitive layer of customer support so the human team focuses on what matters: answers common questions from a RAG knowledge base, checks orders, creates tickets, and escalates to humans only when genuinely needed. Includes admin dashboard and embeddable widget, live in production.",
-    link: "customer.djaouad.tech",
-    href: "https://customer.djaouad.tech",
+    link: "customer.djaouad.is-a.dev",
+    href: "https://customer.djaouad.is-a.dev",
     git: "github.com/djoudad292/ai-customer-support-agent",
   },
   {
     title: "Developer Portfolio",
     stack: "Next.js · Tailwind CSS · Framer Motion · Netlify",
     desc: "High-conversion portfolio engineered for client acquisition — social-proof metrics, urgency-driven CTAs, and clear paths to contact. Fixed-price, milestone-based, remote worldwide.",
-    link: "djaouad.tech",
-    href: "https://djaouad.tech",
+    link: "djaouad.is-a.dev",
+    href: "https://djaouad.is-a.dev",
     git: null,
   },
 ];
@@ -85,7 +85,7 @@ export default function CVPage() {
             <a href="tel:+213780688125" className="inline-flex items-center gap-2 transition-colors hover:text-foreground"><Phone className="h-3.5 w-3.5 text-primary" />+213 78 06 88 125</a>
             <a href="https://github.com/djoudad292" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 transition-colors hover:text-foreground"><Github className="h-3.5 w-3.5 text-primary" />github.com/djoudad292</a>
             <a href="https://www.linkedin.com/in/djaouad-frih" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 transition-colors hover:text-foreground"><Linkedin className="h-3.5 w-3.5 text-primary" />linkedin.com/in/djaouad-frih</a>
-            <a href="https://djaouad.tech" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 transition-colors hover:text-foreground"><ArrowUpRight className="h-3.5 w-3.5 text-primary" />djaouad.tech</a>
+            <a href="https://djaouad.is-a.dev" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 transition-colors hover:text-foreground"><ArrowUpRight className="h-3.5 w-3.5 text-primary" />djaouad.is-a.dev</a>
           </div>
         </section>
 
@@ -204,7 +204,7 @@ export default function CVPage() {
               Try the live AI agent instead — ask it about my work, pricing and availability.
             </p>
             <Link
-              href="https://chat.djaouad.tech"
+              href="https://chat.djaouad.is-a.dev"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-colors hover:opacity-90"

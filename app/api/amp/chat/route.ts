@@ -10,8 +10,8 @@ export const runtime = "nodejs";
 export const maxDuration = 45;
 
 const ALLOWED_HOSTS = new Set([
-  "https://djaouad.tech",
-  "https://www.djaouad.tech",
+  "https://djaouad.is-a.dev",
+  "https://www.djaouad.is-a.dev",
 ]);
 
 const BLOCKED_PATTERNS = [
@@ -56,7 +56,7 @@ function isBlockedUrl(url: string): boolean {
 
 function cors(origin: string | null, sourceOrigin: string | null): Record<string, string> {
   const headers: Record<string, string> = {
-    "Access-Control-Allow-Origin": origin && ALLOWED_HOSTS.has(origin) ? origin : "https://djaouad.tech",
+    "Access-Control-Allow-Origin": origin && ALLOWED_HOSTS.has(origin) ? origin : "https://djaouad.is-a.dev",
     "Access-Control-Allow-Headers": "Content-Type",
     "Access-Control-Allow-Methods": "POST, OPTIONS",
     "Cache-Control": "no-store",

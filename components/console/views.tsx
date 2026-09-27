@@ -380,7 +380,7 @@ export function WorkView() {
 /* Connect — HireMe MCP                                                */
 /* ------------------------------------------------------------------ */
 
-const MCP_URL = "https://mcp.djaouad.tech";
+const MCP_URL = "https://mcp.djaouad.is-a.dev";
 
 const CLAUDE_CONFIG = JSON.stringify(
   { mcpServers: { "hireme-mcp": { url: `${MCP_URL}/mcp` } } },

@@ -41,7 +41,7 @@ const projects: Project[] = [
       "Native Android app",
     ],
     links: [
-      { label: "See it live", meta: "chat.djaouad.tech", href: "https://chat.djaouad.tech/", isPrimary: true },
+      { label: "See it live", meta: "chat.djaouad.is-a.dev", href: "https://chat.djaouad.is-a.dev/", isPrimary: true },
       { label: "Get this for your business", meta: "contact", href: "#contact", isPrimary: false },
       { label: "source", meta: "github.com/djoudad292/ai-virtual-receptionist", href: "https://github.com/djoudad292/ai-virtual-receptionist" },
       { label: "source", meta: "APK", href: "https://github.com/djoudad292/ai-virtual-receptionist/releases/download/latest-apk-receptionist/ai-receptionist.apk" },
@@ -67,7 +67,7 @@ const projects: Project[] = [
       "Embeddable ask-your-docs widget plus an Expo mobile app",
     ],
     links: [
-      { label: "See it live", meta: "docs.djaouad.tech", href: "https://docs.djaouad.tech/", isPrimary: true },
+      { label: "See it live", meta: "docs.djaouad.is-a.dev", href: "https://docs.djaouad.is-a.dev/", isPrimary: true },
       { label: "Get this for your business", meta: "contact", href: "#contact", isPrimary: false },
       { label: "source", meta: "github.com/djoudad292/smart-pdf-workspace", href: "https://github.com/djoudad292/smart-pdf-workspace" },
       { label: "source", meta: "APK", href: "https://github.com/djoudad292/smart-pdf-workspace/releases/download/latest-apk-pdf/smart-pdf.apk" },
@@ -94,7 +94,7 @@ const projects: Project[] = [
       "Embeddable widget for any website",
     ],
     links: [
-      { label: "See it live", meta: "customer.djaouad.tech", href: "https://customer.djaouad.tech/", isPrimary: true },
+      { label: "See it live", meta: "customer.djaouad.is-a.dev", href: "https://customer.djaouad.is-a.dev/", isPrimary: true },
       { label: "Get this for your business", meta: "contact", href: "#contact", isPrimary: false },
       { label: "source", meta: "github.com/djoudad292/ai-customer-support-agent", href: "https://github.com/djoudad292/ai-customer-support-agent" },
       { label: "source", meta: "APK", href: "https://github.com/djoudad292/ai-customer-support-agent/releases/download/latest-apk/ai-customer-support.apk" },
@@ -113,12 +113,12 @@ const projects: Project[] = [
     outcome: "Lets AI agents vet a developer and file a project brief — no human middleman needed.",
     whoFor: "For founders and recruiters who use AI to evaluate hires.",
     highlights: [
-      "MCP endpoint live: mcp.djaouad.tech/mcp — one-paste client config",
+      "MCP endpoint live: mcp.djaouad.is-a.dev/mcp — one-paste client config",
       "Write tool with abuse controls: per-IP rate limit, persisted briefs, email notify",
       "Console with live playground + connection configs",
     ],
     links: [
-      { label: "See it live", meta: "mcp.djaouad.tech/mcp", href: "https://mcp.djaouad.tech/mcp", isPrimary: true },
+      { label: "See it live", meta: "mcp.djaouad.is-a.dev/mcp", href: "https://mcp.djaouad.is-a.dev/mcp", isPrimary: true },
       { label: "Get this for your business", meta: "contact", href: "#contact", isPrimary: false },
       { label: "source", meta: "github.com/djoudad292/hireme-mcp", href: "https://github.com/djoudad292/hireme-mcp" },
       { label: "source", meta: "APK", href: "https://github.com/djoudad292/hireme-mcp/releases/download/latest-apk/hireme-mcp.apk" },

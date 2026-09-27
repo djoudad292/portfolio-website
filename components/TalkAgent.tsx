@@ -243,9 +243,9 @@ export default function TalkAgent({
         }}
       >
         {[
-          ["🌐 djaouad.tech", "https://djaouad.tech?utm_source=talk-agent&utm_medium=footer"],
-          ["📄 PDF Workspace", "https://docs.djaouad.tech?utm_source=talk-agent&utm_medium=footer"],
-          ["🤖 Receptionist", "https://chat.djaouad.tech?utm_source=talk-agent&utm_medium=footer"],
+          ["🌐 djaouad.is-a.dev", "https://djaouad.is-a.dev?utm_source=talk-agent&utm_medium=footer"],
+          ["📄 PDF Workspace", "https://docs.djaouad.is-a.dev?utm_source=talk-agent&utm_medium=footer"],
+          ["🤖 Receptionist", "https://chat.djaouad.is-a.dev?utm_source=talk-agent&utm_medium=footer"],
         ].map(([label, url]) => (
           <a
             key={url}

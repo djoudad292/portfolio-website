@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import TalkAgent from "@/components/TalkAgent";
 
-export const metadata: Metadata = { title: "Live AI Agent Demo — djaouad.tech" };
+export const metadata: Metadata = { title: "Live AI Agent Demo — djaouad.is-a.dev" };
 
 export const runtime = "nodejs";
 
@@ -45,9 +45,9 @@ export default async function TalkPage({
         </p>
         <div style={{ display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap" }}>
           {[
-            ["AI Receptionist", "https://chat.djaouad.tech?utm_source=talk&utm_medium=fallback"],
-            ["PDF Workspace", "https://docs.djaouad.tech?utm_source=talk&utm_medium=fallback"],
-            ["Support Agent", "https://customer.djaouad.tech?utm_source=talk&utm_medium=fallback"],
+            ["AI Receptionist", "https://chat.djaouad.is-a.dev?utm_source=talk&utm_medium=fallback"],
+            ["PDF Workspace", "https://docs.djaouad.is-a.dev?utm_source=talk&utm_medium=fallback"],
+            ["Support Agent", "https://customer.djaouad.is-a.dev?utm_source=talk&utm_medium=fallback"],
           ].map(([name, url]) => (
             <a
               key={url}

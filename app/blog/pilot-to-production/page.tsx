@@ -48,7 +48,7 @@ export default function Post() {
 
           <h2>Proof over promises</h2>
           <p>
-            My own portfolio agent (<Link href="/?view=connect">mcp.djaouad.tech/mcp</Link>) follows
+            My own portfolio agent (<Link href="/?view=connect">mcp.djaouad.is-a.dev/mcp</Link>) follows
             exactly this pattern — four open read tools, one rate-limited gated write, human review of
             every submission — which is why it survived listing in public registries where anyone can
             probe it.

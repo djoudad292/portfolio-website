@@ -24,7 +24,7 @@ export default function IndustriesPage() {
     <main className="min-h-screen bg-background text-foreground">
       <div className="mx-auto max-w-3xl px-6 py-16 lg:py-24">
         <Link href="/" className="font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground hover:text-primary">
-          &larr; djaouad.tech
+          &larr; djaouad.is-a.dev
         </Link>
 
         <p className="mb-4 mt-12 flex items-center gap-3 font-mono text-xs uppercase tracking-[0.25em] text-primary">

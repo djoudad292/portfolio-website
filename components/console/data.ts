@@ -4,16 +4,16 @@ export const WS_URL = `wss://ai-customer-support-backend-ldbf.onrender.com/ws?co
 export const EMAIL = "contact@djaouad.is-a.dev";
 
 export const PRODUCTS = [
-  { name: "AI Receptionist", url: "https://chat.djaouad.tech" },
-  { name: "PDF Workspace", url: "https://docs.djaouad.tech" },
+  { name: "AI Receptionist", url: "https://chat.djaouad.is-a.dev" },
+  { name: "PDF Workspace", url: "https://docs.djaouad.is-a.dev" },
   {
     name: "Support Agent",
-    url: "https://customer.djaouad.tech",
+    url: "https://customer.djaouad.is-a.dev",
     ping: "https://ai-customer-support-backend-ldbf.onrender.com/health",
   },
   {
     name: "HireMe MCP",
-    url: "https://mcp.djaouad.tech",
+    url: "https://mcp.djaouad.is-a.dev",
     ping: "https://hireme-mcp-backend.onrender.com/health",
   },
 ];
@@ -57,7 +57,7 @@ export const PROJECTS = [
     description:
       "Businesses lose leads after hours and spend hours answering repetitive questions. This AI receptionist handles customer conversations 24/7 — answers questions from the business's own knowledge base, books appointments, captures leads, routes to the right department, and hands off to a human when it should.",
     metrics: ["<1s first response time", "24/7 unattended", "Android app published"],
-    demo: { label: "chat.djaouad.tech", href: "https://chat.djaouad.tech" },
+    demo: { label: "chat.djaouad.is-a.dev", href: "https://chat.djaouad.is-a.dev" },
     github: "https://github.com/djoudad292/ai-virtual-receptionist",
     apk: "https://github.com/djoudad292/ai-virtual-receptionist/releases/download/latest-apk/ai-receptionist.apk",
   },
@@ -71,7 +71,7 @@ export const PROJECTS = [
     description:
       "Teams waste hours searching through documents for answers. Upload any PDF and get cited, AI-powered answers in seconds — summaries, Q&A, and an embeddable widget you can add to any website. Multi-tenant, secure, and self-hosted.",
     metrics: ["Cited RAG answers", "Multi-tenant teams", "Embeddable widget"],
-    demo: { label: "docs.djaouad.tech", href: "https://docs.djaouad.tech" },
+    demo: { label: "docs.djaouad.is-a.dev", href: "https://docs.djaouad.is-a.dev" },
     github: "https://github.com/djoudad292/smart-pdf-workspace",
     apk: "https://github.com/djoudad292/smart-pdf-workspace/releases/download/latest-apk/smart-pdf.apk",
   },
@@ -85,7 +85,7 @@ export const PROJECTS = [
     description:
       "Customer support teams handle the same questions hundreds of times. This AI agent resolves common issues automatically — creates tickets, checks orders, searches the knowledge base, and escalates to humans with full context when needed. One line to embed on any website.",
     metrics: ["5 tools wired to the agent", "Live admin analytics", "One-line embed"],
-    demo: { label: "customer.djaouad.tech", href: "https://customer.djaouad.tech" },
+    demo: { label: "customer.djaouad.is-a.dev", href: "https://customer.djaouad.is-a.dev" },
     github: "https://github.com/djoudad292/ai-customer-support-agent",
     apk: "https://github.com/djoudad292/ai-customer-support-agent/releases/download/latest-apk/ai-support.apk",
   },
@@ -99,7 +99,7 @@ export const PROJECTS = [
     description:
       "An AI agent that can vet me, check my pricing, and file a project brief on a client's behalf — through the MCP protocol. It's the first portfolio that AI assistants can hire from directly, demonstrating the kind of automation I build for clients.",
     metrics: ["5 tools over MCP", "Works in Claude & Cursor", "Brief intake → fixed quote"],
-    demo: { label: "mcp.djaouad.tech", href: "https://mcp.djaouad.tech" },
+    demo: { label: "mcp.djaouad.is-a.dev", href: "https://mcp.djaouad.is-a.dev" },
     github: "https://github.com/djoudad292/hireme-mcp",
     apk: "https://github.com/djoudad292/hireme-mcp/releases/download/latest-apk/hireme-mcp.apk",
   },
