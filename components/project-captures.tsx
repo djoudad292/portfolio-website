@@ -11,6 +11,7 @@ interface CaptureImage {
 
 interface CaptureVideo {
   src: string
+  poster?: string
   label: string
   duration: string
   caption: string
@@ -41,6 +42,7 @@ export function ProjectCaptures({ videos, images }: ProjectCapturesProps) {
           <video
             controls
             preload="none"
+            poster={current.poster}
             aria-label={current.caption}
             className="h-full w-full object-cover object-top"
           >

@@ -21,7 +21,7 @@ interface Project {
   links: { label: string; meta: string; href: string; isPrimary?: boolean; fullWidth?: boolean }[]
   captures: {
     images: { src: string; alt: string; caption: string }[]
-    videos: { src: string; label: string; duration: string; caption: string }[]
+    videos: { src: string; poster?: string; label: string; duration: string; caption: string }[]
   }
 }
 
@@ -53,8 +53,8 @@ const projects: Project[] = [
     ],
     captures: {
       videos: [
-        { src: "/captures/receptionist/receptionist-flow.webm", label: "flow", duration: "0:28", caption: "Booking + lead capture, live" },
-        { src: "/captures/receptionist/receptionist-dashboard.webm", label: "dashboard tour", duration: "0:20", caption: "Dashboard tour" },
+        { src: "/captures/receptionist/receptionist-flow.webm", poster: "/receptionist-hero-new.png", label: "flow", duration: "0:28", caption: "Booking + lead capture, live" },
+        { src: "/captures/receptionist/receptionist-dashboard.webm", poster: "/captures/receptionist/receptionist-dashboard.png", label: "dashboard tour", duration: "0:20", caption: "Dashboard tour" },
       ],
       images: [
         { src: "/captures/receptionist/receptionist-landing.png", alt: "AI Virtual Receptionist landing page with the chat welcome screen", caption: "Landing" },
@@ -91,7 +91,7 @@ const projects: Project[] = [
     ],
     captures: {
       videos: [
-        { src: "/captures/pdf/pdf-flow.webm", label: "flow", duration: "0:33", caption: "Question → cited answer, live" },
+        { src: "/captures/pdf/pdf-flow.webm", poster: "/pdf-workspace-hero-new.png", label: "flow", duration: "0:33", caption: "Question → cited answer, live" },
       ],
       images: [
         { src: "/captures/pdf/pdf-landing.png", alt: "Smart PDF Workspace landing page showing the upload area", caption: "Landing" },
@@ -127,8 +127,8 @@ const projects: Project[] = [
     ],
     captures: {
       videos: [
-        { src: "/captures/support/support-flow.webm", label: "flow", duration: "0:50", caption: "Refund chip → ticket + side panel, live" },
-        { src: "/captures/support/support-dashboard.webm", label: "dashboard tour", duration: "0:24", caption: "Dashboard tour" },
+        { src: "/captures/support/support-flow.webm", poster: "/support-agent-hero-new.png", label: "flow", duration: "0:50", caption: "Refund chip → ticket + side panel, live" },
+        { src: "/captures/support/support-dashboard.webm", poster: "/captures/support/support-dashboard.png", label: "dashboard tour", duration: "0:24", caption: "Dashboard tour" },
       ],
       images: [
         { src: "/captures/support/support-landing.png", alt: "AI Customer Support Agent landing page with the chat widget preview", caption: "Landing" },
@@ -163,7 +163,7 @@ const projects: Project[] = [
     ],
     captures: {
       videos: [
-        { src: "/captures/mcp/mcp-flow.webm", label: "flow", duration: "0:36", caption: "Live tool calls, no sign-in" },
+        { src: "/captures/mcp/mcp-flow.webm", poster: "/hireme-mcp-hero-new.png", label: "flow", duration: "0:36", caption: "Live tool calls, no sign-in" },
       ],
       images: [
         { src: "/captures/mcp/mcp-landing.png", alt: "HireMe MCP Server landing page with the endpoint details", caption: "Landing" },
