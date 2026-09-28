@@ -77,6 +77,9 @@ export function ProjectCaptures({ videos, images }: ProjectCapturesProps) {
 
       {open && (
         <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Demo captures viewer"
           className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto"
           onClick={() => setOpen(false)}
         >
