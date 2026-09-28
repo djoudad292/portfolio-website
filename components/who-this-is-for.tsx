@@ -1,26 +1,63 @@
 "use client"
 
+import Link from "next/link"
 import { motion } from "framer-motion"
-import { SectionHeading } from "./section-heading"
-import { Check } from "lucide-react"
 
-const criteria = [
+import { SectionHeading } from "./section-heading"
+import { Check, ArrowRight, ArrowUpRight } from "lucide-react"
+
+interface Segment {
+  title: string
+  description: string
+  label: string
+  href: string
+  external: boolean
+}
+
+const segments: Segment[] = [
   {
-    title: "Something already exists — and it's stuck",
-    description: "A half-built app, a developer who went quiet, a system nobody can change. You don't need a fresh start — you need someone who can read what's there and finish it.",
+    title: "E-commerce businesses",
+    description: "Customer support, order enquiries and automation.",
+    label: "See the system",
+    href: "https://customer.djaouad.is-a.dev/",
+    external: true,
   },
   {
-    title: "Your team runs on spreadsheets and manual work",
-    description: "Copy-paste Mondays, five tools that don't talk, reports built by hand. You want one reliable tool instead — built around your data and your rules.",
+    title: "Clinics & service businesses",
+    description: "AI receptionist, appointments and customer enquiries.",
+    label: "See the system",
+    href: "https://chat.djaouad.is-a.dev/",
+    external: true,
   },
   {
-    title: "You need custom implementation",
-    description: "Off-the-shelf tools don't fit. You need something built around your data, your rules, your stack — not a generic template.",
+    title: "Startups & SaaS companies",
+    description: "Custom AI systems, apps and integrations.",
+    label: "See the system",
+    href: "#contact",
+    external: false,
   },
   {
-    title: "You need one person who owns the whole fix",
-    description: "Codebase, APIs, database, deployment — plus the AI layer where it pays. One person who reads the mess, ranks the fixes, and ships them.",
+    title: "Growing companies",
+    description: "Internal tools and automation to reduce manual work.",
+    label: "See the system",
+    href: "#contact",
+    external: false,
   },
+  {
+    title: "Agencies and professional firms",
+    description: "Document management and AI automation.",
+    label: "See the system",
+    href: "https://docs.djaouad.is-a.dev/",
+    external: true,
+  },
+]
+
+const reasons = [
+  { text: "Custom-built solutions" },
+  { text: "AI + full-stack expertise" },
+  { text: "Fixed-price, milestone-based" },
+  { text: "One team from development to deployment" },
+  { text: "Real production projects and demos", href: "#work" },
 ]
 
 export function WhoThisIsFor() {
@@ -34,7 +71,7 @@ export function WhoThisIsFor() {
         />
 
         <div className="grid gap-5 sm:grid-cols-2">
-          {criteria.map((item, i) => (
+          {segments.map((item, i) => (
             <motion.div
               key={item.title}
               initial={{ opacity: 0, y: 20 }}
@@ -48,6 +85,28 @@ export function WhoThisIsFor() {
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                 {item.description}
               </p>
+              <div className="mt-4 flex items-center gap-2 border-t border-border pt-3 text-sm">
+                <ArrowRight className="h-4 w-4 text-primary" />
+                {item.external ? (
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 font-medium text-primary hover:underline"
+                  >
+                    {item.label}
+                    <ArrowUpRight className="h-4 w-4" />
+                  </a>
+                ) : (
+                  <Link
+                    href={item.href}
+                    className="inline-flex items-center gap-1 font-medium text-primary hover:underline"
+                  >
+                    {item.label}
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                )}
+              </div>
             </motion.div>
           ))}
         </div>
@@ -60,11 +119,37 @@ export function WhoThisIsFor() {
           className="mt-10 text-center text-sm text-muted-foreground"
         >
           Not sure about the technical approach?{" "}
-          <a href="#project-intake" className="text-primary hover:underline">
+          <a href="#contact" className="text-primary hover:underline">
             Describe the problem
           </a>{" "}
           and I&apos;ll help you figure out the right path.
         </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="mt-12 rounded-xl border border-border bg-card p-6 sm:p-8"
+        >
+          <p className="font-mono text-xs uppercase tracking-[0.2em] text-primary">
+            Why us
+          </p>
+          <div className="mt-4 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm font-medium text-foreground">
+            {reasons.map((item, i) => (
+              <span key={i} className="flex items-center gap-2">
+                {i > 0 && <span className="text-muted-foreground">·</span>}
+                {item.href ? (
+                  <Link href={item.href} className="text-primary hover:underline">
+                    {item.text} (see #work)
+                  </Link>
+                ) : (
+                  item.text
+                )}
+              </span>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   )

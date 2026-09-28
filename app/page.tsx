@@ -1,4 +1,5 @@
 import { Hero } from "@/components/hero"
+import { ProblemsWeSolve } from "@/components/problems-we-solve"
 import { WhoThisIsFor } from "@/components/who-this-is-for"
 import { WhatIBuild } from "@/components/what-i-build"
 import { Projects } from "@/components/projects"
@@ -18,6 +19,7 @@ export default function Home() {
   return (
     <main className="relative min-h-screen overflow-hidden text-foreground">
         <Hero />
+        <ProblemsWeSolve />
         <WhoThisIsFor />
         <WhatIBuild />
          <Projects />
