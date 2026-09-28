@@ -52,7 +52,7 @@ export const PROJECTS = [
     title: "AI Virtual Receptionist",
     year: "2025",
     stack: "Next.js · NestJS · pgvector · React Native · Gemini",
-    image: "/receptionist-hero.png",
+    image: "/receptionist-hero-new.png",
     alt: "AI Virtual Receptionist interface",
     description:
       "Businesses lose leads after hours and spend hours answering repetitive questions. This AI receptionist handles customer conversations 24/7 — answers questions from the business's own knowledge base, books appointments, captures leads, routes to the right department, and hands off to a human when it should.",
@@ -66,7 +66,7 @@ export const PROJECTS = [
     title: "Smart PDF Workspace",
     year: "2025",
     stack: "Next.js · NestJS · pgvector · OpenRouter · JWT",
-    image: "/pdf-workspace-hero.png",
+    image: "/pdf-workspace-hero-new.png",
     alt: "Smart PDF Workspace interface",
     description:
       "Teams waste hours searching through documents for answers. Upload any PDF and get cited, AI-powered answers in seconds — summaries, Q&A, and an embeddable widget you can add to any website. Multi-tenant, secure, and self-hosted.",
@@ -80,7 +80,7 @@ export const PROJECTS = [
     title: "AI Customer Support Agent",
     year: "2026",
     stack: "Next.js · NestJS · LangGraph · pgvector · WebSocket",
-    image: "/support-agent-hero.png",
+    image: "/support-agent-hero-new.png",
     alt: "AI Customer Support Agent dashboard",
     description:
       "Customer support teams handle the same questions hundreds of times. This AI agent resolves common issues automatically — creates tickets, checks orders, searches the knowledge base, and escalates to humans with full context when needed. One line to embed on any website.",
@@ -94,7 +94,7 @@ export const PROJECTS = [
     title: "HireMe MCP",
     year: "2026",
     stack: "MCP · TypeScript · Express · Netlify · Render",
-    image: "/hireme-mcp-hero.png",
+    image: "/hireme-mcp-hero-new.png",
     alt: "HireMe MCP console",
     description:
       "An AI agent that can vet me, check my pricing, and file a project brief on a client's behalf — through the MCP protocol. It's the first portfolio that AI assistants can hire from directly, demonstrating the kind of automation I build for clients.",
