@@ -53,7 +53,7 @@ const projects: Project[] = [
     ],
     captures: {
       videos: [
-        { src: "/captures/receptionist/receptionist-flow.webm", poster: "/receptionist-hero-new.png", label: "flow", duration: "0:28", caption: "Booking + lead capture, live" },
+        { src: "/captures/receptionist/receptionist-flow.webm", poster: "/captures/receptionist/receptionist-try.png", label: "flow", duration: "0:28", caption: "Booking + lead capture, live" },
         { src: "/captures/receptionist/receptionist-dashboard.webm", poster: "/captures/receptionist/receptionist-dashboard.png", label: "dashboard tour", duration: "0:20", caption: "Dashboard tour" },
       ],
       images: [
