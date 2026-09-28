@@ -8,13 +8,13 @@ import { ProjectCaptures } from "./project-captures"
 interface Project {
   year: string
   label: string
-  meta: string
   title: string
+  for: string
   problem: string
-  built: string
-  capability: string
-  outcome: string
-  whoFor: string
+  solution: string
+  result: string
+  proof: string
+  builtWith: string
   image?: string
   imageAlt?: string
   highlights: string[]
@@ -22,22 +22,21 @@ interface Project {
   captures: {
     images: { src: string; alt: string; caption: string }[]
     videos: { src: string; poster?: string; label: string; duration: string; caption: string }[]
-  }
-}
+  }}
 
 const projects: Project[] = [
   {
     year: "2025",
     label: "Custom AI System",
-    meta: "Next.js · NestJS · pgvector · React Native · Socket.io · Gemini",
     title: "AI Virtual Receptionist",
+    for: "For clinics and small service businesses.",
+    problem: "Businesses lose leads and bookings when messages go unanswered after hours.",
+    solution: "A 24/7 AI receptionist that answers questions, handles booking, captures leads, and routes visitors to the right team, with a human handoff that includes an AI-drafted reply.",
+    result: "Answers routine questions after hours — 24/7, no staff on call.",
+    proof: "Live demo + 28s recorded booking ending in a saved lead",
+    builtWith: "Website chat · AI answers · Android app",
     image: "/receptionist-hero-new.png",
     imageAlt: "AI Virtual Receptionist — live chat demo showing a real conversation",
-    problem: "Businesses lose leads and bookings when messages go unanswered after hours.",
-    built: "A 24/7 AI receptionist with real-time streaming chat, department routing, and human handoff with AI-drafted replies.",
-    capability: "Answers questions, handles booking, captures leads, routes to the right team — all grounded in the business's own knowledge base.",
-    outcome: "Answers routine questions after hours — 24/7, no staff on call.",
-    whoFor: "For clinics and small service businesses.",
     highlights: [
       "Real-time chat with streaming AI answers",
       "Department routing — sends visitors to the right team",
@@ -53,7 +52,7 @@ const projects: Project[] = [
     ],
     captures: {
       videos: [
-        { src: "/captures/receptionist/receptionist-flow.webm", poster: "/captures/receptionist/receptionist-try.png", label: "flow", duration: "0:28", caption: "Booking + lead capture, live" },
+        { src: "/captures/receptionist/receptionist-flow.webm", poster: "/receptionist-hero-new.png", label: "flow", duration: "0:28", caption: "Booking + lead capture, live" },
         { src: "/captures/receptionist/receptionist-dashboard.webm", poster: "/captures/receptionist/receptionist-dashboard.png", label: "dashboard tour", duration: "0:20", caption: "Dashboard tour" },
       ],
       images: [
@@ -67,21 +66,21 @@ const projects: Project[] = [
   {
     year: "2025",
     label: "AI Integration",
-    meta: "Next.js · NestJS · pgvector · pdf-parse · OpenRouter · JWT",
     title: "Smart PDF Workspace",
+    for: "For legal, compliance, and research teams drowning in documents.",
+    problem: "Teams need reliable answers from long documents — contracts, reports, manuals — but searching manually is slow.",
+    solution: "Upload your PDFs and ask questions — the workspace reads them and answers with a page citation from the source. One-click summaries save hours of manual reading. Embeddable as a widget or used as a standalone knowledge base.",
+    result: "Finds answers in uploaded PDFs with page citations — no manual reading required.",
+    proof: "Live sandbox + cited answers on camera",
+    builtWith: "Document search · cited answers · mobile app",
     image: "/pdf-workspace-hero-new.png",
     imageAlt: "Smart PDF Workspace — ask questions across your PDFs with cited sources",
-    problem: "Teams need reliable answers from long documents — contracts, reports, manuals — but searching manually is slow.",
-    built: "A document intelligence system that extracts, chunks, and embeds PDFs into pgvector. RAG-powered Q&A with cited sources and one-click summaries.",
-    capability: "Answers questions with page citations from any uploaded document. Embeddable as a widget or used as a standalone knowledge base.",
-    outcome: "Finds answers in uploaded PDFs with page citations — no manual reading required.",
-    whoFor: "For legal, compliance, and research teams drowning in documents.",
     highlights: [
-      "Multi-tenant JWT auth with refresh and token revocation",
-      "PDF text extraction, chunking, and pgvector similarity search",
-      "RAG answers with cited sources shown",
-      "One-click AI summaries, cached per document",
-      "Embeddable ask-your-docs widget plus an Expo mobile app",
+      "Secure multi-tenant accounts",
+      "Reads and finds answers across your uploaded documents",
+      "Cites its sources on every answer",
+      "Summarizes any document in one click",
+      "Ask-your-docs widget plus a mobile app",
     ],
     links: [
       { label: "See it live", meta: "docs.djaouad.is-a.dev", href: "https://docs.djaouad.is-a.dev/", isPrimary: true },
@@ -102,19 +101,19 @@ const projects: Project[] = [
   {
     year: "2026",
     label: "Custom AI System",
-    meta: "Next.js · NestJS · LangGraph · pgvector · OpenAI · TypeScript",
     title: "AI Customer Support Agent",
-    image: "/support-agent-hero-new.png",
-    imageAlt: "AI Customer Support Agent — LangGraph-powered hero with live phone mockup",
+    for: "For e-commerce and SaaS teams with high-volume support.",
     problem: "Support teams answer the same questions repeatedly — order status, return policies, product details.",
-    built: "A production-ready AI support agent using LangGraph with tool calling, RAG knowledge base, and human escalation.",
-    capability: "Handles repeated support questions, creates tickets, checks orders, and escalates to humans — embeddable via a one-line widget.",
-    outcome: "Resolves up to 70% of routine tickets automatically — human agents handle only the complex cases.",
-    whoFor: "For e-commerce and SaaS teams with high-volume support.",
+    solution: "A production-ready AI support agent that handles repeated questions, creates tickets, checks orders, and escalates to humans — embeddable via a one-line widget.",
+    result: "Handles routine questions itself and hands tricky cases to your team — watch it decide, act and explain in the demo.",
+    proof: "Live demo + 50s refund-to-ticket TKT-0022 on camera",
+    builtWith: "AI agent · analytics dashboard",
+    image: "/support-agent-hero-new.png",
+    imageAlt: "AI Customer Support Agent — production-ready agent with live phone mockup",
     highlights: [
       "Multi-turn conversations with context memory",
       "Tool calling — create tickets, check orders, search FAQ",
-      "RAG-powered knowledge base with vector search",
+      "Built-in knowledge base",
       "Human escalation with full conversation context",
       "Admin dashboard with live analytics",
       "Embeddable widget for any website",
@@ -141,18 +140,18 @@ const projects: Project[] = [
   {
     year: "2026",
     label: "Agent Interface",
-    meta: "Express · Model Context Protocol · Next.js · Expo · Render",
     title: "HireMe MCP Server",
-    image: "/hireme-mcp-hero-new.png",
-    imageAlt: "HireMe MCP Server — MCP endpoint with live playground",
+    for: "For founders and recruiters who use AI to evaluate hires.",
     problem: "Founders and recruiters delegate vetting to AI agents — but portfolios are unreadable to agents.",
-    built: "An open MCP server exposing real profile, shipped projects, fixed pricing, and a project-brief intake — so Claude, Cursor, or ChatGPT can vet the work and file a brief. The server is itself the demo.",
-    capability: "5 tools: get_profile, search_projects, get_pricing, get_next_slot, submit_project_brief (rate-limited, persisted + emailed). Same handlers over REST + embeddable widget + Expo app.",
-    outcome: "Lets AI agents vet a developer and file a project brief — no human middleman needed.",
-    whoFor: "For founders and recruiters who use AI to evaluate hires.",
+    solution: "The HireMe MCP Server (lets AI assistants use your business info) exposes a real profile, shipped projects, fixed pricing, and a project-brief intake — so Claude, Cursor, or ChatGPT can vet the work and file a brief. 5 tools: get profile, search projects, get pricing, get next slot, file a brief (rate-limited, persisted and emailed). The server is itself the demo.",
+    result: "Lets AI agents vet a developer and file a project brief — no human middleman needed.",
+    proof: "Live endpoint, 5 tools verified + brief filed on camera (id 5ae693eb)",
+    builtWith: "AI-assistant interface · live playground · mobile app",
+    image: "/hireme-mcp-hero-new.png",
+    imageAlt: "HireMe MCP Server — endpoint with live playground",
     highlights: [
-      "MCP endpoint live: mcp.djaouad.is-a.dev/mcp — one-paste client config",
-      "Write tool with abuse controls: per-IP rate limit, persisted briefs, email notify",
+      "Live endpoint: mcp.djaouad.is-a.dev/mcp — one-paste client config",
+      "File-brief tool with abuse controls: per-IP rate limit, persisted briefs, email notify",
       "Console with live playground + connection configs",
     ],
     links: [
@@ -198,27 +197,28 @@ export function Projects() {
                 <span>
                   {project.year} — {project.label}
                 </span>
-                <span>{project.meta}</span>
               </div>
 
-               {project.image && (
-                 <a href={project.links.find((l) => l.isPrimary)?.href} target="_blank" rel="noopener noreferrer" className="group block">
-                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                   <img
-                     src={project.image}
-                     alt={project.imageAlt || project.title}
-                     className="aspect-[16/10] w-full border-b border-border object-cover object-top transition-opacity group-hover:opacity-90"
-                   />
-                 </a>
-               )}
+              {project.image && (
+                <a href={project.links.find((l) => l.isPrimary)?.href} target="_blank" rel="noopener noreferrer" className="group block">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={project.image}
+                    alt={project.imageAlt || project.title}
+                    className="aspect-[16/10] w-full border-b border-border object-cover object-top transition-opacity group-hover:opacity-90"
+                  />
+                </a>
+              )}
 
-               <ProjectCaptures videos={project.captures.videos} images={project.captures.images} />
+              <ProjectCaptures videos={project.captures.videos} images={project.captures.images} />
 
-               <div className="grid min-w-0 gap-10 p-7 sm:p-10 lg:grid-cols-[1.15fr_1fr] lg:gap-16">
+              <div className="grid min-w-0 gap-10 p-7 sm:p-10 lg:grid-cols-[1.15fr_1fr] lg:gap-16">
                 <div className="min-w-0">
                   <h3 className="font-display text-4xl tracking-tight text-foreground sm:text-5xl">
                     {project.title}
                   </h3>
+
+                  <p className="mt-1 text-sm text-muted-foreground">{project.for}</p>
 
                   <div className="mt-6 space-y-4">
                     <div>
@@ -226,20 +226,16 @@ export function Projects() {
                       <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{project.problem}</p>
                     </div>
                     <div>
-                      <span className="font-mono text-xs uppercase tracking-[0.2em] text-primary">Built</span>
-                      <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{project.built}</p>
+                      <span className="font-mono text-xs uppercase tracking-[0.2em] text-primary">Solution</span>
+                      <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{project.solution}</p>
                     </div>
                     <div>
-                      <span className="font-mono text-xs uppercase tracking-[0.2em] text-primary">Capability</span>
-                      <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{project.capability}</p>
+                      <span className="font-mono text-xs uppercase tracking-[0.2em] text-primary">Result</span>
+                      <p className="mt-1 text-sm leading-relaxed text-foreground font-medium">{project.result}</p>
                     </div>
                     <div>
-                      <span className="font-mono text-xs uppercase tracking-[0.2em] text-primary">Outcome</span>
-                      <p className="mt-1 text-sm leading-relaxed text-foreground font-medium">{project.outcome}</p>
-                    </div>
-                    <div>
-                      <span className="font-mono text-xs uppercase tracking-[0.2em] text-primary">For</span>
-                      <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{project.whoFor}</p>
+                      <span className="font-mono text-xs uppercase tracking-[0.2em] text-primary">Proof</span>
+                      <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{project.proof}</p>
                     </div>
                   </div>
 
@@ -270,6 +266,10 @@ export function Projects() {
                       )
                     })}
                   </div>
+
+                  <span className="mt-3 block font-mono text-xs uppercase tracking-wider text-muted-foreground">
+                    Built with · {project.builtWith}
+                  </span>
                 </div>
 
                 <ul className="flex min-w-0 flex-col justify-center gap-3 border-t border-border pt-6 lg:border-l lg:border-t-0 lg:pl-12 lg:pt-0">

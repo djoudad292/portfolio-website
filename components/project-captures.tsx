@@ -1,7 +1,7 @@
 "use client"
 
-import { useState } from "react"
-import { Play } from "lucide-react"
+import { useEffect, useState } from "react"
+import { Play, X } from "lucide-react"
 
 interface CaptureImage {
   src: string
@@ -22,86 +22,118 @@ interface ProjectCapturesProps {
   images: CaptureImage[]
 }
 
-type CaptureItem = CaptureVideo | CaptureImage
-
-function isVideo(item: CaptureItem): item is CaptureVideo {
-  return "label" in item
-}
-
 export function ProjectCaptures({ videos, images }: ProjectCapturesProps) {
-  const items: CaptureItem[] = [...videos, ...images]
-  if (items.length === 0) return null
+  const [open, setOpen] = useState(false)
 
-  const [selected, setSelected] = useState(0)
-  const current = items[selected]
+  useEffect(() => {
+    if (!open) return
+    const prev = document.body.style.overflow
+    document.body.style.overflow = "hidden"
+    const onKeydown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false)
+    }
+    document.addEventListener("keydown", onKeydown)
+    return () => {
+      document.body.style.overflow = prev
+      document.removeEventListener("keydown", onKeydown)
+    }
+  }, [open])
+
+  if (videos.length === 0 && images.length === 0) return null
 
   return (
-    <div className="mt-6">
-      <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl border border-border bg-card">
-        {isVideo(current) ? (
-          <video
-            controls
-            preload="none"
-            poster={current.poster}
-            aria-label={current.caption}
-            className="h-full w-full object-cover object-top"
+    <>
+      <div className="mt-6 flex flex-wrap items-center gap-2">
+        {videos.map((video) => (
+          <button
+            key={video.src}
+            type="button"
+            aria-label={`Watch ${video.label} (${video.duration})`}
+            onClick={() => setOpen(true)}
+            className="inline-flex items-center gap-2 rounded-lg border border-border bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90"
           >
-            <source src={current.src} type="video/webm" />
-          </video>
-        ) : (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={current.src}
-            alt={current.alt}
-            loading="lazy"
-            className="h-full w-full object-cover object-top"
-          />
-        )}
+            <Play className="h-4 w-4" />
+            Watch the {video.label} ({video.duration})
+          </button>
+        ))}
+        {images.map((image) => (
+          <button
+            key={image.src}
+            type="button"
+            aria-label={image.alt}
+            onClick={() => setOpen(true)}
+            className="relative flex h-[17px] w-[28px] shrink-0 items-center justify-center overflow-hidden rounded border border-border"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={image.src}
+              alt=""
+              loading="lazy"
+              className="h-full w-full object-cover object-top"
+            />
+          </button>
+        ))}
       </div>
 
-      <div className="mt-2 font-mono text-xs uppercase tracking-wider text-muted-foreground">
-        {current.caption}
-      </div>
+      {open && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto"
+          onClick={() => setOpen(false)}
+        >
+          <div className="absolute inset-0 bg-black/80" />
+          <div
+            className="relative mx-auto my-6 max-w-5xl w-full max-h-[90vh] overflow-y-auto rounded-xl border border-border bg-card p-4 sm:p-6"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="mb-4 flex items-center justify-between">
+              <span className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
+                Recorded live
+              </span>
+              <button
+                type="button"
+                aria-label="Close"
+                autoFocus
+                onClick={() => setOpen(false)}
+                className="rounded-full p-2 text-muted-foreground opacity-70 hover:opacity-100 hover:text-foreground"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </div>
 
-      <div className="mt-3 flex flex-wrap items-center gap-2">
-        {items.map((item, idx) => {
-          const isActive = idx === selected
-          const video = isVideo(item)
-          return (
-            <button
-              key={item.src}
-              type="button"
-              aria-label={video ? `Show video: ${item.label}` : item.alt}
-              aria-selected={isActive}
-              onClick={() => setSelected(idx)}
-              className={`relative flex h-[17px] w-[28px] shrink-0 items-center justify-center overflow-hidden rounded border transition-all ${
-                isActive
-                  ? "ring-2 ring-primary"
-                  : "border-border hover:border-primary"
-              }`}
-            >
-              {video ? (
-                <>
-                  <span className="absolute inset-0 flex items-center justify-center bg-muted">
-                    <Play className="h-2.5 w-2.5 text-foreground" />
-                  </span>
-                  <span className="absolute bottom-0.5 right-0.5 rounded bg-black/60 px-0.5 text-[7px] leading-none text-white">
-                    {item.duration}
-                  </span>
-                </>
-              ) : (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={item.src}
-                  alt={item.alt}
-                  loading="lazy"
-                  className="h-full w-full object-cover object-top"
-                />
-              )}
-            </button>
-          )
-        })}
-      </div>
-    </div>
+            <div className="flex flex-col gap-6">
+              {videos.map((video) => (
+                <div key={video.src}>
+                  <video
+                    controls
+                    preload="metadata"
+                    poster={video.poster}
+                    aria-label={video.caption}
+                    className="aspect-video w-full rounded-lg"
+                  >
+                    <source src={video.src} type="video/webm" />
+                  </video>
+                  <p className="mt-2 font-mono text-xs uppercase tracking-wider text-muted-foreground">
+                    {video.caption}
+                  </p>
+                </div>
+              ))}
+              {images.map((image) => (
+                <div key={image.src}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    className="w-full rounded-lg"
+                  />
+                  <p className="mt-2 font-mono text-xs uppercase tracking-wider text-muted-foreground">
+                    {image.caption}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   )
 }
