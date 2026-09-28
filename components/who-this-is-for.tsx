@@ -9,7 +9,7 @@ import { Check, ArrowRight, ArrowUpRight } from "lucide-react"
 interface Segment {
   title: string
   description: string
-  label: string
+  demo: string
   href: string
   external: boolean
 }
@@ -18,35 +18,35 @@ const segments: Segment[] = [
   {
     title: "E-commerce businesses",
     description: "Customer support, order enquiries and automation.",
-    label: "See the system",
+    demo: "Support Agent",
     href: "https://customer.djaouad.is-a.dev/",
     external: true,
   },
   {
     title: "Clinics & service businesses",
     description: "AI receptionist, appointments and customer enquiries.",
-    label: "See the system",
+    demo: "AI Receptionist",
     href: "https://chat.djaouad.is-a.dev/",
     external: true,
   },
   {
     title: "Startups & SaaS companies",
     description: "Custom AI systems, apps and integrations.",
-    label: "See the system",
+    demo: "Custom AI integration",
     href: "#contact",
     external: false,
   },
   {
     title: "Growing companies",
     description: "Internal tools and automation to reduce manual work.",
-    label: "See the system",
+    demo: "Internal automation tool",
     href: "#contact",
     external: false,
   },
   {
     title: "Agencies and professional firms",
     description: "Document management and AI automation.",
-    label: "See the system",
+    demo: "PDF Workspace",
     href: "https://docs.djaouad.is-a.dev/",
     external: true,
   },
@@ -87,6 +87,7 @@ export function WhoThisIsFor() {
               </p>
               <div className="mt-4 flex items-center gap-2 border-t border-border pt-3 text-sm">
                 <ArrowRight className="h-4 w-4 text-primary" />
+                <span className="font-medium text-foreground">Best demo:</span>
                 {item.external ? (
                   <a
                     href={item.href}
@@ -94,7 +95,7 @@ export function WhoThisIsFor() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1 font-medium text-primary hover:underline"
                   >
-                    {item.label}
+                    {item.demo}
                     <ArrowUpRight className="h-4 w-4" />
                   </a>
                 ) : (
@@ -102,7 +103,7 @@ export function WhoThisIsFor() {
                     href={item.href}
                     className="inline-flex items-center gap-1 font-medium text-primary hover:underline"
                   >
-                    {item.label}
+                    {item.demo}
                     <ArrowRight className="h-4 w-4" />
                   </Link>
                 )}

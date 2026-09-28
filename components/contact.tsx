@@ -22,10 +22,19 @@ export function Contact() {
     <section id="contact" className="px-6 py-24 lg:py-32">
       <div className="mx-auto max-w-4xl">
         <div className="rounded-xl border border-border bg-card p-8 sm:p-10">
-          <SectionHeading index="09" label="Get in touch" title="Have a project you need built?" />
-          <p className="mt-6 text-pretty leading-relaxed text-muted-foreground">
+          <SectionHeading index="09" label="Get in touch" title="Ready to start your project?" />
+          <p className="mt-6 max-w-2xl text-pretty leading-relaxed text-muted-foreground">
             Tell me what you&apos;re building and I&apos;ll get back to you within a few hours with next steps.
           </p>
+
+          <div className="mt-8">
+            <a
+              href="#project-intake"
+              className="inline-flex w-full sm:w-auto items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+            >
+              Start a project
+            </a>
+          </div>
 
           <div className="mt-8 grid max-w-md gap-3">
             {contactLinks.map((link) => (
