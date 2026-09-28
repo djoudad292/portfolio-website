@@ -43,6 +43,7 @@ const projects: Project[] = [
     links: [
       { label: "See it live", meta: "chat.djaouad.is-a.dev", href: "https://chat.djaouad.is-a.dev/", isPrimary: true },
       { label: "Get this for your business", meta: "contact", href: "#contact", isPrimary: false },
+      { label: "Watch demo", meta: "video", href: "/videos/receptionist-flow.webm" },
       { label: "source", meta: "github.com/djoudad292/ai-virtual-receptionist", href: "https://github.com/djoudad292/ai-virtual-receptionist" },
       { label: "source", meta: "APK", href: "https://github.com/djoudad292/ai-virtual-receptionist/releases/download/latest-apk-receptionist/ai-receptionist.apk" },
     ],
@@ -69,6 +70,7 @@ const projects: Project[] = [
     links: [
       { label: "See it live", meta: "docs.djaouad.is-a.dev", href: "https://docs.djaouad.is-a.dev/", isPrimary: true },
       { label: "Get this for your business", meta: "contact", href: "#contact", isPrimary: false },
+      { label: "Watch demo", meta: "video", href: "/videos/pdf-flow.webm" },
       { label: "source", meta: "github.com/djoudad292/smart-pdf-workspace", href: "https://github.com/djoudad292/smart-pdf-workspace" },
       { label: "source", meta: "APK", href: "https://github.com/djoudad292/smart-pdf-workspace/releases/download/latest-apk-pdf/smart-pdf.apk" },
     ],
@@ -96,6 +98,7 @@ const projects: Project[] = [
     links: [
       { label: "See it live", meta: "customer.djaouad.is-a.dev", href: "https://customer.djaouad.is-a.dev/", isPrimary: true },
       { label: "Get this for your business", meta: "contact", href: "#contact", isPrimary: false },
+      { label: "Watch demo", meta: "video", href: "/videos/support-flow.webm" },
       { label: "source", meta: "github.com/djoudad292/ai-customer-support-agent", href: "https://github.com/djoudad292/ai-customer-support-agent" },
       { label: "source", meta: "APK", href: "https://github.com/djoudad292/ai-customer-support-agent/releases/download/latest-apk/ai-customer-support.apk" },
     ],
@@ -120,6 +123,7 @@ const projects: Project[] = [
     links: [
       { label: "See it live", meta: "mcp.djaouad.is-a.dev/mcp", href: "https://mcp.djaouad.is-a.dev/mcp", isPrimary: true },
       { label: "Get this for your business", meta: "contact", href: "#contact", isPrimary: false },
+      { label: "Watch demo", meta: "video", href: "/videos/mcp-flow.webm" },
       { label: "source", meta: "github.com/djoudad292/hireme-mcp", href: "https://github.com/djoudad292/hireme-mcp" },
       { label: "source", meta: "APK", href: "https://github.com/djoudad292/hireme-mcp/releases/download/latest-apk/hireme-mcp.apk" },
     ],
