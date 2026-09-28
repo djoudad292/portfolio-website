@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { SectionHeading } from "./section-heading"
 import { ArrowUpRight, ExternalLink } from "lucide-react"
+import { ProjectCaptures } from "./project-captures"
 
 interface Project {
   year: string
@@ -18,6 +19,10 @@ interface Project {
   imageAlt?: string
   highlights: string[]
   links: { label: string; meta: string; href: string; isPrimary?: boolean; fullWidth?: boolean }[]
+  captures: {
+    images: { src: string; alt: string; caption: string }[]
+    videos: { src: string; label: string; duration: string; caption: string }[]
+  }
 }
 
 const projects: Project[] = [
@@ -43,10 +48,21 @@ const projects: Project[] = [
     links: [
       { label: "See it live", meta: "chat.djaouad.is-a.dev", href: "https://chat.djaouad.is-a.dev/", isPrimary: true },
       { label: "Get this for your business", meta: "contact", href: "#contact", isPrimary: false },
-      { label: "Watch demo", meta: "video", href: "/videos/receptionist-flow.webm" },
       { label: "source", meta: "github.com/djoudad292/ai-virtual-receptionist", href: "https://github.com/djoudad292/ai-virtual-receptionist" },
       { label: "source", meta: "APK", href: "https://github.com/djoudad292/ai-virtual-receptionist/releases/download/latest-apk-receptionist/ai-receptionist.apk" },
     ],
+    captures: {
+      videos: [
+        { src: "/captures/receptionist/receptionist-flow.webm", label: "flow", duration: "0:28", caption: "Booking + lead capture, live" },
+        { src: "/captures/receptionist/receptionist-dashboard.webm", label: "dashboard tour", duration: "0:20", caption: "Dashboard tour" },
+      ],
+      images: [
+        { src: "/captures/receptionist/receptionist-landing.png", alt: "AI Virtual Receptionist landing page with the chat welcome screen", caption: "Landing" },
+        { src: "/captures/receptionist/receptionist-try.png", alt: "Live chat demo with a visitor asking a question", caption: "Live try chat" },
+        { src: "/captures/receptionist/receptionist-dashboard.png", alt: "Admin dashboard showing conversation analytics", caption: "Dashboard" },
+        { src: "/captures/receptionist/receptionist-inbox.png", alt: "Inbox with routed messages from visitors", caption: "Inbox" },
+      ],
+    },
   },
   {
     year: "2025",
@@ -70,10 +86,18 @@ const projects: Project[] = [
     links: [
       { label: "See it live", meta: "docs.djaouad.is-a.dev", href: "https://docs.djaouad.is-a.dev/", isPrimary: true },
       { label: "Get this for your business", meta: "contact", href: "#contact", isPrimary: false },
-      { label: "Watch demo", meta: "video", href: "/videos/pdf-flow.webm" },
       { label: "source", meta: "github.com/djoudad292/smart-pdf-workspace", href: "https://github.com/djoudad292/smart-pdf-workspace" },
       { label: "source", meta: "APK", href: "https://github.com/djoudad292/smart-pdf-workspace/releases/download/latest-apk-pdf/smart-pdf.apk" },
     ],
+    captures: {
+      videos: [
+        { src: "/captures/pdf/pdf-flow.webm", label: "flow", duration: "0:33", caption: "Question → cited answer, live" },
+      ],
+      images: [
+        { src: "/captures/pdf/pdf-landing.png", alt: "Smart PDF Workspace landing page showing the upload area", caption: "Landing" },
+        { src: "/captures/pdf/pdf-try.png", alt: "Ask-a-question demo over an uploaded PDF", caption: "Live try chat" },
+      ],
+    },
   },
   {
     year: "2026",
@@ -98,10 +122,21 @@ const projects: Project[] = [
     links: [
       { label: "See it live", meta: "customer.djaouad.is-a.dev", href: "https://customer.djaouad.is-a.dev/", isPrimary: true },
       { label: "Get this for your business", meta: "contact", href: "#contact", isPrimary: false },
-      { label: "Watch demo", meta: "video", href: "/videos/support-flow.webm" },
       { label: "source", meta: "github.com/djoudad292/ai-customer-support-agent", href: "https://github.com/djoudad292/ai-customer-support-agent" },
       { label: "source", meta: "APK", href: "https://github.com/djoudad292/ai-customer-support-agent/releases/download/latest-apk/ai-customer-support.apk" },
     ],
+    captures: {
+      videos: [
+        { src: "/captures/support/support-flow.webm", label: "flow", duration: "0:50", caption: "Refund chip → ticket + side panel, live" },
+        { src: "/captures/support/support-dashboard.webm", label: "dashboard tour", duration: "0:24", caption: "Dashboard tour" },
+      ],
+      images: [
+        { src: "/captures/support/support-landing.png", alt: "AI Customer Support Agent landing page with the chat widget preview", caption: "Landing" },
+        { src: "/captures/support/support-try.png", alt: "Live support conversation with a customer", caption: "Live try chat" },
+        { src: "/captures/support/support-dashboard.png", alt: "Admin dashboard with live support analytics", caption: "Dashboard" },
+        { src: "/captures/support/support-tickets.png", alt: "Ticket list showing open and resolved support cases", caption: "Tickets view" },
+      ],
+    },
   },
   {
     year: "2026",
@@ -123,10 +158,18 @@ const projects: Project[] = [
     links: [
       { label: "See it live", meta: "mcp.djaouad.is-a.dev/mcp", href: "https://mcp.djaouad.is-a.dev/mcp", isPrimary: true },
       { label: "Get this for your business", meta: "contact", href: "#contact", isPrimary: false },
-      { label: "Watch demo", meta: "video", href: "/videos/mcp-flow.webm" },
       { label: "source", meta: "github.com/djoudad292/hireme-mcp", href: "https://github.com/djoudad292/hireme-mcp" },
       { label: "source", meta: "APK", href: "https://github.com/djoudad292/hireme-mcp/releases/download/latest-apk/hireme-mcp.apk" },
     ],
+    captures: {
+      videos: [
+        { src: "/captures/mcp/mcp-flow.webm", label: "flow", duration: "0:36", caption: "Live tool calls, no sign-in" },
+      ],
+      images: [
+        { src: "/captures/mcp/mcp-landing.png", alt: "HireMe MCP Server landing page with the endpoint details", caption: "Landing" },
+        { src: "/captures/mcp/mcp-playground.png", alt: "Live playground calling MCP tools", caption: "Playground" },
+      ],
+    },
   },
 ]
 
@@ -158,18 +201,20 @@ export function Projects() {
                 <span>{project.meta}</span>
               </div>
 
-              {project.image && (
-                <a href={project.links.find((l) => l.isPrimary)?.href} target="_blank" rel="noopener noreferrer" className="group block">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={project.image}
-                    alt={project.imageAlt || project.title}
-                    className="aspect-[16/10] w-full border-b border-border object-cover object-top transition-opacity group-hover:opacity-90"
-                  />
-                </a>
-              )}
+               {project.image && (
+                 <a href={project.links.find((l) => l.isPrimary)?.href} target="_blank" rel="noopener noreferrer" className="group block">
+                   {/* eslint-disable-next-line @next/next/no-img-element */}
+                   <img
+                     src={project.image}
+                     alt={project.imageAlt || project.title}
+                     className="aspect-[16/10] w-full border-b border-border object-cover object-top transition-opacity group-hover:opacity-90"
+                   />
+                 </a>
+               )}
 
-              <div className="grid min-w-0 gap-10 p-7 sm:p-10 lg:grid-cols-[1.15fr_1fr] lg:gap-16">
+               <ProjectCaptures videos={project.captures.videos} images={project.captures.images} />
+
+               <div className="grid min-w-0 gap-10 p-7 sm:p-10 lg:grid-cols-[1.15fr_1fr] lg:gap-16">
                 <div className="min-w-0">
                   <h3 className="font-display text-4xl tracking-tight text-foreground sm:text-5xl">
                     {project.title}

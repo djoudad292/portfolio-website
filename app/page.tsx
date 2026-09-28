@@ -2,7 +2,6 @@ import { Hero } from "@/components/hero"
 import { WhoThisIsFor } from "@/components/who-this-is-for"
 import { WhatIBuild } from "@/components/what-i-build"
 import { Projects } from "@/components/projects"
-import { DemoCaptures } from "@/components/captures"
 import { HowItWorks } from "@/components/how-it-works"
 import { Testimonials } from "@/components/testimonials"
 import { Pricing } from "@/components/pricing"
@@ -21,9 +20,8 @@ export default function Home() {
         <Hero />
         <WhoThisIsFor />
         <WhatIBuild />
-        <Projects />
-        <DemoCaptures />
-        <HowItWorks />
+         <Projects />
+         <HowItWorks />
         <Testimonials />
         <Pricing />
         <Contact />
