@@ -6,6 +6,7 @@ import { Projects } from "@/components/projects"
 import { HowItWorks } from "@/components/how-it-works"
 import { Testimonials } from "@/components/testimonials"
 import { Pricing } from "@/components/pricing"
+import { ProjectIntake } from "@/components/project-intake"
 import { Contact } from "@/components/contact"
 import type { Metadata } from "next";
 
@@ -26,6 +27,7 @@ export default function Home() {
          <HowItWorks />
         <Testimonials />
         <Pricing />
+        <ProjectIntake />
         <Contact />
     </main>
   )

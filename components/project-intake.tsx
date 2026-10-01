@@ -12,6 +12,12 @@ interface FormData {
   whatShouldItDo: string
 }
 
+// Persisted brief backend: HireMe MCP REST (rate-limited, persisted, email notify).
+// Override with NEXT_PUBLIC_BRIEF_URL if the endpoint ever moves.
+const BRIEF_URL =
+  process.env.NEXT_PUBLIC_BRIEF_URL ??
+  "https://mcp.djaouad.is-a.dev/api/tools/submit_project_brief"
+
 export function ProjectIntake() {
   const [formData, setFormData] = useState<FormData>({
     name: "",
@@ -32,10 +38,29 @@ export function ProjectIntake() {
     setSubmitting(true)
 
     try {
-      console.log("Project brief:", formData)
+      const res = await fetch(BRIEF_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name.trim().slice(0, 80),
+          contact: formData.email.trim().slice(0, 160),
+          project_type: "Website project brief",
+          notes: formData.whatShouldItDo.trim().slice(0, 1000),
+        }),
+      })
+
+      if (res.status === 429) {
+        toast.error("Too many briefs just now — please try again in a bit, or email me directly.")
+        return
+      }
+
+      if (!res.ok) {
+        throw new Error(`Brief rejected (${res.status})`)
+      }
+
       setSubmitted(true)
     } catch {
-      toast.error("Something went wrong. Please try again or reach out directly.")
+      toast.error("Couldn't send just now — email me directly instead.")
     } finally {
       setSubmitting(false)
     }
@@ -139,6 +164,12 @@ export function ProjectIntake() {
             >
               {submitting ? "Sending…" : "Send project brief"}
             </button>
+            <p className="pt-1 text-center text-xs text-muted-foreground">
+              Prefer email? Write to{" "}
+              <a href="mailto:contact@djaouad.is-a.dev" className="underline underline-offset-2 hover:text-foreground">
+                contact@djaouad.is-a.dev
+              </a>
+            </p>
           </form>
         </motion.div>
       </div>
