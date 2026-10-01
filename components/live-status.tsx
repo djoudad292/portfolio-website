@@ -1,12 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-
-const PRODUCTS = [
-  { name: "AI Receptionist", url: "https://chat.djaouad.is-a.dev" },
-  { name: "PDF Workspace", url: "https://docs.djaouad.is-a.dev" },
-  { name: "Support Agent", url: "https://ai-customer-support-backend-ldbf.onrender.com/health" },
-]
+import { PRODUCTS } from "@/components/console/data"
 
 type Status = { state: "checking" | "up" | "slow" | "down"; ms: number }
 
@@ -23,7 +18,7 @@ export function LiveStatus() {
         PRODUCTS.map(async (p) => {
           const t0 = performance.now()
           try {
-            await fetch(p.url, { mode: "no-cors", cache: "no-store", signal: AbortSignal.timeout(15000) })
+            await fetch(p.ping ?? p.url, { mode: "no-cors", cache: "no-store", signal: AbortSignal.timeout(15000) })
             const ms = Math.round(performance.now() - t0)
             if (!cancelled) {
               setStatuses((s) => ({ ...s, [p.name]: { state: ms < 2500 ? "up" : "slow", ms } }))

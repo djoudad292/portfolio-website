@@ -1,7 +1,7 @@
 "use client"
 
 import { useCallback, useEffect, useRef, useState } from "react"
-import { COMPANY_ID, WS_URL } from "./data"
+import { CHAT_URL, COMPANY_ID } from "./data"
 
 export type ChatMessage = {
   role: "user" | "agent"
@@ -9,15 +9,27 @@ export type ChatMessage = {
   done?: boolean
 }
 
-// Shared WS chat hook for the Console assistant + intake wizard helper.
+type ChatReply = {
+  type: string
+  content: string
+  conversationId?: string | null
+}
+
+// Shared REST chat hook for the Console assistant + intake wizard helper.
+// Serverless backend has no long-lived socket, so each turn is a POST to
+// /widget/chat; the returned conversationId threads turns together.
 export function useConsoleChat() {
   const [messages, setMessages] = useState<ChatMessage[]>([])
   const [thinking, setThinking] = useState(false)
-  const wsRef = useRef<WebSocket | null>(null)
+  const abortRef = useRef<AbortController | null>(null)
+  const convRef = useRef<string | null>(null)
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
 
   const stop = useCallback(() => {
-    wsRef.current?.close()
-    wsRef.current = null
+    abortRef.current?.abort()
+    abortRef.current = null
+    if (timerRef.current) clearInterval(timerRef.current)
+    timerRef.current = null
     setThinking(false)
   }, [])
 
@@ -26,50 +38,64 @@ export function useConsoleChat() {
     setMessages((m) => [...m, { role: "user", text }])
     setThinking(true)
 
-    // close any previous socket — one question per connection keeps state simple
-    wsRef.current?.close()
+    abortRef.current?.abort()
+    if (timerRef.current) clearInterval(timerRef.current)
+    const ac = new AbortController()
+    abortRef.current = ac
 
-    let settled = false
-    const ws = new WebSocket(WS_URL)
-    wsRef.current = ws
-
-    ws.onopen = () => {
-      ws.send(JSON.stringify({ event: "chat", data: { message: text, conversationId: null, companyId: COMPANY_ID } }))
-    }
-    ws.onmessage = (ev) => {
+    ;(async () => {
       try {
-        const msg = JSON.parse(ev.data)
-        if (msg.type === "message") {
-          settled = true
-          setThinking(false)
-          const full = String(msg.content || "")
-          // typewriter reveal
-          setMessages((m) => [...m, { role: "agent", text: "", done: false }])
-          let i = 0
-          const timer = setInterval(() => {
-            i += 3
-            setMessages((m) => {
-              const copy = [...m]
-              copy[copy.length - 1] = { role: "agent", text: full.slice(0, i), done: i >= full.length }
-              return copy
-            })
-            if (i >= full.length) clearInterval(timer)
-          }, 12)
-        }
-      } catch { /* ignore malformed frames */ }
-    }
-    ws.onerror = () => {
-      if (!settled) {
+        const res = await fetch(CHAT_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            message: text,
+            conversationId: convRef.current,
+            companyId: COMPANY_ID,
+          }),
+          signal: ac.signal,
+        })
+        if (!res.ok) throw new Error(`http ${res.status}`)
+        const d = (await res.json()) as ChatReply
+        if (d.type === "error") throw new Error(d.content || "backend error")
+        if (d.conversationId) convRef.current = d.conversationId
+
+        setThinking(false)
+        const full = String(d.content || "")
+        // typewriter reveal
+        setMessages((m) => [...m, { role: "agent", text: "", done: false }])
+        let i = 0
+        const timer = setInterval(() => {
+          i += 3
+          setMessages((m) => {
+            const copy = [...m]
+            copy[copy.length - 1] = { role: "agent", text: full.slice(0, i), done: i >= full.length }
+            return copy
+          })
+          if (i >= full.length) {
+            clearInterval(timer)
+            timerRef.current = null
+          }
+        }, 12)
+        timerRef.current = timer
+      } catch {
+        if (ac.signal.aborted) return // user pressed stop
         setThinking(false)
         setMessages((m) => [
           ...m,
-          { role: "agent", text: "The agent is cold-starting (free hosting) — ask again in ~30 seconds.", done: true },
+          { role: "agent", text: "The agent did not answer (host busy or cold start) — ask again in a few seconds.", done: true },
         ])
       }
-    }
+    })()
   }, [])
 
-  useEffect(() => () => wsRef.current?.close(), [])
+  useEffect(
+    () => () => {
+      abortRef.current?.abort()
+      if (timerRef.current) clearInterval(timerRef.current)
+    },
+    [],
+  )
 
   return { messages, thinking, send, stop, setMessages }
 }

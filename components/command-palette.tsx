@@ -3,9 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 import { ArrowUpRight, CornerDownLeft, Sparkles } from "lucide-react"
-
-const COMPANY_ID = "e207c632-ca30-48d2-a41b-87c76f3bc3fb"
-const WS_URL = `wss://ai-customer-support-backend-ldbf.onrender.com/ws?company=${COMPANY_ID}`
+import { CHAT_URL, COMPANY_ID } from "@/components/console/data"
 
 const ACTIONS = [
   { label: "Briefing", hint: "about, who", view: "briefing" },
@@ -24,7 +22,8 @@ export function CommandPalette() {
   const [mode, setMode] = useState<Mode>("idle")
   const [answer, setAnswer] = useState("")
   const inputRef = useRef<HTMLInputElement>(null)
-  const wsRef = useRef<WebSocket | null>(null)
+  const abortRef = useRef<AbortController | null>(null)
+  const convRef = useRef<string | null>(null)
   const answerRef = useRef("")
 
   const close = useCallback(() => {
@@ -32,8 +31,8 @@ export function CommandPalette() {
     setQuery("")
     setMode("idle")
     setAnswer("")
-    wsRef.current?.close()
-    wsRef.current = null
+    abortRef.current?.abort()
+    abortRef.current = null
   }, [])
 
   useEffect(() => {
@@ -62,45 +61,43 @@ export function CommandPalette() {
     setAnswer("")
     answerRef.current = ""
 
-    const ws = new WebSocket(WS_URL)
-    wsRef.current = ws
-    let firstChunk = true
+    abortRef.current?.abort()
+    const ac = new AbortController()
+    abortRef.current = ac
 
-    ws.onopen = () => {
-      ws.send(JSON.stringify({ event: "chat", data: { message: question, conversationId: null, companyId: COMPANY_ID } }))
-    }
-    ws.onmessage = (ev) => {
+    ;(async () => {
       try {
-        const msg = JSON.parse(ev.data)
-        if (msg.type === "message") {
-          // typewriter reveal for the full answer
-          setMode("answered")
-          const text = String(msg.content || "")
-          let i = 0
-          const timer = setInterval(() => {
-            i += 3
-            setAnswer(text.slice(0, i))
-            if (i >= text.length) clearInterval(timer)
-          }, 12)
-        }
+        const res = await fetch(CHAT_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            message: question,
+            conversationId: convRef.current,
+            companyId: COMPANY_ID,
+          }),
+          signal: ac.signal,
+        })
+        if (!res.ok) throw new Error(`http ${res.status}`)
+        const d = (await res.json()) as { type: string; content: string; conversationId?: string | null }
+        if (d.type === "error") throw new Error("backend error")
+        if (d.conversationId) convRef.current = d.conversationId
+
+        // typewriter reveal for the full answer
+        setMode("answered")
+        const text = String(d.content || "")
+        let i = 0
+        const timer = setInterval(() => {
+          i += 3
+          setAnswer(text.slice(0, i))
+          if (i >= text.length) clearInterval(timer)
+        }, 12)
       } catch {
-        /* ignore malformed frames */
-      }
-    }
-    ws.onerror = () => {
-      if (firstChunk) {
+        if (ac.signal.aborted) return
         setMode("error")
-        setAnswer("The agent is waking up (free tier cold start). Try again in ~30 seconds.")
+        setAnswer("The agent did not answer (host busy or cold start) — try again in a few seconds.")
       }
-    }
-    ws.onclose = () => {
-      if (mode === "thinking") {
-        setMode("error")
-        setAnswer("Connection dropped before an answer arrived. Try again.")
-      }
-    }
-    setTimeout(() => { firstChunk = false }, 5000)
-  }, [mode])
+    })()
+  }, [])
 
   const onSubmit = (e?: React.FormEvent) => {
     e?.preventDefault()

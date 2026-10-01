@@ -1,4 +1,5 @@
 import { SectionHeading } from "@/components/section-heading"
+import { API_BASE, COMPANY_ID } from "@/components/console/data"
 
 const SUGGESTED = [
   "What does Djaouad charge?",
@@ -7,8 +8,7 @@ const SUGGESTED = [
   "Is he available right now?",
 ]
 
-const WIDGET_URL =
-  "https://ai-customer-support-backend-ldbf.onrender.com/widget?company=e207c632-ca30-48d2-a41b-87c76f3bc3fb"
+const WIDGET_URL = `${API_BASE}/widget?company=${COMPANY_ID}`
 
 export function AiTwin() {
   return (

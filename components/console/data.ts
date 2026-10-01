@@ -1,20 +1,29 @@
 // Shared content for the Client Console views.
-export const COMPANY_ID = "e207c632-ca30-48d2-a41b-87c76f3bc3fb";
-export const WS_URL = `wss://ai-customer-support-backend-ldbf.onrender.com/ws?company=${COMPANY_ID}`;
+export const COMPANY_ID = "djaouad-portfolio";
+export const API_BASE = "https://ai-support-backend-nu.vercel.app";
+export const CHAT_URL = `${API_BASE}/widget/chat`;
 export const EMAIL = "contact@djaouad.is-a.dev";
 
 export const PRODUCTS = [
-  { name: "AI Receptionist", url: "https://chat.djaouad.is-a.dev" },
-  { name: "PDF Workspace", url: "https://docs.djaouad.is-a.dev" },
+  {
+    name: "AI Receptionist",
+    url: "https://chat.djaouad.is-a.dev",
+    ping: "https://ai-virtual-receptionist-sigma.vercel.app/api/health",
+  },
+  {
+    name: "PDF Workspace",
+    url: "https://docs.djaouad.is-a.dev",
+    ping: "https://smart-pdf-workspace-tan.vercel.app/api/health",
+  },
   {
     name: "Support Agent",
     url: "https://customer.djaouad.is-a.dev",
-    ping: "https://ai-customer-support-backend-ldbf.onrender.com/health",
+    ping: `${API_BASE}/health`,
   },
   {
     name: "HireMe MCP",
     url: "https://mcp.djaouad.is-a.dev",
-    ping: "https://hireme-mcp-backend.onrender.com/health",
+    ping: "https://hireme-mcp.vercel.app/health",
   },
 ];
 
