@@ -37,8 +37,8 @@ const projects = [
     title: "AI Customer Support Agent",
     stack: "Next.js · NestJS · LangGraph · pgvector · OpenAI · TypeScript",
     desc: "Automates the repetitive layer of customer support so the human team focuses on what matters: answers common questions from a RAG knowledge base, checks orders, creates tickets, and escalates to humans only when genuinely needed. Includes admin dashboard and embeddable widget, live in production.",
-    link: "customer.djaouad.is-a.dev",
-    href: "https://customer.djaouad.is-a.dev",
+    link: "ai-support-frontend-livid.vercel.app",
+    href: "https://ai-support-frontend-livid.vercel.app",
     git: "github.com/djoudad292/ai-customer-support-agent",
   },
   {

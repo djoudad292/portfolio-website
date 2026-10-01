@@ -97,7 +97,7 @@ export default function HirePage() {
             <DemoCard title="Smart PDF Workspace" link="docs.djaouad.is-a.dev" href="https://docs.djaouad.is-a.dev"
               git="github.com/djoudad292/smart-pdf-workspace"
               desc="Document intelligence system that answers questions from PDFs with cited sources. Embeddable as a widget or used standalone." />
-            <DemoCard title="AI Customer Support Agent" link="customer.djaouad.is-a.dev" href="https://customer.djaouad.is-a.dev"
+            <DemoCard title="AI Customer Support Agent" link="ai-support-frontend-livid.vercel.app" href="https://ai-support-frontend-livid.vercel.app"
               git="github.com/djoudad292/ai-customer-support-agent"
               desc="Handles repeated support questions using company knowledge, creates tickets, checks orders, and escalates to humans when needed." />
           </div>

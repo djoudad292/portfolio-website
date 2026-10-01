@@ -78,7 +78,7 @@ export async function GET() {
         >
           <span>chat.djaouad.is-a.dev</span>
           <span>docs.djaouad.is-a.dev</span>
-          <span>customer.djaouad.is-a.dev</span>
+          <span>ai-support-frontend-livid.vercel.app</span>
           <span style={{ color: "#a3e635" }}>mcp.djaouad.is-a.dev</span>
         </div>
       </div>

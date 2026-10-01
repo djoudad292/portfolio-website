@@ -20,7 +20,7 @@ const problems: Problem[] = [
     problem: "Customer support overload",
     solution: "AI Support Agent — answers, tickets, escalation",
     label: "Try it live",
-    href: "https://customer.djaouad.is-a.dev/",
+    href: "https://ai-support-frontend-livid.vercel.app/",
     external: true,
   },
   {

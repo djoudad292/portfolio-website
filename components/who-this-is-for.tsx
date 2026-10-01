@@ -19,7 +19,7 @@ const segments: Segment[] = [
     title: "E-commerce businesses",
     description: "Customer support, order enquiries and automation.",
     demo: "Support Agent",
-    href: "https://customer.djaouad.is-a.dev/",
+    href: "https://ai-support-frontend-livid.vercel.app/",
     external: true,
   },
   {
