@@ -21,15 +21,15 @@ const projects = [
   {
     title: "AI Customer Support Agent",
     stack: "Next.js · NestJS · LangGraph · pgvector · OpenAI · TypeScript",
-    desc: "A LangGraph state machine with a real tool-calling loop and conditional routing. Tool arguments are validated with Zod before execution. Answers come from a vector knowledge base; orders are checked, tickets created, and anything genuinely uncertain is escalated to a human with the full conversation attached. Multi-tenant backend with JWT access and refresh tokens, server-side revocation via a token version, and per-tenant row isolation. Admin dashboard with live analytics, plus an embeddable widget. Live in production.",
+    desc: "A LangGraph state machine with a real tool-calling loop and conditional routing. Answers come from a vector knowledge base; orders are checked, tickets created, and anything genuinely uncertain is escalated to a human with the full conversation attached. Multi-tenant backend with JWT access tokens and per-tenant row isolation. Admin dashboard with live analytics, plus an embeddable widget over a WebSocket gateway. Live in production.",
     link: "ai-support-frontend-livid.vercel.app",
     href: "https://ai-support-frontend-livid.vercel.app",
     git: "github.com/djoudad292/ai-customer-support-agent",
   },
   {
     title: "Smart PDF Workspace",
-    stack: "Next.js · NestJS · pgvector + HNSW · OpenAI text-embedding-3-small · WebSocket",
-    desc: "Document intelligence built as a real retrieval pipeline: PDF and text extraction, sentence-aware chunking, embeddings with text-embedding-3-small, then cosine-distance search over pgvector with an HNSW index. Every answer carries the source it came from. The pipeline is scored offline against a goldset of queries with known-correct documents, computing precision, recall and F1 across a similarity-threshold sweep; the most recent run reached 93.8% F1 at threshold 0.35. That benchmark covers retrieval only, not answer wording. Multi-tenant, with an embeddable widget and a mobile app.",
+    stack: "Next.js · NestJS · pgvector + HNSW · OpenAI text-embedding-3-small",
+    desc: "Document intelligence built as a real retrieval pipeline: PDF and text extraction, sentence-aware chunking, embeddings with text-embedding-3-small, then cosine-distance search over pgvector with an HNSW index. Every answer carries the source it came from. The pipeline is scored offline against a goldset of queries with known-correct documents, computing precision, recall and F1 across a similarity-threshold sweep. Multi-tenant, with JWT access and refresh tokens plus server-side revocation through a token version, an embeddable widget and a mobile app.",
     link: "docs.djaouad.is-a.dev",
     href: "https://docs.djaouad.is-a.dev",
     git: "github.com/djoudad292/smart-pdf-workspace",
@@ -37,7 +37,7 @@ const projects = [
   {
     title: "AI Virtual Receptionist",
     stack: "Next.js · NestJS · LangGraph · pgvector · React Native · Socket.io · Gemini",
-    desc: "A 24/7 receptionist, and the longest-running system I maintain. A LangGraph agent with a tool-calling loop answers from a vector-retrieval knowledge base, handles booking, captures and qualifies leads, and routes conversations to the right department. Human handoff carries an AI-drafted reply so the transition loses nothing. Real-time streaming chat, a native Android app, and an embeddable widget. Deployed to production and still being worked on.",
+    desc: "A 24/7 receptionist, and the longest-running system I maintain. A LangGraph agent with a tool-calling loop answers from a vector-retrieval knowledge base, with tool arguments validated by Zod schemas before execution. It handles booking, captures and qualifies leads, and routes conversations to the right department. Human handoff carries an AI-drafted reply so the transition loses nothing. Multi-tenant, with JWT access and refresh tokens plus server-side revocation through a token version. Real-time streaming chat, a native Android app, and an embeddable widget. Deployed to production and still being worked on.",
     link: "chat.djaouad.is-a.dev",
     href: "https://chat.djaouad.is-a.dev",
     git: "github.com/djoudad292/ai-virtual-receptionist",
@@ -53,7 +53,7 @@ const projects = [
 ];
 
 const internalWork = [
-  "A B2B sales-intelligence pipeline of 14 MCP tools behind a 10-step orchestrator, with an automated QA gate before anything is sent. Internal tooling, not a public repository, and not listed above for that reason.",
+  "A B2B sales-intelligence pipeline of 12 MCP tools behind a 9-step orchestrator, with an automated QA gate before anything is sent. Internal tooling, not a public repository, and not listed above for that reason.",
   "A lead and outreach MCP server of roughly 60 files covering discovery, scoring and sequence management. Internal, and deliberately not public.",
   "An offline eval harness that scores retrieval against a goldset, with a threshold sweep to pick the operating point.",
   "Token usage and latency capture persisted per request and served through an authenticated metrics endpoint, so a running system's cost is readable rather than guessed.",
@@ -112,10 +112,16 @@ export default function CVPage() {
               </p>
               <p className="mt-4 max-w-2xl leading-relaxed text-muted-foreground">
                 I hold a line on measurement. Retrieval is scored offline against a
-                goldset rather than assumed, currently 93.8% F1 on the vector
-                pipeline. Token usage and latency are recorded per request and served
-                through an authenticated metrics endpoint. Where something is not
-                measured, I say so rather than implying it is.
+                goldset rather than assumed. The benchmark runs on the AI Virtual
+                Receptionist knowledge base (dental clinic KB, 15 chunks, 18 queries)
+                with a deterministic offline embedder (concept lens + hashed lexical
+                residual). The most recent run reached 93.8% F1 at threshold 0.35.
+                This measures the retrieval policy (the similarity floor, top-k cut,
+                and vector-vs-keyword choice), not the production embedder
+                (text-embedding-3-small) or end-to-end answer quality. Token usage
+                and latency are recorded per request and served through an
+                authenticated metrics endpoint. Where something is not measured, I
+                say so rather than implying it is.
               </p>
               <p className="mt-4 max-w-2xl leading-relaxed text-muted-foreground">
                 On tenure: these systems were built between August and October 2026,

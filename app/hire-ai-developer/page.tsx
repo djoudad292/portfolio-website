@@ -106,7 +106,7 @@ export default function HirePage() {
               desc="A LangGraph agent with a real tool-calling loop and conditional routing. It answers from a vector knowledge base, checks orders, creates tickets, and escalates to a human with the full conversation attached. Embeddable with one line of script." />
             <DemoCard title="Smart PDF Workspace" link="docs.djaouad.is-a.dev" href="https://docs.djaouad.is-a.dev"
               git="github.com/djoudad292/smart-pdf-workspace"
-              desc="Document intelligence with sentence-aware chunking, OpenAI text-embedding-3-small embeddings, and pgvector cosine search over an HNSW index. Every answer carries its source. Its retrieval pipeline scores 93.8% F1 on the local benchmark." />
+              desc="Document intelligence with sentence-aware chunking, OpenAI text-embedding-3-small embeddings, and pgvector cosine search over an HNSW index. Every answer carries its source. Retrieval is benchmarked separately on the AI Virtual Receptionist knowledge base." />
             <DemoCard title="AI Virtual Receptionist" link="chat.djaouad.is-a.dev" href="https://chat.djaouad.is-a.dev"
               git="github.com/djoudad292/ai-virtual-receptionist"
               desc="A 24/7 receptionist that answers from a vector-retrieval knowledge base, books appointments, captures and qualifies leads, routes visitors to the right department, and hands off to a human with an AI-drafted reply ready to send." />
@@ -120,10 +120,10 @@ export default function HirePage() {
           <h2 className="font-display text-3xl tracking-tight">How the claims get checked</h2>
           <div className="mt-6 grid gap-5 sm:grid-cols-2">
             {[
-              ["Retrieval is benchmarked", "A goldset of queries with known-correct sources, run offline through the pipeline, computing precision, recall and F1 with a threshold sweep. Most recent vector retrieval run: 93.8% F1 at threshold 0.35. This covers retrieval only. It does not score written answer quality or agent tool selection."],
+              ["Retrieval is benchmarked", "A goldset of queries with known-correct sources, run offline through the pipeline, computing precision, recall and F1 with a threshold sweep. The benchmark runs on the AI Virtual Receptionist knowledge base (dental clinic KB, 15 chunks, 18 queries) with a deterministic offline embedder. Most recent vector retrieval run: 93.8% F1 at threshold 0.35. This covers retrieval policy only, not the production embedder (text-embedding-3-small) or written answer quality."],
               ["Cost and latency are reported", "Every model call records token counts and latency, persisted and exposed on an authenticated metrics endpoint. That is token and latency capture rather than full distributed tracing, and I describe it that way."],
               ["The code is public", "All four systems have public repositories. Read them, fork them, or run them yourself."],
-              ["Multi-tenant by default", "Short-lived JWT access tokens with rotating refresh tokens, bcrypt hashing, server-side revocation through a token version, and row-level isolation between tenants."],
+              ["Multi-tenant by default", "Short-lived JWT access tokens with bcrypt hashing and row-level isolation between tenants on all four. The receptionist and document workspace go further, with rotating refresh tokens and server-side revocation through a token version."],
             ].map(([h, t]) => (
               <div key={h} className="rounded-2xl border border-border bg-card p-6">
                 <h3 className="font-display text-xl">{h}</h3>

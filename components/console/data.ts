@@ -59,7 +59,7 @@ export const PROJECTS = [
   {
     id: "receptionist",
     title: "AI Virtual Receptionist",
-    year: "2025",
+    year: "2026",
     stack: "Next.js · NestJS · pgvector · React Native · Gemini",
     image: "/receptionist-hero-new.png",
     alt: "AI Virtual Receptionist interface",
@@ -73,7 +73,7 @@ export const PROJECTS = [
   {
     id: "pdf",
     title: "Smart PDF Workspace",
-    year: "2025",
+    year: "2026",
     stack: "Next.js · NestJS · pgvector · OpenRouter · JWT",
     image: "/pdf-workspace-hero-new.png",
     alt: "Smart PDF Workspace interface",

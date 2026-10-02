@@ -21,9 +21,3 @@ export const PRICE_ANCHOR = "$4,000 - $12,000"
 
 export const PRICE_ANCHOR_NOTE =
   "depending on scope. Retrieval quality, agent tooling, and the application around it all move the number."
-
-// Real measured numbers. Only claim what the harness actually computes.
-export const RETRIEVAL_F1 = "93.8%"
-export const RETRIEVAL_PRECISION = "88.2"
-export const RETRIEVAL_RECALL = "100"
-export const RETRIEVAL_THRESHOLD = "0.35"

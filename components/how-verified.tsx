@@ -4,24 +4,18 @@ import { motion } from "framer-motion"
 import { SectionHeading } from "./section-heading"
 import { Gauge, Lock, Radio, ScanLine, GitBranch, Activity } from "lucide-react"
 
-import {
-  RETRIEVAL_F1,
-  RETRIEVAL_PRECISION,
-  RETRIEVAL_RECALL,
-  RETRIEVAL_THRESHOLD,
-} from "@/lib/positioning"
-
 const checks = [
   {
     icon: ScanLine,
     title: "Retrieval is benchmarked, not assumed",
     body: [
       "There is a goldset of queries with known-correct source documents, and the retrieval pipeline runs offline against it. The harness computes precision, recall and F1, then sweeps the similarity threshold to find the operating point that actually works on this data.",
+      "The benchmark runs on the AI Virtual Receptionist knowledge base (dental clinic KB, 15 chunks, 18 queries). The embedder is a deterministic offline stub (concept lens + hashed lexical residual), not the production text-embedding-3-small. This measures the retrieval policy (the similarity floor, top-k cut, and vector-vs-keyword choice) as a regression guard for the harness and the threshold. It does NOT measure production embedding quality or end-to-end answer quality.",
     ],
-    stat: `${RETRIEVAL_F1} F1`,
-    statNote: `Most recent run: vector retrieval at threshold ${RETRIEVAL_THRESHOLD}. Precision ${RETRIEVAL_PRECISION}, recall ${RETRIEVAL_RECALL}.`,
+    stat: "93.8% F1 (18 queries, offline embedder)",
+    statNote: "Receptionist knowledge base, dental clinic domain, 15 chunks. Threshold 0.35, precision 88.2%, recall 100%. Vector retrieval mode, top-k 5.",
     caveat:
-      "What this does not measure: whether the written answer is any good, or whether an agent picks the right tool. Those are not benchmarked and I do not claim them.",
+      "What this does not measure: whether the written answer is any good, or whether an agent picks the right tool. It also does not measure the production embedder (text-embedding-3-small). The number is a regression guard for the retrieval policy, not a benchmark of the embedder or answer quality.",
   },
   {
     icon: Activity,
@@ -48,20 +42,20 @@ const checks = [
     icon: Lock,
     title: "Auth and tenant isolation are part of the build",
     body: [
-      "Short-lived JWT access tokens with rotating refresh tokens, bcrypt password hashing, and server-side revocation through a token version so a session can actually be killed. Row-level isolation means one tenant's rows are never returned to another.",
+      "Short-lived JWT access tokens with bcrypt password hashing, and row-level isolation so one tenant's rows are never returned to another. The receptionist and document workspace add rotating refresh tokens with server-side revocation through a token version, so a session there can actually be killed.",
     ],
     stat: "Multi-tenant",
-    statNote: "Deployed on managed Postgres, with admin dashboards per tenant.",
+    statNote: "All four on managed Postgres, with admin dashboards per tenant. Refresh rotation on two of the four.",
     caveat: null,
   },
   {
     icon: GitBranch,
     title: "The agent decides, and it knows when to stop",
     body: [
-      "The support and receptionist agents are state machines, not one long prompt. They route conditionally, call tools with validated arguments, and escalate to a person with the full conversation rather than guessing.",
+      "The support and receptionist agents are state machines, not one long prompt. They route conditionally, call tools, and escalate to a person with the full conversation rather than guessing. The receptionist validates every tool argument against a Zod schema before it runs.",
     ],
     stat: "2 agents",
-    statNote: "Both LangGraph, both independently built, both in production.",
+    statNote: "Both LangGraph, both shipped, sharing a common backend scaffold.",
     caveat: null,
   },
   {

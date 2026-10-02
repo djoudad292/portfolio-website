@@ -32,11 +32,11 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.15 }}
           className="mt-7 max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground"
         >
-          I&apos;m Djaouad. Two independently built AI agents with real tool-calling
-          loops. Retrieval pipelines that cite their sources. Multi-tenant
-          backends, mobile apps and MCP servers. Every one of them is deployed on
-          a real domain with a public repository, so you can open it and try it
-          before you talk to me.
+          I'm Djaouad. Two shipped LangGraph agents with real tool-calling
+          loops, sharing a common backend scaffold. Retrieval pipelines that
+          cite their sources. Multi-tenant backends, mobile apps and MCP
+          servers. Every one of them is deployed on a real domain with a public
+          repository, so you can open it and try it before you talk to me.
         </motion.p>
 
         <motion.p
@@ -45,8 +45,8 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mt-4 max-w-2xl font-mono text-sm leading-relaxed text-muted-foreground"
         >
-          Retrieval benchmarked at 93.8% F1 · token and latency metrics on every
-          build · {POSITIONING}
+          Retrieval scored offline on a goldset · token and latency metrics on
+          every build · {POSITIONING}
         </motion.p>
 
         <motion.div

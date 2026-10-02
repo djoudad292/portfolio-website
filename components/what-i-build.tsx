@@ -25,7 +25,7 @@ const categories = [
     icon: Bot,
     title: "Tool-using AI agents",
     description:
-      "LangGraph state machines with real tool-calling loops and conditional routing. The agent decides which tool to call, validates arguments with Zod, and knows when the case is beyond it.",
+      "LangGraph state machines with real tool-calling loops and conditional routing. The agent decides which tool to call, and knows when the case is beyond it. The receptionist validates every tool argument against a Zod schema before execution.",
     bestFor:
       "Processes with more than one step, where a single prompt and a search box are not enough.",
   },
