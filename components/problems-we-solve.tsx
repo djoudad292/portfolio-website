@@ -17,44 +17,50 @@ interface Problem {
 
 const problems: Problem[] = [
   {
-    problem: "Customer support overload",
-    solution: "AI Support Agent — answers, tickets, escalation",
+    problem: "The same support question, a hundred times a week",
+    solution:
+      "AI Support Agent. Answers from your knowledge base, opens tickets, checks orders, escalates the rest",
     label: "Try it live",
     href: "https://ai-support-frontend-livid.vercel.app/",
     external: true,
   },
   {
-    problem: "Missed leads after hours",
-    solution: "AI Receptionist — 24/7 answers, booking, lead capture",
+    problem: "Enquiries that arrive when nobody is awake",
+    solution:
+      "AI Receptionist. Answers, books, captures the lead, routes it, hands off to a human with a drafted reply",
     label: "Try it live",
     href: "https://chat.djaouad.is-a.dev/",
     external: true,
   },
   {
-    problem: "Too much manual / document work",
-    solution: "AI Document System — cited answers, summaries",
+    problem: "The answer is in a document nobody has read",
+    solution:
+      "Retrieval and document intelligence. Vector search over your files, every answer carrying its source",
     label: "Try it live",
     href: "https://docs.djaouad.is-a.dev/",
     external: true,
   },
   {
-    problem: "Spreadsheet / manual processes",
-    solution: "Business Automation — internal tools built around your data",
-    label: "Describe the problem",
+    problem: "A manual process eating your best people's week",
+    solution:
+      "Internal tool built on your own data. Auth, roles, an audit trail, and the spreadsheet retired",
+    label: "Describe the process",
     href: "#contact",
     external: false,
   },
   {
-    problem: "Disconnected software",
-    solution: "System Integrations — connect the tools that don't talk",
-    label: "Describe the problem",
+    problem: "An AI product you know exactly what to do with",
+    solution:
+      "AI-first build. The agent, the retrieval layer behind it, the application around it, deployed to your domain",
+    label: "Describe the product",
     href: "#contact",
     external: false,
   },
   {
-    problem: "Need for custom apps",
-    solution: "Web & Mobile Development — production apps, deployed",
-    label: "Describe the problem",
+    problem: "Software an AI assistant cannot reach",
+    solution:
+      "MCP server. Your systems behind a typed tool interface, callable by Claude, Cursor or your own agent",
+    label: "Describe the system",
     href: "#contact",
     external: false,
   },
@@ -67,8 +73,8 @@ export function ProblemsWeSolve() {
         <SectionHeading
           index="01"
           label="Start with the problem"
-          title="If this is your problem, the system already exists."
-          description="Pick the problem — try the live system that solves it. No signup, no call required."
+          title="Start with the problem, not the stack."
+          description="The first three are running systems you can open right now. The rest is the same engineering, scoped to your data and your workflow."
         />
 
         <div className="grid gap-5 sm:grid-cols-2">

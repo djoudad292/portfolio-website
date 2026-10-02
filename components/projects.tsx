@@ -26,20 +26,96 @@ interface Project {
 
 const projects: Project[] = [
   {
+    year: "2026",
+    label: "AI Agent",
+    title: "AI Customer Support Agent",
+    for: "For e-commerce and SaaS teams with high-volume support.",
+    problem: "Support teams answer the same questions all day. Order status, return policies, product details, plan limits.",
+    solution: "A LangGraph agent with a real tool-calling loop and conditional routing. It answers from a vector knowledge base, checks orders, opens tickets, and escalates to a human with the full conversation attached. Embeddable in any site with a one-line widget.",
+    result: "Handles the routine layer itself and hands the rest to your team. Watch it decide, act and explain in the demo.",
+    proof: "Live demo + 50s refund-to-ticket TKT-0022 on camera",
+    builtWith: "LangGraph state machine · pgvector · admin analytics",
+    image: "/support-agent-hero-new.png",
+    imageAlt: "AI Customer Support Agent, production agent with live phone mockup",
+    highlights: [
+      "LangGraph agent: tool-calling loop with conditional routing between paths",
+      "Tool arguments validated with Zod before anything runs",
+      "Multi-turn conversations with context memory",
+      "Answers retrieved from a vector knowledge base, not keyword matching",
+      "Human escalation with the full conversation context",
+      "Admin dashboard with live analytics, plus an embeddable widget",
+    ],
+    links: [
+      { label: "See it live", meta: "ai-support-frontend-livid.vercel.app", href: "https://ai-support-frontend-livid.vercel.app/", isPrimary: true },
+      { label: "Get this for your business", meta: "contact", href: "#contact", isPrimary: false },
+      { label: "source", meta: "github.com/djoudad292/ai-customer-support-agent", href: "https://github.com/djoudad292/ai-customer-support-agent" },
+      { label: "source", meta: "APK", href: "https://github.com/djoudad292/ai-customer-support-agent/releases/download/latest-apk/ai-customer-support.apk" },
+    ],
+    captures: {
+      videos: [
+        { src: "/captures/support/support-flow.webm", poster: "/support-agent-hero-new.png", label: "flow", duration: "0:50", caption: "Refund chip to ticket + side panel, live" },
+        { src: "/captures/support/support-dashboard.webm", poster: "/captures/support/support-dashboard.png", label: "dashboard tour", duration: "0:24", caption: "Dashboard tour" },
+      ],
+      images: [
+        { src: "/captures/support/support-landing.png", alt: "AI Customer Support Agent landing page with the chat widget preview", caption: "Landing" },
+        { src: "/captures/support/support-try.png", alt: "Live support conversation with a customer", caption: "Live try chat" },
+        { src: "/captures/support/support-dashboard.png", alt: "Admin dashboard with live support analytics", caption: "Dashboard" },
+        { src: "/captures/support/support-tickets.png", alt: "Ticket list showing open and resolved support cases", caption: "Tickets view" },
+      ],
+    },
+  },
+  {
     year: "2025",
-    label: "Custom AI System",
+    label: "Retrieval System",
+    title: "Smart PDF Workspace",
+    for: "For legal, compliance and research teams working through documents.",
+    problem: "Teams need answers from long documents. Contracts, reports, manuals. Searching manually is slow, and an answer you cannot trace is an answer you cannot use.",
+    solution: "Upload PDFs and ask questions. The pipeline extracts text, chunks it sentence-aware, embeds it with OpenAI text-embedding-3-small, and searches pgvector by cosine distance over an HNSW index. Every answer carries the source it came from. Multi-tenant accounts, an embeddable widget, and a mobile app.",
+    result: "Answers from your documents with the citation attached, at 93.8% F1 on the retrieval benchmark.",
+    proof: "Live sandbox + cited answers on camera + retrieval benchmark at #verification",
+    builtWith: "pgvector + HNSW · multi-tenant · embeddable widget",
+    image: "/pdf-workspace-hero-new.png",
+    imageAlt: "Smart PDF Workspace, ask questions across your PDFs with cited sources",
+    highlights: [
+      "Sentence-aware chunking, not fixed-size windows",
+      "OpenAI text-embedding-3-small embeddings in pgvector, cosine search",
+      "HNSW index, so search stays fast as the corpus grows",
+      "Source citation on every answer",
+      "Secure multi-tenant accounts with row-level isolation",
+      "Ask-your-docs widget plus a mobile app",
+    ],
+    links: [
+      { label: "See it live", meta: "docs.djaouad.is-a.dev", href: "https://docs.djaouad.is-a.dev/", isPrimary: true },
+      { label: "Get this for your business", meta: "contact", href: "#contact", isPrimary: false },
+      { label: "source", meta: "github.com/djoudad292/smart-pdf-workspace", href: "https://github.com/djoudad292/smart-pdf-workspace" },
+      { label: "source", meta: "APK", href: "https://github.com/djoudad292/smart-pdf-workspace/releases/download/latest-apk-pdf/smart-pdf.apk" },
+    ],
+    captures: {
+      videos: [
+        { src: "/captures/pdf/pdf-flow.webm", poster: "/pdf-workspace-hero-new.png", label: "flow", duration: "0:33", caption: "Question to cited answer, live" },
+      ],
+      images: [
+        { src: "/captures/pdf/pdf-landing.png", alt: "Smart PDF Workspace landing page showing the upload area", caption: "Landing" },
+        { src: "/captures/pdf/pdf-try.png", alt: "Ask-a-question demo over an uploaded PDF", caption: "Live try chat" },
+      ],
+    },
+  },
+  {
+    year: "2025",
+    label: "AI Agent",
     title: "AI Virtual Receptionist",
-    for: "For clinics and small service businesses.",
-    problem: "Businesses lose leads and bookings when messages go unanswered after hours.",
-    solution: "A 24/7 AI receptionist that answers questions, handles booking, captures leads, and routes visitors to the right team, with a human handoff that includes an AI-drafted reply.",
-    result: "Answers routine questions after hours — 24/7, no staff on call.",
+    for: "For clinics and service businesses losing enquiries after hours.",
+    problem: "Businesses lose leads and bookings when messages go unanswered overnight. The follow-up happens the next morning, if at all.",
+    solution: "A 24/7 LangGraph receptionist with a tool-calling loop. It answers from the business knowledge base over vector retrieval, handles booking, captures and qualifies leads, routes visitors to the right team, and hands off to a human with an AI-drafted reply already written.",
+    result: "Answers routine questions after hours, with no staff on call.",
     proof: "Live demo + 28s recorded booking ending in a saved lead",
     builtWith: "Website chat · AI answers · Android app",
     image: "/receptionist-hero-new.png",
-    imageAlt: "AI Virtual Receptionist — live chat demo showing a real conversation",
+    imageAlt: "AI Virtual Receptionist, live chat demo showing a real conversation",
     highlights: [
       "Real-time chat with streaming AI answers",
-      "Department routing — sends visitors to the right team",
+      "Vector-retrieval knowledge base with source citations",
+      "Department routing that sends visitors to the right team",
       "Human takeover with an AI-drafted reply for your team",
       "Appointment booking and lead capture",
       "Native Android app",
@@ -64,95 +140,23 @@ const projects: Project[] = [
     },
   },
   {
-    year: "2025",
-    label: "AI Integration",
-    title: "Smart PDF Workspace",
-    for: "For legal, compliance, and research teams drowning in documents.",
-    problem: "Teams need reliable answers from long documents — contracts, reports, manuals — but searching manually is slow.",
-    solution: "Upload your PDFs and ask questions — the workspace reads them and answers with a page citation from the source. One-click summaries save hours of manual reading. Embeddable as a widget or used as a standalone knowledge base.",
-    result: "Finds answers in uploaded PDFs with page citations — no manual reading required.",
-    proof: "Live sandbox + cited answers on camera",
-    builtWith: "Document search · cited answers · mobile app",
-    image: "/pdf-workspace-hero-new.png",
-    imageAlt: "Smart PDF Workspace — ask questions across your PDFs with cited sources",
-    highlights: [
-      "Secure multi-tenant accounts",
-      "Reads and finds answers across your uploaded documents",
-      "Cites its sources on every answer",
-      "Summarizes any document in one click",
-      "Ask-your-docs widget plus a mobile app",
-    ],
-    links: [
-      { label: "See it live", meta: "docs.djaouad.is-a.dev", href: "https://docs.djaouad.is-a.dev/", isPrimary: true },
-      { label: "Get this for your business", meta: "contact", href: "#contact", isPrimary: false },
-      { label: "source", meta: "github.com/djoudad292/smart-pdf-workspace", href: "https://github.com/djoudad292/smart-pdf-workspace" },
-      { label: "source", meta: "APK", href: "https://github.com/djoudad292/smart-pdf-workspace/releases/download/latest-apk-pdf/smart-pdf.apk" },
-    ],
-    captures: {
-      videos: [
-        { src: "/captures/pdf/pdf-flow.webm", poster: "/pdf-workspace-hero-new.png", label: "flow", duration: "0:33", caption: "Question → cited answer, live" },
-      ],
-      images: [
-        { src: "/captures/pdf/pdf-landing.png", alt: "Smart PDF Workspace landing page showing the upload area", caption: "Landing" },
-        { src: "/captures/pdf/pdf-try.png", alt: "Ask-a-question demo over an uploaded PDF", caption: "Live try chat" },
-      ],
-    },
-  },
-  {
     year: "2026",
-    label: "Custom AI System",
-    title: "AI Customer Support Agent",
-    for: "For e-commerce and SaaS teams with high-volume support.",
-    problem: "Support teams answer the same questions repeatedly — order status, return policies, product details.",
-    solution: "A production-ready AI support agent that handles repeated questions, creates tickets, checks orders, and escalates to humans — embeddable via a one-line widget.",
-    result: "Handles routine questions itself and hands tricky cases to your team — watch it decide, act and explain in the demo.",
-    proof: "Live demo + 50s refund-to-ticket TKT-0022 on camera",
-    builtWith: "AI agent · analytics dashboard",
-    image: "/support-agent-hero-new.png",
-    imageAlt: "AI Customer Support Agent — production-ready agent with live phone mockup",
-    highlights: [
-      "Multi-turn conversations with context memory",
-      "Tool calling — create tickets, check orders, search FAQ",
-      "Built-in knowledge base",
-      "Human escalation with full conversation context",
-      "Admin dashboard with live analytics",
-      "Embeddable widget for any website",
-    ],
-    links: [
-      { label: "See it live", meta: "ai-support-frontend-livid.vercel.app", href: "https://ai-support-frontend-livid.vercel.app/", isPrimary: true },
-      { label: "Get this for your business", meta: "contact", href: "#contact", isPrimary: false },
-      { label: "source", meta: "github.com/djoudad292/ai-customer-support-agent", href: "https://github.com/djoudad292/ai-customer-support-agent" },
-      { label: "source", meta: "APK", href: "https://github.com/djoudad292/ai-customer-support-agent/releases/download/latest-apk/ai-customer-support.apk" },
-    ],
-    captures: {
-      videos: [
-        { src: "/captures/support/support-flow.webm", poster: "/support-agent-hero-new.png", label: "flow", duration: "0:50", caption: "Refund chip → ticket + side panel, live" },
-        { src: "/captures/support/support-dashboard.webm", poster: "/captures/support/support-dashboard.png", label: "dashboard tour", duration: "0:24", caption: "Dashboard tour" },
-      ],
-      images: [
-        { src: "/captures/support/support-landing.png", alt: "AI Customer Support Agent landing page with the chat widget preview", caption: "Landing" },
-        { src: "/captures/support/support-try.png", alt: "Live support conversation with a customer", caption: "Live try chat" },
-        { src: "/captures/support/support-dashboard.png", alt: "Admin dashboard with live support analytics", caption: "Dashboard" },
-        { src: "/captures/support/support-tickets.png", alt: "Ticket list showing open and resolved support cases", caption: "Tickets view" },
-      ],
-    },
-  },
-  {
-    year: "2026",
-    label: "Agent Interface",
+    label: "MCP Server",
     title: "HireMe MCP Server",
-    for: "For founders and recruiters who use AI to evaluate hires.",
-    problem: "Founders and recruiters delegate vetting to AI agents — but portfolios are unreadable to agents.",
-    solution: "The HireMe MCP Server (lets AI assistants use your business info) exposes a real profile, shipped projects, fixed pricing, and a project-brief intake — so Claude, Cursor, or ChatGPT can vet the work and file a brief. 5 tools: get profile, search projects, get pricing, get next slot, file a brief (rate-limited, persisted and emailed). The server is itself the demo.",
-    result: "Lets AI agents vet a developer and file a project brief — no human middleman needed.",
+    for: "For teams that want their systems callable by AI assistants.",
+    problem: "Agents in other products cannot use your software. They scrape a web page and guess, because nothing exposes a typed interface to them.",
+    solution: "A production MCP server that puts a real interface in front of a business. Five tools: get profile, search projects, get pricing, get next slot, and file a brief. The write tool is rate-limited per IP, persisted, and emailed. Claude, Cursor or ChatGPT can connect and use it directly. Stated plainly: this server makes no model calls of its own. It is protocol and integration work, and it is here as proof of that, not as an AI agent.",
+    result: "Any MCP client can read the data and act on it, with no human in the middle.",
     proof: "Live endpoint, 5 tools verified + brief filed on camera (id 5ae693eb)",
-    builtWith: "AI-assistant interface · live playground · mobile app",
+    builtWith: "MCP protocol · TypeScript · rate limiting · persisted intake",
     image: "/hireme-mcp-hero-new.png",
-    imageAlt: "HireMe MCP Server — endpoint with live playground",
+    imageAlt: "HireMe MCP Server, endpoint with live playground",
     highlights: [
-      "Live endpoint: mcp.djaouad.is-a.dev/mcp — one-paste client config",
-      "File-brief tool with abuse controls: per-IP rate limit, persisted briefs, email notify",
-      "Console with live playground + connection configs",
+      "Live endpoint at mcp.djaouad.is-a.dev/mcp, one-paste client config",
+      "Five tools: four reads and one gated write",
+      "File-brief tool with per-IP rate limit, persisted briefs, email notify",
+      "Console with a live playground and connection configs",
+      "No model calls inside the server, by design",
     ],
     links: [
       { label: "See it live", meta: "mcp.djaouad.is-a.dev/mcp", href: "https://mcp.djaouad.is-a.dev/mcp", isPrimary: true },
@@ -177,10 +181,10 @@ export function Projects() {
     <section id="work" className="px-6 py-24 lg:py-32">
       <div className="mx-auto max-w-6xl">
         <SectionHeading
-          index="02"
+          index="04"
           label="Proof of work"
           title="Real systems, live in production."
-          description="Each project started with a specific problem and was built end-to-end — from requirements through deployment. These are not demos. They're production systems handling real traffic."
+          description="Each of these started as a specific problem and was built end to end, from requirements through deployment. They are running deployments on real domains with public repositories, ordered by how much evidence sits behind them rather than by date."
         />
 
         <div className="space-y-12">
@@ -195,7 +199,7 @@ export function Projects() {
             >
               <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border px-7 py-4 font-mono text-xs uppercase tracking-wider text-muted-foreground sm:px-10">
                 <span>
-                  {project.year} — {project.label}
+                  {project.year} · {project.label}
                 </span>
               </div>
 

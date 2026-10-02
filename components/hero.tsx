@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion"
 
+import { POSITIONING } from "@/lib/positioning"
+
 export function Hero() {
   return (
     <section id="top" className="px-6 pb-16 pt-32 lg:pt-20">
@@ -12,7 +14,7 @@ export function Hero() {
           transition={{ duration: 0.5 }}
           className="mb-8 font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground"
         >
-          AI &amp; full-stack developer — rescue, internal tools, integrations
+          AI systems engineer · agents, retrieval, and the product around them
         </motion.p>
 
         <motion.h1
@@ -21,8 +23,7 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.05 }}
           className="max-w-4xl font-display text-[3rem] font-normal leading-[1.02] tracking-tight text-foreground sm:text-7xl lg:text-[5.5rem]"
         >
-          Stalled app, spreadsheet chaos,{" "}
-          <em className="text-primary">systems that don&apos;t talk?</em>
+          I build AI systems that <em className="text-primary">run in production.</em>
         </motion.h1>
 
         <motion.p
@@ -31,19 +32,21 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.15 }}
           className="mt-7 max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground"
         >
-          I&apos;m Djaouad — I take over existing web and mobile codebases,
-          replace spreadsheet-driven ops with internal tools your team
-          actually uses, and connect the systems that don&apos;t talk to each
-          other. Fixed-price, milestone-based, remote worldwide.
+          I&apos;m Djaouad. Two independently built AI agents with real tool-calling
+          loops. Retrieval pipelines that cite their sources. Multi-tenant
+          backends, mobile apps and MCP servers. Every one of them is deployed on
+          a real domain with a public repository, so you can open it and try it
+          before you talk to me.
         </motion.p>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-3 max-w-2xl font-mono text-sm text-muted-foreground"
+          className="mt-4 max-w-2xl font-mono text-sm leading-relaxed text-muted-foreground"
         >
-          Developer gone quiet? Something half-built?
+          Retrieval benchmarked at 93.8% F1 · token and latency metrics on every
+          build · {POSITIONING}
         </motion.p>
 
         <motion.div
@@ -54,9 +57,15 @@ export function Hero() {
         >
           <a
             href="#work"
+            className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+          >
+            See the live systems
+          </a>
+          <a
+            href="#verification"
             className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:border-foreground hover:text-foreground"
           >
-            See what I&apos;ve built
+            How this is verified
           </a>
         </motion.div>
 

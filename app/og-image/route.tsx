@@ -29,7 +29,7 @@ export async function GET() {
         >
           <div style={{ width: "14px", height: "14px", borderRadius: "9999px", backgroundColor: "#a3e635" }} />
           <div style={{ fontSize: "20px", color: "#8b94a7", letterSpacing: "4px" }}>
-            DJAOUAD.TECH CONSOLE
+            DJAOUAD.IS-A.DEV
           </div>
         </div>
         <div
@@ -53,7 +53,7 @@ export async function GET() {
             marginBottom: "24px",
           }}
         >
-          Full-Stack AI Engineer
+          AI Systems Engineer
         </div>
         <div
           style={{
@@ -63,7 +63,7 @@ export async function GET() {
             maxWidth: "900px",
           }}
         >
-          AI agents · RAG · MCP · Web &amp; Mobile — turning AI into business outcomes
+          AI agents · RAG · MCP · Web &amp; Mobile · production systems
         </div>
         <div
           style={{

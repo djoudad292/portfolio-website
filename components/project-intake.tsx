@@ -50,7 +50,7 @@ export function ProjectIntake() {
       })
 
       if (res.status === 429) {
-        toast.error("Too many briefs just now — please try again in a bit, or email me directly.")
+        toast.error("Too many briefs just now, please try again in a bit, or email me directly.")
         return
       }
 
@@ -60,7 +60,7 @@ export function ProjectIntake() {
 
       setSubmitted(true)
     } catch {
-      toast.error("Couldn't send just now — email me directly instead.")
+      toast.error("Couldn't send just now, email me directly instead.")
     } finally {
       setSubmitting(false)
     }
@@ -70,11 +70,11 @@ export function ProjectIntake() {
     return (
       <section id="project-intake" className="px-6 py-24 lg:py-32">
         <div className="mx-auto max-w-3xl">
-          <SectionHeading
-            index="08"
-            label="Project intake"
-            title="Tell me what you need built."
-          />
+<SectionHeading
+          index="09"
+          label="Project intake"
+          title="Tell me what you need built."
+        />
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -86,7 +86,7 @@ export function ProjectIntake() {
               Project brief received.
             </h3>
             <p className="mt-3 text-muted-foreground">
-              I&apos;ll review the requirements and get back to you with the next step — usually within a few hours.
+              I&apos;ll review the requirements and get back to you with the next step, usually the same working day.
             </p>
           </motion.div>
         </div>
@@ -98,10 +98,10 @@ export function ProjectIntake() {
     <section id="project-intake" className="px-6 py-24 lg:py-32">
       <div className="mx-auto max-w-3xl">
         <SectionHeading
-          index="08"
+          index="09"
           label="Project intake"
           title="Tell me what you need built."
-          description="Share the basics. I'll review the scope and get back to you with a clear plan — or questions if anything needs clarification."
+          description="Share the basics. I'll review the scope and get back to you with a clear plan, or questions if anything needs clarification."
         />
 
         <motion.div

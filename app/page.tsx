@@ -3,17 +3,19 @@ import { ProblemsWeSolve } from "@/components/problems-we-solve"
 import { WhoThisIsFor } from "@/components/who-this-is-for"
 import { WhatIBuild } from "@/components/what-i-build"
 import { Projects } from "@/components/projects"
+import { HowVerified } from "@/components/how-verified"
 import { HowItWorks } from "@/components/how-it-works"
 import { Testimonials } from "@/components/testimonials"
 import { Pricing } from "@/components/pricing"
 import { ProjectIntake } from "@/components/project-intake"
 import { Contact } from "@/components/contact"
+import { POSITIONING } from "@/lib/positioning"
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Djaouad Frih — I Finish & Fix Business Software: Rescue, Internal Tools, Integrations",
+  title: "Djaouad Frih · AI Systems Engineer | Agents, Retrieval, Production Builds",
   description:
-    "Stalled app? Developer gone? Spreadsheet chaos? I take over existing web/mobile codebases, replace manual ops with internal tools, and connect systems that don't talk. Fixed-price, milestone-based. Show me what's stuck.",
+    "I build production AI systems: tool-calling agents, vector retrieval with source citations, MCP servers, and the application around them. Live on real domains, open source, retrieval benchmarked at 93.8% F1.",
 };
 
 export default function Home() {
@@ -24,11 +26,13 @@ export default function Home() {
         <WhoThisIsFor />
         <WhatIBuild />
          <Projects />
+         <HowVerified />
          <HowItWorks />
         <Testimonials />
         <Pricing />
         <ProjectIntake />
         <Contact />
+        <p className="sr-only">{POSITIONING}</p>
     </main>
   )
 }

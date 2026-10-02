@@ -9,7 +9,7 @@ const testimonials = [
       "Great people, very good service. Made my website within 2 weeks in such a professional manner, very good communication skills would highly recommend!!",
     name: "Bilal Kadri",
     country: "United Kingdom",
-    context: "Website build — 2-week delivery",
+    context: "Website build · 2-week delivery",
     reviewUrl: "https://www.facebook.com/share/r/18MiUF32rd/",
     profileUrl: "https://www.facebook.com/share/19Qx9MsT6b/",
     indent: false,
@@ -19,7 +19,7 @@ const testimonials = [
       "Huge shout-out to djaouad! 🙌 Complete, fully functional full-stack build delivered right on schedule. That's how it's done! 💥 Star developer right here. ⭐",
     name: "Muhhamet Novruzov",
     country: "Cyprus",
-    context: "Full-stack product build — delivered on schedule",
+    context: "Full-stack product build · delivered on schedule",
     reviewUrl: "https://www.facebook.com/share/r/18MiUF32rd/",
     profileUrl: "https://www.facebook.com/share/1JTbdKi3oe/",
     indent: true,
@@ -30,7 +30,7 @@ export function Testimonials() {
   return (
     <section id="testimonials" className="px-6 py-24 lg:py-32">
       <div className="mx-auto max-w-4xl">
-        <SectionHeading index="06" label="Client feedback" title="What clients said." />
+        <SectionHeading index="07" label="Client feedback" title="What clients said." />
 
         <div className="space-y-14">
           {testimonials.map((t) => (

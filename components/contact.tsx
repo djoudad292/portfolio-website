@@ -14,7 +14,8 @@ const guarantees = [
   "Fixed price",
   "Weekly demos",
   "You own the code",
-  "14-day bug-fix window",
+  "Usage and latency reporting included",
+  "30-day bug-fix window",
 ]
 
 export function Contact() {
@@ -22,9 +23,10 @@ export function Contact() {
     <section id="contact" className="px-6 py-24 lg:py-32">
       <div className="mx-auto max-w-4xl">
         <div className="rounded-xl border border-border bg-card p-8 sm:p-10">
-          <SectionHeading index="09" label="Get in touch" title="Ready to start your project?" />
+          <SectionHeading index="10" label="Get in touch" title="Ready to start your project?" />
           <p className="mt-6 max-w-2xl text-pretty leading-relaxed text-muted-foreground">
-            Tell me what you&apos;re building and I&apos;ll get back to you within a few hours with next steps.
+            Tell me what you&apos;re building and I&apos;ll get back to you with next steps,
+            including an honest read on whether this is worth building at all.
           </p>
 
           <div className="mt-8">

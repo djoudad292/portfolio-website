@@ -4,6 +4,8 @@ import { motion } from "framer-motion"
 import { SectionHeading } from "./section-heading"
 import { Check } from "lucide-react"
 
+import { PRICE_ANCHOR, PRICE_ANCHOR_NOTE } from "@/lib/positioning"
+
 const processItems = [
   {
     title: "Fixed-price projects",
@@ -19,7 +21,7 @@ const processItems = [
   },
   {
     title: "Code and deployment handed over to you",
-    text: "Source code, deployment, documentation — everything is yours.",
+    text: "Source code, deployment, documentation. Everything is yours, including the infrastructure account.",
   },
 ]
 
@@ -27,6 +29,8 @@ const features = [
   "Free scope review and fixed quote",
   "Weekly demos at each milestone",
   "Working software before you pay the next milestone",
+  "Retrieval and agent behaviour checked against a test set, not eyeballed",
+  "Token and latency reporting wired in from the first commit",
   "Source code and deployment handed over",
   "Post-launch support included",
 ]
@@ -36,10 +40,10 @@ export function Pricing() {
     <section id="pricing" className="px-6 py-24 lg:py-32">
       <div className="mx-auto max-w-6xl">
         <SectionHeading
-          index="05"
+          index="08"
           label="How pricing works"
           title="Fixed scope. No surprises."
-          description="Every project starts with a free scope review. I assess what's needed, define the architecture, and send a fixed-price proposal. Development proceeds in milestones — you see working software at each step."
+          description="Every project starts with a free scope review. I assess what's needed, define the architecture, and send a fixed-price proposal. Development proceeds in milestones, and you see working software at each step."
         />
 
         <motion.p
@@ -49,9 +53,9 @@ export function Pricing() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="mb-10 text-center font-mono text-sm text-muted-foreground"
         >
-          Projects typically start from{" "}
-          <span className="text-primary">$800 – $1,500</span>{" "}
-          depending on scope.
+          AI system builds typically run{" "}
+          <span className="text-primary">{PRICE_ANCHOR}</span>{" "}
+          {PRICE_ANCHOR_NOTE}
         </motion.p>
 
         <div className="grid gap-6 lg:grid-cols-2">
@@ -111,12 +115,12 @@ export function Pricing() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="mt-8 text-center text-sm text-muted-foreground"
         >
-          Every project is different — tell me about yours and get a{" "}
+          Every project is different. Tell me about yours and get a{" "}
           <a
             href="#project-intake"
             className="underline decoration-primary underline-offset-4 hover:text-foreground"
           >
-            free, no-obligation quote within 24 hours
+            free, no-obligation quote
           </a>
           .
         </motion.p>

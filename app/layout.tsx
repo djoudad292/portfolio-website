@@ -23,13 +23,13 @@ export const metadata: Metadata = {
       "msvalidate.01": "C51CDA99ED5014CBAB8480F6E66FC408",
     },
   },
-  title: 'Djaouad Frih | AI Developer — Build the AI System You Already Have in Mind',
+  title: 'Djaouad Frih | AI Systems Engineer · Agents, Retrieval, Production Builds',
   description:
-    'I build AI integrations, custom AI systems, and AI-powered products for teams that already know what they need. Fixed-price, milestone-based, production-ready. Tell me what you need built.',
+    'I build production AI systems: tool-calling agents, vector retrieval with source citations, MCP servers, and the application around them. Live on real domains, open source, retrieval benchmarked at 93.8% F1.',
   openGraph: {
-    title: 'Djaouad Frih | AI Developer — Custom AI Systems & Full-Stack Builds',
+    title: 'Djaouad Frih | AI Systems Engineer · Agents, Retrieval, Production Builds',
     description:
-      'AI integrations, custom AI systems, and AI-powered products — built end-to-end from requirements through deployment. Fixed-price, milestone-based, remote worldwide.',
+      'Production AI systems: LangGraph agents with tool-calling loops, pgvector retrieval with citations, MCP servers, multi-tenant apps. Four live systems with public repositories. Fixed-price, milestone-based.',
     url: 'https://djaouad.is-a.dev',
     siteName: 'Djaouad Frih',
     locale: 'en_US',
@@ -39,15 +39,15 @@ export const metadata: Metadata = {
         url: 'https://djaouad.is-a.dev/og-image',
         width: 1200,
         height: 630,
-        alt: 'Djaouad Frih — AI Developer',
+        alt: 'Djaouad Frih, AI Systems Engineer: agents, retrieval, MCP servers, production builds',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Djaouad Frih | AI Developer — Build the AI System You Already Have in Mind',
+    title: 'Djaouad Frih | AI Systems Engineer · Agents, Retrieval, Production Builds',
     description:
-      'AI integrations, custom AI systems, and AI-powered products — fixed-price, milestone-based, production-ready.',
+      'Production AI systems: tool-calling agents, vector retrieval with citations, MCP servers. Live, open source, benchmarked.',
     images: ['https://djaouad.is-a.dev/og-image'],
   },
   icons: {
@@ -82,12 +82,12 @@ export default function RootLayout({
               '@context': 'https://schema.org',
               '@type': 'Person',
               name: 'Djaouad Frih',
-              jobTitle: 'AI Developer',
+              jobTitle: 'AI Systems Engineer',
               url: 'https://djaouad.is-a.dev',
               email: 'mailto:contact@djaouad.is-a.dev',
               telephone: '+213780688125',
-              address: { '@type': 'PostalAddress', addressRegion: 'Remote — worldwide' },
-              knowsAbout: ['AI integration', 'custom AI development', 'AI agent development', 'RAG', 'LLM integration', 'Next.js', 'NestJS', 'React Native', 'PostgreSQL', 'pgvector'],
+              address: { '@type': 'PostalAddress', addressRegion: 'Remote, worldwide' },
+              knowsAbout: ['AI agent development', 'LangGraph', 'tool calling', 'RAG', 'vector search', 'pgvector', 'MCP server development', 'LLM evaluation', 'multi-tenant SaaS', 'Next.js', 'NestJS', 'React Native', 'PostgreSQL'],
               sameAs: [
                 'https://github.com/djoudad292',
                 'https://linkedin.com/in/djaouad-frih',

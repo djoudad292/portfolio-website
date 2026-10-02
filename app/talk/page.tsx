@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import TalkAgent from "@/components/TalkAgent";
 
-export const metadata: Metadata = { title: "Live AI Agent Demo — djaouad.is-a.dev" };
+export const metadata: Metadata = { title: "Live AI Agent Demo · djaouad.is-a.dev" };
 
 export const runtime = "nodejs";
 
@@ -18,7 +18,7 @@ export default async function TalkPage({
     try {
       host = new URL(sp.s).host;
     } catch {
-      // ignore — malformed URL
+      // ignore: malformed URL
     }
     return <TalkAgent lead={sp.l} site={sp.s} company={sp.c || host} />;
   }
@@ -36,12 +36,12 @@ export default async function TalkPage({
     >
       <div style={{ maxWidth: 520, textAlign: "center", color: "#e8e8ef" }}>
         <div style={{ fontSize: 13, color: "#5b5b6b", marginBottom: 10, letterSpacing: 1 }}>
-          DJAOUAD.TECH · FULL-STACK AI ENGINEER
+          DJAOUAD.IS-A.DEV · AI SYSTEMS ENGINEER
         </div>
         <h1 style={{ fontSize: 22, marginBottom: 12 }}>This demo link is not active</h1>
         <p style={{ color: "#a5a5b4", lineHeight: 1.6, fontSize: 14, marginBottom: 24 }}>
           Every prospect gets a personal AI agent trained on their own website.
-          Meanwhile, try the products running live right now:
+          Meanwhile, try the four systems running live right now:
         </p>
         <div style={{ display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap" }}>
           {[
@@ -68,7 +68,7 @@ export default async function TalkPage({
           ))}
         </div>
         <p style={{ color: "#5b5b6b", fontSize: 12, marginTop: 22, marginBottom: 10 }}>
-          Want yours? Paste your website — I’ll spin your demo before our call:
+          Want yours? Paste your website. I’ll spin your demo before our call:
         </p>
         <form
           action="/talk"
@@ -110,7 +110,7 @@ export default async function TalkPage({
         </form>
         <p style={{ marginTop: 16, fontSize: 12 }}>
           <a href="mailto:contact@djaouad.is-a.dev" style={{ color: "#34d399", textDecoration: "none", fontWeight: 700 }}>
-            Email me — fixed quote in 24h →
+            Email me, fixed quote in 24h →
           </a>
         </p>
       </div>

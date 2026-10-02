@@ -7,22 +7,22 @@ const steps = [
   {
     step: "01",
     title: "Tell me what you're building",
-    text: "Share your project brief — what it needs to do, what it connects to, and what success looks like.",
+    text: "Share your project brief. What it needs to do, what data it reads, what it has to be able to explain, and what success looks like.",
   },
   {
     step: "02",
     title: "I review the requirements and define scope",
-    text: "I assess feasibility, define the architecture, and send you a fixed-price proposal with clear milestones.",
+    text: "I assess feasibility, define the architecture, and send you a fixed-price proposal with clear milestones. If AI is the wrong tool, I say so here.",
   },
   {
     step: "03",
     title: "We build in milestones",
-    text: "You see working software at each milestone. Feedback is incorporated before moving to the next one.",
+    text: "You see working software at each milestone. Retrieval gets checked against a test set before it ships. Feedback is incorporated before the next one starts.",
   },
   {
     step: "04",
     title: "You receive the production-ready system",
-    text: "Code, deployment, documentation — all handed over. The system is yours to run and modify.",
+    text: "Code, deployment, documentation, and the usage and latency reporting. All handed over, so the system is yours to run and to change.",
   },
 ]
 
@@ -31,7 +31,7 @@ export function HowItWorks() {
     <section id="how-it-works" className="px-6 py-24 lg:py-32">
       <div className="mx-auto max-w-6xl">
         <SectionHeading
-          index="03"
+          index="06"
           label="How it works"
           title="From brief to production."
           description="No surprises. You see working software at each step."

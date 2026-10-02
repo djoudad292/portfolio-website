@@ -16,48 +16,53 @@ interface Segment {
 
 const segments: Segment[] = [
   {
-    title: "E-commerce businesses",
-    description: "Customer support, order enquiries and automation.",
+    title: "E-commerce and SaaS",
+    description:
+      "High-volume support where the same question arrives all day: order status, returns, product detail, plan limits.",
     demo: "Support Agent",
     href: "https://ai-support-frontend-livid.vercel.app/",
     external: true,
   },
   {
-    title: "Clinics & service businesses",
-    description: "AI receptionist, appointments and customer enquiries.",
+    title: "Clinics and service businesses",
+    description:
+      "Enquiries and bookings that land at 9pm and go unanswered until the morning after they went cold.",
     demo: "AI Receptionist",
     href: "https://chat.djaouad.is-a.dev/",
     external: true,
   },
   {
-    title: "Startups & SaaS companies",
-    description: "Custom AI systems, apps and integrations.",
-    demo: "Custom AI integration",
-    href: "#contact",
-    external: false,
-  },
-  {
-    title: "Growing companies",
-    description: "Internal tools and automation to reduce manual work.",
-    demo: "Internal automation tool",
-    href: "#contact",
-    external: false,
-  },
-  {
-    title: "Agencies and professional firms",
-    description: "Document management and AI automation.",
-    demo: "PDF Workspace",
+    title: "Legal, compliance and research teams",
+    description:
+      "Document-heavy work where an answer without a citation is worse than no answer at all.",
+    demo: "Document workspace",
     href: "https://docs.djaouad.is-a.dev/",
     external: true,
+  },
+  {
+    title: "Founders building an AI-first product",
+    description:
+      "You know what the agent should do and who it is for. You need it built, deployed, and measurable rather than prototyped.",
+    demo: "Describe the product",
+    href: "#contact",
+    external: false,
+  },
+  {
+    title: "Agencies needing delivery capacity",
+    description:
+      "You have the client, the scope and the deadline. You need a production engineer who can own the build end to end.",
+    demo: "Describe the project",
+    href: "#contact",
+    external: false,
   },
 ]
 
 const reasons = [
-  { text: "Custom-built solutions" },
-  { text: "AI + full-stack expertise" },
+  { text: "Production systems, not pilots" },
+  { text: "Retrieval and agents benchmarked", href: "#verification" },
+  { text: "Public repos you can read" },
   { text: "Fixed-price, milestone-based" },
-  { text: "One team from development to deployment" },
-  { text: "Real production projects and demos", href: "#work" },
+  { text: "You own the code and the deployment" },
 ]
 
 export function WhoThisIsFor() {
@@ -123,7 +128,8 @@ export function WhoThisIsFor() {
           <a href="#contact" className="text-primary hover:underline">
             Describe the problem
           </a>{" "}
-          and I&apos;ll help you figure out the right path.
+          and I&apos;ll tell you whether AI is the right tool for it, or whether a
+          plain integration would do.
         </motion.p>
 
         <motion.div
@@ -134,7 +140,7 @@ export function WhoThisIsFor() {
           className="mt-12 rounded-xl border border-border bg-card p-6 sm:p-8"
         >
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-primary">
-            Why us
+            Why this works
           </p>
           <div className="mt-4 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm font-medium text-foreground">
             {reasons.map((item, i) => (
@@ -142,7 +148,7 @@ export function WhoThisIsFor() {
                 {i > 0 && <span className="text-muted-foreground">·</span>}
                 {item.href ? (
                   <Link href={item.href} className="text-primary hover:underline">
-                    {item.text} (see #work)
+                    {item.text} (see below)
                   </Link>
                 ) : (
                   item.text

@@ -1,32 +1,37 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowUpRight, Github, Bot, FileSearch, Layers, Smartphone } from "lucide-react";
+import { ArrowUpRight, Github, Bot, FileSearch, Layers, MessageSquareCode, Workflow, Headset } from "lucide-react";
+
+import { PRICE_ANCHOR } from "@/lib/positioning";
 
 export const metadata: Metadata = {
-  title: "Hire an AI Developer | Djaouad Frih — Custom AI Systems & Full-Stack Builds",
+  title: "Hire an AI Systems Engineer | Djaouad Frih · Agents, Retrieval, Production Builds",
   description:
-    "Hire an AI developer to build AI integrations, custom AI systems, and AI-powered products — end-to-end from requirements through deployment. Fixed-price, milestone-based, production-ready.",
+    "Hire an AI systems engineer to build production AI: tool-calling agents, vector retrieval with citations, MCP servers, and the application around them. Fixed-price, milestone-based, source handed over.",
   alternates: { canonical: "https://djaouad.is-a.dev/hire-ai-developer" },
   openGraph: {
-    title: "Hire an AI Developer — Djaouad Frih",
-    description: "AI integrations, custom AI systems, and production builds — fixed-price, milestone-based.",
+    title: "Hire an AI Systems Engineer · Djaouad Frih",
+    description:
+      "Agents, retrieval, MCP servers and production applications. Fixed-price, milestone-based, four live systems with public repositories.",
     url: "https://djaouad.is-a.dev/hire-ai-developer",
     type: "website",
   },
 };
 
 const services = [
-  { icon: Bot, title: "AI Integrations", text: "Connect AI to your existing products, APIs, CRMs, and databases. Add chat, search, extraction, or automation without rebuilding what you have." },
-  { icon: FileSearch, title: "Custom AI Systems", text: "AI systems that use your business data, tools, and workflows to perform real tasks — agents, knowledge bases, support systems, automation pipelines." },
-  { icon: Layers, title: "AI Products & Internal Tools", text: "Complete production-ready applications built around a specific AI use case. Full-stack web or mobile with auth, dashboards, and real-time features." },
-  { icon: Smartphone, title: "Mobile Apps", text: "React Native apps shipped to both app stores — connected to your backend and AI features, built to update fast." },
+  { icon: FileSearch, title: "Retrieval and document intelligence", text: "Extraction, sentence-aware chunking, embeddings and vector search with an HNSW index. Answers arrive with the source attached, and retrieval is checked against a goldset rather than eyeballed." },
+  { icon: Bot, title: "Tool-using AI agents", text: "LangGraph state machines with real tool-calling loops, conditional routing and validated tool arguments. Handoff to a human carries the full conversation." },
+  { icon: Headset, title: "Receptionists and support agents", text: "Always-on agents for small and mid-size businesses. Answer, book, capture, route and escalate, embedded on your site with one line of script." },
+  { icon: MessageSquareCode, title: "MCP server development", text: "Model Context Protocol servers that put your systems behind a typed tool interface, so AI assistants can read your data and run your workflows directly." },
+  { icon: Layers, title: "AI added to an existing stack", text: "Connect models to the database, API and CRM you already run. No rebuild of what works, no new platform subscription." },
+  { icon: Workflow, title: "Internal tools replacing manual work", text: "Approval queues, intake forms and reporting on your own data, with auth, roles and an audit trail. Supporting role: the web and mobile app around the AI." },
 ];
 
 const process = [
-  { step: "01", title: "Tell me what you're building", text: "Share your project brief — what it needs to do, what it connects to, and what success looks like." },
-  { step: "02", title: "I review the scope", text: "I assess feasibility, define the architecture, and send a fixed-price proposal with clear milestones." },
-  { step: "03", title: "We build in milestones", text: "You see working software at each milestone. Feedback is incorporated before moving to the next one." },
-  { step: "04", title: "You get the production system", text: "Code, deployment, documentation — everything handed over. The system is yours." },
+  { step: "01", title: "Tell me what you're building", text: "Share the brief. What it must do, what data it reads, what it has to be able to explain." },
+  { step: "02", title: "I review the scope", text: "Feasibility, architecture, and a fixed-price proposal with clear milestones. If AI is the wrong answer here, I say so at this step." },
+  { step: "03", title: "We build in milestones", text: "Working software at each milestone. Retrieval gets tested against a set before it ships, and token and latency reporting goes in early." },
+  { step: "04", title: "You get the production system", text: "Code, deployment, documentation and reporting, all handed over. The system and the infrastructure account are yours." },
 ];
 
 export default function HirePage() {
@@ -35,16 +40,17 @@ export default function HirePage() {
       <div className="relative mx-auto max-w-4xl px-6">
         <section className="pt-28 pb-16">
           <p className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/10 px-4 py-1.5 font-mono text-xs tracking-wide text-primary">
-            AI DEVELOPER
+            AI SYSTEMS ENGINEER
           </p>
           <h1 className="mt-6 font-display text-5xl leading-[1.04] tracking-tight sm:text-6xl">
-            Hire a developer who builds <span className="text-primary">production systems.</span>
+            Hire an engineer who ships <span className="text-primary">working AI systems.</span>
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-            I build AI integrations, custom AI systems, and AI-powered products — end-to-end,
-            from architecture to deployment. If you already know what you need built,
-            I&apos;ll scope it, build it in milestones, and hand over production-ready code.
-            Fixed-price, remote worldwide.
+            I build the agent, the retrieval layer behind it, and the production
+            application around it. Four of these are running on real domains with
+            public repositories, so you can check the work before we speak.
+            Retrieval is benchmarked, usage and latency are reported, and the code
+            and the deployment are yours. Fixed-price, remote worldwide.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <a href="#contact"
@@ -56,7 +62,7 @@ export default function HirePage() {
             </a>
           </div>
           <div className="mt-8 grid gap-3 sm:grid-cols-3">
-            {["Fixed-price, milestone-based", "Working software at each step", "Remote, US/EU hours"].map((t) => (
+            {[`AI system builds from ${PRICE_ANCHOR}`, "Retrieval benchmarked, not guessed", "Remote, US/EU hours"].map((t) => (
               <div key={t} className="rounded-xl border border-border bg-card px-4 py-3 text-sm text-muted-foreground">{t}</div>
             ))}
           </div>
@@ -89,17 +95,41 @@ export default function HirePage() {
         </section>
 
         <section className="pb-16">
-          <h2 className="font-display text-3xl tracking-tight">Proof of work — live in production</h2>
+          <h2 className="font-display text-3xl tracking-tight">Proof of work, live in production</h2>
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+            Each of these is a running deployment with a public repository, not a
+            prototype. Open any of them and use it.
+          </p>
           <div className="mt-6 grid gap-5">
-            <DemoCard title="AI Receptionist" link="chat.djaouad.is-a.dev" href="https://chat.djaouad.is-a.dev"
-              git="github.com/djoudad292/ai-virtual-receptionist"
-              desc="24/7 AI receptionist that answers in real time, books appointments, captures leads, and hands off to humans — grounded in the business's own knowledge base." />
-            <DemoCard title="Smart PDF Workspace" link="docs.djaouad.is-a.dev" href="https://docs.djaouad.is-a.dev"
-              git="github.com/djoudad292/smart-pdf-workspace"
-              desc="Document intelligence system that answers questions from PDFs with cited sources. Embeddable as a widget or used standalone." />
             <DemoCard title="AI Customer Support Agent" link="ai-support-frontend-livid.vercel.app" href="https://ai-support-frontend-livid.vercel.app"
               git="github.com/djoudad292/ai-customer-support-agent"
-              desc="Handles repeated support questions using company knowledge, creates tickets, checks orders, and escalates to humans when needed." />
+              desc="A LangGraph agent with a real tool-calling loop and conditional routing. It answers from a vector knowledge base, checks orders, creates tickets, and escalates to a human with the full conversation attached. Embeddable with one line of script." />
+            <DemoCard title="Smart PDF Workspace" link="docs.djaouad.is-a.dev" href="https://docs.djaouad.is-a.dev"
+              git="github.com/djoudad292/smart-pdf-workspace"
+              desc="Document intelligence with sentence-aware chunking, OpenAI text-embedding-3-small embeddings, and pgvector cosine search over an HNSW index. Every answer carries its source. Its retrieval pipeline scores 93.8% F1 on the local benchmark." />
+            <DemoCard title="AI Virtual Receptionist" link="chat.djaouad.is-a.dev" href="https://chat.djaouad.is-a.dev"
+              git="github.com/djoudad292/ai-virtual-receptionist"
+              desc="A 24/7 receptionist that answers from a vector-retrieval knowledge base, books appointments, captures and qualifies leads, routes visitors to the right department, and hands off to a human with an AI-drafted reply ready to send." />
+            <DemoCard title="HireMe MCP Server" link="mcp.djaouad.is-a.dev" href="https://mcp.djaouad.is-a.dev"
+              git="github.com/djoudad292/hireme-mcp"
+              desc="MCP server proof rather than agent work. Five tools, four reads and one rate-limited write, exposed over the Model Context Protocol so any compatible assistant can use them. It makes no model calls of its own." />
+          </div>
+        </section>
+
+        <section className="pb-16">
+          <h2 className="font-display text-3xl tracking-tight">How the claims get checked</h2>
+          <div className="mt-6 grid gap-5 sm:grid-cols-2">
+            {[
+              ["Retrieval is benchmarked", "A goldset of queries with known-correct sources, run offline through the pipeline, computing precision, recall and F1 with a threshold sweep. Most recent vector retrieval run: 93.8% F1 at threshold 0.35. This covers retrieval only. It does not score written answer quality or agent tool selection."],
+              ["Cost and latency are reported", "Every model call records token counts and latency, persisted and exposed on an authenticated metrics endpoint. That is token and latency capture rather than full distributed tracing, and I describe it that way."],
+              ["The code is public", "All four systems have public repositories. Read them, fork them, or run them yourself."],
+              ["Multi-tenant by default", "Short-lived JWT access tokens with rotating refresh tokens, bcrypt hashing, server-side revocation through a token version, and row-level isolation between tenants."],
+            ].map(([h, t]) => (
+              <div key={h} className="rounded-2xl border border-border bg-card p-6">
+                <h3 className="font-display text-xl">{h}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{t}</p>
+              </div>
+            ))}
           </div>
         </section>
 
