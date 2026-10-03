@@ -88,20 +88,7 @@ export function ChatWidget() {
         />
       )}
 
-      {/* Floating action button */}
-      <motion.button
-        onClick={() => setIsOpen(!isOpen)}
-        className={`relative flex h-14 w-14 items-center justify-center rounded-full bg-primary shadow-xl transition-all hover:scale-105 hover:shadow-2xl ${
-          isOpen ? "rotate-45" : ""
-        }`}
-        aria-label={isOpen ? "Close chat" : "Open chat"}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-      >
-        <MessageSquare className="h-7 w-7 text-primary-foreground" />
-      </motion.button>
-
-      {/* Chat panel */}
+      {/* Chat panel — positioned above button */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -109,7 +96,7 @@ export function ChatWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.96 }}
             transition={{ duration: 0.18, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="absolute bottom-14 right-0 mb-2 w-full max-w-sm sm:max-w-md lg:max-w-sm"
+            className="absolute bottom-16 right-0 mb-2 w-full max-w-sm sm:max-w-md lg:max-w-sm"
           >
             <div className="rounded-2xl border border-border bg-card shadow-[0_25px_50px_-12px_rgb(0,0,0,0.25)] overflow-hidden ring-1 ring-black/5">
               {/* Header */}
@@ -247,14 +234,27 @@ export function ChatWidget() {
         )}
       </AnimatePresence>
 
-      {/* Availability indicator — only when closed */}
+      {/* Floating action button — always visible */}
+      <motion.button
+        onClick={() => setIsOpen(!isOpen)}
+        className={`flex h-14 w-14 items-center justify-center rounded-full bg-primary shadow-xl transition-all hover:scale-105 hover:shadow-2xl ${
+          isOpen ? "rotate-45" : ""
+        }`}
+        aria-label={isOpen ? "Close chat" : "Open chat"}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        <MessageSquare className="h-7 w-7 text-primary-foreground" />
+      </motion.button>
+
+      {/* Availability indicator — only when closed, above button */}
       {!isOpen && (
         <motion.div
           initial={{ opacity: 0, x: 16 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: 16 }}
           transition={{ delay: 0.8, duration: 0.3 }}
-          className="absolute bottom-14 right-0 mb-2 hidden sm:block"
+          className="absolute bottom-16 right-0 mb-2 hidden sm:block"
         >
           <div className="flex items-center gap-2 rounded-xl border border-border bg-card px-3 py-1.5 text-[11px] text-muted-foreground shadow-lg ring-1 ring-black/5">
             <span className="relative flex h-1.5 w-1.5 shrink-0">
