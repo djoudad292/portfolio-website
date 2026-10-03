@@ -115,7 +115,8 @@
     color: var(--primary-foreground);
   }
   [id] {
-    scroll-margin-top: 5rem;
+    /* Must clear the fixed header (81px). Keep in sync with navbar height. */
+    scroll-margin-top: 6rem;
   }
   @media (prefers-reduced-motion: reduce) {
     html {

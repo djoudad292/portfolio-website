@@ -53,7 +53,7 @@ export default function HirePage() {
             and the deployment are yours. Fixed-price, remote worldwide.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <a href="#contact"
+            <a href="/#project-intake"
               className="rounded-xl bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-colors hover:opacity-90">
               Describe your project
             </a>
@@ -139,7 +139,7 @@ export default function HirePage() {
             <p className="max-w-md text-muted-foreground">
               Tell me what you need built. I&apos;ll review the scope and send a fixed-price proposal with clear milestones.
             </p>
-            <Link href="/#contact"
+            <Link href="/#project-intake"
               className="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-colors hover:opacity-90">
               Describe your project <ArrowUpRight className="h-4 w-4" />
             </Link>

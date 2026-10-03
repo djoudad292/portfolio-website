@@ -75,6 +75,8 @@ export function Navbar() {
           type="button"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle menu"
+          aria-expanded={isOpen}
+          aria-controls="mobile-menu"
           className="inline-flex items-center justify-center text-foreground md:hidden"
         >
           {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -84,6 +86,7 @@ export function Navbar() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
+            id="mobile-menu"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
@@ -107,7 +110,7 @@ export function Navbar() {
               <a
                 href="/#project-intake"
                 onClick={() => setIsOpen(false)}
-                className="inline-flex w-full items-center justify-center rounded-full bg-primary px-5 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+                className="inline-flex min-h-11 w-full items-center justify-center rounded-full bg-primary px-5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
               >
                 Start a project
               </a>

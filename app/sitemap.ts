@@ -2,6 +2,11 @@ import type { MetadataRoute } from "next";
 
 const BASE = "https://djaouad.is-a.dev";
 
+// NOTE: /stats is intentionally excluded. It is a private admin page gated by
+// ?k=STATS_KEY that renders a fake "404" on a bad key and sets robots noindex.
+// Listing it here would advertise the admin URL to crawlers and contradict the
+// noindex directive.
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
   const pages = [
@@ -14,7 +19,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/blog",
     "/blog/pilot-to-production",
     "/blog/portfolio-mcp-server",
-    "/stats",
     "/privacy",
     "/terms",
   ];
