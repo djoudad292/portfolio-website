@@ -10,7 +10,7 @@ const ACTIONS = [
   { label: "Briefing", hint: "about, who", view: "briefing" },
   { label: "See the work", hint: "projects", view: "work" },
   { label: "Ask my AI", hint: "chat, agent", view: "assistant" },
-  { label: "Scope a project", hint: "intake, quote", view: "intake" },
+  { label: "Start a project", hint: "contact, hire", view: "contact" },
   { label: "Process & pricing", hint: "terms, cost, rates", view: "terms" },
   { label: "Connect via MCP", hint: "hireme, agent hire", view: "connect" },
 ]

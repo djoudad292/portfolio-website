@@ -63,7 +63,7 @@ export function Navbar() {
           </li>
           <li>
             <a
-              href="/#project-intake"
+              href="/contact"
               className="inline-flex items-center rounded-full bg-primary px-5 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
             >
               Start a Project
@@ -127,7 +127,7 @@ export function Navbar() {
 
             <div className="px-6 pb-4">
               <a
-                href="/#project-intake"
+                href="/contact"
                 onClick={() => setIsOpen(false)}
                 className="inline-flex min-h-11 w-full items-center justify-center rounded-full bg-primary px-5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
               >

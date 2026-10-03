@@ -6,26 +6,25 @@ import {
   Briefcase,
   FileText,
   Home,
+  Mail,
   MessageSquareText,
-  PenLine,
   Plug,
   Sparkles,
 } from "lucide-react"
 import { PRODUCTS } from "./data"
-import { BriefingView, ConnectView, TermsView, TestimonialsView, WorkView } from "./views"
+import { BriefingView, ConnectView, ContactView, TermsView, TestimonialsView, WorkView } from "./views"
 import { ChatView } from "./chat-view"
-import { IntakeWizard } from "./wizard"
 
 const GITHUB = "https://github.com/djoudad292"
 const LINKEDIN = "https://linkedin.com/in/djaouad-frih"
 
-type View = "briefing" | "work" | "assistant" | "intake" | "testimonials" | "terms" | "connect"
+type View = "briefing" | "work" | "assistant" | "contact" | "testimonials" | "terms" | "connect"
 
 const NAV: { id: View; num: string; label: string; hint: string }[] = [
   { id: "briefing", num: "01", label: "Briefing", hint: "who I am & what I do" },
   { id: "work", num: "02", label: "Proof of work", hint: "live products" },
   { id: "assistant", num: "03", label: "Ask my AI", hint: "chat with my agent" },
-  { id: "intake", num: "04", label: "Scope a project", hint: "get a fixed quote" },
+  { id: "contact", num: "04", label: "Start a project", hint: "get a fixed quote" },
   { id: "testimonials", num: "05", label: "Reviews", hint: "what clients said" },
   { id: "terms", num: "06", label: "Process & terms", hint: "how we'd work" },
   { id: "connect", num: "07", label: "AI-Ready Portfolio", hint: "your AI can vet me" },
@@ -244,11 +243,7 @@ export function Shell() {
                   <ChatView />
                 </div>
               )}
-              {view === "intake" && (
-                <div className="mx-auto max-w-2xl">
-                  <IntakeWizard />
-                </div>
-              )}
+              {view === "contact" && <ContactView />}
               {view === "testimonials" && <TestimonialsView />}
               {view === "terms" && <TermsView />}
               {view === "connect" && <ConnectView />}
@@ -267,7 +262,7 @@ export function Shell() {
             n.id === "briefing" ? Home :
             n.id === "work" ? Briefcase :
             n.id === "assistant" ? MessageSquareText :
-            n.id === "intake" ? PenLine :
+            n.id === "contact" ? Mail :
             n.id === "connect" ? Plug : FileText
           return (
             <button

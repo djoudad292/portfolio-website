@@ -71,7 +71,7 @@ export function BriefingView() {
           className="mt-8 flex flex-wrap items-center gap-3"
         >
           <button
-            onClick={() => goto("intake")}
+            onClick={() => goto("contact")}
             className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
           >
             Get a fixed quote <ArrowUpRight className="h-4 w-4" />
@@ -706,6 +706,64 @@ export function TermsView() {
           — clinics, restaurants, real estate and more. Also on the{" "}
           <Link href="/blog" className="text-primary underline underline-offset-4">notes</Link> page.
         </p>
+      </section>
+    </div>
+  )
+}
+
+export function ContactView() {
+  return (
+    <div className="space-y-12">
+      <header>
+        <h1 className="font-display text-4xl tracking-tight">Start a project</h1>
+        <p className="mt-3 max-w-[60ch] text-sm leading-relaxed text-muted-foreground">
+          Tell me what you&apos;re building. I&apos;ll review the scope and send a fixed-price proposal with clear milestones within 24 hours.
+        </p>
+      </header>
+
+      <section aria-labelledby="contact-form-h">
+        <h2 id="contact-form-h" className="font-mono text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
+          Project brief
+        </h2>
+        <p className="mt-3 max-w-[56ch] text-sm leading-relaxed text-muted-foreground">
+          Fill this out and it opens in your email app — no data leaves this page until you hit send.
+        </p>
+        <a
+          href="/contact"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+        >
+          Open contact form <ArrowUpRight className="h-4 w-4" />
+        </a>
+      </section>
+
+      <section aria-labelledby="direct-contact-h">
+        <h2 id="direct-contact-h" className="font-mono text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
+          Or reach me directly
+        </h2>
+        <ul className="mt-5 flex flex-col gap-3">
+          {[
+            { label: "E-mail", href: `mailto:${EMAIL}`, icon: Mail },
+            { label: "GitHub", href: GITHUB, icon: Github },
+            { label: "LinkedIn", href: LINKEDIN, icon: Linkedin },
+          ].map((link) => (
+            <li key={link.label}>
+              <a
+                href={link.href}
+                target={link.href.startsWith("mailto:") ? undefined : "_blank"}
+                rel={link.href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+                className="flex items-center justify-between gap-4 rounded-2xl border border-border bg-background/60 px-5 py-4 text-sm transition-colors hover:border-primary"
+              >
+                <span className="inline-flex items-center gap-2">
+                  <link.icon className="h-4 w-4 text-muted-foreground" />
+                  {link.label}
+                </span>
+                <ArrowUpRight className="h-4 w-4 text-muted-foreground" />
+              </a>
+            </li>
+          ))}
+        </ul>
       </section>
     </div>
   )

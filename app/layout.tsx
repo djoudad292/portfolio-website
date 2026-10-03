@@ -3,6 +3,7 @@ import { Space_Grotesk, Instrument_Serif, IBM_Plex_Mono } from 'next/font/google
 import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
 import { Navbar } from '@/components/navbar'
+import { ChatWidget } from '@/components/chat-widget'
 
 const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-space' })
 const instrumentSerif = Instrument_Serif({
@@ -95,6 +96,7 @@ export default function RootLayout({
         <ThemeProvider>
           <Navbar />
           {children}
+          <ChatWidget />
         </ThemeProvider>
         <script
           type="application/ld+json"
