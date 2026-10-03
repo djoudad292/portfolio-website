@@ -6,6 +6,8 @@ import { SectionHeading } from "@/components/section-heading"
 import { email } from "@/lib/socials"
 import { PRICE_ANCHOR } from "@/lib/positioning"
 
+// Force fresh deploy - v2
+
 type FormStatus = "idle" | "submitting" | "success" | "error"
 
 export default function ContactPage() {
