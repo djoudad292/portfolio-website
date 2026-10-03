@@ -39,22 +39,21 @@ export default function ContactPage() {
       `Project inquiry from ${formData.name}`
     )}&body=${encodeURIComponent(body)}`
 
-    try {
-      // Open mailto in a new tab/window
-      window.open(mailtoLink, "_blank")
-      setStatus("success")
-      setFormData({
-        name: "",
-        company: "",
-        email: "",
-        project: "",
-        timeline: "",
-        budget: "",
-        message: "",
-      })
-    } catch {
-      setStatus("error")
+    const opened = window.open(mailtoLink, "_blank")
+    if (!opened) {
+      // Popup blocked — fallback to location.href which can't be blocked
+      window.location.href = mailtoLink
     }
+    setStatus("success")
+    setFormData({
+      name: "",
+      company: "",
+      email: "",
+      project: "",
+      timeline: "",
+      budget: "",
+      message: "",
+    })
   }
 
   return (

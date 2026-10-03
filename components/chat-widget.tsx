@@ -41,18 +41,18 @@ export function ChatWidget() {
       `Chat widget message from ${formData.name}`
     )}&body=${encodeURIComponent(body)}`
 
-    try {
-      window.open(mailtoLink, "_blank")
-      setStatus("sent")
-      setFormData({ name: "", email: "", message: "" })
-      setTimeout(() => {
-        setStatus("idle")
-        setIsOpen(false)
-      }, 3000)
-    } catch {
-      setStatus("error")
-      setTimeout(() => setStatus("idle"), 3000)
+    const opened = window.open(mailtoLink, "_blank")
+    if (!opened) {
+      // Popup blocked — fallback to location.href which can't be blocked
+      window.location.href = mailtoLink
     }
+    // Can't reliably detect mail client, so assume success if no exception
+    setStatus("sent")
+    setFormData({ name: "", email: "", message: "" })
+    setTimeout(() => {
+      setStatus("idle")
+      setIsOpen(false)
+    }, 3000)
   }
 
   return (
@@ -197,20 +197,22 @@ export function ChatWidget() {
       </AnimatePresence>
 
       {/* Business hours indicator */}
-      <motion.div
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 1, duration: 0.3 }}
-        className="absolute bottom-16 right-0 hidden sm:block"
-      >
-        <div className="flex items-center gap-2 rounded-xl border border-border bg-card px-3 py-2 text-xs text-muted-foreground shadow-lg">
-          <span className="relative flex h-1.5 w-1.5">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-60" />
-            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-green-500" />
-          </span>
-          Available · Usually replies within an hour
-        </div>
-      </motion.div>
+      {!isOpen && (
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 1, duration: 0.3 }}
+          className="absolute bottom-16 right-0 hidden sm:block"
+        >
+          <div className="flex items-center gap-2 rounded-xl border border-border bg-card px-3 py-2 text-xs text-muted-foreground shadow-lg">
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-60" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-green-500" />
+            </span>
+            Available · Usually replies within an hour
+          </div>
+        </motion.div>
+      )}
     </div>
   )
 }
