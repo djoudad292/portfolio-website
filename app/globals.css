@@ -131,3 +131,24 @@
     @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background;
   }
 }
+
+/*
+ * Mobile form-control floor.
+ *
+ * iOS Safari (and every iOS in-app browser) auto-zooms the viewport when a form
+ * control with a computed font-size below 16px takes focus, and the user cannot
+ * zoom back out — the form appears broken and shifts under the keyboard.
+ *
+ * This rule is deliberately UNLAYERED. Tailwind puts its utilities in
+ * @layer utilities, and unlayered styles outrank every layer, so this wins
+ * against a `text-sm` on an input without resorting to !important.
+ *
+ * Desktop keeps the tighter 14px type; only small screens are lifted.
+ */
+@media (max-width: 767px) {
+  input:not([type='checkbox']):not([type='radio']),
+  textarea,
+  select {
+    font-size: 16px;
+  }
+}

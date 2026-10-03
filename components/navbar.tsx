@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import Image from "next/image"
 import { AnimatePresence, motion } from "framer-motion"
-import { Menu, X } from "lucide-react"
+import { Menu, Sparkles, X } from "lucide-react"
 import { CommandPalette } from "@/components/command-palette"
 
 const navLinks = [
@@ -77,7 +77,7 @@ export function Navbar() {
           aria-label="Toggle menu"
           aria-expanded={isOpen}
           aria-controls="mobile-menu"
-          className="inline-flex items-center justify-center text-foreground md:hidden"
+          className="-mr-2 inline-flex h-11 w-11 items-center justify-center text-foreground md:hidden"
         >
           {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
@@ -104,6 +104,25 @@ export function Navbar() {
                   </a>
                 </li>
               ))}
+            {/*
+                The desktop command palette trigger is `hidden md:inline-flex`, so
+                on a phone the feature was unreachable. CommandPalette listens for
+                this event, so dispatching it opens the palette without needing
+                keyboard shortcuts.
+              */}
+              <li>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsOpen(false)
+                    window.dispatchEvent(new CustomEvent("open-command-palette"))
+                  }}
+                  className="flex min-h-11 w-full items-center gap-2 px-3 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  <Sparkles className="h-4 w-4 shrink-0 text-primary" />
+                  Ask anything
+                </button>
+              </li>
             </ul>
 
             <div className="px-6 pb-4">

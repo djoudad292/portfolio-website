@@ -97,7 +97,7 @@ export function ProjectCaptures({ videos, images }: ProjectCapturesProps) {
                 aria-label="Close"
                 autoFocus
                 onClick={() => setOpen(false)}
-                className="rounded-full p-2 text-muted-foreground opacity-70 hover:opacity-100 hover:text-foreground"
+                className="-mr-2 flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-muted-foreground opacity-70 hover:bg-muted hover:opacity-100 hover:text-foreground"
               >
                 <X className="h-4 w-4" />
               </button>
