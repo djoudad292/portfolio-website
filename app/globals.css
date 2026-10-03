@@ -4,39 +4,50 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
+  /*
+   * Brand palette — single source of truth.
+   * To match the logo exactly, replace --brand-yellow and --brand-blue with
+   * the hex values sampled from /public/djaouad-logo.png. Everything else
+   * (buttons, links, focus rings, charts, selection) retones automatically.
+   */
+  --brand-yellow: #f0b429;
+  --brand-yellow-soft: #f7cd6b;
+  --brand-blue: #4d9fff;
+  --brand-blue-deep: #2b6fd4;
+
   --background: #0a0c10;
   --foreground: #e8e6e1;
   --card: #0f1216;
   --card-foreground: #e8e6e1;
   --popover: #0f1216;
   --popover-foreground: #e8e6e1;
-  --primary: #c97a4a;
-  --primary-foreground: #0f0b09;
+  --primary: var(--brand-yellow);
+  --primary-foreground: #0a0c10;
   --secondary: #14181e;
   --secondary-foreground: #e8e6e1;
   --muted: #14181e;
   --muted-foreground: #7a7f88;
-  --accent: #c97a4a;
-  --accent-foreground: #0f0b09;
+  --accent: var(--brand-yellow);
+  --accent-foreground: #0a0c10;
   --destructive: #d15d57;
   --destructive-foreground: #fafafa;
-  --border: #1f242c;
-  --input: #1f242c;
-  --ring: #c97a4a;
-  --chart-1: #c97a4a;
-  --chart-2: #b88a5a;
+  --border: #1e2530;
+  --input: #1e2530;
+  --ring: var(--brand-yellow);
+  --chart-1: var(--brand-yellow);
+  --chart-2: var(--brand-blue);
   --chart-3: #6b7078;
   --chart-4: #d15d57;
-  --chart-5: #b88a5a;
+  --chart-5: var(--brand-yellow-soft);
   --radius: 0.375rem;
   --sidebar: #0a0c10;
   --sidebar-foreground: #e8e6e1;
-  --sidebar-primary: #c97a4a;
-  --sidebar-primary-foreground: #0f0b09;
+  --sidebar-primary: var(--brand-yellow);
+  --sidebar-primary-foreground: #0a0c10;
   --sidebar-accent: #14181e;
   --sidebar-accent-foreground: #e8e6e1;
-  --sidebar-border: #1f242c;
-  --sidebar-ring: #c97a4a;
+  --sidebar-border: #1e2530;
+  --sidebar-ring: var(--brand-yellow);
 }
 
 @theme inline {
@@ -62,6 +73,10 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  --color-brand-yellow: var(--brand-yellow);
+  --color-brand-yellow-soft: var(--brand-yellow-soft);
+  --color-brand-blue: var(--brand-blue);
+  --color-brand-blue-deep: var(--brand-blue-deep);
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);

@@ -53,8 +53,18 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
+        url: '/djaouad-logo.png',
+        type: 'image/png',
+      },
+      {
         url: '/icon.svg',
         type: 'image/svg+xml',
+      },
+    ],
+    apple: [
+      {
+        url: '/djaouad-logo.png',
+        type: 'image/png',
       },
     ],
   },
