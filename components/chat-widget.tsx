@@ -13,7 +13,16 @@ export function ChatWidget() {
     email: "",
     message: "",
   })
+  const [isMobile, setIsMobile] = useState(false)
   const widgetRef = useRef<HTMLDivElement>(null)
+
+  // Detect mobile on mount
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 640)
+    checkMobile()
+    window.addEventListener("resize", checkMobile)
+    return () => window.removeEventListener("resize", checkMobile)
+  }, [])
 
   // Close when clicking outside
   useEffect(() => {
@@ -22,19 +31,21 @@ export function ChatWidget() {
         setIsOpen(false)
       }
     }
-    document.addEventListener("mousedown", handleClickOutside)
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside)
+    }
     return () => document.removeEventListener("mousedown", handleClickOutside)
-  }, [])
+  }, [isOpen])
 
   // Prevent body scroll when open on mobile
   useEffect(() => {
-    if (isOpen && window.innerWidth < 640) {
+    if (isOpen && isMobile) {
       document.body.style.overflow = "hidden"
     }
     return () => {
       document.body.style.overflow = ""
     }
-  }, [isOpen])
+  }, [isOpen, isMobile])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -66,7 +77,7 @@ export function ChatWidget() {
   return (
     <div ref={widgetRef} className="fixed bottom-6 right-6 z-[100]">
       {/* Backdrop on mobile when open */}
-      {isOpen && window.innerWidth < 640 && (
+      {isOpen && isMobile && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
