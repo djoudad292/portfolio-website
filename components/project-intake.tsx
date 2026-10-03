@@ -1,7 +1,8 @@
 "use client"
 
+import { useState } from "react"
 import { motion } from "framer-motion"
-import { Mail, ArrowUpRight } from "lucide-react"
+import { Mail, Copy, Check, ArrowUpRight } from "lucide-react"
 import { SectionHeading } from "./section-heading"
 import { email } from "@/lib/socials"
 
@@ -36,6 +37,22 @@ const mailto = `mailto:${email}?subject=${encodeURIComponent(
 )}&body=${encodeURIComponent(BRIEF_BODY)}`
 
 export function ProjectIntake() {
+  const [copied, setCopied] = useState(false)
+
+  // A mailto: needs the visitor's OS to have a registered mail handler. Phones
+  // always do; desktops frequently do not (this machine has no mail client at
+  // all, so the click is a silent no-op). Copying the address has no such
+  // dependency, so it is the guaranteed fallback.
+  const copyAddress = async () => {
+    try {
+      await navigator.clipboard.writeText(email)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2400)
+    } catch {
+      setCopied(false)
+    }
+  }
+
   return (
     <section id="project-intake" className="px-6 py-24 lg:py-32">
       <div className="mx-auto max-w-3xl">
@@ -63,8 +80,34 @@ export function ProjectIntake() {
 
           <p className="mt-4 text-center text-xs text-muted-foreground sm:text-left">
             Opens your email app addressed to{" "}
-            <span className="text-foreground">{email}</span>
+            <span className="break-all text-foreground">{email}</span>
           </p>
+
+          <div className="mt-4 flex flex-col items-center gap-3 sm:flex-row sm:items-start">
+            <button
+              type="button"
+              onClick={copyAddress}
+              aria-live="polite"
+              className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-medium transition-colors hover:border-primary"
+            >
+              {copied ? (
+                <>
+                  <Check className="h-4 w-4 text-primary" />
+                  Copied
+                </>
+              ) : (
+                <>
+                  <Copy className="h-4 w-4" />
+                  Copy address
+                </>
+              )}
+            </button>
+            <p className="text-xs text-muted-foreground sm:mt-3">
+              {copied
+                ? "Paste it into whichever mail app you use."
+                : "No email app configured? Copy the address instead."}
+            </p>
+          </div>
 
           <div className="mt-8 border-t border-border pt-6">
             <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
