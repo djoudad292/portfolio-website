@@ -1,6 +1,7 @@
 "use client"
 
 import { useCallback, useEffect, useRef, useState } from "react"
+import { createPortal } from "react-dom"
 import { AnimatePresence, motion } from "framer-motion"
 import { ArrowUpRight, CornerDownLeft, Sparkles } from "lucide-react"
 import { CHAT_URL, COMPANY_ID } from "@/components/console/data"
@@ -18,6 +19,7 @@ type Mode = "idle" | "thinking" | "answered" | "error"
 
 export function CommandPalette() {
   const [open, setOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
   const [query, setQuery] = useState("")
   const [mode, setMode] = useState<Mode>("idle")
   const [answer, setAnswer] = useState("")
@@ -51,6 +53,10 @@ export function CommandPalette() {
       window.removeEventListener("open-command-palette", onOpen)
     }
   }, [close])
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   useEffect(() => {
     if (open) setTimeout(() => inputRef.current?.focus(), 50)
@@ -133,8 +139,16 @@ export function CommandPalette() {
         <kbd className="rounded border border-border bg-muted px-1.5 py-0.5 font-mono text-[10px]">⌘K</kbd>
       </button>
 
-      <AnimatePresence>
-        {open && (
+      {/*
+        Portalled to document.body on purpose. This component is mounted inside
+        the desktop nav <ul className="hidden ... md:flex">, so a modal rendered
+        in place inherits display:none and collapses to 0x0 on a phone — the
+        palette would "open" while staying invisible. Portalling also lifts it
+        out of the header's stacking/containing-block context.
+      */}
+      {mounted && createPortal(
+        <AnimatePresence>
+          {open && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -223,7 +237,9 @@ export function CommandPalette() {
             </motion.div>
           </motion.div>
         )}
-      </AnimatePresence>
+      </AnimatePresence>,
+        document.body,
+      )}
     </>
   )
 }
