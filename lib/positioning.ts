@@ -21,3 +21,9 @@ export const PRICE_ANCHOR = "$4,000 - $12,000"
 
 export const PRICE_ANCHOR_NOTE =
   "depending on scope. Retrieval quality, agent tooling, and the application around it all move the number."
+
+// Booking link for the free scope call offered on the pricing and contact
+// sections. Cal.com is the canonical scheduler. VERIFY this handle resolves —
+// if you revert to a different provider, change this constant only.
+export const BOOKING_URL = "https://cal.com/djaouad/30min"
+export const BOOKING_LABEL = "Book a free 15-min scope call"

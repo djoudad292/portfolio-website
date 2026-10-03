@@ -18,6 +18,13 @@ const plexMono = IBM_Plex_Mono({
 })
 
 export const metadata: Metadata = {
+  // djaouad.tech CNAMEs to djaouad.is-a.dev, so both hosts serve identical
+  // content. Without a canonical, that is duplicate content across two
+  // hostnames and ranking signals split between them. './' resolves per-route
+  // relative to this canonical host; page-level `alternates` still override.
+  alternates: {
+    canonical: './',
+  },
   verification: {
     google: "2-f-fZA5ktbCA2ZxyVF2aZE0unAd1EsHsMbW7MO1XEc",
     other: {

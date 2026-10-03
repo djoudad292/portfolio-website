@@ -3,6 +3,7 @@
 import { SectionHeading } from "./section-heading"
 import { Mail, Github, Linkedin, ArrowUpRight } from "lucide-react"
 import { socials, email } from "@/lib/socials"
+import { BOOKING_URL, BOOKING_LABEL } from "@/lib/positioning"
 
 const contactLinks = [
   { label: "E-mail", href: `mailto:${email}`, icon: Mail },
@@ -29,12 +30,20 @@ export function Contact() {
             including an honest read on whether this is worth building at all.
           </p>
 
-          <div className="mt-8">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <a
               href="#project-intake"
               className="inline-flex w-full sm:w-auto items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
             >
               Start a project
+            </a>
+            <a
+              href={BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex w-full sm:w-auto items-center justify-center rounded-full border border-border px-6 py-3 text-sm font-medium transition-colors hover:border-primary"
+            >
+              {BOOKING_LABEL}
             </a>
           </div>
 
