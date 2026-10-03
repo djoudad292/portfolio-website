@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import { Space_Grotesk, Instrument_Serif, IBM_Plex_Mono } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
+import { Navbar } from '@/components/navbar'
 
 const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-space' })
 const instrumentSerif = Instrument_Serif({
@@ -83,6 +84,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${spaceGrotesk.variable} ${instrumentSerif.variable} ${plexMono.variable} font-sans antialiased`}>
         <ThemeProvider>
+          <Navbar />
           {children}
         </ThemeProvider>
         <script
