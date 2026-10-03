@@ -6,14 +6,18 @@
 :root {
   /*
    * Brand palette — single source of truth.
-   * To match the logo exactly, replace --brand-yellow and --brand-blue with
-   * the hex values sampled from /public/djaouad-logo.png. Everything else
-   * (buttons, links, focus rings, charts, selection) retones automatically.
+   * Values sampled from public/djaouad-logo-trimmed.png.
+   *
+   * --brand-yellow / --brand-blue-deep are the TRUE artwork colours.
+   * --brand-blue is the artwork blue lifted for UI use: #145A7E is only
+   * 2.6:1 against the #0a0c10 background, which is too low for accent text,
+   * focus rings and chart strokes. --brand-blue-deep stays available for
+   * large fills where contrast does not matter.
    */
-  --brand-yellow: #f0b429;
-  --brand-yellow-soft: #f7cd6b;
-  --brand-blue: #4d9fff;
-  --brand-blue-deep: #2b6fd4;
+  --brand-yellow: #eeaf2d;
+  --brand-yellow-soft: #f7d06b;
+  --brand-blue: #4e9cc4;
+  --brand-blue-deep: #145a7e;
 
   --background: #0a0c10;
   --foreground: #e8e6e1;

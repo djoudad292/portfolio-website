@@ -34,16 +34,14 @@ export function Navbar() {
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <a href="/#top" className="flex shrink-0 items-center gap-3">
-          <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-white p-1 ring-1 ring-black/10">
-            <Image
-              src="/djaouad-logo.png"
-              alt="Djaouad Frih"
-              width={40}
-              height={40}
-              className="h-full w-full object-contain"
-              priority
-            />
-          </span>
+          <Image
+            src="/djaouad-logo-trimmed.png"
+            alt="Djaouad Frih"
+            width={362}
+            height={357}
+            className="h-12 w-12 object-contain brightness-[1.25] saturate-[1.15]"
+            priority
+          />
           <span className="hidden font-display text-2xl tracking-tight text-foreground sm:inline">
             Djaouad Frih<span className="text-primary">.</span>
           </span>

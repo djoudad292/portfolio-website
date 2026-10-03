@@ -54,8 +54,9 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: '/djaouad-logo.png',
+        url: '/favicon-64.png',
         type: 'image/png',
+        sizes: '64x64',
       },
       {
         url: '/icon.svg',
@@ -64,8 +65,9 @@ export const metadata: Metadata = {
     ],
     apple: [
       {
-        url: '/djaouad-logo.png',
+        url: '/favicon-256.png',
         type: 'image/png',
+        sizes: '256x256',
       },
     ],
   },
