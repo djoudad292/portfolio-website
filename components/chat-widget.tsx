@@ -75,7 +75,7 @@ export function ChatWidget() {
   }
 
   return (
-    <div ref={widgetRef} className="fixed bottom-6 right-6 z-[100]">
+    <div ref={widgetRef} className="fixed bottom-6 right-6 z-[100] lg:bottom-6 lg:right-6">
       {/* Backdrop on mobile when open */}
       {isOpen && isMobile && (
         <motion.div
@@ -88,7 +88,7 @@ export function ChatWidget() {
         />
       )}
 
-      {/* Chat panel — positioned above button */}
+      {/* Chat panel — full width on mobile, fixed width on desktop */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -96,7 +96,7 @@ export function ChatWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.96 }}
             transition={{ duration: 0.18, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="absolute bottom-16 right-0 mb-2 w-full max-w-sm sm:max-w-md lg:max-w-sm"
+            className="absolute bottom-16 right-0 mb-2 w-[calc(100vw-2rem)] max-w-[360px] lg:bottom-16 lg:right-0 lg:mb-2 lg:w-auto lg:max-w-md"
           >
             <div className="rounded-2xl border border-border bg-card shadow-[0_25px_50px_-12px_rgb(0,0,0,0.25)] overflow-hidden ring-1 ring-black/5">
               {/* Header */}
@@ -105,16 +105,16 @@ export function ChatWidget() {
                   <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10">
                     <Mail className="h-4 w-4 text-primary" />
                   </div>
-                  <div>
-                    <p className="font-medium text-sm text-foreground">Send a message</p>
-                    <p className="font-mono text-[10px] text-muted-foreground">
+                  <div className="min-w-0">
+                    <p className="font-medium text-sm text-foreground truncate">Send a message</p>
+                    <p className="font-mono text-[10px] text-muted-foreground truncate">
                       Opens in your email app
                     </p>
                   </div>
                 </div>
                 <motion.button
                   onClick={() => setIsOpen(false)}
-                  className="rounded-lg p-1.5 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                  className="rounded-lg p-1.5 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground flex-shrink-0"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   aria-label="Close"
@@ -254,9 +254,9 @@ export function ChatWidget() {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: 16 }}
           transition={{ delay: 0.8, duration: 0.3 }}
-          className="absolute bottom-16 right-0 mb-2 hidden sm:block"
+          className="absolute bottom-16 right-0 mb-2 hidden sm:block lg:bottom-16 lg:right-0 lg:mb-2"
         >
-          <div className="flex items-center gap-2 rounded-xl border border-border bg-card px-3 py-1.5 text-[11px] text-muted-foreground shadow-lg ring-1 ring-black/5">
+          <div className="flex items-center gap-2 rounded-xl border border-border bg-card px-3 py-1.5 text-[11px] text-muted-foreground shadow-lg ring-1 ring-black/5 whitespace-nowrap">
             <span className="relative flex h-1.5 w-1.5 shrink-0">
               <span className="absolute inset-0 animate-ping rounded-full bg-green-500/60" />
               <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-green-500" />
