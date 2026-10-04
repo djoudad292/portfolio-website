@@ -21,7 +21,7 @@ const problems: Problem[] = [
     solution:
       "AI Support Agent. Answers from your knowledge base, opens tickets, checks orders, escalates the rest",
     label: "Try it live",
-    href: "https://ai-support-frontend-livid.vercel.app/",
+    href: "https://customer.djaouad.is-a.dev/",
     external: true,
   },
   {

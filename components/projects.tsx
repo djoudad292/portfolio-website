@@ -45,7 +45,7 @@ const projects: Project[] = [
       "Admin dashboard with live analytics, plus an embeddable widget",
     ],
     links: [
-      { label: "See it live", meta: "ai-support-frontend-livid.vercel.app", href: "https://ai-support-frontend-livid.vercel.app/", isPrimary: true },
+      { label: "See it live", meta: "customer.djaouad.is-a.dev", href: "https://customer.djaouad.is-a.dev/", isPrimary: true },
       { label: "Get this for your business", meta: "contact", href: "#contact", isPrimary: false },
       { label: "source", meta: "github.com/djoudad292/ai-customer-support-agent", href: "https://github.com/djoudad292/ai-customer-support-agent" },
       { label: "source", meta: "APK", href: "https://github.com/djoudad292/ai-customer-support-agent/releases/download/latest-apk/ai-customer-support.apk" },

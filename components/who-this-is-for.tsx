@@ -20,7 +20,7 @@ const segments: Segment[] = [
     description:
       "High-volume support where the same question arrives all day: order status, returns, product detail, plan limits.",
     demo: "Support Agent",
-    href: "https://ai-support-frontend-livid.vercel.app/",
+    href: "https://customer.djaouad.is-a.dev/",
     external: true,
   },
   {

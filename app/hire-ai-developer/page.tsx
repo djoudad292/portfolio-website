@@ -101,7 +101,7 @@ export default function HirePage() {
             prototype. Open any of them and use it.
           </p>
           <div className="mt-6 grid gap-5">
-            <DemoCard title="AI Customer Support Agent" link="ai-support-frontend-livid.vercel.app" href="https://ai-support-frontend-livid.vercel.app"
+            <DemoCard title="AI Customer Support Agent" link="customer.djaouad.is-a.dev" href="https://customer.djaouad.is-a.dev"
               git="github.com/djoudad292/ai-customer-support-agent"
               desc="A LangGraph agent with a real tool-calling loop and conditional routing. It answers from a vector knowledge base, checks orders, creates tickets, and escalates to a human with the full conversation attached. Embeddable with one line of script." />
             <DemoCard title="Smart PDF Workspace" link="docs.djaouad.is-a.dev" href="https://docs.djaouad.is-a.dev"

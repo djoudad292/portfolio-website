@@ -47,7 +47,7 @@ export default async function TalkPage({
           {[
             ["AI Receptionist", "https://chat.djaouad.is-a.dev?utm_source=talk&utm_medium=fallback"],
             ["PDF Workspace", "https://docs.djaouad.is-a.dev?utm_source=talk&utm_medium=fallback"],
-            ["Support Agent", "https://ai-support-frontend-livid.vercel.app?utm_source=talk&utm_medium=fallback"],
+            ["Support Agent", "https://customer.djaouad.is-a.dev?utm_source=talk&utm_medium=fallback"],
           ].map(([name, url]) => (
             <a
               key={url}

@@ -13,7 +13,7 @@ const segments = [
     slug: "online-stores",
     name: "E-commerce and SaaS with high-volume support",
     text: "Order status, returns, product detail, plan limits. The same questions all day, answered by an agent that pulls from your own knowledge base, opens the ticket, and escalates the genuine edge cases. Built to shrink a support queue, not to add another inbox.",
-    fit: "Support Agent, live at ai-support-frontend-livid.vercel.app",
+    fit: "Support Agent, live at customer.djaouad.is-a.dev",
   },
   {
     slug: "clinics-doctors",
