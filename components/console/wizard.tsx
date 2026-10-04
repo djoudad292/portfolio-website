@@ -37,7 +37,7 @@ const FEATURES = [
 ]
 
 const TIMELINES = ["ASAP", "2–4 weeks", "1–3 months", "Flexible"]
-const BUDGETS = ["< $500", "$500 – $2k", "$2k – $5k", "$5k+", "Not sure"]
+const BUDGETS = ["$900 audit", "$3.5k – $6.5k", "$6.5k – $9k", "$9k+", "Not sure"]
 
 function Chip({ selected, onClick, children }: { selected: boolean; onClick: () => void; children: React.ReactNode }) {
   return (
