@@ -288,7 +288,7 @@ export function WorkView() {
           <div>
             <h3 className="font-mono text-xs uppercase tracking-wider text-muted-foreground">Outcome</h3>
             <ul className="mt-2 space-y-1.5 text-sm text-muted-foreground">
-              <li>· First response under 1 second, around the clock</li>
+              <li>· Answers, books and hands off around the clock</li>
               <li>· Running unattended 24/7 since launch</li>
               <li>· Published Android app on its release channel</li>
               <li>· Same architecture now powers client AI systems</li>
@@ -298,7 +298,9 @@ export function WorkView() {
 
         <p className="mt-6 border-t border-border pt-4 text-xs leading-relaxed text-muted-foreground/70">
           Measured on my own deployment — I don&apos;t invent client numbers. Client builds ship with
-          their own success metrics agreed up front.
+          their own success metrics agreed up front. I don&apos;t publish a response-time figure
+          here because it is model-bound and I haven&apos;t benchmarked it; the $900 audit measures
+          p50/p95 latency on your own content before you commit to anything.
         </p>
       </section>
 
@@ -560,7 +562,7 @@ export function TestimonialsView() {
               <span aria-hidden>·</span>
               <span>United Kingdom</span>
               <span aria-hidden>·</span>
-              <a href="https://www.facebook.com/share/r/18MiUF32rd/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+              <a href="https://www.facebook.com/share/19Qx9MsT6b/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
                 original review
               </a>
             </footer>
@@ -578,7 +580,7 @@ export function TestimonialsView() {
               <span aria-hidden>·</span>
               <span>Cyprus</span>
               <span aria-hidden>·</span>
-              <a href="https://www.facebook.com/share/r/18MiUF32rd/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+              <a href="https://www.facebook.com/share/1JTbdKi3oe/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
                 original review
               </a>
             </footer>
@@ -641,7 +643,7 @@ export function TermsView() {
       {/* Pricing */}
       <section aria-labelledby="pricing-h">
         <h2 id="pricing-h" className="font-mono text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
-          Pricing — starting from $2,000
+          Pricing — entry offer $900, builds from $3,500
         </h2>
         <div className="mt-5 overflow-hidden rounded-2xl border border-border">
           {SERVICES.map((s, i) => (
