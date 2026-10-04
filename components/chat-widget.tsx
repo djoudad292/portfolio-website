@@ -16,12 +16,20 @@ export function ChatWidget() {
   const [isMobile, setIsMobile] = useState(false)
   const widgetRef = useRef<HTMLDivElement>(null)
 
-  // Detect mobile on mount
+  // Detect mobile on mount.
+  //
+  // The breakpoint must match the `lg:` breakpoint the panel layout switches
+  // at, not an arbitrary 640px. When these disagreed, a viewport between the
+  // two got the narrow mobile panel with no backdrop and no scroll lock.
   useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 640)
+    const checkMobile = () => setIsMobile(window.innerWidth < 1024)
     checkMobile()
     window.addEventListener("resize", checkMobile)
-    return () => window.removeEventListener("resize", checkMobile)
+    window.addEventListener("orientationchange", checkMobile)
+    return () => {
+      window.removeEventListener("resize", checkMobile)
+      window.removeEventListener("orientationchange", checkMobile)
+    }
   }, [])
 
   // Close when clicking outside
@@ -96,9 +104,9 @@ export function ChatWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.96 }}
             transition={{ duration: 0.18, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="absolute bottom-16 right-0 mb-2 w-[calc(100vw-2rem)] max-w-[360px] lg:bottom-16 lg:right-0 lg:mb-2 lg:w-auto lg:max-w-md"
+            className="fixed inset-x-3 bottom-[5.5rem] z-[101] mx-auto flex max-h-[calc(100dvh-7rem)] max-w-md flex-col overflow-hidden lg:absolute lg:inset-x-auto lg:bottom-16 lg:right-0 lg:mb-2 lg:mx-0 lg:w-auto lg:max-h-none lg:max-w-md"
           >
-            <div className="rounded-2xl border border-border bg-card shadow-[0_25px_50px_-12px_rgb(0,0,0,0.25)] overflow-hidden ring-1 ring-black/5">
+            <div className="flex min-h-0 flex-1 flex-col rounded-2xl border border-border bg-card shadow-[0_25px_50px_-12px_rgb(0,0,0,0.25)] overflow-hidden ring-1 ring-black/5">
               {/* Header */}
               <div className="flex items-center justify-between border-b border-border bg-background px-4 py-3">
                 <div className="flex items-center gap-3">
@@ -124,7 +132,7 @@ export function ChatWidget() {
               </div>
 
               {/* Form */}
-              <form onSubmit={handleSubmit} className="p-4 space-y-3.5">
+              <form onSubmit={handleSubmit} className="min-h-0 flex-1 space-y-3.5 overflow-y-auto overscroll-contain p-4">
                 <div>
                   <label
                     htmlFor="chat-name"
@@ -234,10 +242,13 @@ export function ChatWidget() {
         )}
       </AnimatePresence>
 
-      {/* Floating action button — always visible */}
+      {/* Floating action button — always visible.
+          z-[101] keeps it above the mobile backdrop (z-[99]): both live in this
+          container's stacking context, so an un-z-indexed button sat underneath
+          the overlay and could not be tapped to close. */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className={`flex h-14 w-14 items-center justify-center rounded-full bg-primary shadow-xl transition-all hover:scale-105 hover:shadow-2xl ${
+        className={`relative z-[101] flex h-14 w-14 items-center justify-center rounded-full bg-primary shadow-xl transition-all hover:scale-105 hover:shadow-2xl ${
           isOpen ? "rotate-45" : ""
         }`}
         aria-label={isOpen ? "Close chat" : "Open chat"}
