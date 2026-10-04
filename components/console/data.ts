@@ -65,7 +65,7 @@ export const PROJECTS = [
     alt: "AI Virtual Receptionist interface",
     description:
       "Businesses lose leads after hours and spend hours answering repetitive questions. This AI receptionist handles customer conversations 24/7 — answers questions from the business's own knowledge base, books appointments, captures leads, routes to the right department, and hands off to a human when it should.",
-    metrics: ["<1s first response time", "24/7 unattended", "Android app published"],
+    metrics: ["Books + captures leads", "24/7 unattended", "Android app published"],
     demo: { label: "chat.djaouad.is-a.dev", href: "https://chat.djaouad.is-a.dev" },
     github: "https://github.com/djoudad292/ai-virtual-receptionist",
     apk: "https://github.com/djoudad292/ai-virtual-receptionist/releases/download/latest-apk/ai-receptionist.apk",
@@ -116,22 +116,34 @@ export const PROJECTS = [
 
 export const SERVICES = [
   {
+    title: "Audit — AI reliability & retrieval review",
+    desc: "Five working days on your own documents, no commitment to a build. Retrieval precision/recall/F1 against a goldset from your corpus, refusal rate on out-of-scope questions, citation correctness, p50/p95 latency and token cost, plus a server-side authorization review. Failures published, not hidden. Credited in full against a build.",
+    price: "$900",
+    eta: "5 working days",
+  },
+  {
     title: "Starter — AI chatbot or agent",
     desc: "A chatbot that knows your business. Answers customers, books jobs, sends you the leads. Lives on your website. Fixed price, no surprises.",
-    price: "From $2,000",
+    price: "From $3,500",
     eta: "~1–2 weeks",
   },
   {
     title: "Professional — production AI system",
     desc: "Full build: chatbot + document search + team dashboard + analytics. Same tech that powers my own products. Source code is yours.",
-    price: "From $5,000",
+    price: "From $6,500",
     eta: "2–4 weeks",
   },
   {
     title: "Custom — SaaS & multi-service products",
     desc: "Full products: SaaS platforms, payments, mobile apps, integrations. We plan it together on a free call. You own everything.",
-    price: "From $10,000+",
+    price: "From $9,000",
     eta: "2–8 weeks",
+  },
+  {
+    title: "Monitoring — post-deployment ops",
+    desc: "Retrieval drift alerting, model-migration and deprecation handling, rollback path, and the eval harness kept wired into CI so a regression removes the merge button.",
+    price: "$300/month",
+    eta: "ongoing",
   },
 ];
 
