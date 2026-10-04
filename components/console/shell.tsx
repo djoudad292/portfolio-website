@@ -12,20 +12,20 @@ import {
   Sparkles,
 } from "lucide-react"
 import { PRODUCTS } from "./data"
-import { BriefingView, ConnectView, ContactView, TermsView, TestimonialsView, WorkView } from "./views"
+import { BriefingView, ConnectView, ContactView, TermsView, EvidenceView, WorkView } from "./views"
 import { ChatView } from "./chat-view"
 
 const GITHUB = "https://github.com/djoudad292"
 const LINKEDIN = "https://linkedin.com/in/djaouad-frih"
 
-type View = "briefing" | "work" | "assistant" | "contact" | "testimonials" | "terms" | "connect"
+type View = "briefing" | "work" | "assistant" | "contact" | "evidence" | "terms" | "connect"
 
 const NAV: { id: View; num: string; label: string; hint: string }[] = [
   { id: "briefing", num: "01", label: "Briefing", hint: "who I am & what I do" },
   { id: "work", num: "02", label: "Proof of work", hint: "live products" },
   { id: "assistant", num: "03", label: "Ask my AI", hint: "chat with my agent" },
   { id: "contact", num: "04", label: "Start a project", hint: "get a fixed quote" },
-  { id: "testimonials", num: "05", label: "Reviews", hint: "what clients said" },
+  { id: "evidence", num: "05", label: "Evidence", hint: "how to verify" },
   { id: "terms", num: "06", label: "Process & terms", hint: "how we'd work" },
   { id: "connect", num: "07", label: "AI-Ready Portfolio", hint: "your AI can vet me" },
 ]
@@ -244,7 +244,7 @@ export function Shell() {
                 </div>
               )}
               {view === "contact" && <ContactView />}
-              {view === "testimonials" && <TestimonialsView />}
+              {view === "evidence" && <EvidenceView />}
               {view === "terms" && <TermsView />}
               {view === "connect" && <ConnectView />}
             </motion.div>

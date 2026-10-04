@@ -22,6 +22,7 @@ import {
   GITHUB,
   LINKEDIN,
 } from "./data"
+import { EVIDENCE_ARTIFACTS } from "@/lib/evidence"
 
 const goto = (view: string) =>
   window.dispatchEvent(new CustomEvent("console:navigate", { detail: view }))
@@ -146,31 +147,36 @@ export function BriefingView() {
         </div>
       </section>
 
-      {/* Reviews teaser */}
-      <section aria-labelledby="reviews-teaser-h">
-        <h2 id="reviews-teaser-h" className="font-mono text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
-          Clients said
+      {/* Evidence teaser */}
+      <section aria-labelledby="evidence-teaser-h">
+        <h2 id="evidence-teaser-h" className="font-mono text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
+          Evidence
         </h2>
         <div className="mt-5 space-y-3">
-          <blockquote className="rounded-2xl border border-border bg-card p-5">
+          <div className="rounded-2xl border border-border bg-card p-5">
             <p className="text-sm leading-relaxed text-foreground">
-              &ldquo;Made my website within 2 weeks, very professional, great communication.
-              Would highly recommend.&rdquo;
+              Public CI on every push, 46 committed test files, and a 69-case golden set versioned
+              in the repository.
             </p>
-            <footer className="mt-2 font-mono text-xs text-muted-foreground">Bilal Kadri · UK</footer>
-          </blockquote>
-          <blockquote className="rounded-2xl border border-border bg-card p-5">
+            <p className="mt-2 font-mono text-xs text-muted-foreground">
+              github.com/djoudad292 · open to anyone
+            </p>
+          </div>
+          <div className="rounded-2xl border border-border bg-card p-5">
             <p className="text-sm leading-relaxed text-foreground">
-              &ldquo;Complete full-stack build delivered right on schedule. Star developer.&rdquo;
+              No client quotes on this page — a review link that does not open a review is worse
+              than none.
             </p>
-            <footer className="mt-2 font-mono text-xs text-muted-foreground">Muhhamet Novruzov · Cyprus</footer>
-          </blockquote>
+            <p className="mt-2 font-mono text-xs text-muted-foreground">
+              Every claim here links to something you can open
+            </p>
+          </div>
         </div>
         <button
-          onClick={() => goto("testimonials")}
+          onClick={() => goto("evidence")}
           className="mt-4 font-mono text-xs uppercase tracking-[0.25em] text-primary hover:underline"
         >
-          Read all reviews →
+          See the evidence →
         </button>
       </section>
 
@@ -535,56 +541,42 @@ export function ConnectView() {
   );
 }
 
-export function TestimonialsView() {
+export function EvidenceView() {
   return (
     <div className="space-y-14">
       <header>
-        <h1 className="font-display text-4xl tracking-tight">What clients said</h1>
+        <h1 className="font-display text-4xl tracking-tight">Evidence</h1>
         <p className="mt-3 max-w-[60ch] text-sm leading-relaxed text-muted-foreground">
-          Real builds, real deadlines, verifiable reviews. Every quote links to the original.
+          No client quotes — a review link that does not open a review is worse than none.
+          Instead: artifacts you can open yourself, all public.
         </p>
       </header>
 
-<section aria-labelledby="testimonials-h">
-        <h2 id="testimonials-h" className="font-mono text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
-          What clients said
+      <section aria-labelledby="evidence-h">
+        <h2 id="evidence-h" className="font-mono text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
+          What you can check, right now
         </h2>
         <div className="mt-5 space-y-4">
-          <blockquote className="rounded-xl border border-border bg-card p-6">
-            <p className="font-display text-lg leading-snug text-foreground">
-              &ldquo;Great people, very good service. Made my website within 2 weeks in such a
-              professional manner, very good communication skills — would highly recommend!&rdquo;
-            </p>
-            <footer className="mt-4 flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-xs text-muted-foreground">
-              <a href="https://www.facebook.com/share/19Qx9MsT6b/" target="_blank" rel="noopener noreferrer" className="font-medium not-italic text-foreground hover:text-primary">
-                Bilal Kadri
-              </a>
-              <span aria-hidden>·</span>
-              <span>United Kingdom</span>
-              <span aria-hidden>·</span>
-              <a href="https://www.facebook.com/share/19Qx9MsT6b/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
-                original review
-              </a>
-            </footer>
-          </blockquote>
-
-          <blockquote className="rounded-xl border border-border bg-card p-6 sm:ml-16">
-            <p className="font-display text-lg leading-snug text-foreground">
-              &ldquo;Huge shout-out to Djaouad! Complete, fully functional full-stack build delivered
-              right on schedule. That&apos;s how it&apos;s done. Star developer right here.&rdquo;
-            </p>
-            <footer className="mt-4 flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-xs text-muted-foreground">
-              <a href="https://www.facebook.com/share/1JTbdKi3oe/" target="_blank" rel="noopener noreferrer" className="font-medium not-italic text-foreground hover:text-primary">
-                Muhhamet Novruzov
-              </a>
-              <span aria-hidden>·</span>
-              <span>Cyprus</span>
-              <span aria-hidden>·</span>
-              <a href="https://www.facebook.com/share/1JTbdKi3oe/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
-                original review
-              </a>
-            </footer>
-          </blockquote>
+          {EVIDENCE_ARTIFACTS.map((a) => (
+            <article key={a.title} className="rounded-xl border border-border bg-card p-6">
+              <h3 className="font-display text-lg text-foreground">{a.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{a.body}</p>
+              <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-2">
+                {a.links.map((l) => (
+                  <li key={l.href}>
+                    <a
+                      href={l.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-mono text-xs text-primary underline-offset-4 hover:underline"
+                    >
+                      {l.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
         </div>
       </section>
     </div>

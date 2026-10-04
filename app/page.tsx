@@ -6,7 +6,7 @@ import { WhatIDontDo } from "@/components/what-i-dont-do"
 import { Projects } from "@/components/projects"
 import { HowVerified } from "@/components/how-verified"
 import { HowItWorks } from "@/components/how-it-works"
-import { Testimonials } from "@/components/testimonials"
+import { Evidence } from "@/components/evidence"
 import { Pricing } from "@/components/pricing"
 import { ProjectIntake } from "@/components/project-intake"
 import { Contact } from "@/components/contact"
@@ -30,7 +30,7 @@ export default function Home() {
          <Projects />
          <HowVerified />
          <HowItWorks />
-        <Testimonials />
+        <Evidence />
         <Pricing />
         <ProjectIntake />
         <Contact />

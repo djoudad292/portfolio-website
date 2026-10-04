@@ -8,7 +8,7 @@ const CHAPTERS = [
   { id: "work", num: "02", label: "Proof of work" },
   { id: "ask", num: "03", label: "Ask my AI" },
   { id: "pricing", num: "04", label: "Terms" },
-  { id: "testimonials", num: "05", label: "Reviews" },
+  { id: "evidence", num: "05", label: "Evidence" },
   { id: "connect", num: "07", label: "Start" },
 ]
 
