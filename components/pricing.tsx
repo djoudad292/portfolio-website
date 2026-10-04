@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import { SectionHeading } from "./section-heading"
 import { Check } from "lucide-react"
 
-import { PRICE_ANCHOR, PRICE_ANCHOR_NOTE } from "@/lib/positioning"
+import { AUDIT_OFFER, PRICE_ANCHOR, PRICE_ANCHOR_NOTE } from "@/lib/positioning"
 
 const processItems = [
   {
@@ -124,6 +124,42 @@ export function Pricing() {
           </a>
           .
         </motion.p>
+
+        {/*
+          Entry offer. Deliberately a plain card inside the pricing section
+          rather than its own numbered SectionHeading, so the 01-10 section
+          numbering stays contiguous. Copy is fixed and verbatim — the price,
+          the five working days, what gets measured, and the credit against a
+          build are the whole promise, so nothing is added around it.
+        */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.5 }}
+          className="mt-12 rounded-2xl border border-primary bg-card p-6 sm:p-8"
+        >
+          <p className="font-mono text-xs uppercase tracking-[0.2em] text-primary">
+            Entry offer — fixed {AUDIT_OFFER.price}
+          </p>
+          <p className="mt-4 max-w-2xl text-pretty leading-relaxed text-foreground">
+            Reliability audit — fixed {AUDIT_OFFER.price}, {AUDIT_OFFER.duration}.
+            I measure your AI on
+            your own documents: retrieval precision/recall/F1 against a goldset
+            built from your corpus, refusal rate on out-of-scope questions,
+            citation correctness, p50/p95 latency and token cost, plus a
+            server-side authorization review. Failures published alongside the
+            scores. Credited in full against any build that follows.
+          </p>
+          <div className="mt-6">
+            <a
+              href="#contact"
+              className="focus-visible-ring inline-flex w-full items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90 sm:w-auto"
+            >
+              Start with the {AUDIT_OFFER.price} audit
+            </a>
+          </div>
+        </motion.div>
       </div>
     </section>
   )

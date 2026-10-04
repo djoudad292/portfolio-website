@@ -2,6 +2,7 @@ import { Hero } from "@/components/hero"
 import { ProblemsWeSolve } from "@/components/problems-we-solve"
 import { WhoThisIsFor } from "@/components/who-this-is-for"
 import { WhatIBuild } from "@/components/what-i-build"
+import { WhatIDontDo } from "@/components/what-i-dont-do"
 import { Projects } from "@/components/projects"
 import { HowVerified } from "@/components/how-verified"
 import { HowItWorks } from "@/components/how-it-works"
@@ -25,6 +26,7 @@ export default function Home() {
         <ProblemsWeSolve />
         <WhoThisIsFor />
         <WhatIBuild />
+        <WhatIDontDo />
          <Projects />
          <HowVerified />
          <HowItWorks />

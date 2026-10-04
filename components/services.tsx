@@ -12,7 +12,7 @@ const services = [
     icon: LayoutDashboard,
     title: "Internal tools & dashboards",
     text: "Replace spreadsheet chaos with tools your team actually uses — admin panels, operational dashboards, approval flows on your own live data. No per-seat tax, you own the code.",
-    price: "From $500",
+    price: "From $3,500",
   },
   {
     icon: Bot,

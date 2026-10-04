@@ -69,7 +69,7 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.5 }}
           className="mt-6 font-mono text-xs text-muted-foreground"
         >
-          Remote · overlaps US/EU hours · usually replies within an hour
+          Remote · UTC+1 — overlaps EU business hours, 13:00–17:00 UTC US-East · usually replies within an hour
         </motion.p>
       </div>
     </section>
