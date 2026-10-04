@@ -59,7 +59,13 @@ export const PRICE_ANCHOR_NOTE =
 export const TIMEZONE_CLAIM = "UTC+1 — overlaps EU business hours; 13:00–17:00 UTC US-East overlap"
 
 // Booking link for the free scope call offered on the pricing and contact
-// sections. Cal.com is the canonical scheduler. VERIFY this handle resolves —
-// if you revert to a different provider, change this constant only.
-export const BOOKING_URL = "https://cal.com/djaouad/30min"
+// sections.
+//
+// VERIFIED 2026-10-04 by fetching both candidates: https://cal.com/djaouad/30min
+// returns HTTP 404 — that Cal.com handle was never created, so every
+// "Book a free scope call" button on the site was a dead link.
+// https://calendly.com/oufr29/30min returns HTTP 200 and is the scheduler
+// that actually exists, so that is the canonical value here. If the Cal.com
+// handle is created later, change this constant only.
+export const BOOKING_URL = "https://calendly.com/oufr29/30min"
 export const BOOKING_LABEL = "Book a free 15-min scope call"
