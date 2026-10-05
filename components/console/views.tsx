@@ -155,7 +155,7 @@ export function BriefingView() {
         <div className="mt-5 space-y-3">
           <div className="rounded-2xl border border-border bg-card p-5">
             <p className="text-sm leading-relaxed text-foreground">
-              Public CI on every push, 46 committed test files, and a 69-case golden set versioned
+              Public CI on every push, 13 committed test files, and a 69-case golden set versioned
               in the repository.
             </p>
             <p className="mt-2 font-mono text-xs text-muted-foreground">
@@ -366,7 +366,7 @@ export function WorkView() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 rounded-full border border-border px-4 py-2 text-xs text-foreground transition-colors hover:border-primary"
               >
-                <Github className="h-3 w-3" /> Source
+                <Github className="h-3 w-3" /> GitHub repo
               </a>
               <a
                 href={p.apk}
@@ -374,7 +374,7 @@ export function WorkView() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 rounded-full border border-border px-4 py-2 text-xs text-foreground transition-colors hover:border-primary"
               >
-                <Download className="h-3 w-3" /> Android app
+                <Download className="h-3 w-3" /> App download
               </a>
             </div>
           </div>
