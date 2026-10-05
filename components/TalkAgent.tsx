@@ -87,7 +87,7 @@ export default function TalkAgent({
             Djaouad Frih <span style={{ color: "#5b5b6b", fontWeight: 400 }}>· Full-Stack AI Engineer</span>
           </div>
           <div style={{ fontSize: 11, color: "#34d399", marginTop: 2 }}>
-            ● LIVE — agent trained on <b>{company}</b>&apos;s website
+            ● LIVE — reading <b>{company}</b>&apos;s website
           </div>
         </div>
       </header>
@@ -97,7 +97,7 @@ export default function TalkAgent({
         <h1 style={{ fontSize: 22, margin: 0, lineHeight: 1.3 }}>
           Ask anything about <span style={{ color: "#34d399" }}>{company}</span>.
           <br />
-          The agent reads the live website to answer.
+          The demo crawls its live pages on demand to answer.
         </h1>
         <p style={{ color: "#a5a5b4", fontSize: 13, marginTop: 10 }}>
           Built by Djaouad in one sitting — imagine what he ships in two weeks for you.

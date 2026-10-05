@@ -40,7 +40,7 @@ export default async function TalkPage({
         </div>
         <h1 style={{ fontSize: 22, marginBottom: 12 }}>This demo link is not active</h1>
         <p style={{ color: "#a5a5b4", lineHeight: 1.6, fontSize: 14, marginBottom: 24 }}>
-          Every prospect gets a personal AI agent trained on their own website.
+          Every prospect gets a personal AI agent that crawls their own website.
           Meanwhile, try the four systems running live right now:
         </p>
         <div style={{ display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap" }}>

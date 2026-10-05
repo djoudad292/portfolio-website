@@ -20,13 +20,13 @@ export const EVIDENCE_ARTIFACTS: EvidenceArtifact[] = [
     ],
   },
   {
-    title: "46 committed test files",
-    body: "44 in the receptionist backend and 2 in the support agent backend. Both suites run with npm test, and the receptionist one runs in CI on every push — the files are in the repositories, not in a screenshot.",
+    title: "13 committed test files",
+    body: "11 in the receptionist backend and 2 in the support agent backend (both on main; the support agent&apos;s default branch, master, has 0). Both suites run with npm test, and the receptionist one runs in CI on every push — the files are in the repositories, not in a screenshot.",
     links: [{ label: "github.com/djoudad292", href: "https://github.com/djoudad292" }],
   },
   {
     title: "A published 69-case golden set",
-    body: "The demo conversation is scored against a versioned dataset: 69 curated cases, roughly 84 turn assertions across 15 categories, with severity tags that gate a deploy.",
+    body: "The demo conversation is scored against a versioned dataset: 69 curated cases, 97 turn assertions across 15 categories, with severity tags that gate a deploy.",
     links: [
       {
         label: "frontend/evals/demo-conversation.dataset.json",
@@ -36,7 +36,7 @@ export const EVIDENCE_ARTIFACTS: EvidenceArtifact[] = [
   },
   {
     title: "A public commit history",
-    body: "104 commits on the receptionist, 80 on the support agent, 30 on the MCP server. The work is a trail you can read, not a claim you have to take.",
+    body: "104 commits on the receptionist, 80 on the support agent (main; the default branch master has 56), 30 on the MCP server. The work is a trail you can read, not a claim you have to take.",
     links: [
       {
         label: "ai-virtual-receptionist",
@@ -55,4 +55,4 @@ export const EVIDENCE_NO_QUOTES_LINE =
   "No client quotes on this page — a review link that does not open a review is worse than none."
 
 export const EVIDENCE_TEASER_LINE =
-  "Public CI on every push, 46 committed test files, and a 69-case golden set versioned in the repository."
+  "Public CI on every push, 13 committed test files, and a 69-case golden set versioned in the repository."
