@@ -47,8 +47,8 @@ const projects: Project[] = [
     links: [
       { label: "See it live", meta: "customer.djaouad.is-a.dev", href: "https://customer.djaouad.is-a.dev/", isPrimary: true },
       { label: "Get this for your business", meta: "contact", href: "#contact", isPrimary: false },
-      { label: "source", meta: "github.com/djoudad292/ai-customer-support-agent", href: "https://github.com/djoudad292/ai-customer-support-agent" },
-      { label: "source", meta: "APK", href: "https://github.com/djoudad292/ai-customer-support-agent/releases/download/latest-apk/ai-customer-support.apk" },
+      { label: "GitHub repo", meta: "github.com/djoudad292/ai-customer-support-agent", href: "https://github.com/djoudad292/ai-customer-support-agent" },
+      { label: "App download", meta: "APK", href: "https://github.com/djoudad292/ai-customer-support-agent/releases/download/latest-apk/ai-customer-support.apk" },
     ],
     captures: {
       videos: [
@@ -86,8 +86,8 @@ const projects: Project[] = [
     links: [
       { label: "See it live", meta: "docs.djaouad.is-a.dev", href: "https://docs.djaouad.is-a.dev/", isPrimary: true },
       { label: "Get this for your business", meta: "contact", href: "#contact", isPrimary: false },
-      { label: "source", meta: "github.com/djoudad292/smart-pdf-workspace", href: "https://github.com/djoudad292/smart-pdf-workspace" },
-      { label: "source", meta: "APK", href: "https://github.com/djoudad292/smart-pdf-workspace/releases/download/latest-apk-pdf/smart-pdf.apk" },
+      { label: "GitHub repo", meta: "github.com/djoudad292/smart-pdf-workspace", href: "https://github.com/djoudad292/smart-pdf-workspace" },
+      { label: "App download", meta: "APK", href: "https://github.com/djoudad292/smart-pdf-workspace/releases/download/latest-apk-pdf/smart-pdf.apk" },
     ],
     captures: {
       videos: [
@@ -123,8 +123,8 @@ const projects: Project[] = [
     links: [
       { label: "See it live", meta: "chat.djaouad.is-a.dev", href: "https://chat.djaouad.is-a.dev/", isPrimary: true },
       { label: "Get this for your business", meta: "contact", href: "#contact", isPrimary: false },
-      { label: "source", meta: "github.com/djoudad292/ai-virtual-receptionist", href: "https://github.com/djoudad292/ai-virtual-receptionist" },
-      { label: "source", meta: "APK", href: "https://github.com/djoudad292/ai-virtual-receptionist/releases/download/latest-apk-receptionist/ai-receptionist.apk" },
+      { label: "GitHub repo", meta: "github.com/djoudad292/ai-virtual-receptionist", href: "https://github.com/djoudad292/ai-virtual-receptionist" },
+      { label: "App download", meta: "APK", href: "https://github.com/djoudad292/ai-virtual-receptionist/releases/download/latest-apk-receptionist/ai-receptionist.apk" },
     ],
     captures: {
       videos: [
@@ -161,8 +161,8 @@ const projects: Project[] = [
     links: [
       { label: "See it live", meta: "mcp.djaouad.is-a.dev/mcp", href: "https://mcp.djaouad.is-a.dev/mcp", isPrimary: true },
       { label: "Get this for your business", meta: "contact", href: "#contact", isPrimary: false },
-      { label: "source", meta: "github.com/djoudad292/hireme-mcp", href: "https://github.com/djoudad292/hireme-mcp" },
-      { label: "source", meta: "APK", href: "https://github.com/djoudad292/hireme-mcp/releases/download/latest-apk/hireme-mcp.apk" },
+      { label: "GitHub repo", meta: "github.com/djoudad292/hireme-mcp", href: "https://github.com/djoudad292/hireme-mcp" },
+      { label: "App download", meta: "APK", href: "https://github.com/djoudad292/hireme-mcp/releases/download/latest-apk/hireme-mcp.apk" },
     ],
     captures: {
       videos: [
@@ -245,7 +245,7 @@ export function Projects() {
 
                   <div className="mt-8 flex flex-wrap items-center gap-3">
                     {project.links.map((link) => {
-                      const isSource = link.label === "source"
+                      const isSource = link.label === "GitHub repo" || link.label === "App download"
                       return (
                         <a
                           key={`${link.label}-${link.meta}`}
