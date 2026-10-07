@@ -2,13 +2,19 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Who I Work Best With · E-commerce, Clinics, Legal, Founders, Agencies | Djaouad Frih",
+  title: "Who I Work Best With · Property Management, E-commerce, Clinics, Legal, Founders, Agencies | Djaouad Frih",
   description:
-    "The five segments where production AI systems pay for themselves fastest: high-volume support, after-hours lead loss, document-heavy work, AI-first products, and agencies needing delivery capacity.",
+    "The six segments where production AI systems pay for themselves fastest: maintenance operations, high-volume support, after-hours lead loss, document-heavy work, AI-first products, and agencies needing delivery capacity.",
   alternates: { canonical: "https://djaouad.is-a.dev/industries" },
 };
 
 const segments = [
+  {
+    slug: "property-management",
+    name: "Property managers running 100–5,000 units",
+    text: "Maintenance requests arrive on WhatsApp, email, phone and tenant portals, and the triage, quoting, lease check, owner approval and dispatch all happen by hand. An orchestration layer that sits on the property software you already run: one intake queue, lease-aware triage, vendor dispatch, an owner-approval gate, and a field-crew app that closes the loop with photo evidence.",
+    fit: "Composition of the live receptionist and document workspace, with a written demo spec",
+  },
   {
     slug: "online-stores",
     name: "E-commerce and SaaS with high-volume support",
@@ -63,7 +69,7 @@ export default function IndustriesPage() {
           <span aria-hidden className="h-px flex-1 bg-border" />
         </p>
         <h1 className="font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl">
-          Five kinds of buyer get the most out of this.
+          Six kinds of buyer get the most out of this.
         </h1>
         <p className="mt-5 max-w-xl leading-relaxed text-muted-foreground">
           These are the segments where a production AI system pays for itself

@@ -9,7 +9,7 @@
 // The positioning statement. Used verbatim on the homepage hero, the page
 // metadata and the OG copy.
 export const POSITIONING =
-  "AI systems engineer. I build the agent, the retrieval layer that feeds it, and the production application around it."
+  "Full-Stack + AI Engineer. I build the orchestration loop, the retrieval layer that feeds it, and the production application around it."
 
 // ---------------------------------------------------------------------------
 // THE PRICE LADDER — one ladder, published identically on every surface.

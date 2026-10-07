@@ -5,12 +5,12 @@ import { ArrowUpRight, Github, Bot, FileSearch, Layers, MessageSquareCode, Workf
 import { PRICE_ANCHOR } from "@/lib/positioning";
 
 export const metadata: Metadata = {
-  title: "Hire an AI Systems Engineer | Djaouad Frih · Agents, Retrieval, Production Builds",
+  title: "Hire a Full-Stack + AI Engineer | Djaouad Frih · Agents, Retrieval, Production Builds",
   description:
-    "Hire an AI systems engineer to build production AI: tool-calling agents, vector retrieval with citations, MCP servers, and the application around them. Fixed-price, milestone-based, source handed over.",
+    "Hire a full-stack + AI engineer to build production AI: tool-calling agents, vector retrieval with citations, MCP servers, and the application around them. Fixed-price, milestone-based, source handed over.",
   alternates: { canonical: "https://djaouad.is-a.dev/hire-ai-developer" },
   openGraph: {
-    title: "Hire an AI Systems Engineer · Djaouad Frih",
+    title: "Hire a Full-Stack + AI Engineer · Djaouad Frih",
     description:
       "Agents, retrieval, MCP servers and production applications. Fixed-price, milestone-based, four live systems with public repositories.",
     url: "https://djaouad.is-a.dev/hire-ai-developer",

@@ -53,7 +53,7 @@ export async function GET() {
             marginBottom: "24px",
           }}
         >
-          AI Systems Engineer
+          Full-Stack + AI Engineer
         </div>
         <div
           style={{

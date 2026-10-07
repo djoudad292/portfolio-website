@@ -41,6 +41,14 @@ const problems: Problem[] = [
     external: true,
   },
   {
+    problem: "Maintenance requests lost in WhatsApp groups and inboxes",
+    solution:
+      "Maintenance orchestration. One intake queue, lease-aware triage, vendor dispatch, an owner-approval gate, and a field-crew closeout app — layered on the property software you already run",
+    label: "Describe the workflow",
+    href: "#contact",
+    external: false,
+  },
+  {
     problem: "A manual process eating your best people's week",
     solution:
       "Internal tool built on your own data. Auth, roles, an audit trail, and the spreadsheet retired",

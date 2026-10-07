@@ -36,11 +36,11 @@ export const metadata: Metadata = {
       "msvalidate.01": "C51CDA99ED5014CBAB8480F6E66FC408",
     },
   },
-  title: 'Djaouad Frih | AI Systems Engineer · Agents, Retrieval, Production Builds',
+  title: 'Djaouad Frih | Full-Stack + AI Engineer · Agents, Retrieval, Production Builds',
   description:
     'I build production AI systems: tool-calling agents, vector retrieval with source citations, MCP servers, and the application around them. Live on real domains, open source. Retrieval benchmarked on the AI Virtual Receptionist knowledge base (dental clinic KB, 15 chunks, 18 queries) at 93.8% F1 with an offline embedder.',
   openGraph: {
-    title: 'Djaouad Frih | AI Systems Engineer · Agents, Retrieval, Production Builds',
+    title: 'Djaouad Frih | Full-Stack + AI Engineer · Agents, Retrieval, Production Builds',
     description:
       'Production AI systems: LangGraph agents with tool-calling loops, pgvector retrieval with citations, MCP servers, multi-tenant apps. Four live systems with public repositories. Fixed-price, milestone-based.',
     url: 'https://djaouad.is-a.dev',
@@ -52,13 +52,13 @@ export const metadata: Metadata = {
         url: 'https://djaouad.is-a.dev/og-image',
         width: 1200,
         height: 630,
-        alt: 'Djaouad Frih, AI Systems Engineer: agents, retrieval, MCP servers, production builds',
+        alt: 'Djaouad Frih, Full-Stack + AI Engineer: orchestration, agents, retrieval, MCP servers, production builds',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Djaouad Frih | AI Systems Engineer · Agents, Retrieval, Production Builds',
+    title: 'Djaouad Frih | Full-Stack + AI Engineer · Agents, Retrieval, Production Builds',
     description:
       'Production AI systems: tool-calling agents, vector retrieval with citations, MCP servers. Live, open source, benchmarked.',
     images: ['https://djaouad.is-a.dev/og-image'],
@@ -109,7 +109,7 @@ export default function RootLayout({
               '@context': 'https://schema.org',
               '@type': 'Person',
               name: 'Djaouad Frih',
-              jobTitle: 'AI Systems Engineer',
+              jobTitle: 'Full-Stack + AI Engineer',
               url: 'https://djaouad.is-a.dev',
               email: 'mailto:contact@djaouad.is-a.dev',
               telephone: '+213780688125',

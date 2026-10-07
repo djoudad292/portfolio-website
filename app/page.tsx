@@ -14,7 +14,7 @@ import { POSITIONING } from "@/lib/positioning"
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Djaouad Frih · AI Systems Engineer | Agents, Retrieval, Production Builds",
+  title: "Djaouad Frih · Full-Stack + AI Engineer | Agents, Retrieval, Production Builds",
   description:
     "I build production AI systems: tool-calling agents, vector retrieval with source citations, MCP servers, and the application around them. Live on real domains, open source. Retrieval benchmarked on the AI Virtual Receptionist knowledge base (dental clinic KB, 15 chunks, 18 queries) at 93.8% F1 with an offline embedder.",
 };

@@ -3,9 +3,9 @@ import Link from "next/link";
 import { ArrowDownToLine, ArrowUpRight, Github, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "CV · Djaouad Frih | AI Systems Engineer",
+  title: "CV · Djaouad Frih | Full-Stack + AI Engineer",
   description:
-    "Djaouad Frih, AI Systems Engineer. Tool-calling agents, vector retrieval with source citations, MCP servers, and the production applications around them. Projects taken from database design to deployment, with retrieval benchmarked and usage reported.",
+    "Djaouad Frih, Full-Stack + AI Engineer. Tool-calling agents, vector retrieval with source citations, MCP servers, and the production applications around them. Projects taken from database design to deployment, with retrieval benchmarked and usage reported.",
 };
 
 const skills = [
@@ -75,8 +75,8 @@ export default function CVPage() {
                 Djaouad Frih<span className="text-primary">.</span>
               </h1>
               <p className="mt-4 max-w-lg text-lg leading-relaxed text-muted-foreground">
-                AI systems engineer. The agent, the retrieval layer behind it, and
-                the application around it.
+                Full-Stack + AI engineer. The orchestration loop, the retrieval
+                layer behind it, and the application around it.
               </p>
             </div>
             <a

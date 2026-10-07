@@ -174,6 +174,35 @@ const projects: Project[] = [
       ],
     },
   },
+  {
+    year: "2026",
+    label: "Case Study",
+    title: "Maintenance Orchestration Layer",
+    for: "For property managers running 100–5,000 units. A composition case study, not a client build.",
+    problem:
+      "A tenant reports a leak on WhatsApp at 11pm. Someone reads it, phones three vendors for quotes, checks the lease to see who pays, waits for the owner to approve, then texts the vendor. Every ticket, by hand, every time.",
+    solution:
+      "The systems above, composed into one loop: tenant intake from the receptionist's tool-calling agent, lease reading from the PDF workspace's retrieval pipeline, and a LangGraph orchestrator that classifies the ticket, assigns responsibility from the lease, matches the vendor by skill, drafts the quote, and routes it through an owner-approval gate. The field crew closes it from a phone with photo evidence.",
+    result:
+      "One orchestration layer on top of the property software already in place. The risk sits in the wiring, not the parts: every component of this loop is live today under a public repository.",
+    proof:
+      "No client system exists yet — this entry documents the pattern. The two systems it composes are linked below, and the demo spec is written.",
+    builtWith: "LangGraph orchestration · pgvector lease RAG · Next.js · React Native",
+    highlights: [
+      "One intake queue for WhatsApp, email, phone and portal requests",
+      "Lease RAG assigns responsibility before anyone phones a vendor",
+      "Vendor matching by skill, territory, availability and history",
+      "Owner-approval gate carrying the quote and the lease clause",
+      "Field-crew mobile app: job card, photo evidence, closeout",
+      "Roles and an audit trail for tenant, owner, crew and manager",
+    ],
+    links: [
+      { label: "Describe your portfolio", meta: "contact", href: "#contact", isPrimary: true },
+      { label: "Intake system, live", meta: "chat.djaouad.is-a.dev", href: "https://chat.djaouad.is-a.dev/", isPrimary: false },
+      { label: "Document system, live", meta: "docs.djaouad.is-a.dev", href: "https://docs.djaouad.is-a.dev/", isPrimary: false },
+    ],
+    captures: { videos: [], images: [] },
+  },
 ]
 
 export function Projects() {
@@ -184,7 +213,7 @@ export function Projects() {
           index="04"
           label="Proof of work"
           title="Real systems, live in production."
-          description="Each of these started as a specific problem and was built end to end, from requirements through deployment. They are running deployments on real domains with public repositories, ordered by how much evidence sits behind them rather than by date."
+          description="Each of these started as a specific problem and was built end to end, from requirements through deployment. They are running deployments on real domains with public repositories, ordered by how much evidence sits behind them rather than by date. The final entry is different on purpose: a labelled composition case study, with no client build behind it yet."
         />
 
         <div className="space-y-12">

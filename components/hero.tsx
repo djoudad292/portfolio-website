@@ -14,7 +14,7 @@ export function Hero() {
           transition={{ duration: 0.5 }}
           className="mb-8 font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground"
         >
-          AI systems engineer · agents, retrieval, and the product around them
+          Full-Stack + AI Engineer · orchestration, retrieval, and the product around them
         </motion.p>
 
         <motion.h1
