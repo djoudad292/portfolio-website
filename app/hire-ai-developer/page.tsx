@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowUpRight, Github, Bot, FileSearch, Layers, MessageSquareCode, Workflow, Headset } from "lucide-react";
 
 import { PRICE_ANCHOR } from "@/lib/positioning";
+import { TryYourSite } from "@/components/try-your-site";
 
 export const metadata: Metadata = {
   title: "Hire a Full-Stack + AI Engineer | Djaouad Frih · Agents, Retrieval, Production Builds",
@@ -69,6 +70,18 @@ export default function HirePage() {
         </section>
 
         <section className="pb-16">
+          <div className="rounded-2xl border border-border bg-card p-7">
+            <h2 className="font-display text-2xl tracking-tight">See it running on your own site first</h2>
+            <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+              Paste a website and I&apos;ll build a live agent trained on its public
+              pages in front of you. It is the same crawl and retrieval path the
+              production systems use, not a scripted recording.
+            </p>
+            <TryYourSite lead="hire-ai-developer" defaultLabel="Build my live demo" />
+          </div>
+        </section>
+
+        <section className="pb-16">
           <h2 className="font-display text-3xl tracking-tight">What I get hired to build</h2>
           <div className="mt-6 grid gap-5 sm:grid-cols-2">
             {services.map((s) => (
@@ -121,7 +134,7 @@ export default function HirePage() {
           <div className="mt-6 grid gap-5 sm:grid-cols-2">
             {[
               ["Retrieval is benchmarked", "A goldset of queries with known-correct sources, run offline through the pipeline, computing precision, recall and F1 with a threshold sweep. The benchmark runs on the AI Virtual Receptionist knowledge base (dental clinic KB, 15 chunks, 18 queries) with a deterministic offline embedder. Most recent vector retrieval run: 93.8% F1 at threshold 0.35. This covers retrieval policy only, not the production embedder (text-embedding-3-small) or written answer quality."],
-              ["Cost and latency are reported", "Every model call records token counts and latency, persisted and exposed on an authenticated metrics endpoint. That is token and latency capture rather than full distributed tracing, and I describe it that way."],
+              ["Cost, latency and steps are reported", "Every model call records token counts and latency, persisted and exposed on an authenticated metrics endpoint, and every agent run emits a per-step trace: one span per graph node, per model call and per tool call. That is step-level visibility rather than full distributed tracing, and I describe it that way. Visitor content is redacted before export by default."],
               ["The code is public", "All four systems have public repositories. Read them, fork them, or run them yourself."],
               ["Multi-tenant by default", "Short-lived JWT access tokens with bcrypt hashing and row-level isolation between tenants on all four. The receptionist and document workspace go further, with rotating refresh tokens and server-side revocation through a token version."],
             ].map(([h, t]) => (

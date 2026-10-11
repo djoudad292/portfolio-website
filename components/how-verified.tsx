@@ -22,11 +22,13 @@ const checks = [
     title: "Token usage and latency are recorded",
     body: [
       "Every model call captures its token counts and its latency. Those records are persisted and exposed through an authenticated metrics endpoint, so the running cost of a system is a number you can read rather than an estimate.",
+      "Since the last version of this page, every agent run also emits a trace: one span per graph node, per model call and per tool call, each carrying its model, duration and token count. The receptionist, the support agent and the document workspace are all instrumented.",
     ],
-    stat: "/metrics/ai",
-    statNote: "Authenticated endpoint over persisted usage and latency records.",
+    stat: "/metrics/ai + step traces",
+    statNote:
+      "Authenticated endpoint over persisted usage and latency records, plus an OpenTelemetry span tree per run.",
     caveat:
-      "What this is not: full distributed tracing. It is token and latency capture. I do not have per-step trace inspection across a whole agent run.",
+      "What this is not: full distributed tracing. There are no database or queue spans and no cross-service correlation. Visitor content is redacted before export by default, so a trace shows the shape of a run but not the words a patient typed. Both switches are available and the content one stays off until a data-handling agreement is signed.",
   },
   {
     icon: Radio,
