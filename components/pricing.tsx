@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import { SectionHeading } from "./section-heading"
 import { Check } from "lucide-react"
 
-import { AUDIT_OFFER, PRICE_ANCHOR, PRICE_ANCHOR_NOTE } from "@/lib/positioning"
+import { AUDIT_OFFER, NO_PRICE_NOTE } from "@/lib/positioning"
 
 const processItems = [
   {
@@ -53,9 +53,8 @@ export function Pricing() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="mb-10 text-center font-mono text-sm text-muted-foreground"
         >
-          AI system builds typically run{" "}
-          <span className="text-primary">{PRICE_ANCHOR}</span>{" "}
-          {PRICE_ANCHOR_NOTE}
+          <span className="text-primary">No published prices.</span>{" "}
+          {NO_PRICE_NOTE}
         </motion.p>
 
         <div className="grid gap-6 lg:grid-cols-2">
@@ -140,10 +139,10 @@ export function Pricing() {
           className="mt-12 rounded-2xl border border-primary bg-card p-6 sm:p-8"
         >
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-primary">
-            Entry offer — fixed {AUDIT_OFFER.price}
+            Entry offer — free
           </p>
           <p className="mt-4 max-w-2xl text-pretty leading-relaxed text-foreground">
-            Reliability audit — fixed {AUDIT_OFFER.price}, {AUDIT_OFFER.duration}.
+            Reliability audit — free, {AUDIT_OFFER.duration}.
             I measure your AI on
             your own documents: retrieval precision/recall/F1 against a goldset
             built from your corpus, refusal rate on out-of-scope questions,
@@ -156,7 +155,7 @@ export function Pricing() {
               href="#contact"
               className="focus-visible-ring inline-flex w-full items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90 sm:w-auto"
             >
-              Start with the {AUDIT_OFFER.price} audit
+              Start with the free audit
             </a>
           </div>
         </motion.div>

@@ -53,15 +53,25 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-9"
+          className="mt-9 flex flex-wrap items-center gap-3"
         >
           <a
-            href="/contact"
+            href="#pricing"
             className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+          >
+            Get a free audit
+          </a>
+          <a
+            href="/contact"
+            className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
           >
             Start a project
           </a>
         </motion.div>
+        <p className="mt-4 font-mono text-xs text-muted-foreground">
+          Five working days, measured on your own documents. Credited in full
+          if you build with me.
+        </p>
 
         <motion.p
           initial={{ opacity: 0 }}

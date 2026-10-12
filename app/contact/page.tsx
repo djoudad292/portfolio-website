@@ -4,7 +4,6 @@ import { useState } from "react"
 import { Mail, Send, Check, Loader2, AlertCircle } from "lucide-react"
 import { SectionHeading } from "@/components/section-heading"
 import { email } from "@/lib/socials"
-import { PRICE_ANCHOR } from "@/lib/positioning"
 
 // Force fresh deploy - v2
 
@@ -171,7 +170,7 @@ export default function ContactPage() {
                 value={formData.budget}
                 onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
                 className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
-                placeholder={`e.g., ${PRICE_ANCHOR} or "not sure yet"`}
+                placeholder="e.g. a WhatsApp order flow, or not sure yet"
               />
             </div>
           </div>

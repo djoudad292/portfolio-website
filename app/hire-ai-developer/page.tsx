@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight, Github, Bot, FileSearch, Layers, MessageSquareCode, Workflow, Headset } from "lucide-react";
 
-import { PRICE_ANCHOR } from "@/lib/positioning";
 import { TryYourSite } from "@/components/try-your-site";
 
 export const metadata: Metadata = {
@@ -63,7 +62,7 @@ export default function HirePage() {
             </a>
           </div>
           <div className="mt-8 grid gap-3 sm:grid-cols-3">
-            {[`AI system builds ${PRICE_ANCHOR}`, "Retrieval benchmarked, not guessed", "Remote · UTC+1, EU hours + US-East 13:00–17:00 UTC"].map((t) => (
+            {["Fixed-price builds, quoted after a free audit", "Retrieval benchmarked, not guessed", "Remote · UTC+1, EU hours + US-East 13:00–17:00 UTC"].map((t) => (
               <div key={t} className="rounded-xl border border-border bg-card px-4 py-3 text-sm text-muted-foreground">{t}</div>
             ))}
           </div>

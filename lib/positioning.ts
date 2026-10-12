@@ -33,7 +33,7 @@ export const POSITIONING =
 // a buyer can buy before trusting a supplier, it needs no case study to
 // evaluate, and it converts directly into a build (credited in full).
 export const AUDIT_OFFER = {
-  price: "$900",
+  price: "Free",
   duration: "five working days",
   summary:
     "Retrieval and authorization audit on your own documents. Precision/recall/F1 against a goldset built from your corpus, refusal rate on out-of-scope questions, citation correctness, p50/p95 latency and token cost, and a server-side authorization review.",
@@ -41,17 +41,25 @@ export const AUDIT_OFFER = {
     "Failures are published alongside the scores. Credited in full against any build that follows.",
 } as const
 
-export const STARTER_PRICE = "From $3,500"
-export const PROFESSIONAL_PRICE = "From $6,500"
-export const CUSTOM_PRICE = "From $9,000"
-export const MONITORING_PRICE = "$300/month"
-
-// Public price band for a full AI system build. This is the number prospects
-// see above the fold on the pricing section.
-export const PRICE_ANCHOR = "$3,500 - $9,000"
-
-export const PRICE_ANCHOR_NOTE =
-  "depending on scope. Retrieval quality, agent tooling, and the application around it all move the number."
+// NO PUBLISHED PRICE NUMBERS.
+//
+// Changed 2026-10-12: the ladder is no longer published on the site. The audit
+// is the entry offer and it is free, so a cold prospect can act without first
+// evaluating a supplier on a number. The previous band ($3,500-$9,000) also
+// sat in three places with three values once, which reads as "will take
+// anything" — one source of truth was the fix, and publishing nothing is the
+// stricter version of the same idea.
+//
+// CONVERSION CONSEQUENCE, deliberately accepted: without a number the page cannot
+// self-select on budget. If lead quality drops, the fix is qualifying in the
+// intake form, not re-publishing the band.
+//
+// Scope and fixed quotes are still given on the call, after the audit shows
+// what is actually needed.
+export const PRICE_ANCHOR = ""
+export const PRICE_ANCHOR_NOTE = ""
+export const NO_PRICE_NOTE =
+  "Every project is fixed-price and quoted after the audit, once the scope is real."
 
 // Honest availability claim. UTC+1 gives ~3-4h of US-East overlap, not a full
 // US day — claiming "overlaps US hours" is a verifiable falsehood on a page
