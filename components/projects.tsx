@@ -109,6 +109,8 @@ const projects: Project[] = [
     result: "Orders are captured the moment they are asked for, with a stock check that cannot be raced by a second customer. Nothing is lost when WhatsApp is unreachable: failed sends stay queued and retry with backoff instead of disappearing.",
     proof: "Live demo — a real order created from a chat message",
     builtWith: "WhatsApp Cloud API · NestJS · Postgres (Neon) · Netlify functions",
+    image: "/captures/whatsapp/whatsapp-hero.png",
+    imageAlt: "WhatsApp Order Capture and CRM landing page",
     highlights: [
       "Inbound webhooks deduplicated before they touch the database",
       "Agent uses a fixed tool registry — no raw database access",
@@ -125,7 +127,10 @@ const projects: Project[] = [
     ],
     captures: {
       videos: [],
-      images: [],
+      images: [
+        { src: "/captures/whatsapp/whatsapp-try.png", alt: "Live try chat creating a real order from a WhatsApp message", caption: "Order created from chat" },
+        { src: "/captures/whatsapp/whatsapp-refund.png", alt: "Refund request handled safely when no matching order exists", caption: "Out-of-scope handled safely" },
+      ],
     },
   },
   {
