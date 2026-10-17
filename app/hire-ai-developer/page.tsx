@@ -54,8 +54,12 @@ export default function HirePage() {
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <a href="/contact"
-              className="rounded-xl bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-colors hover:opacity-90">
+               className="rounded-xl bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-colors hover:opacity-90">
               Describe your project
+            </a>
+            <a href="https://calendly.com/oufr29/30min"
+               className="inline-flex items-center justify-center rounded-xl border border-border bg-card px-6 py-3.5 text-sm font-semibold transition-colors hover:border-primary">
+              Start with a free audit
             </a>
             <a href="/cv" className="inline-flex items-center gap-2 rounded-xl border border-border bg-card px-6 py-3.5 text-sm font-semibold transition-colors hover:border-primary">
               View CV

@@ -12,26 +12,27 @@ export const POSITIONING =
   "Full-Stack + AI Engineer. I build the orchestration loop, the retrieval layer that feeds it, and the production application around it."
 
 // ---------------------------------------------------------------------------
-// THE PRICE LADDER — one ladder, published identically on every surface.
+// THE PRICE ANCHOR — one floor, published identically on every surface.
 // ---------------------------------------------------------------------------
-// RATIONALE (do not "optimise" these numbers away without reading this):
-// The site previously published $500 on GitHub and the MCP landing page while
-// showing $4,000-$12,000 here. Three live prices on one supplier reads as
-// "he will take anything", and an agent resolving the GitHub repo saw $500
-// before it ever reached the real band.
+// 2026-10-14: The site previously published NO price number at all, while the
+// HireMe MCP exposed $900 for the audit (contradicting the site's free audit)
+// and $3,500 as a floor for builds. Three different price signals on one
+// supplier reads as "will take anything", and a buyer who cannot see a floor
+// has to guess whether $5k or $50k is the real range.
 //
-// The floor was raised because $500 is the COMMODITY price: packaged AI
-// receptionists sell for $14-$399/month, Upwork sells cited RAG for
-// $150-$600 in three days, and a narrow MCP server is $300-$800 in 48h.
-// Competing at $500 competes with tools.
-//
-// The ceiling was lowered because at $4,000-$12,000 with no paying AI client
-// on record, the ask sat above what the proof supports. $3,500-$9,000 sits
-// inside the Gulf/MENA agency band (AED 8,000-80,000) rather than above it.
-//
-// The AUDIT is the entry offer on purpose: it is the one thing in this ladder
-// a buyer can buy before trusting a supplier, it needs no case study to
-// evaluate, and it converts directly into a build (credited in full).
+// Resolution per the assessment: publish exactly ONE number — the floor for a
+// full build. The audit stays free (it is the entry offer a buyer can act on
+// without evaluating a supplier). The floor ($3,500) is the minimum for a
+// scoped production build, which keeps commodity chatbot buyers out and
+// serious buyers self-selecting. This must stay byte-identical to the MCP
+// backend's SERVICES floor (hireme-mcp/backend/src/content.ts).
+export const PRICE_ANCHOR = "Full builds start at $3,500"
+export const PRICE_ANCHOR_NOTE =
+  "Quoted after a free reliability audit, once the scope is real. No hourly surprises."
+export const NO_PRICE_NOTE: string | undefined = undefined
+
+// Entry offer — always free, always the same anchor on every surface including
+// the MCP backend. A buyer can act without first evaluating a supplier.
 export const AUDIT_OFFER = {
   price: "Free",
   duration: "five working days",
@@ -41,25 +42,30 @@ export const AUDIT_OFFER = {
     "Failures are published alongside the scores. Credited in full against any build that follows.",
 } as const
 
-// NO PUBLISHED PRICE NUMBERS.
-//
-// Changed 2026-10-12: the ladder is no longer published on the site. The audit
-// is the entry offer and it is free, so a cold prospect can act without first
-// evaluating a supplier on a number. The previous band ($3,500-$9,000) also
-// sat in three places with three values once, which reads as "will take
-// anything" — one source of truth was the fix, and publishing nothing is the
-// stricter version of the same idea.
-//
-// CONVERSION CONSEQUENCE, deliberately accepted: without a number the page cannot
-// self-select on budget. If lead quality drops, the fix is qualifying in the
-// intake form, not re-publishing the band.
-//
-// Scope and fixed quotes are still given on the call, after the audit shows
-// what is actually needed.
-export const PRICE_ANCHOR = ""
-export const PRICE_ANCHOR_NOTE = ""
-export const NO_PRICE_NOTE =
-  "Every project is fixed-price and quoted after the audit, once the scope is real."
+// White-label / agency capacity offer. Targets digital and product agencies in
+// EU + US-East timezones. You have the client, the scope and the deadline; I
+// own the build end to end as your delivery capacity.
+export const AGENCY_OFFER = {
+  title: "White-label build capacity for agencies",
+  summary:
+    "I work as your delivery layer: scoped, fixed-price, end-to-end builds that you take to the client under your brand. You keep the relationship and the margin; I bring production engineering and retrieval benchmarking to every delivery.",
+  deliverables: [
+    "Production-ready code in your repo or mine, with documentation",
+    "Retrieval benchmarked against a goldset you approve",
+    "Source handed over with a handover call",
+    "Weeklies at your cadence, not mine",
+  ],
+} as const
+
+// Case-study pathway — 2-3 scoped builds at reduced rates in exchange for a
+// testimonial and a published case study with real numbers. This is how the
+// "zero client work" gap closes.
+export const CASE_STUDY_PATHWAY = {
+  title: "Case-study builds",
+  summary:
+    "I take 2–3 scoped vertical slices at intentionally reduced rates ($3,500–$6,500) in exchange for a testimonial and a published case study. Real deflector-rate / hours-saved / latency numbers, agreed up front. This is the fastest way to close the gap between my own systems and paying-client proof.",
+  entryPoint: "Free reliability audit first, then a scoped slice scoped to your problem.",
+} as const
 
 // Honest availability claim. UTC+1 gives ~3-4h of US-East overlap, not a full
 // US day — claiming "overlaps US hours" is a verifiable falsehood on a page

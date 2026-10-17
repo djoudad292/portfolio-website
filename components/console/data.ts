@@ -118,7 +118,7 @@ export const SERVICES = [
   {
     title: "Audit — AI reliability & retrieval review",
     desc: "Five working days on your own documents, no commitment to a build. Retrieval precision/recall/F1 against a goldset from your corpus, refusal rate on out-of-scope questions, citation correctness, p50/p95 latency and token cost, plus a server-side authorization review. Failures published, not hidden. Credited in full against a build.",
-    price: "$900",
+    price: "Free",
     eta: "5 working days",
   },
   {

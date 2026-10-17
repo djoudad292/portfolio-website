@@ -50,10 +50,10 @@ const segments: Segment[] = [
   {
     title: "Agencies needing delivery capacity",
     description:
-      "You have the client, the scope and the deadline. You need a production engineer who can own the build end to end.",
-    demo: "Describe the project",
-    href: "#contact",
-    external: false,
+      "You have the client, the scope and the deadline. You need a production engineer who can own the build end to end. I work as your delivery layer: fixed-price, scoped builds delivered under your brand, with retrieval benchmarked and source handed over. You keep the relationship and the margin.",
+    demo: "Talk about capacity",
+    href: "https://calendly.com/oufr29/30min",
+    external: true,
   },
 ]
 

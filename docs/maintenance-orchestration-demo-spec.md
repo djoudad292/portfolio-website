@@ -102,10 +102,10 @@ scene, don't add a feature.
 ## Validation gate (do not skip)
 
 The demo is supporting evidence, not the wedge. The real entry offer is the
-$900 reliability audit (already published on the site). Sequence:
+free reliability audit (already published on the site). Sequence:
 
 1. Build the stripped demo now (this spec).
 2. Send outreach to 500–2,000-unit firms (Boom/NARPM lists, LinkedIn).
 3. Target 3–5 discovery calls; show the demo on the call.
-4. Convert 1 call into the $900 audit; 3 audits = niche validated.
+4. Convert 1 call into the free audit; 3 audits = niche validated.
 5. Only then expand the demo into the MVP build.

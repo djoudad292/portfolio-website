@@ -20,7 +20,7 @@ const refusals = [
   },
   {
     title: "A large build for an unvalidated idea.",
-    body: `The ${AUDIT_OFFER.price} audit exists so you find out whether the idea works before you pay for the build. I'm not going to sell you a system to find out it was the wrong system.`,
+    body: `The ${AUDIT_OFFER.price.toLowerCase()} audit exists so you find out whether the idea works before you pay for the build. I'm not going to sell you a system to find out it was the wrong system.`,
   },
 ]
 

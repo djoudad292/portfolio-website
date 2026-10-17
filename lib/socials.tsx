@@ -15,7 +15,7 @@ export const socials = [
 export const WHATSAPP_NUMBER = "213780688125"
 
 export const WHATSAPP_TEXT =
-  "Hi Djaouad, I saw your AI receptionist demo and would like the $900 retrieval audit."
+  "Hi Djaouad, I'd like to schedule the free retrieval audit on my documents."
 
 export const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
   WHATSAPP_TEXT

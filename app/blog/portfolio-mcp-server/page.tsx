@@ -25,7 +25,7 @@ export default function Post() {
           <p>
             My portfolio gets decent traffic. But lately, the first contact with a potential client
             increasingly isn&apos;t a person scrolling my site — it&apos;s their AI assistant, tasked with
-            &ldquo;find me an AI engineer under $2,000.&rdquo; A normal portfolio is invisible to that flow.
+            &ldquo;find me an AI engineer to build a support chatbot.&rdquo; A normal portfolio is invisible to that flow.
             So I made mine visible on purpose.
           </p>
 

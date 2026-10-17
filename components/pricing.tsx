@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import { SectionHeading } from "./section-heading"
 import { Check } from "lucide-react"
 
-import { AUDIT_OFFER, NO_PRICE_NOTE } from "@/lib/positioning"
+import { AUDIT_OFFER, PRICE_ANCHOR, PRICE_ANCHOR_NOTE, AGENCY_OFFER, CASE_STUDY_PATHWAY } from "@/lib/positioning"
 
 const processItems = [
   {
@@ -53,8 +53,8 @@ export function Pricing() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="mb-10 text-center font-mono text-sm text-muted-foreground"
         >
-          <span className="text-primary">No published prices.</span>{" "}
-          {NO_PRICE_NOTE}
+          <span className="text-primary">{PRICE_ANCHOR}.</span>{" "}
+          {PRICE_ANCHOR_NOTE}
         </motion.p>
 
         <div className="grid gap-6 lg:grid-cols-2">
@@ -123,6 +123,72 @@ export function Pricing() {
           </a>
           .
         </motion.p>
+
+        {/* Two pathway cards: agency capacity and case-study builds. */}
+        <div className="mt-8 grid gap-6 md:grid-cols-2">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="rounded-2xl border border-border bg-card p-6 sm:p-8"
+          >
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-primary">
+              For agencies · white-label
+            </p>
+            <h3 className="mt-4 font-display text-xl tracking-tight text-foreground sm:text-2xl">
+              {AGENCY_OFFER.title}
+            </h3>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+              {AGENCY_OFFER.summary}
+            </p>
+            <ul className="mt-4 space-y-2">
+              {AGENCY_OFFER.deliverables.map((d) => (
+                <li key={d} className="flex gap-3">
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden />
+                  <span className="text-sm text-foreground">{d}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-6">
+              <a
+                href="https://calendly.com/oufr29/30min"
+                className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+              >
+                Talk about capacity
+              </a>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="rounded-2xl border border-dashed border-border bg-card/50 p-6 sm:p-8"
+          >
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-primary">
+              Case-study builds
+            </p>
+            <h3 className="mt-4 font-display text-xl tracking-tight text-foreground sm:text-2xl">
+              {CASE_STUDY_PATHWAY.title}
+            </h3>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+              {CASE_STUDY_PATHWAY.summary}
+            </p>
+            <p className="mt-4 text-sm text-muted-foreground">
+              {CASE_STUDY_PATHWAY.entryPoint}
+            </p>
+            <div className="mt-6">
+              <a
+                href="#project-intake"
+                className="inline-flex items-center justify-center rounded-full border border-border px-6 py-3 text-sm font-medium text-foreground transition-colors hover:border-primary"
+              >
+                Apply for a case-study build
+              </a>
+            </div>
+          </motion.div>
+        </div>
 
         {/*
           Entry offer. Deliberately a plain card inside the pricing section

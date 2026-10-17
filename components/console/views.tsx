@@ -305,7 +305,7 @@ export function WorkView() {
         <p className="mt-6 border-t border-border pt-4 text-xs leading-relaxed text-muted-foreground/70">
           Measured on my own deployment — I don&apos;t invent client numbers. Client builds ship with
           their own success metrics agreed up front. I don&apos;t publish a response-time figure
-          here because it is model-bound and I haven&apos;t benchmarked it; the $900 audit measures
+          here because it is model-bound and I haven&apos;t benchmarked it; the free audit measures
           p50/p95 latency on your own content before you commit to anything.
         </p>
       </section>
@@ -635,7 +635,7 @@ export function TermsView() {
       {/* Pricing */}
       <section aria-labelledby="pricing-h">
         <h2 id="pricing-h" className="font-mono text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
-          Pricing — entry offer $900, builds from $3,500
+          Pricing — free audit, builds from $3,500
         </h2>
         <div className="mt-5 overflow-hidden rounded-2xl border border-border">
           {SERVICES.map((s, i) => (
