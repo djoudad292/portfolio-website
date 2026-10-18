@@ -179,9 +179,9 @@ export default function Home() {
                  className="flex items-center justify-between rounded-xl border border-border bg-background px-5 py-3.5 text-sm transition-colors hover:border-primary">
                 WhatsApp +213 780 68 81 25 <ArrowUpRight className="h-4 w-4 text-muted-foreground" />
               </a>
-              <a href="mailto:oufr29@gmail.com"
+              <a href="mailto:contact@djaouad.is-a.dev"
                  className="flex items-center justify-between rounded-xl border border-border bg-background px-5 py-3.5 text-sm transition-colors hover:border-primary">
-                Email oufr29@gmail.com <ArrowUpRight className="h-4 w-4 text-muted-foreground" />
+                Email contact@djaouad.is-a.dev <ArrowUpRight className="h-4 w-4 text-muted-foreground" />
               </a>
               <div className="mt-2 flex flex-wrap gap-2">
                 {[
