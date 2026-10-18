@@ -12,6 +12,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const pages = [
     "",
     "/for-agencies",
+    "/benchmark",
+    "/work",
     "/ai-reliability-audit",
     "/pricing",
     "/cv",
@@ -34,8 +36,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority:
       p === ""
         ? 1
-        : p === "/for-agencies" || p === "/ai-reliability-audit" || p === "/pricing"
+        : p === "/benchmark" || p === "/work"
           ? 0.9
+          : p === "/for-agencies" || p === "/ai-reliability-audit" || p === "/pricing"
+            ? 0.9
           : p === "/hire-ai-developer" || p === "/ai-agents" || p === "/industries"
             ? 0.8
             : 0.7,
