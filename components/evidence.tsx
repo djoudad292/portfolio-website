@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import { ArrowUpRight } from "lucide-react"
 import { SectionHeading } from "./section-heading"
-import { EVIDENCE_ARTIFACTS, EVIDENCE_NO_QUOTES_LINE } from "@/lib/evidence"
+import { EVIDENCE_ARTIFACTS, EVIDENCE_ARTIFACTS_INTRO_LINE } from "@/lib/evidence"
 
 export function Evidence() {
   return (
@@ -13,7 +13,7 @@ export function Evidence() {
           index="07"
           label="Evidence"
           title="Check it yourself."
-          description={`${EVIDENCE_NO_QUOTES_LINE} Instead: the artifacts you can inspect in one click.`}
+          description={EVIDENCE_ARTIFACTS_INTRO_LINE}
         />
 
         <div className="space-y-6">
