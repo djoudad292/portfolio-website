@@ -187,7 +187,7 @@ const dontDo = [
 const social = [
   { name: "GitHub", href: "https://github.com/djoudad292" },
   { name: "LinkedIn", href: "https://linkedin.com/in/djaouad-frih-16ab7323a" },
-  { name: "DEV.to", href: "https://dev.to/djoudad292" },
+  { name: "MCP server", href: "https://mcp.djaouad.is-a.dev/mcp" },
 ];
 
 function SectionHeading({ title, id }: { title: string; id?: string }) {

@@ -190,15 +190,44 @@ const cases = [
       { l: "Repository", h: "https://github.com/djoudad292/ai-customer-support-agent", external: true },
     ],
   },
+{
+    n: "05",
+    name: "HireMe MCP Server",
+    label: "Personal project · no client",
+    problem:
+      "MCP is how agents call tools, and almost nobody ships one. This exposes a real profile, shipped projects and fixed pricing over the Model Context Protocol, so a client or an agent can vet the work and file a structured brief without a human in the loop.",
+    decisions: [
+      {
+        t: "Four read tools and one write tool, deliberately",
+        b: "get_profile, search_projects, get_pricing, get_next_slot are side-effect free. submit_project_brief is the only write — it persists, emails and is rate limited per IP. A tool surface that is all reads is a library; one that can write is an agent, and the blast radius is why there is only one.",
+      },
+      {
+        t: "Stateless Streamable HTTP, plus the same handlers over REST",
+        b: "MCP clients hit POST /mcp; the widget and mobile app hit /api/tools/:id. One implementation, two transports, so neither drifts from the other.",
+      },
+      {
+        t: "This is tooling, not a client system",
+        b: "It proves I can build against a protocol, define a typed tool surface and reason about which tools should be permitted to act. It is not evidence of production delivery volume, and I am not presenting it as such.",
+      },
+    ],
+    measured: [
+      ["Tools", "4 read · 1 write (brief submission, persisted + emailed, rate-limited per IP)"],
+      ["Repository", "30 commits · ~1,900 lines · Express + @modelcontextprotocol/sdk"],
+      ["Endpoint", "live and callable by any MCP client"],
+    ],
+    cannot: [
+      "No client and no users. It was built to demonstrate protocol competence and to make my own work machine-readable.",
+      "At ~1,900 lines it is the smallest project here. I am not going to inflate it into an enterprise integration.",
+      "It says nothing about delivery volume — the thing a buyer most wants to know and the thing I cannot yet evidence.",
+    ],
+    links: [
+      { l: "MCP endpoint", h: "https://mcp.djaouad.is-a.dev/mcp", external: true },
+      { l: "Repository", h: "https://github.com/djoudad292/hireme-mcp", external: true },
+    ],
+  },
 ];
 
 const alsoBuilt = [
-  {
-    name: "HireMe MCP",
-    desc: "An open Model Context Protocol server exposing my profile, shipped projects, fixed pricing and a project-brief intake — so an AI agent can vet the work and file a brief. Four read tools, one write tool (brief submission, persisted, emailed, rate-limited per IP).",
-    meta: "30 commits · ~1,900 lines · Express + MCP SDK",
-    href: "https://mcp.djaouad.is-a.dev/mcp",
-  },
   {
     name: "Retrieval benchmark harness",
     desc: "The instrument behind the receptionist's numbers: threshold sweep, precision/recall/F1/FPR, committed goldset, deterministic offline embedder, zero dependencies, exits non-zero below an F1 floor, runs on every push in CI.",
@@ -238,7 +267,8 @@ export default function WorkPage() {
             Read them in this order: the first takes side-effecting actions on a database
             under human approval gates, the second is the retrieval benchmark behind the
             headline numbers, the third handles documents you already have, the fourth is a
-            support agent with tool calling.
+            support agent with tool calling, and the fifth is an MCP server that lets an
+            agent read this work and file a brief.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-2">
