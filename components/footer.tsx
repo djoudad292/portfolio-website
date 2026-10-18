@@ -44,6 +44,7 @@ export function Footer() {
         <div className="mt-10 flex flex-col items-start justify-between gap-3 border-t border-background/15 pt-6 font-mono text-xs text-background/50 sm:flex-row sm:items-center">
           <p>&copy; 2026 Djaouad Frih — AI Developer</p>
           <div className="flex items-center gap-5">
+            <a href="/roi" className="transition-colors hover:text-primary">ROI calculator</a>
             <a href="/cv" className="transition-colors hover:text-primary">CV</a>
             <p>Built with Next.js & deployed to production.</p>
           </div>

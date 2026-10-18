@@ -1,4 +1,3 @@
-import { FloatingAI } from "@/components/floating-ai"
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
@@ -208,7 +207,6 @@ export default function Home() {
           </p>
         </section>
       </div>
-      <FloatingAI />
     </main>
   )
 }

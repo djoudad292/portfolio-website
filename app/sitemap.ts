@@ -16,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/ai-agents",
     "/industries",
     "/dental-clinics",
+    "/roi",
     "/talk",
     "/blog",
     "/blog/pilot-to-production",
