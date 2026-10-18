@@ -9,11 +9,11 @@ export const metadata: Metadata = {
 };
 
 const work = [
-  { name: "AI Receptionist", desc: "Answers questions, books appointments & captures leads from your own docs.", url: "https://chat.djaouad.is-a.dev", img: "/receptionist-hero-new.png",
+  { name: "AI Receptionist", desc: "Answers questions, books appointments & captures leads from your own docs.", url: "https://chat.djaouad.is-a.dev", img: "/shots/kit-receptionist.png",
     repo: "https://github.com/djoudad292/ai-virtual-receptionist", apk: "https://github.com/djoudad292/ai-virtual-receptionist/releases/download/latest-apk-receptionist/ai-receptionist.apk" },
   { name: "Support Agent", desc: "Handles support, creates tickets & escalates to humans when needed.", url: "https://customer.djaouad.is-a.dev", img: "/shots/kit-support-agent.png",
     repo: "https://github.com/djoudad292/ai-customer-support-agent", apk: "https://github.com/djoudad292/ai-customer-support-agent/releases/download/latest-apk/ai-customer-support.apk" },
-  { name: "PDF Workspace", desc: "Chat with contracts, invoices & PDFs. Get answers with page references.", url: "https://docs.djaouad.is-a.dev", img: "/pdf-workspace-hero-new.png",
+  { name: "PDF Workspace", desc: "Chat with contracts, invoices & PDFs. Get answers with page references.", url: "https://docs.djaouad.is-a.dev", img: "/shots/kit-pdf-workspace.png",
     repo: "https://github.com/djoudad292/smart-pdf-workspace", apk: "https://github.com/djoudad292/smart-pdf-workspace/releases/download/latest-apk-pdf/smart-pdf.apk" },
 ];
 
