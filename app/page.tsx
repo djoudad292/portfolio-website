@@ -12,7 +12,7 @@ import {
 export const metadata: Metadata = {
   title: "Djaouad Frih — AI Reliability, Retrieval & Agents · White-Label Delivery",
   description:
-    "Independent AI engineer. I build retrieval and agent systems for software agencies and mid-market teams — benchmarked against your goldset, with an eval suite and a handover doc on every build. White-label delivery, fixed price.",
+    "Independent AI engineer. I make retrieval and agent systems work on existing Postgres estates and monoliths — benchmarked against your own corpus, with the failures published. White-label delivery for agencies, fixed price.",
   alternates: { canonical: "https://djaouad.is-a.dev" },
 };
 
@@ -206,7 +206,7 @@ export default function Home() {
 
         <section className="pt-20 pb-16">
           <span className="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider">
-            AI ENGINEERING · WHITE-LABEL DELIVERY
+            AI INTEGRATION · WHITE-LABEL DELIVERY
           </span>
 
           <h1 className="mt-6 font-display text-4xl leading-[1.04] tracking-tight sm:text-5xl">
@@ -214,9 +214,9 @@ export default function Home() {
           </h1>
 
           <p className="mt-6 max-w-lg text-lg leading-relaxed text-muted-foreground">
-            Djaouad Frih — independent AI engineer. I build retrieval and agent systems
-            for software agencies and mid-market teams, with a benchmark, an eval suite
-            and a handover doc attached to every build. Fixed price. {PRICE_ANCHOR}.
+            Djaouad Frih — independent AI engineer. I make retrieval and agents work on the
+            Postgres estates and monoliths that already exist, with a benchmark, an eval suite
+            and a handover doc on every build. Fixed price. {PRICE_ANCHOR}.
           </p>
 
           <div className="mt-8 flex flex-col gap-3">

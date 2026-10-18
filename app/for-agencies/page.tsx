@@ -1,155 +1,229 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { AGENCY_OFFER } from "@/lib/positioning";
+import { TIMEZONE_CLAIM } from "@/lib/positioning";
 
 export const metadata: Metadata = {
-  title: "White-Label AI Delivery for Agencies · Djaouad Frih",
+  title: "Brownfield AI Integration for Agencies · Legacy Estates, Measured | Djaouad Frih",
   description:
-    "Scoped, fixed-price white-label AI builds for software agencies and product studios. Agents, RAG, and the application around them — delivered under your brand, your margin, your client.",
+    "I make RAG and agents work on the Postgres estate and monolith your client already runs — with a measured recall floor and the failures published. White-label delivery for agencies, fixed price, source handed over.",
   alternates: { canonical: "https://djaouad.is-a.dev/for-agencies" },
+  openGraph: {
+    title: "Brownfield AI Integration · Djaouad Frih",
+    description:
+      "The model is 20% of the cost. The integration is the other 80%. You keep the client and the margin; I never appear in your proposal.",
+    url: "https://djaouad.is-a.dev/for-agencies",
+    type: "website",
+  },
 };
 
 const primaryBtn =
-  "inline-flex items-center justify-center rounded-xl bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-colors hover:opacity-90";
-const chip =
-  "rounded-md border border-border bg-background px-2 py-1 font-mono text-[10px] transition-colors hover:border-primary hover:text-primary";
+  "rounded-xl bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-colors hover:opacity-90";
+const secondaryBtn =
+  "rounded-xl border border-border bg-card px-6 py-3.5 text-sm font-semibold transition-colors hover:border-primary";
 
-function SectionHeading({ title }: { title: string }) {
+function SectionHeading({ title, id }: { title: string; id?: string }) {
   return (
-    <div className="mb-8 flex items-center gap-4">
+    <div id={id} className="mb-8 flex items-center gap-4">
       <h2 className="font-display text-3xl tracking-tight">{title}</h2>
       <span aria-hidden className="h-px flex-1 bg-border" />
     </div>
   );
 }
 
-const contractingSteps = [
+const facts = [
+  { n: "53%", d: "of organisations cite legacy integration complexity as their top barrier to scaling AI." },
+  { n: "9%", d: "of leaders say they fully understand their own applications' dependencies." },
+  { n: "81%", d: "say technical debt is already constraining their AI success." },
+];
+
+const steps = [
   {
-    title: "NDA",
-    body: "We sign NDAs first; your scope and data stay yours.",
+    n: "01",
+    t: "NDA before anything moves",
+    b: "Mutual, signed before the first substantive call. If your client requires one, I use yours.",
   },
   {
-    title: "Scope",
-    body: "I scope strictly to the signed AI/RAG feature — no open-ended discovery.",
+    n: "02",
+    t: "I look at the estate before I quote",
+    b: "The schema, the data hygiene, the permission model, what already exists. A price quoted without looking at the system is a guess, and you'd be paying for the guess.",
   },
   {
-    title: "Fixed price",
-    body: "A milestone-based price, locked before any code. Change orders only.",
+    n: "03",
+    t: "Fixed price, and the number comes first",
+    b: "One figure, tied to a measurable outcome — a retrieval recall floor, or a token-cost reduction reconciled to the provider invoice. Not an hourly meter.",
   },
   {
-    title: "Weekly delivery",
-    body: "Deliveries land at your cadence and in your repo, not mine.",
+    n: "04",
+    t: "We build into what exists",
+    b: "Your client's Postgres, their ORM, their auth. No rebuild of what works, no new platform subscription, no parallel system nobody adopts.",
   },
   {
-    title: "Handover",
-    body: "Source, infra credentials, and a handover doc transfer to your accounts.",
+    n: "05",
+    t: "Measured before handover",
+    b: "Retrieval scored against a goldset built from their own corpus. Refusal rate on out-of-scope questions. p50/p95 latency and cost per conversation.",
   },
   {
-    title: "Defect window",
-    body: "30-day defect window. Fixes inside it, no extra charge.",
+    n: "06",
+    t: "Source and infrastructure transferred to your accounts",
+    b: "Your repo or mine, your cloud accounts, your keys. Not held in mine and rented back.",
   },
 ];
 
-const whatYouGet = [
-  ...AGENCY_OFFER.deliverables,
-  "I never appear in your proposal, deck, or client calls",
+const youGet = [
+  "Production code with documentation — not a zip file and a wish",
+  "A committed goldset built from your client's documents, in your repository, so you can rerun it",
+  "A measured recall floor and a published refusal rate, which is what your client's risk review will ask for",
+  "Severity-tagged eval data that gates deploys, so the AI cannot silently regress in production",
+  "A handover call with your team, recorded",
+  "A 30-day defect window",
 ];
 
-const whatIDontDo = [
-  "I don't sit in on your sales calls or speak to your client.",
-  "I don't become your ongoing support or account manager after handover.",
-  "I don't sell strategy decks — we scope from the work you've already sold.",
-  "I don't stay on as a permanent hire; this is contracted delivery.",
+const idont = [
+  "I don't appear in your proposal. Your name is on it.",
+  "I don't talk to your client unless you ask me to be in the room.",
+  "I don't hold your source, your infrastructure accounts or your keys after handover.",
+  "I don't start engagements without written scope and acceptance criteria.",
+  "I don't quote an hourly meter when the work has a measurable outcome.",
 ];
 
-const disqualifiers = [
-  "you want me to speak to your client or sit in on your sales calls",
-  "you need it live in under two weeks",
-  "the budget is under $5,000",
+const notFor = [
+  "You want a greenfield demo on a clean schema. That's a smaller job than I'm priced for, and there are cheaper people who do it well.",
+  "You want me to speak to your client directly. This is a delivery relationship, not an agency-of-record one.",
+  "You need it live in under two weeks. That's a capacity problem, not a scoping problem, and I'd rather tell you now.",
+  "The budget is under $8,000. At that level you want a scoped build on its own, not a subcontracting relationship.",
 ];
 
-export default function ForAgencies() {
+export default function ForAgenciesPage() {
   return (
     <main className="relative min-h-screen overflow-hidden text-foreground">
       <div className="relative mx-auto max-w-4xl px-6">
-        <section className="pt-20 pb-16">
+
+        <section className="pt-28 pb-16">
           <span className="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider">
-            AI ENGINEERING · WHITE-LABEL DELIVERY
+            WHITE-LABEL · BROWNFIELD AI
           </span>
 
           <h1 className="mt-6 font-display text-4xl leading-[1.04] tracking-tight sm:text-5xl">
-            The AI feature your agency sold — already built, tested, and handed over.
+            I make RAG and agents work on the systems your client already has.
           </h1>
 
-          <p className="mt-6 max-w-lg text-lg leading-relaxed text-muted-foreground">
-            White-label AI delivery for software agencies and product studios. Agents,
-            RAG, and the application around them — scoped, fixed-price, milestone-based.
-            Your client, your brand, your margin. I never appear in your proposal.
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
+            The model is maybe 20% of the cost. The integration is the other 80% — and
+            that is the part that goes wrong. I build retrieval and agents inside your
+            client&apos;s existing Postgres estate and monolith, with a measured recall
+            floor and the failures published. White-label, fixed price, source handed
+            over. I never appear in your proposal.
           </p>
 
-          <div className="mt-8">
+          <div className="mt-8 flex flex-wrap gap-3">
             <Link href="/contact?for=agency" className={primaryBtn}>
-              Bring capacity to your agency →
+              Request a capacity conversation
+            </Link>
+            <Link href="/benchmark" className={secondaryBtn}>
+              See a benchmark you can rerun
             </Link>
           </div>
+
+          <p className="mt-8 font-mono text-xs text-muted-foreground">{TIMEZONE_CLAIM}</p>
         </section>
 
-        <section id="who" className="pb-16">
-          <SectionHeading title="Who it's for" />
-          <p className="max-w-3xl text-pretty leading-relaxed text-muted-foreground">
-            5–50 person agencies and product studios with signed AI or RAG work and no
-            one to deliver it on your team.
-          </p>
-          <p className="mt-4 max-w-3xl text-pretty leading-relaxed text-muted-foreground">
-            AI skills are now the single hardest role to fill globally — 72% of 39,000
-            employers across 41 countries report difficulty, and AI skills overtook
-            engineering and IT (ManpowerGroup, 2026 Talent Shortage). Meanwhile,
-            subcontractor cost as a share of revenue at major IT providers has been
-            rising 10–20bps per quarter for ten consecutive quarters (Moody's, 22 Sep
-            2026). This is the capacity gap this page fills.
-          </p>
-        </section>
-
-        <section id="contracting" className="pb-16">
-          <SectionHeading title="How contracting works" />
-          <ol className="grid gap-6 sm:grid-cols-2">
-            {contractingSteps.map((s) => (
-              <li key={s.title} className="rounded-2xl border border-border bg-card p-6">
-                <span className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
-                  {s.title}
-                </span>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  {s.body}
-                </p>
-              </li>
+        <section className="pb-16">
+          <SectionHeading title="Why brownfield, and not greenfield" />
+          <div className="grid gap-3 sm:grid-cols-3">
+            {facts.map((f) => (
+              <div key={f.n} className="rounded-2xl border border-border bg-card p-5">
+                <p className="font-display text-3xl tracking-tight text-primary">{f.n}</p>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{f.d}</p>
+              </div>
             ))}
-          </ol>
+          </div>
+          <p className="mt-5 text-xs leading-relaxed text-muted-foreground">
+            HFS/Genpact Data Modernization and AI 2026 (n=48) · Kyndryl Enterprise IT
+            Modernization Trends, October 2026 (n=2,000) · CAST via IBM brownfield
+            modernization study, February 2026.
+          </p>
+          <p className="mt-4 max-w-2xl leading-relaxed text-muted-foreground">
+            Almost nobody can hire for this. The person who understands both the ML side
+            and the legacy estate well enough to design the integration barely exists as a
+            defined job — which is exactly why an agency subcontracts it.
+          </p>
         </section>
 
-        <section id="what-you-get" className="pb-16">
-          <SectionHeading title="What you get · What I don't do" />
-          <div className="grid gap-6 sm:grid-cols-2">
-            <div className="rounded-2xl border border-border bg-card p-6">
-              <p className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
-                What you get
+        <section className="pb-16">
+          <SectionHeading title="What I actually do" />
+          <div className="space-y-5 border-l-2 border-border pl-5">
+            <div>
+              <h3 className="font-display text-lg tracking-tight">Retrieval against your client's own corpus</h3>
+              <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                Extraction, sentence-aware chunking, embeddings, vector search with an HNSW
+                index, answers carrying their source. Built against their schema and their
+                permission model, not a clean-room demo database.
               </p>
-              <ul className="mt-4 list-disc list-inside space-y-2 pl-1 text-sm text-muted-foreground">
-                {whatYouGet.map((d) => (
-                  <li key={d} className="leading-snug">
-                    {d}
+            </div>
+            <div>
+              <h3 className="font-display text-lg tracking-tight">Tool-calling agents that terminate</h3>
+              <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                LangGraph state machines: conditional routing, bounded loops, tool arguments
+                validated against a schema before execution, and human handoff that carries
+                the whole conversation rather than a summary of it.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-display text-lg tracking-tight">Writes behind approval gates, with an audit trail</h3>
+              <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                An agent that creates a record is a different risk class from one that
+                answers a question. Every write path goes behind a human approval queue and
+                lands in an audit log. This is the part most demos skip and most
+                production incidents are about.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-display text-lg tracking-tight">Cost and latency you can defend</h3>
+              <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                Token usage and p50/p95 latency recorded from the first milestone, not
+                retrofitted. Where the engagement is cost-shaped, the fee can be indexed to a
+                verified reduction reconciled against the provider invoice — with a floor, so
+                the downside is bounded.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="pb-16">
+          <SectionHeading title="How an engagement runs" />
+          <div className="grid gap-5 sm:grid-cols-2">
+            {steps.map((s) => (
+              <div key={s.n} className="rounded-2xl border border-border bg-card p-5">
+                <p className="font-mono text-xs text-primary">{s.n}</p>
+                <h3 className="mt-2 font-display text-lg tracking-tight">{s.t}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.b}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="pb-16">
+          <SectionHeading title="What you get, and what I don't do" />
+          <div className="grid gap-5 sm:grid-cols-2">
+            <div className="rounded-2xl border border-border bg-card p-6">
+              <h3 className="font-display text-lg tracking-tight">What you get</h3>
+              <ul className="mt-4 space-y-2">
+                {youGet.map((item) => (
+                  <li key={item} className="flex gap-2 text-sm leading-relaxed text-muted-foreground">
+                    <span aria-hidden className="text-primary">—</span>
+                    {item}
                   </li>
                 ))}
               </ul>
             </div>
             <div className="rounded-2xl border border-border bg-card p-6">
-              <p className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
-                What I don't do
-              </p>
-              <ul className="mt-4 list-disc list-inside space-y-2 pl-1 text-sm text-muted-foreground">
-                {whatIDontDo.map((d) => (
-                  <li key={d} className="leading-snug">
-                    {d}
+              <h3 className="font-display text-lg tracking-tight">What I don't do</h3>
+              <ul className="mt-4 space-y-2">
+                {idont.map((item) => (
+                  <li key={item} className="flex gap-2 text-sm leading-relaxed text-muted-foreground">
+                    <span aria-hidden className="text-primary">—</span>
+                    {item}
                   </li>
                 ))}
               </ul>
@@ -157,82 +231,120 @@ export default function ForAgencies() {
           </div>
         </section>
 
-        <section id="proof" className="pb-16">
-          <SectionHeading title="Proof" />
-          <p className="max-w-3xl text-pretty leading-relaxed text-muted-foreground">
-            Everything below is public and openable — not a claim you have to take.
+        <section className="pb-16">
+          <SectionHeading title="Proof you can check before you reply" />
+          <p className="max-w-2xl leading-relaxed text-muted-foreground">
+            You are going to verify this, because you are the one who gets blamed if it is
+            wrong. So here is the part most suppliers cannot show you.
           </p>
-          <div className="mt-6 flex flex-wrap gap-2">
-            <a
-              href="https://github.com/djoudad292"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={chip}
-            >
-              repositories →
-            </a>
-            <a
-              href="https://github.com/djoudad292/ai-virtual-receptionist/actions"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={chip}
-            >
-              CI run history →
-            </a>
-            <Link href="/benchmark" className={chip}>
-              retrieval benchmark →
-            </Link>
-            <Link href="/work" className={chip}>
-              work →
-            </Link>
+          <div className="mt-6 grid gap-3 sm:grid-cols-2">
+            {[
+              {
+                l: "The benchmark",
+                d: "232 labelled queries against a 45-chunk knowledge base. Full threshold sweep, committed goldset, one command re-runs it.",
+                h: "/benchmark",
+              },
+              {
+                l: "The unflattering number",
+                d: "At the F1-optimal threshold the vector path scores 93.4% F1 and a 76.9% false-positive rate. It answers 20 of 26 out-of-scope queries. That number is on the page on purpose.",
+                h: "/benchmark",
+              },
+              {
+                l: "A side-effecting agent",
+                d: "Reads WhatsApp, checks real stock, creates orders — behind human approval gates with an audit trail. Live, no signup.",
+                h: "https://crm.djaouad.is-a.dev/try",
+              },
+              {
+                l: "The systems themselves",
+                d: "Five, each labelled for what it actually is, with limitations stated rather than buried.",
+                h: "/work",
+              },
+            ].map((item) =>
+              item.h.startsWith("http") ? (
+                <a
+                  key={item.l}
+                  href={item.h}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-2xl border border-border bg-card p-5 transition-colors hover:border-primary"
+                >
+                  <p className="font-display text-base tracking-tight">{item.l}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.d}</p>
+                </a>
+              ) : (
+                <Link
+                  key={item.l}
+                  href={item.h}
+                  className="rounded-2xl border border-border bg-card p-5 transition-colors hover:border-primary"
+                >
+                  <p className="font-display text-base tracking-tight">{item.l}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.d}</p>
+                </Link>
+              ),
+            )}
           </div>
-          <p className="mt-6 max-w-3xl font-mono text-xs text-muted-foreground">
-            Two named client references exist. Both were website builds, not AI
-            systems, and I've labelled them as such on the homepage.
+          <p className="mt-6 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+            Two named client references exist. Both were website builds, not AI systems, and
+            the homepage says so rather than dressing them up. What they establish is remote
+            delivery — on schedule, twice, for real businesses in the UK and Cyprus.
           </p>
         </section>
 
-        <section id="rate" className="pb-16">
+        <section className="pb-16">
           <SectionHeading title="Rate" />
-          <div className="rounded-2xl border border-border bg-card p-6">
-            <p className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
-              From $12,000 / month
+          <div className="rounded-2xl border border-primary/60 bg-card p-6">
+            <p className="font-display text-3xl tracking-tight">From $8,000 per project</p>
+            <p className="mt-2 text-sm text-muted-foreground">
+              Or $12,000 / month. Minimum three weeks. Deposit under 50%, milestone
+              payments, source and infrastructure transferred to your accounts at handover.
             </p>
-            <p className="mt-2 font-mono text-sm text-muted-foreground">
-              Or per-project from $8,000. Minimum three weeks. Deposit under 50%.
+            <p className="mt-5 border-t border-border pt-4 text-sm leading-relaxed text-muted-foreground">
+              On a cost-shaped engagement I will index the fee to a verified reduction and
+              reconcile it against your provider invoice, with a floor so the downside is
+              bounded. On a quality-shaped engagement the price is fixed against a recall
+              floor we agree up front. In both cases the number is the deliverable, not the
+              hours.
             </p>
           </div>
         </section>
 
-        <section id="not-for-you" className="pb-16">
+        <section className="pb-16">
           <SectionHeading title="This is not for you if…" />
-          <ul className="list-disc list-inside space-y-2 pl-1 text-sm text-muted-foreground">
-            {disqualifiers.map((d) => (
-              <li key={d} className="leading-snug">
-                {d}
-              </li>
-            ))}
-          </ul>
+          <div className="rounded-2xl border border-border bg-card p-6">
+            <ul className="space-y-3">
+              {notFor.map((item) => (
+                <li key={item} className="flex gap-2 text-sm leading-relaxed text-muted-foreground">
+                  <span aria-hidden className="text-primary">×</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <p className="mt-5 font-mono text-xs text-muted-foreground">
+              Published rather than discovered. A fixed price only means anything if the edge
+              of it is written down.
+            </p>
+          </div>
         </section>
 
         <section className="pb-24">
-          <h2 className="font-display text-3xl tracking-tight">
-            Start with the audit, not with a sales call.
-          </h2>
-          <p className="mt-4 max-w-2xl text-pretty leading-relaxed text-muted-foreground">
-            The free reliability audit is five working days, scoped against your own
-            documents, and you keep the report either way — including the line that says
-            this isn't the right fit. If it is, it becomes the written spec for your next
-            build.
-          </p>
-          <div className="mt-6">
-            <Link href="/contact?for=agency" className={primaryBtn}>
-              Bring capacity to your agency →
-            </Link>
+          <div className="rounded-2xl border border-border bg-card p-8 sm:p-10">
+            <h2 className="font-display text-3xl tracking-tight">
+              Send me a client with a legacy estate and an AI feature that isn&apos;t behaving.
+            </h2>
+            <p className="mt-2 max-w-lg text-sm leading-relaxed text-muted-foreground">
+              I&apos;ll tell you in writing whether it&apos;s fixable, and what the number is.
+              If the answer is that you don&apos;t need a build, you&apos;ll get that instead —
+              and you keep the report either way.
+            </p>
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+              <Link href="/contact?for=agency" className={primaryBtn}>
+                Request a capacity conversation
+              </Link>
+              <Link href="/ai-reliability-audit" className={secondaryBtn}>
+                Start with the free audit
+              </Link>
+            </div>
           </div>
-          <p className="mt-6 font-mono text-xs text-muted-foreground">
-            contact@djaouad.is-a.dev
-          </p>
         </section>
       </div>
     </main>
