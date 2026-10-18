@@ -26,13 +26,7 @@ export default function Home() {
 
         {/* HERO */}
         <section className="pt-20 pb-16">
-          <p className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/10 px-4 py-1.5 font-mono text-xs tracking-wide text-primary">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-60" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
-            </span>
-            Available for freelance & hire
-          </p>
+
 
           <h1 className="mt-6 font-display text-5xl leading-[1.04] tracking-tight sm:text-6xl">
             Full Stack Developer — Web, Mobile & AI
