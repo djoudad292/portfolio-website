@@ -95,34 +95,43 @@ const offers = [
 
 const work = [
   {
+    name: "WhatsApp CRM / ERP",
+    desc: "Agent reads WhatsApp, checks real stock, creates orders — behind human approval gates with an audit trail.",
+    url: "https://crm.djaouad.is-a.dev/try",
+    img: "/shots/kit-crm-erp.png",
+    repo: "https://github.com/djoudad292/ai-whatsapp-crm-erp",
+    label: "Production · my own use",
+    limit: "No customer. No published agent benchmark — 2 committed test files.",
+  },
+  {
     name: "AI Receptionist",
-    desc: "Answers questions, books appointments & captures leads from your own docs.",
+    desc: "Answers questions, books appointments & captures leads from your own docs. 232-query retrieval benchmark.",
     url: "https://chat.djaouad.is-a.dev",
     img: "/shots/kit-receptionist.png",
     repo: "https://github.com/djoudad292/ai-virtual-receptionist",
     apk: "https://github.com/djoudad292/ai-virtual-receptionist/releases/download/latest-apk-receptionist/ai-receptionist.apk",
     label: "Production · my own use",
-    limit: "Single-tenant, single-language.",
+    limit: "Single-tenant, single-language. FPR 76.9% at the F1-optimal threshold.",
+  },
+  {
+    name: "PDF Workspace",
+    desc: "Ask your contracts, invoices & PDFs. Answers with sources, and the retrieval mode that produced each one.",
+    url: "https://docs.djaouad.is-a.dev",
+    img: "/shots/kit-pdf-workspace.png",
+    repo: "https://github.com/djoudad292/smart-pdf-workspace",
+    apk: "https://github.com/djoudad292/smart-pdf-workspace/releases/download/latest-apk-pdf/smart-pdf.apk",
+    label: "Production · my own use",
+    limit: "Text layer only, no OCR. No published retrieval benchmark.",
   },
   {
     name: "Support Agent",
-    desc: "Handles support, creates tickets & escalates to humans when needed.",
+    desc: "Handles support, creates tickets & escalates to humans — schema-validated tool calls.",
     url: "https://customer.djaouad.is-a.dev",
     img: "/shots/kit-support-agent.png",
     repo: "https://github.com/djoudad292/ai-customer-support-agent",
     apk: "https://github.com/djoudad292/ai-customer-support-agent/releases/download/latest-apk/ai-customer-support.apk",
     label: "Production · my own use",
-    limit: "No published retrieval benchmark for this one.",
-  },
-  {
-    name: "PDF Workspace",
-    desc: "Chat with contracts, invoices & PDFs. Get answers with page references.",
-    url: "https://docs.djaouad.is-a.dev",
-    img: "/shots/kit-pdf-workspace.png",
-    repo: "https://github.com/djoudad292/smart-pdf-workspace",
-    apk: "https://github.com/djoudad292/smart-pdf-workspace/releases/download/latest-apk-pdf/smart-pdf.apk",
-    label: "Prototype — not production",
-    limit: "Prototype, never had a production user.",
+    limit: "No published retrieval benchmark. 2 committed test files.",
   },
 ];
 
@@ -344,14 +353,16 @@ export default function Home() {
                     >
                       code
                     </a>
-                    <a
-                      href={w.apk}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={chip}
-                    >
-                      android ↓
-                    </a>
+                    {w.apk && (
+                      <a
+                        href={w.apk}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={chip}
+                      >
+                        android ↓
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>

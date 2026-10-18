@@ -2,21 +2,18 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Work · Three Systems, Honestly Labelled | Djaouad Frih",
+  title: "Work · Five systems, honestly labelled | Djaouad Frih",
   description:
-    "Three working systems with their architecture decisions, benchmarks and stated limitations. Personal projects, prototypes and production runs labelled separately — no client work presented as anything it wasn't.",
+    "Five systems built and shipped: a side-effecting WhatsApp agent under approval gates, a RAG receptionist benchmarked on 232 labelled queries, a multi-tenant document workspace, a LangGraph support agent and an MCP server. Personal work, labelled, limitations stated.",
   alternates: { canonical: "https://djaouad.is-a.dev/work" },
   openGraph: {
     title: "Work · Djaouad Frih",
     description:
-      "Three systems, each labelled for what it actually is. Architecture decisions, committed benchmarks, and what each one cannot do.",
+      "Five systems, each labelled for what it actually is. Architecture decisions, committed benchmarks, and what each one cannot do.",
     url: "https://djaouad.is-a.dev/work",
     type: "website",
   },
 };
-
-const REPO = "https://github.com/djoudad292/ai-virtual-receptionist";
-const SUPPORT = "https://github.com/djoudad292/ai-customer-support-agent";
 
 const primaryBtn =
   "rounded-xl bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-colors hover:opacity-90";
@@ -37,19 +34,60 @@ function SectionHeading({ title, id }: { title: string; id?: string }) {
 const cases = [
   {
     n: "01",
+    name: "AI WhatsApp CRM / ERP",
+    label: "Production · my own use",
+    problem:
+      "Order capture by chat message is the classic small-business automation: someone sends a WhatsApp message with a product and a quantity, and a human retypes it into a system. The hard part is not the reply — it is that the agent takes side-effecting actions on real inventory, and a wrong action is worse than no action.",
+    decisions: [
+      {
+        t: "Human approval gates in front of the writes",
+        b: "The agent may read and draft; order creation sits behind an approval queue with a full audit trail. This costs latency on every order. The alternative — trusting the agent with writes unsupervised — is the failure mode that ends the engagement, so the gate stays.",
+      },
+      {
+        t: "Tool arguments validated before execution, not after",
+        b: "An order that references a SKU that doesn't exist must fail loudly at the boundary. Discovering it from a customer complaint three weeks later is a different and much more expensive class of bug.",
+      },
+      {
+        t: "Stateless backend function, Postgres as the only state",
+        b: "Every request boots the app, reads Postgres, and returns. No long-lived server and no in-memory queue to lose. Buys deploy simplicity and removes a whole class of production incident.",
+      },
+    ],
+    measured: [
+      ["Committed test files", "2 in the backend — the weakest evidence on this page"],
+      ["Repository", "28 commits, public"],
+      ["Size", "~7,900 lines of TypeScript"],
+      ["Live demo", "no signup required — create a real order in the sandbox"],
+      ["Stack", "Next.js · NestJS · Postgres (Neon) · BullMQ/Redis"],
+    ],
+    cannot: [
+      "No paying customer and no conversion. It is a demonstration, not a business.",
+      "No published agent benchmark yet. Two committed test files is the honest current state, and the gap I am closing next.",
+      "It does not measure refusal rate on out-of-scope requests or argument-validation failure rates — the two numbers that matter most for an agent that writes to a database.",
+    ],
+    links: [
+      { l: "Try it (no signup)", h: "https://crm.djaouad.is-a.dev/try", external: true },
+      { l: "Live app", h: "https://crm.djaouad.is-a.dev", external: true },
+      { l: "Repository", h: "https://github.com/djoudad292/ai-whatsapp-crm-erp", external: true },
+    ],
+  },
+  {
+    n: "02",
     name: "AI Receptionist",
     label: "Production · my own use",
-    labelNote: "Runs on my own domain and answers real traffic. There is no paying customer, so there is no revenue figure on this page.",
     problem:
-      "A small business loses enquiries at the exact hour a customer decides to act — 9pm, lunch, a busy line. The gap is not marketing, it is unanswered intake. This is the shape of the system that closes it: qualify, book, capture, escalate.",
+      "A small business loses enquiries at the exact hour a customer decides to act — 9pm, lunch, a busy line. This is the system that closes that gap: qualify, book, capture, escalate to a human. It is also the system I used to build a measurement practice rather than assert that retrieval works.",
     decisions: [
       {
         t: "Routing as a LangGraph state machine, not one long prompt",
         b: "Buys bounded loops and a step you can inspect per node. Costs more code and more state to hold. A prompt you cannot take apart is a prompt you cannot debug at 11pm when a customer is waiting.",
       },
       {
+        t: "Retrieval measured before any answer is written",
+        b: "If retrieval misses, the answer is downstream of a known-bad input. The benchmark below exists because I could not otherwise tell the difference between 'the model is weak' and 'we retrieved the wrong chunk'.",
+      },
+      {
         t: "One trace span per graph node, per model call, per tool call",
-        b: "Lets you attribute a bad answer to a retrieval miss or a model failure instead of guessing. This is not distributed tracing — there are no database or queue spans — and I would rather say that than let the word 'tracing' imply more coverage than exists.",
+        b: "Lets me attribute a bad answer to a retrieval miss or a model failure instead of guessing. This is not distributed tracing — there are no database or queue spans — and I would rather say that than let the word imply more coverage than exists.",
       },
       {
         t: "Token usage and latency recorded from the first milestone",
@@ -57,88 +95,121 @@ const cases = [
       },
     ],
     measured: [
-      ["Committed test files", "13 in the backend, run in CI on every push"],
-      ["Public CI history", "green and red — the failing runs are the interesting ones"],
+      ["Retrieval goldset", "232 labelled queries · 45-chunk knowledge base · 177 single-chunk, 29 multi-chunk, 26 distractor"],
+      ["Vector (production path)", "F1 93.4% · Precision 90.8% · Recall 96.1% · FPR 76.9%"],
+      ["Keyword (fallback)", "F1 91.2% · Precision 94.3% · Recall 88.3% · FPR 42.3%"],
       ["Conversation eval set", "69 cases · 97 turn assertions · 15 categories · severity tags that gate a deploy"],
-      ["Retrieval benchmark", "232 labelled queries against a 45-chunk knowledge base"],
+      ["Committed test files", "13 in the backend, run in CI on every push"],
+      ["Repository", "104 commits · ~24,000 lines of TypeScript"],
     ],
     cannot: [
       "Single-tenant and single-language. Multilingual intake is not shipped.",
-      "No production SLA, because it is my own infrastructure, not a client's.",
-      "The retrieval benchmark measures the retrieval policy, not end-to-end answer quality.",
+      "The benchmark measures the retrieval policy — the similarity floor, the top-k cut, the vector-vs-keyword choice — not the production embedder and not end-to-end answer quality.",
+      "The goldset is synthetic: hand-written paraphrases authored against this corpus, not captured visitor logs. It is still one knowledge base.",
+      "The 76.9% false-positive rate at the F1-optimal threshold is real and is the weakest number on this page.",
     ],
     links: [
       { l: "Try it", h: "https://chat.djaouad.is-a.dev", external: true },
-      { l: "Repository", h: REPO, external: true },
-      { l: "CI runs", h: `${REPO}/actions`, external: true },
-      { l: "Eval dataset", h: `${REPO}/blob/main/frontend/evals/demo-conversation.dataset.json`, external: true },
+      { l: "Read the benchmark", h: "/benchmark", external: false },
+      { l: "Repository", h: "https://github.com/djoudad292/ai-virtual-receptionist", external: true },
+      { l: "CI runs", h: "https://github.com/djoudad292/ai-virtual-receptionist/actions", external: true },
     ],
   },
   {
-    n: "02",
+    n: "03",
+    name: "Smart PDF Workspace",
+    label: "Production · my own use",
+    problem:
+      "Document Q&A is the most requested and most badly-served AI feature: people upload a contract or a report and want an answer with the source attached. The failure modes are specific and measurable — scanned PDFs with no text layer, and tables that get chunked into nonsense.",
+    decisions: [
+      {
+        t: "Scanned and image-only PDFs rejected with a clear OCR message",
+        b: "Silently returning nothing for a scanned document looks identical to 'the model cannot answer this', and the user concludes the product is broken. An explicit refusal is more useful than an empty answer.",
+      },
+      {
+        t: "Low-text-density warning on table- and image-heavy documents",
+        b: "Indexes them, but tells you the text density is low so a bad answer is diagnosable rather than mysterious.",
+      },
+      {
+        t: "Every answer reports the retrieval mode that produced it",
+        b: "An answer carries the `retrievalMode` that generated it, so you can tell whether it came from vector search, keyword fallback or a direct summary. A summary reads the whole document and performs no retrieval, so it correctly returns no mode at all.",
+      },
+      {
+        t: "Multi-tenant auth with token revocation, not just login",
+        b: "JWT access and refresh, revocation, company slugs, agent invites, password reset. Buys nothing visible and prevents the incident that ends a B2B contract.",
+      },
+    ],
+    measured: [
+      ["Committed test files", "10 across the stack"],
+      ["Repository", "47 commits · ~12,300 lines of TypeScript"],
+      ["Stack", "NestJS · Postgres + pgvector (vector(1536)) · Next.js · Expo Android · embeddable widget"],
+      ["Embeddable widget", "one-line script, config per workspace"],
+    ],
+    cannot: [
+      "Text layer only — no OCR. Scanned documents are refused rather than guessed at.",
+      "No published retrieval benchmark. The 232-query goldset belongs to the receptionist, not this project, and implying otherwise would be dishonest.",
+      "No paying customer. The live demo has no real users.",
+    ],
+    links: [
+      { l: "Try it", h: "https://docs.djaouad.is-a.dev", external: true },
+      { l: "Repository", h: "https://github.com/djoudad292/smart-pdf-workspace", external: true },
+    ],
+  },
+  {
+    n: "04",
     name: "AI Support Agent",
     label: "Production · my own use",
-    labelNote: "Live on my own domain. Same disclosure as above: my infrastructure, my traffic, no paying customer.",
     problem:
       "Tier-one support is a volume problem that keeps setting your headcount. This resolves what the knowledge base can answer, checks orders, creates the ticket as a real side-effecting action, and escalates to a human only when it should.",
     decisions: [
       {
         t: "Tool arguments validated against a schema before execution",
-        b: "A malformed argument must fail loudly instead of quietly doing the wrong thing to a customer's record. The failure mode this prevents is not a crash — it is a confident wrong action that nobody notices for a week.",
+        b: "A malformed argument must fail loudly instead of quietly doing the wrong thing to a customer's record. The failure mode this prevents is not a crash — it is a confident wrong action nobody notices for a week.",
       },
       {
         t: "Escalation carries full conversation state, not a summary",
         b: "A summary loses the thing the human actually needed. When the handoff arrives empty, the customer repeats themselves, which is the exact moment they decide you are not worth staying with.",
       },
+      {
+        t: "Routing as a state machine rather than one long prompt",
+        b: "Same reasoning as the receptionist: a routing decision you cannot inspect is a routing decision you cannot debug.",
+      },
     ],
     measured: [
       ["Committed test files", "2 in the backend"],
-      ["Public CI history", "runs on every push"],
-      ["Repository", "public, 80 commits"],
+      ["Repository", "80 commits, public"],
+      ["Live demo", "runs on my own domain"],
     ],
     cannot: [
       "No published retrieval benchmark for this one. The committed goldset and eval suite exist only for the receptionist, and I would rather say that than imply the evidence is uniform when it isn't.",
+      "Two committed test files is the whole evidence base. That is the honest state and it is the weakest project on this page.",
       "It has not been load-tested against production traffic volumes.",
     ],
     links: [
       { l: "Try it", h: "https://customer.djaouad.is-a.dev", external: true },
-      { l: "Repository", h: SUPPORT, external: true },
+      { l: "Repository", h: "https://github.com/djoudad292/ai-customer-support-agent", external: true },
     ],
   },
+];
+
+const alsoBuilt = [
   {
-    n: "03",
-    name: "Retrieval benchmark",
-    label: "Personal project · re-runnable",
-    labelNote: "The measurement harness itself, published so a third party can execute it rather than take my word for a number.",
-    problem:
-      "Almost nobody publishing AI results publishes the failures. That makes every AI benchmark unfalsifiable, which is why buyers have learned to discount them. This one ships the goldset, the sweep, the run command and the failing cases.",
-    decisions: [
-      {
-        t: "Offline deterministic embedder, so runs are hermetic",
-        b: "No network, no API key, no database — anyone gets my exact numbers in CI. The cost is honesty: it measures the retrieval policy (similarity floor, top-k, vector-vs-keyword choice), not text-embedding-3-small. The site says so on the benchmark page too.",
-      },
-      {
-        t: "The sweep is published, not just the best row",
-        b: "The best-F1 row was also the worst row for false positives. Reporting only the winner would have hidden the single most useful thing this benchmark produced.",
-      },
-    ],
-    measured: [
-      ["Queries", "232 · 177 single-chunk, 29 multi-chunk, 26 distractor"],
-      ["Knowledge base", "45 chunks"],
-      ["Vector (production)", "F1 93.4% · P 90.8% · R 96.1% · FPR 76.9%"],
-      ["Keyword (fallback)", "F1 91.2% · P 94.3% · R 88.3% · FPR 42.3%"],
-      ["Gate", "exits non-zero below F1 0.70; runs on every push"],
-    ],
-    cannot: [
-      "Synthetic queries, authored against this corpus — not captured visitor logs.",
-      "One knowledge base. Every figure is n=1 corpus and cannot tell you how this generalises.",
-      "It does not score written answer quality or agent tool selection.",
-    ],
-    links: [
-      { l: "Read it", h: "/benchmark", external: false },
-      { l: "Goldset", h: `${REPO}/blob/main/backend/eval/goldset.json`, external: true },
-      { l: "Run command", h: `${REPO}/blob/main/backend/eval/benchmark.js`, external: true },
-    ],
+    name: "HireMe MCP",
+    desc: "An open Model Context Protocol server exposing my profile, shipped projects, fixed pricing and a project-brief intake — so an AI agent can vet the work and file a brief. Four read tools, one write tool (brief submission, persisted, emailed, rate-limited per IP).",
+    meta: "30 commits · ~1,900 lines · Express + MCP SDK",
+    href: "https://mcp.djaouad.is-a.dev/mcp",
+  },
+  {
+    name: "Retrieval benchmark harness",
+    desc: "The instrument behind the receptionist's numbers: threshold sweep, precision/recall/F1/FPR, committed goldset, deterministic offline embedder, zero dependencies, exits non-zero below an F1 floor, runs on every push in CI.",
+    meta: "Clone and re-run with one command",
+    href: "/benchmark",
+  },
+  {
+    name: "Android builds",
+    desc: "Expo/React Native APKs published as GitHub releases for the receptionist, support agent and PDF workspace, plus an embeddable JS widget on the PDF product.",
+    meta: "Published release artifacts",
+    href: "https://github.com/djoudad292?tab=repositories",
   },
 ];
 
@@ -153,14 +224,21 @@ export default function WorkPage() {
           </span>
 
           <h1 className="mt-6 font-display text-4xl leading-[1.04] tracking-tight sm:text-5xl">
-            Three systems, labelled for what they actually are.
+            Five systems, labelled for what they actually are.
           </h1>
 
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-            Every item here is my own work. Two run on my own infrastructure and take real
-            traffic. None of them is client work, and none is presented as client work.
-            Each case states what it cannot do, because a page that only lists strengths is
-            a page you have learned to distrust.
+            Every item here is my own work, running on my own infrastructure. None of them
+            is client work, and none is presented as client work. Each case states what it
+            cannot do, because a page that only lists strengths is a page you have learned
+            to distrust.
+          </p>
+
+          <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground">
+            Read them in this order: the first takes side-effecting actions on a database
+            under human approval gates, the second is the retrieval benchmark behind the
+            headline numbers, the third handles documents you already have, the fourth is a
+            support agent with tool calling.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-2">
@@ -221,7 +299,7 @@ export default function WorkPage() {
               </ul>
 
               <p className="mt-5 border-t border-border pt-4 text-xs leading-relaxed text-muted-foreground">
-                {c.labelNote}
+                No paying customer and no conversion. These are demonstrations, not revenue.
               </p>
 
               <div className="mt-5 flex flex-wrap gap-2">
@@ -240,6 +318,26 @@ export default function WorkPage() {
             </div>
           </section>
         ))}
+
+        <section className="pb-16">
+          <SectionHeading title="Also built" />
+          <div className="space-y-3">
+            {alsoBuilt.map((a) => (
+              <a
+                key={a.name}
+                href={a.href}
+                {...(a.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                className="block rounded-2xl border border-border bg-card p-5 transition-colors hover:border-primary"
+              >
+                <div className="flex flex-wrap items-baseline justify-between gap-2">
+                  <p className="font-display text-base tracking-tight">{a.name}</p>
+                  <p className="font-mono text-[10px] text-muted-foreground">{a.meta}</p>
+                </div>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{a.desc}</p>
+              </a>
+            ))}
+          </div>
+        </section>
 
         <section className="pb-16">
           <SectionHeading title="The client work I don't have yet" />
@@ -299,7 +397,8 @@ export default function WorkPage() {
             </h2>
             <p className="mt-3 max-w-lg text-sm leading-relaxed text-muted-foreground">
               Everything above is my own work. What I don&apos;t have is a public case study from
-              a paying client with agreed numbers. That gap closes the only way it should —
+              a paying client with agreed numbers — and two systems here have a benchmark
+              where I&apos;d rather publish the absence. That gap closes the only way it should:
               by building something for someone and measuring it together. The{" "}
               <Link href="/ai-reliability-audit" className="text-primary underline-offset-4 hover:underline">
                 free five-day audit
