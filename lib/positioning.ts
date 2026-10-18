@@ -75,11 +75,12 @@ export const TIMEZONE_CLAIM = "UTC+1 — overlaps EU business hours; 13:00–17:
 // Booking link for the free scope call offered on the pricing and contact
 // sections.
 //
-// VERIFIED 2026-10-04 by fetching both candidates: https://cal.com/djaouad/30min
-// returns HTTP 404 — that Cal.com handle was never created, so every
-// "Book a free 15-min scope call" button on the site was a dead link.
-// https://calendly.com/oufr29/30min returns HTTP 200 and is the scheduler
-// that actually exists, so that is the canonical value here. If the Cal.com
-// handle is created later, change this constant only.
-export const BOOKING_URL = "https://calendly.com/oufr29/30min"
-export const BOOKING_LABEL = "Book a free 15-min scope call"
+// Switched from Calendly to a Google Calendar appointment schedule
+// ("Free 30-min scope call") on 2026-10-18: it is free, and every booking
+// auto-generates a Google Meet link. Verified 2026-10-18 — the schedule URL
+// returns HTTP 200 and the public booking page renders with 30-minute slots.
+// If the schedule is recreated, change this constant only; every call site
+// imports it.
+export const BOOKING_URL =
+  "https://calendar.google.com/calendar/appointments/schedules/AcZssZ1-n7EF-5CUR8I8eEuE6pebfNUKrKUrpWYc5dvXsj37YZL2EOFZeLSpCN9zRfXz20tZZcfyA2UJ"
+export const BOOKING_LABEL = "Book a free 30-min scope call"

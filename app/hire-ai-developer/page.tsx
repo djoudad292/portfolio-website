@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowUpRight, Github, Bot, FileSearch, Layers, MessageSquareCode, Workflow, Headset } from "lucide-react";
 
 import { TryYourSite } from "@/components/try-your-site";
+import { BOOKING_URL } from "@/lib/positioning";
 
 export const metadata: Metadata = {
   title: "Hire a Full-Stack + AI Engineer | Djaouad Frih · Agents, Retrieval, Production Builds",
@@ -57,7 +58,7 @@ export default function HirePage() {
                className="rounded-xl bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-colors hover:opacity-90">
               Describe your project
             </a>
-            <a href="https://calendly.com/oufr29/30min"
+            <a href={BOOKING_URL}
                className="inline-flex items-center justify-center rounded-xl border border-border bg-card px-6 py-3.5 text-sm font-semibold transition-colors hover:border-primary">
               Start with a free audit
             </a>

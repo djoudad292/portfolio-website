@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import { SectionHeading } from "./section-heading"
 import { Check } from "lucide-react"
 
-import { AUDIT_OFFER, PRICE_ANCHOR, PRICE_ANCHOR_NOTE, AGENCY_OFFER, CASE_STUDY_PATHWAY } from "@/lib/positioning"
+import { AUDIT_OFFER, PRICE_ANCHOR, PRICE_ANCHOR_NOTE, AGENCY_OFFER, CASE_STUDY_PATHWAY, BOOKING_URL } from "@/lib/positioning"
 
 const processItems = [
   {
@@ -152,7 +152,7 @@ export function Pricing() {
             </ul>
             <div className="mt-6">
               <a
-                href="https://calendly.com/oufr29/30min"
+                href={BOOKING_URL}
                 className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
               >
                 Talk about capacity

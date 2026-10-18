@@ -4,6 +4,7 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 
 import { SectionHeading } from "./section-heading"
+import { BOOKING_URL } from "@/lib/positioning"
 import { Check, ArrowRight, ArrowUpRight } from "lucide-react"
 
 interface Segment {
@@ -52,7 +53,7 @@ const segments: Segment[] = [
     description:
       "You have the client, the scope and the deadline. You need a production engineer who can own the build end to end. I work as your delivery layer: fixed-price, scoped builds delivered under your brand, with retrieval benchmarked and source handed over. You keep the relationship and the margin.",
     demo: "Talk about capacity",
-    href: "https://calendly.com/oufr29/30min",
+    href: BOOKING_URL,
     external: true,
   },
 ]

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
+import { BOOKING_URL } from "@/lib/positioning";
+
 export const metadata: Metadata = {
   title: "Djaouad Frih — Full Stack Developer | AI, Web & Mobile",
   description:
@@ -169,7 +171,7 @@ export default function Home() {
               Have a project in mind? I'll help you clarify scope and ship it.
             </p>
             <div className="mt-6 grid max-w-md gap-3">
-              <a href="https://calendly.com/oufr29/30min"
+              <a href={BOOKING_URL}
                  className="flex items-center justify-between rounded-xl bg-primary px-5 py-3.5 text-sm font-semibold text-primary-foreground transition-colors hover:opacity-90">
                 Book a free call <ArrowUpRight className="h-4 w-4" />
               </a>
