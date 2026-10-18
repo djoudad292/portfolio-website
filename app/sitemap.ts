@@ -11,6 +11,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
   const pages = [
     "",
+    "/for-agencies",
+    "/ai-reliability-audit",
+    "/pricing",
     "/cv",
     "/hire-ai-developer",
     "/ai-agents",
@@ -28,6 +31,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${BASE}${p}`,
     lastModified: now,
     changeFrequency: p === "" ? "weekly" : "monthly",
-    priority: p === "" ? 1 : p === "/hire-ai-developer" ? 0.9 : p === "/ai-agents" || p === "/industries" ? 0.8 : 0.7,
+    priority:
+      p === ""
+        ? 1
+        : p === "/for-agencies" || p === "/ai-reliability-audit" || p === "/pricing"
+          ? 0.9
+          : p === "/hire-ai-developer" || p === "/ai-agents" || p === "/industries"
+            ? 0.8
+            : 0.7,
   }));
 }

@@ -51,8 +51,13 @@ export const EVIDENCE_ARTIFACTS: EvidenceArtifact[] = [
   },
 ]
 
-export const EVIDENCE_NO_QUOTES_LINE =
-  "No client quotes on this page — a review link that does not open a review is worse than none."
+// The homepage does publish two named client quotes, restored verbatim with live
+// links. EVIDENCE_ARTIFACTS is the complementary list: everything here is a
+// public URL a buyer can open — a repository, a CI run history, a versioned
+// dataset. It is not a claim about a client outcome. Keeping the two lists
+// separate stops the site from asserting either one on behalf of the other.
+export const EVIDENCE_ARTIFACTS_INTRO_LINE =
+  "Everything below is a public URL, not a claim: repositories, CI run history and versioned datasets, openable in one click."
 
 export const EVIDENCE_TEASER_LINE =
   "Public CI on every push, 13 committed test files, and a 69-case golden set versioned in the repository."
