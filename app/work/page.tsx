@@ -35,7 +35,7 @@ const cases = [
   {
     n: "01",
     name: "AI WhatsApp CRM / ERP",
-    label: "Production · my own use",
+    label: "Personal project · no client",
     problem:
       "Order capture by chat message is the classic small-business automation: someone sends a WhatsApp message with a product and a quantity, and a human retypes it into a system. The hard part is not the reply — it is that the agent takes side-effecting actions on real inventory, and a wrong action is worse than no action.",
     decisions: [
@@ -73,7 +73,7 @@ const cases = [
   {
     n: "02",
     name: "AI Receptionist",
-    label: "Production · my own use",
+    label: "Personal project · no client",
     problem:
       "A small business loses enquiries at the exact hour a customer decides to act — 9pm, lunch, a busy line. This is the system that closes that gap: qualify, book, capture, escalate to a human. It is also the system I used to build a measurement practice rather than assert that retrieval works.",
     decisions: [
@@ -118,7 +118,7 @@ const cases = [
   {
     n: "03",
     name: "Smart PDF Workspace",
-    label: "Production · my own use",
+    label: "Personal project · no client",
     problem:
       "Document Q&A is the most requested and most badly-served AI feature: people upload a contract or a report and want an answer with the source attached. The failure modes are specific and measurable — scanned PDFs with no text layer, and tables that get chunked into nonsense.",
     decisions: [
@@ -158,7 +158,7 @@ const cases = [
   {
     n: "04",
     name: "AI Support Agent",
-    label: "Production · my own use",
+    label: "Personal project · no client",
     problem:
       "Tier-one support is a volume problem that keeps setting your headcount. This resolves what the knowledge base can answer, checks orders, creates the ticket as a real side-effecting action, and escalates to a human only when it should.",
     decisions: [
@@ -272,7 +272,7 @@ export default function WorkPage() {
           </p>
 
           <div className="mt-8 flex flex-wrap gap-2">
-            <span className={chip}>Production · my own use</span>
+            <span className={chip}>Personal project · no client</span>
             <span className={chip}>Prototype — not production</span>
             <span className={chip}>Personal project · no client</span>
             <span className={chip}>Client work</span>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
@@ -100,7 +101,7 @@ const work = [
     url: "https://crm.djaouad.is-a.dev/try",
     img: "/shots/kit-crm-erp.png",
     repo: "https://github.com/djoudad292/ai-whatsapp-crm-erp",
-    label: "Production · my own use",
+    label: "Personal project · no client",
     limit: "No customer. No published agent benchmark — 2 committed test files.",
   },
   {
@@ -110,7 +111,7 @@ const work = [
     img: "/shots/kit-receptionist.png",
     repo: "https://github.com/djoudad292/ai-virtual-receptionist",
     apk: "https://github.com/djoudad292/ai-virtual-receptionist/releases/download/latest-apk-receptionist/ai-receptionist.apk",
-    label: "Production · my own use",
+    label: "Personal project · no client",
     limit: "Single-tenant, single-language. FPR 76.9% at the F1-optimal threshold.",
   },
   {
@@ -120,7 +121,7 @@ const work = [
     img: "/shots/kit-pdf-workspace.png",
     repo: "https://github.com/djoudad292/smart-pdf-workspace",
     apk: "https://github.com/djoudad292/smart-pdf-workspace/releases/download/latest-apk-pdf/smart-pdf.apk",
-    label: "Production · my own use",
+    label: "Personal project · no client",
     limit: "Text layer only, no OCR. No published retrieval benchmark.",
   },
   {
@@ -130,7 +131,7 @@ const work = [
     img: "/shots/kit-support-agent.png",
     repo: "https://github.com/djoudad292/ai-customer-support-agent",
     apk: "https://github.com/djoudad292/ai-customer-support-agent/releases/download/latest-apk/ai-customer-support.apk",
-    label: "Production · my own use",
+    label: "Personal project · no client",
     limit: "No published retrieval benchmark. 2 committed test files.",
   },
 ];
@@ -499,7 +500,28 @@ export default function Home() {
               Start the audit →
             </Link>
           </div>
-          <div className="mt-8 flex flex-wrap gap-2">
+          <div className="mt-8 flex items-center gap-4 rounded-2xl border border-border bg-card p-4">
+            <Image
+              src="/djaouad-logo-trimmed.png"
+              alt="Djaouad Frih"
+              width={362}
+              height={357}
+              className="h-14 w-14 shrink-0 object-contain brightness-[1.25] saturate-[1.15]"
+            />
+            <div className="min-w-0">
+              <p className="font-display text-lg tracking-tight">
+                Djaouad Frih<span className="text-primary">.</span>
+              </p>
+              <a
+                href="mailto:contact@djaouad.is-a.dev"
+                className="font-mono text-xs text-muted-foreground underline-offset-4 hover:text-primary hover:underline"
+              >
+                contact@djaouad.is-a.dev
+              </a>
+            </div>
+          </div>
+
+          <div className="mt-6 flex flex-wrap gap-2">
             {social.map((s) => (
               <a
                 key={s.name}
@@ -512,9 +534,6 @@ export default function Home() {
               </a>
             ))}
           </div>
-          <p className="mt-6 font-mono text-xs text-muted-foreground">
-            contact@djaouad.is-a.dev
-          </p>
         </section>
 
       </div>

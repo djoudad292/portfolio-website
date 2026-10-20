@@ -36,13 +36,13 @@ export const metadata: Metadata = {
       "msvalidate.01": "C51CDA99ED5014CBAB8480F6E66FC408",
     },
   },
-  title: 'Djaouad Frih | Full-Stack + AI Engineer · Agents, Retrieval, Production Builds',
+  title: 'Djaouad Frih | AI Integration for Legacy Stacks · Measured, Not Asserted',
   description:
-    'I build production AI systems: tool-calling agents, vector retrieval with source citations, MCP servers, and the application around them. Live on real domains, open source. Retrieval benchmarked on the AI Virtual Receptionist knowledge base (dental clinic KB, 15 chunks, 18 queries) at 93.8% F1 with an offline embedder.',
+    'I make retrieval and agent systems work on the Postgres estates and monoliths that already exist. Benchmarked against a 232-query goldset with the failing queries published. White-label delivery for agencies, fixed price.',
   openGraph: {
-    title: 'Djaouad Frih | Full-Stack + AI Engineer · Agents, Retrieval, Production Builds',
+    title: 'Djaouad Frih | AI Integration for Legacy Stacks · Measured, Not Asserted',
     description:
-      'Production AI systems: LangGraph agents with tool-calling loops, pgvector retrieval with citations, MCP servers, multi-tenant apps. Four live systems with public repositories. Fixed-price, milestone-based.',
+      'Retrieval and agents that work on the systems you already have — with a measured recall floor and the failures published. Five live systems, fixed price, source handed over.',
     url: 'https://djaouad.is-a.dev',
     siteName: 'Djaouad Frih',
     locale: 'en_US',
@@ -109,7 +109,7 @@ export default function RootLayout({
               '@context': 'https://schema.org',
               '@type': 'Person',
               name: 'Djaouad Frih',
-              jobTitle: 'Full-Stack + AI Engineer',
+              jobTitle: 'AI Integration Engineer — retrieval and agents on existing systems',
               url: 'https://djaouad.is-a.dev',
               email: 'mailto:contact@djaouad.is-a.dev',
               telephone: '+213780688125',
