@@ -55,7 +55,10 @@ export default async (req: Request, context: { params: Record<string, string> })
       to: lead.to,
       ts: new Date().toISOString(),
       ua: req.headers.get("user-agent") ?? "",
-      ip: req.headers.get("x-nf-client-connection-ip") ?? "",
+      ip:
+        req.headers.get("cf-connecting-ip") ??
+        req.headers.get("x-nf-client-connection-ip") ??
+        "",
     });
   } catch {
     // tracking must never block the redirect
