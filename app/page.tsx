@@ -206,37 +206,51 @@ export default function Home() {
       <div className="relative mx-auto max-w-4xl px-6">
 
         <section className="pt-20 pb-16">
-          <span className="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider">
-            AI INTEGRATION · WHITE-LABEL DELIVERY
-          </span>
+          <div className="grid gap-8 items-start sm:grid-cols-2 sm:gap-12">
+            <div className="max-w-lg">
+              <span className="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider">
+                AI INTEGRATION · WHITE-LABEL DELIVERY
+              </span>
 
-          <h1 className="mt-6 font-display text-4xl leading-[1.04] tracking-tight sm:text-5xl">
-            Your AI system should be measured before you trust it. I build it that way.
-          </h1>
+              <h1 className="mt-6 font-display text-4xl leading-[1.04] tracking-tight sm:text-5xl">
+                Your AI system should be measured before you trust it. I build it that way.
+              </h1>
 
-          <p className="mt-6 max-w-lg text-lg leading-relaxed text-muted-foreground">
-            Djaouad Frih — independent AI engineer. I make retrieval and agents work on the
-            Postgres estates and monoliths that already exist, with a benchmark, an eval suite
-            and a handover doc on every build. Fixed price. {PRICE_ANCHOR}.
-          </p>
+              <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+                Djaouad Frih — independent AI engineer. I make retrieval and agents work on the
+                Postgres estates and monoliths that already exist, with a benchmark, an eval suite
+                and a handover doc on every build. Fixed price. {PRICE_ANCHOR}.
+              </p>
 
-          <div className="mt-8 flex flex-col gap-3">
-            <Link href="/ai-reliability-audit" className={primaryBtn}>
-              Get the free 5-day audit →
-            </Link>
-            <p className="font-mono text-xs text-muted-foreground">
-              Five working days. Scored against your documents. No call required first.
-            </p>
+              <div className="mt-8 flex flex-col gap-3">
+                <Link href="/ai-reliability-audit" className={primaryBtn}>
+                  Get the free 5-day audit →
+                </Link>
+                <p className="font-mono text-xs text-muted-foreground">
+                  Five working days. Scored against your documents. No call required first.
+                </p>
 
-            <Link href="/benchmark" className={secondaryBtn}>
-              See a benchmark you can rerun →
-            </Link>
-            <p className="font-mono text-xs text-muted-foreground">
-              The retrieval eval, the goldset, and the run command are public.
-            </p>
+                <Link href="/benchmark" className={secondaryBtn}>
+                  See a benchmark you can rerun →
+                </Link>
+                <p className="font-mono text-xs text-muted-foreground">
+                  The retrieval eval, the goldset, and the run command are public.
+                </p>
+              </div>
+
+              <p className="mt-8 font-mono text-xs text-muted-foreground">{TIMEZONE_CLAIM}</p>
+            </div>
+
+            <div className="flex justify-center">
+              <Image
+                src="/djaouad-photo.jpg"
+                alt="Djaouad Frih"
+                width={1211}
+                height={1299}
+                className="w-44 h-44 shrink-0 rounded-full object-cover border border-border"
+              />
+            </div>
           </div>
-
-          <p className="mt-8 font-mono text-xs text-muted-foreground">{TIMEZONE_CLAIM}</p>
         </section>
 
         <section className="pb-16">
