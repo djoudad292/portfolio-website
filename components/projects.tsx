@@ -140,7 +140,7 @@ const projects: Project[] = [
     for: "For clinics and service businesses losing enquiries after hours.",
     problem: "Businesses lose leads and bookings when messages go unanswered overnight. The follow-up happens the next morning, if at all.",
     solution: "A 24/7 LangGraph receptionist with a tool-calling loop. It answers from the business knowledge base over vector retrieval, handles booking, captures and qualifies leads, routes visitors to the right team, and hands off to a human with an AI-drafted reply already written.",
-    result: "Answers routine questions after hours, with no staff on call. Retrieval benchmarked at 93.8% F1 on the receptionist knowledge base (15 chunks, 18 queries, dental clinic domain), scored offline with a deterministic stub embedder, not the production text-embedding-3-small, so it measures the retrieval policy rather than embedding quality.",
+    result: "Answers routine questions after hours, with no staff on call. Retrieval benchmarked at 93.4% F1 on the receptionist knowledge base (45 chunks, 232 hand-written questions: 206 answerable plus 26 out-of-domain distractors), best at threshold 0.20 with precision 90.8% and recall 96.1%, scored offline with a deterministic stub embedder, not the production text-embedding-3-small, so it measures the retrieval policy rather than embedding quality. The failing queries are published in the repo.",
     proof: "Live demo + 28s recorded booking ending in a saved lead",
     builtWith: "Website chat · AI answers · Android app",
     image: "/receptionist-hero-new.png",

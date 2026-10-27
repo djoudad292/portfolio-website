@@ -10,10 +10,10 @@ const checks = [
     title: "Retrieval is benchmarked, not assumed",
     body: [
       "There is a goldset of queries with known-correct source documents, and the retrieval pipeline runs offline against it. The harness computes precision, recall and F1, then sweeps the similarity threshold to find the operating point that actually works on this data.",
-      "The benchmark runs on the AI Virtual Receptionist knowledge base (dental clinic KB, 15 chunks, 18 queries). The embedder is a deterministic offline stub (concept lens + hashed lexical residual), not the production text-embedding-3-small. This measures the retrieval policy (the similarity floor, top-k cut, and vector-vs-keyword choice) as a regression guard for the harness and the threshold. It does NOT measure production embedding quality or end-to-end answer quality.",
+      "The benchmark runs on the AI Virtual Receptionist knowledge base: 45 chunks and 232 hand-written questions (206 answerable, 26 out-of-domain distractors a receptionist must refuse). The embedder is a deterministic offline stub (concept lens + hashed lexical residual), not the production text-embedding-3-small. This measures the retrieval policy (the similarity floor, top-k cut, and vector-vs-keyword choice) as a regression guard for the harness and the threshold. It does NOT measure production embedding quality or end-to-end answer quality.",
     ],
-    stat: "93.8% F1 (18 queries, offline embedder)",
-    statNote: "Receptionist knowledge base, dental clinic domain, 15 chunks. Threshold 0.35, precision 88.2%, recall 100%. Vector retrieval mode, top-k 5.",
+    stat: "93.4% F1 · vector, top-k 5",
+    statNote: "Receptionist KB, dental clinic domain, 45 chunks, 232 queries (206 answerable + 26 distractors). Best at threshold 0.20: precision 90.8%, recall 96.1%, false-positive rate 76.9%. Offline deterministic embedder, not text-embedding-3-small.",
     caveat:
       "What this does not measure: whether the written answer is any good, or whether an agent picks the right tool. It also does not measure the production embedder (text-embedding-3-small). The number is a regression guard for the retrieval policy, not a benchmark of the embedder or answer quality.",
   },

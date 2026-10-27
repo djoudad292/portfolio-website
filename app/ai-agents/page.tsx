@@ -31,7 +31,7 @@ const usecases = [
 ];
 
 const boundaries = [
-  "Retrieval quality is measured on a goldset. The benchmark runs on the AI Virtual Receptionist knowledge base (dental clinic KB, 15 chunks, 18 queries) with a deterministic offline embedder (concept lens + hashed lexical residual). The most recent run scored 93.8% F1 at threshold 0.35. This measures the retrieval policy (similarity floor, top-k cut, vector-vs-keyword choice), not the production embedder (text-embedding-3-small) or end-to-end answer quality.",
+  "Retrieval quality is measured on a goldset. The benchmark runs on the AI Virtual Receptionist knowledge base: 45 chunks and 232 hand-written questions (206 answerable plus 26 out-of-domain distractors a receptionist must refuse), with a deterministic offline embedder (concept lens + hashed lexical residual). The most recent run scored 93.4% F1 at threshold 0.20, precision 90.8%, recall 96.1%, false-positive rate 76.9%. This measures the retrieval policy (similarity floor, top-k cut, vector-vs-keyword choice), not the production embedder (text-embedding-3-small) or end-to-end answer quality.",
   "That benchmark covers retrieval. It does not score written answer quality or how well an agent chooses between tools, and I do not claim it does.",
   "Every model call records token usage and latency, exposed through an authenticated metrics endpoint, and every agent run emits a per-step trace: one span per graph node, per model call and per tool call. That is cost, latency and step-level visibility — not full distributed tracing, since there are no database or queue spans. Visitor content is redacted before export by default.",
 ];

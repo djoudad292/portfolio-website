@@ -113,15 +113,17 @@ export default function CVPage() {
               <p className="mt-4 max-w-2xl leading-relaxed text-muted-foreground">
                 I hold a line on measurement. Retrieval is scored offline against a
                 goldset rather than assumed. The benchmark runs on the AI Virtual
-                Receptionist knowledge base (dental clinic KB, 15 chunks, 18 queries)
-                with a deterministic offline embedder (concept lens + hashed lexical
-                residual). The most recent run reached 93.8% F1 at threshold 0.35.
-                This measures the retrieval policy (the similarity floor, top-k cut,
-                and vector-vs-keyword choice), not the production embedder
-                (text-embedding-3-small) or end-to-end answer quality. Token usage
-                and latency are recorded per request and served through an
-                authenticated metrics endpoint. Where something is not measured, I
-                say so rather than implying it is.
+                Receptionist knowledge base (45 chunks, 232 hand-written questions:
+                206 answerable plus 26 out-of-domain distractors a receptionist
+                must refuse) with a deterministic offline embedder (concept lens +
+                hashed lexical residual). The most recent run reached 93.4% F1 at
+                threshold 0.20 (precision 90.8%, recall 96.1%), with the failing
+                queries published in the repository. This measures the retrieval
+                policy (the similarity floor, top-k cut, and vector-vs-keyword
+                choice), not the production embedder (text-embedding-3-small) or
+                end-to-end answer quality. Token usage and latency are recorded per
+                request and served through an authenticated metrics endpoint. Where
+                something is not measured, I say so rather than implying it is.
               </p>
               <p className="mt-4 max-w-2xl leading-relaxed text-muted-foreground">
                 On tenure: these systems were built between August and October 2026,

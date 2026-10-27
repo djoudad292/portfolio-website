@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { TIMEZONE_CLAIM } from "@/lib/positioning";
+import { TIMEZONE_CLAIM, AGENCY_ANCHOR } from "@/lib/positioning";
 
 export const metadata: Metadata = {
   title: "Brownfield AI Integration for Agencies · Legacy Estates, Measured | Djaouad Frih",
@@ -293,10 +293,10 @@ export default function ForAgenciesPage() {
         <section className="pb-16">
           <SectionHeading title="Rate" />
           <div className="rounded-2xl border border-primary/60 bg-card p-6">
-            <p className="font-display text-3xl tracking-tight">From $8,000 per project</p>
+            <p className="font-display text-3xl tracking-tight">{AGENCY_ANCHOR}</p>
             <p className="mt-2 text-sm text-muted-foreground">
-              Or $12,000 / month. Minimum three weeks. Deposit under 50%, milestone
-              payments, source and infrastructure transferred to your accounts at handover.
+              Deposit under 50%, milestone payments, source and infrastructure
+              transferred to your accounts at handover.
             </p>
             <p className="mt-5 border-t border-border pt-4 text-sm leading-relaxed text-muted-foreground">
               On a cost-shaped engagement I will index the fee to a verified reduction and

@@ -7,7 +7,7 @@ const sections = [
   ["What I collect", "Contact details you submit voluntarily (name, email, project briefs), and anonymous usage analytics (page views, referral source). Chat agents store conversations only to answer your questions and improve responses."],
   ["What is never collected", "No payment card data on this site (payments happen via agreed invoices). No sensitive personal data through chat agents. No selling or renting your data — ever."],
   ["How data is used", "Exclusively to respond to inquiries, deliver contracted work, and send project updates. Occasional follow-up emails are sent per legitimate business interest and stop immediately on request."],
-  ["Third parties", "Hosting: Vercel, Render. Database: Neon/PostgreSQL. Email: Gmail. AI processing: model providers (Google Gemini, OpenAI) under their enterprise data terms. Each processes data under its own privacy policy."],
+  ["Third parties", "Hosting: Vercel, Render. Database: Neon/PostgreSQL. Email: Gmail. AI processing: model providers and gateways under their own privacy policies — the receptionist runs its chat model through OpenRouter and its embeddings through the OpenAI API. Each processes data under its own privacy policy."],
   ["Your rights", "Email contact@djaouad.is-a.dev at any time to access, correct or delete your data. Requests are honored within 72 hours."],
   ["Contact", "Djaouad Frih — contact@djaouad.is-a.dev"],
 ];

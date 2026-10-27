@@ -36,7 +36,7 @@ export const EVIDENCE_ARTIFACTS: EvidenceArtifact[] = [
   },
   {
     title: "A public commit history",
-    body: "104 commits on the receptionist, 80 on the support agent (main; the default branch master has 56), 30 on the MCP server. The work is a trail you can read, not a claim you have to take.",
+    body: "107 commits on the receptionist, 80 on the support agent (main; the default branch master has 38), 30 on the MCP server. The work is a trail you can read, not a claim you have to take.",
     links: [
       {
         label: "ai-virtual-receptionist",
@@ -51,8 +51,7 @@ export const EVIDENCE_ARTIFACTS: EvidenceArtifact[] = [
   },
 ]
 
-// The homepage does publish two named client quotes, restored verbatim with live
-// links. EVIDENCE_ARTIFACTS is the complementary list: everything here is a
+// EVIDENCE_ARTIFACTS is the complementary list: everything here is a
 // public URL a buyer can open — a repository, a CI run history, a versioned
 // dataset. It is not a claim about a client outcome. Keeping the two lists
 // separate stops the site from asserting either one on behalf of the other.
