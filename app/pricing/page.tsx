@@ -218,7 +218,7 @@ export default function PricingPage() {
               Start with the audit. It costs nothing and it settles most of it.
             </h2>
             <p className="mt-2 max-w-lg text-sm leading-relaxed text-muted-foreground">
-              Five working days on your own documents, a written report you keep either way,
+              {AUDIT_OFFER.duration} on your own documents, a written report you keep either way,
               and a fixed price afterwards if you want to go further. If the answer is that you
               don't need a build, that's what the report says.
             </p>

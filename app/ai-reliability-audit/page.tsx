@@ -5,8 +5,8 @@ import { AUDIT_OFFER, PRICE_ANCHOR } from "@/lib/positioning";
 
 export const metadata: Metadata = {
   title: "Free AI Reliability Audit · Retrieval, Refusals & Latency Measured | Djaouad Frih",
-  description:
-    "A free five-working-day audit of your AI system on your own documents: precision, recall and F1 against a goldset built from your corpus, refusal rate on out-of-scope questions, citation correctness, latency, token cost and a permissions review. Failures published alongside the scores.",
+description:
+      `A free ${AUDIT_OFFER.duration} audit of your AI system on your own documents: precision, recall and F1 against a goldset built from your corpus, refusal rate on out-of-scope questions, citation correctness, latency, token cost and a permissions review. Failures published alongside the scores.`,
   alternates: { canonical: "https://djaouad.is-a.dev/ai-reliability-audit" },
   openGraph: {
     title: "Free AI Reliability Audit · Djaouad Frih",
@@ -69,7 +69,7 @@ const notFor = [
   "You want a demo, a strategy deck, or a sales call. This is none of those three.",
   "You have no documents and no corpus to score against. There is nothing to measure yet.",
   "You want a guaranteed accuracy figure in advance. I will not commit to a number I haven't measured on your data.",
-  "You need the answer before five working days. Then this isn't the right entry point.",
+  "You need the answer before the audit turnaround. Then this isn't the right entry point.",
 ];
 
 const isNot = [
@@ -207,7 +207,7 @@ export default function AiReliabilityAuditPage() {
             <h2 className="font-display text-3xl tracking-tight">Send me something to measure.</h2>
             <p className="mt-2 max-w-lg text-sm leading-relaxed text-muted-foreground">
               A folder of documents, a link to a knowledge base, or a description of the
-              system that isn&rsquo;t performing. Five working days later you get the report.
+              system that isn&rsquo;t performing. {AUDIT_OFFER.duration} later you get the report.
               If you want to keep building afterwards, the audit comes off the price —{" "}
               {PRICE_ANCHOR.toLowerCase()}.
             </p>

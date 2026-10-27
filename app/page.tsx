@@ -137,7 +137,7 @@ const work = [
 ];
 
 const credibility = [
-  { label: "Public repositories", value: "~214 commits across three main repositories" },
+  { label: "Public repositories", value: "~217 commits across three main repositories" },
   { label: "CI on every push", value: "The failing runs are the interesting ones." },
   { label: "Committed test suites", value: "13 test files in the receptionist backend, 2 in the support agent backend" },
   { label: "Versioned eval datasets", value: "69-case conversation dataset, 97 turn assertions, 15 categories, severity tags that gate a deploy" },
@@ -155,7 +155,7 @@ const howIBuild = [
 ];
 
 const processSteps = [
-  { step: "01", title: "Reliability audit", body: "Five working days, scored against your documents. No call required first." },
+  { step: "01", title: "Reliability audit", body: `${AUDIT_OFFER.duration}, scored against your documents. No call required first.` },
   { step: "02", title: "Fixed-price scope", body: "The audit becomes a written spec with acceptance criteria and a deploy-gating eval." },
   { step: "03", title: "Build at your cadence", body: "Weekly handoffs. Source in your repo. The benchmark is yours to rerun." },
   { step: "04", title: "Handover + defect window", body: "Docs, credentials, and 30 days to find defects." },
@@ -505,7 +505,7 @@ export default function Home() {
           <SectionHeading title="Start with the audit, not with a sales call." />
           <p className="max-w-2xl text-pretty leading-relaxed text-muted-foreground">
             If your AI system is answering before it's measured, it's answering from a guess.
-            The free reliability audit is five working days, scored against your own documents,
+            The free reliability audit is {AUDIT_OFFER.duration}, scored against your own documents,
             and you keep the report either way — including the line that says you don't need
             AI here yet.
           </p>

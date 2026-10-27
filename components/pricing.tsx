@@ -194,7 +194,7 @@ export function Pricing() {
           Entry offer. Deliberately a plain card inside the pricing section
           rather than its own numbered SectionHeading, so the 01-10 section
           numbering stays contiguous. Copy is fixed and verbatim — the price,
-          the five working days, what gets measured, and the credit against a
+          the audit duration, what gets measured, and the credit against a
           build are the whole promise, so nothing is added around it.
         */}
         <motion.div

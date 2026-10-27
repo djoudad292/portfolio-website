@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 
-import { POSITIONING } from "@/lib/positioning"
+import { POSITIONING, AUDIT_OFFER } from "@/lib/positioning"
 
 export function Hero() {
   return (
@@ -69,7 +69,7 @@ export function Hero() {
           </a>
         </motion.div>
         <p className="mt-4 font-mono text-xs text-muted-foreground">
-          Five working days, measured on your own documents. Credited in full
+          {AUDIT_OFFER.duration}, measured on your own documents. Credited in full
           if you build with me.
         </p>
 
