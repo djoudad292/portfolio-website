@@ -16,7 +16,7 @@ const refusals = [
   },
   {
     title: "Anything touching your PHI or card data without a signed data-handling agreement.",
-    body: "Ask me for the subprocessor list and the retention policy. No agreement, no data.",
+    body: "If you need that work, we agree a data-handling agreement first and I publish the subprocessor list and retention policy as part of it. No agreement, no data.",
   },
   {
     title: "A large build for an unvalidated idea.",

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { AUDIT_OFFER, PRICE_ANCHOR, PRICE_ANCHOR_NOTE } from "@/lib/positioning";
+import { AUDIT_OFFER, PRICE_ANCHOR, PRICE_ANCHOR_NOTE, AGENCY_ANCHOR, AGENCY_ANCHOR_META } from "@/lib/positioning";
 
 export const metadata: Metadata = {
   title: "Pricing · Scope-to-Price Map, Not an Estimate | Djaouad Frih",
@@ -73,8 +73,8 @@ const tiers = [
   {
     label: "Primary",
     title: "White-Label Delivery Capacity",
-    price: "From $8,000 per project",
-    meta: "or from $12,000 / month · NDA before the first call",
+    price: AGENCY_ANCHOR,
+    meta: AGENCY_ANCHOR_META,
     who: "Software agencies and product studios with signed AI work and no one to deliver it.",
     bullets: [
       "You keep the client, the relationship and the margin",

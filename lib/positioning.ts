@@ -31,15 +31,30 @@ export const PRICE_ANCHOR_NOTE =
   "Quoted after a free reliability audit, once the scope is real. No hourly surprises."
 export const NO_PRICE_NOTE: string | undefined = undefined
 
+// White-label / agency capacity floor. A separate tier from PRICE_ANCHOR on
+// purpose: a scoped build at $3,500 and someone else's client at $8,000 are
+// different products, and collapsing them onto one number would mislead both
+// buyers. Declared here so the two page files cannot drift apart.
+export const AGENCY_ANCHOR = "From $8,000 per project"
+export const AGENCY_ANCHOR_META = "or from $12,000 / month · minimum three weeks · NDA before the first call"
+
 // Entry offer — always free, always the same anchor on every surface including
 // the MCP backend. A buyer can act without first evaluating a supplier.
+//
+// The turnaround is a target, not a guarantee, and it says so on the page.
+// Building a goldset from a client's corpus is the variable part: a 20-page
+// FAQ and a 400-page knowledge base are different jobs, and promising a fixed
+// number of days for both would be the kind of claim this site exists to avoid.
+// What is fixed is what's in scope and that it costs nothing.
 export const AUDIT_OFFER = {
   price: "Free",
-  duration: "five working days",
+  duration: "one week, target",
+  durationDetail:
+    "Turnaround is a target, not a guarantee — it depends on how much of your corpus I have to turn into a goldset. A short FAQ and a 400-page knowledge base are different jobs, and I would rather say that up front than promise a day count I can't keep.",
   summary:
     "Retrieval and authorization audit on your own documents. Precision/recall/F1 against a goldset built from your corpus, refusal rate on out-of-scope questions, citation correctness, p50/p95 latency and token cost, and a server-side authorization review.",
   terms:
-    "Failures are published alongside the scores. Credited in full against any build that follows.",
+    "Failures are published alongside the scores. Credited in full against any build that follows, so the audit costs nothing whether or not you go ahead.",
 } as const
 
 // White-label / agency capacity offer. Targets digital and product agencies in
@@ -47,6 +62,8 @@ export const AUDIT_OFFER = {
 // own the build end to end as your delivery capacity.
 export const AGENCY_OFFER = {
   title: "White-label build capacity for agencies",
+  price: AGENCY_ANCHOR,
+  meta: AGENCY_ANCHOR_META,
   summary:
     "I work as your delivery layer: scoped, fixed-price, end-to-end builds that you take to the client under your brand. You keep the relationship and the margin; I bring production engineering and retrieval benchmarking to every delivery.",
   deliverables: [

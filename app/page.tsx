@@ -224,10 +224,10 @@ export default function Home() {
 
               <div className="mt-8 flex flex-col gap-3">
                 <Link href="/ai-reliability-audit" className={primaryBtn}>
-                  Get the free 5-day audit →
+                  Get the free reliability audit →
                 </Link>
                 <p className="font-mono text-xs text-muted-foreground">
-                  Five working days. Scored against your documents. No call required first.
+                  One week, target. Scored against your documents. No call required first.
                 </p>
 
                 <Link href="/benchmark" className={secondaryBtn}>
@@ -447,7 +447,7 @@ export default function Home() {
             ))}
           </ol>
           <p className="mt-10 font-mono text-xs text-muted-foreground">
-            Audit five working days · scoped build 3–6 weeks · production system 6–12 weeks.
+            Audit one week, target · scoped build 3–6 weeks · production system 6–12 weeks.
           </p>
           <p className="mt-2 font-mono text-[10px] text-muted-foreground">
             Every inquiry gets a reply within one business day — including "this isn't for
