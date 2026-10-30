@@ -12,9 +12,10 @@ import {
 } from "@/lib/positioning";
 
 export const metadata: Metadata = {
-  title: "Djaouad Frih — AI Reliability, Retrieval & Agents · White-Label Delivery",
+  title:
+    "Djaouad Frih — AI Engineering for Systems That Need to Work in Production",
   description:
-    "Independent AI engineer. I make retrieval and agent systems work on existing Postgres estates and monoliths — benchmarked against your own corpus, with the failures published. White-label delivery for agencies, fixed price.",
+    "I build reliable AI-powered applications, agents, retrieval systems, and integrations — from architecture to deployment. White-label delivery for agencies, fixed price.",
   alternates: { canonical: "https://djaouad.is-a.dev" },
 };
 

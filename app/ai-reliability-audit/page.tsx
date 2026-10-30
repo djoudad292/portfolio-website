@@ -11,7 +11,7 @@ description:
   openGraph: {
     title: "Free AI Reliability Audit · Djaouad Frih",
     description:
-      "Five working days. Measured on your documents. Credited in full against any build that follows.",
+      `${AUDIT_OFFER.duration} — measured on your documents, credited in full against any build that follows.`,
     url: "https://djaouad.is-a.dev/ai-reliability-audit",
     type: "website",
   },
