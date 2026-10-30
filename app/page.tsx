@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { LeadCapture } from "@/components/lead-capture";
 
 import {
   AUDIT_OFFER,
@@ -236,6 +237,9 @@ export default function Home() {
                 <p className="font-mono text-xs text-muted-foreground">
                   The retrieval eval, the goldset, and the run command are public.
                 </p>
+                <Link href="#lead-capture" className={secondaryBtn}>
+                  Request a free AI audit →
+                </Link>
               </div>
 
               <p className="mt-8 font-mono text-xs text-muted-foreground">{TIMEZONE_CLAIM}</p>
@@ -500,6 +504,8 @@ export default function Home() {
             </ul>
           </div>
         </section>
+
+        <LeadCapture />
 
         <section className="pb-24">
           <SectionHeading title="Start with the audit, not with a sales call." />
