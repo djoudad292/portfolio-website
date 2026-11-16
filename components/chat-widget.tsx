@@ -273,7 +273,7 @@ export function ChatWidget() {
               <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-green-500" />
             </span>
             <span className="font-medium text-foreground">Available</span>
-            <span className="text-muted-foreground">· Usually replies within an hour</span>
+            <span className="text-muted-foreground">· New project inquiry</span>
           </div>
         </motion.div>
       )}

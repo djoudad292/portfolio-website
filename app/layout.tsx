@@ -19,13 +19,9 @@ const plexMono = IBM_Plex_Mono({
 })
 
 export const metadata: Metadata = {
-  // djaouad.tech CNAMEs to djaouad.is-a.dev, so both hosts serve byte-identical
-  // content and link equity splits between them at Google's discretion.
-  // metadataBase pins every relative URL below to the authoritative origin, and
-  // './' resolves per-route against it — so each route declares its own absolute
-  // URL on djaouad.is-a.dev. On that host the result self-references; on
-  // djaouad.tech it points at the authoritative copy, which is what a canonical
-  // is for. djaouad.tech keeps resolving as a name-collision shield.
+  // metadataBase pins every relative URL below to the authoritative origin,
+  // and './' resolves per-route against it — so each route declares its own
+  // absolute URL on djaouad.is-a.dev.
   metadataBase: new URL('https://djaouad.is-a.dev'),
   alternates: {
     canonical: './',

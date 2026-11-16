@@ -35,7 +35,7 @@ const cases = [
   {
     n: "01",
     name: "AI WhatsApp CRM / ERP",
-    label: "Personal project · no client",
+    label: "Built and operated by me",
     problem:
       "Order capture by chat message is the classic small-business automation: someone sends a WhatsApp message with a product and a quantity, and a human retypes it into a system. The hard part is not the reply — it is that the agent takes side-effecting actions on real inventory, and a wrong action is worse than no action.",
     decisions: [
@@ -73,7 +73,7 @@ const cases = [
   {
     n: "02",
     name: "AI Receptionist",
-    label: "Personal project · no client",
+    label: "Built and operated by me",
     problem:
       "A small business loses enquiries at the exact hour a customer decides to act — 9pm, lunch, a busy line. This is the system that closes that gap: qualify, book, capture, escalate to a human. It is also the system I used to build a measurement practice rather than assert that retrieval works.",
     decisions: [
@@ -118,7 +118,7 @@ const cases = [
   {
     n: "03",
     name: "Smart PDF Workspace",
-    label: "Personal project · no client",
+    label: "Built and operated by me",
     problem:
       "Document Q&A is the most requested and most badly-served AI feature: people upload a contract or a report and want an answer with the source attached. The failure modes are specific and measurable — scanned PDFs with no text layer, and tables that get chunked into nonsense.",
     decisions: [
@@ -158,7 +158,7 @@ const cases = [
   {
     n: "04",
     name: "AI Support Agent",
-    label: "Personal project · no client",
+    label: "Built and operated by me",
     problem:
       "Tier-one support is a volume problem that keeps setting your headcount. This resolves what the knowledge base can answer, checks orders, creates the ticket as a real side-effecting action, and escalates to a human only when it should.",
     decisions: [
@@ -193,7 +193,7 @@ const cases = [
 {
     n: "05",
     name: "HireMe MCP Server",
-    label: "Personal project · no client",
+    label: "Built and operated by me",
     problem:
       "MCP is how agents call tools, and almost nobody ships one. This exposes a real profile, shipped projects and fixed pricing over the Model Context Protocol, so a client or an agent can vet the work and file a structured brief without a human in the loop.",
     decisions: [
@@ -270,13 +270,6 @@ export default function WorkPage() {
             support agent with tool calling, and the fifth is an MCP server that lets an
             agent read this work and file a brief.
           </p>
-
-          <div className="mt-8 flex flex-wrap gap-2">
-            <span className={chip}>Personal project · no client</span>
-            <span className={chip}>Prototype — not production</span>
-            <span className={chip}>Personal project · no client</span>
-            <span className={chip}>Client work</span>
-          </div>
         </section>
 
         {cases.map((c) => (
@@ -366,57 +359,6 @@ export default function WorkPage() {
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{a.desc}</p>
               </a>
             ))}
-          </div>
-        </section>
-
-        <section className="pb-16">
-          <SectionHeading title="The client work I don't have yet" />
-          <div className="rounded-2xl border border-border bg-card p-6 sm:p-7">
-            <p className="max-w-2xl leading-relaxed text-muted-foreground">
-              Two clients, two countries, and what they actually hired me for:
-            </p>
-            <blockquote className="mt-5 border-l-2 border-primary/50 pl-4">
-              <p className="leading-relaxed">
-                &ldquo;Great people, very good service. Made my website within 2 weeks in such
-                a professional manner, very good communication skills — would highly
-                recommend!&rdquo;
-              </p>
-              <footer className="mt-2 flex flex-wrap items-center gap-2 font-mono text-xs text-muted-foreground">
-                <a href="https://www.facebook.com/share/19Qx9MsT6b/" target="_blank" rel="noopener noreferrer" className="text-foreground underline-offset-4 hover:underline">
-                  Bilal Kadri
-                </a>
-                <span>·</span>
-                <span>United Kingdom</span>
-              </footer>
-            </blockquote>
-            <blockquote className="mt-5 border-l-2 border-primary/50 pl-4">
-              <p className="leading-relaxed">
-                &ldquo;Huge shout-out to Djaouad! Complete, fully functional full-stack build
-                delivered right on schedule. That&apos;s how it&apos;s done. Star developer right
-                here.&rdquo;
-              </p>
-              <footer className="mt-2 flex flex-wrap items-center gap-2 font-mono text-xs text-muted-foreground">
-                <a href="https://www.facebook.com/share/1JTbdKi3oe/" target="_blank" rel="noopener noreferrer" className="text-foreground underline-offset-4 hover:underline">
-                  Muhhamet Novruzov
-                </a>
-                <span>·</span>
-                <span>Cyprus</span>
-              </footer>
-            </blockquote>
-            <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
-              Both were website builds, not AI systems. I&apos;m not going to present them as
-              something they weren&apos;t.
-            </p>
-            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              What they do establish is the thing no screenshot on this page can: someone
-              working remotely from Algeria delivered on schedule, twice, for real businesses
-              in two countries. If that&apos;s the question you&apos;re actually asking — and
-              for a cross-border hire it usually is — that&apos;s the answer.
-            </p>
-            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              Happy to arrange a reference call. Ask on the call and I&apos;ll connect you
-              directly.
-            </p>
           </div>
         </section>
 
