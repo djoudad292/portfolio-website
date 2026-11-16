@@ -1,137 +1,44 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
 import { LeadCapture } from "@/components/lead-capture";
 
-import {
-  AUDIT_OFFER,
-  PRICE_ANCHOR,
-  PRICE_ANCHOR_NOTE,
-} from "@/lib/positioning";
+import { AUDIT_OFFER, PRICE_ANCHOR } from "@/lib/positioning";
 
 export const metadata: Metadata = {
   title:
-    "Djaouad Frih — AI Engineering for Systems That Need to Work in Production",
+    "Djaouad Frih — Measured AI Systems, Fixed Price",
   description:
-    "I build reliable AI-powered applications, agents, retrieval systems, and integrations — from architecture to deployment. White-label delivery for agencies, fixed price.",
+    "I build retrieval layers and agent loops that run on your existing Postgres estate and monolith, scored against your own documents before a single prompt is written. Fixed price. Full builds start at $3,500.",
   alternates: { canonical: "https://djaouad.is-a.dev" },
 };
 
 const primaryBtn =
   "rounded-xl bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-colors hover:opacity-90";
-const secondaryBtn =
-  "rounded-xl border border-border bg-card px-6 py-3.5 text-sm font-semibold transition-colors hover:border-primary";
-const chip =
-  "rounded-md border border-border bg-background px-2 py-1 font-mono text-[10px] transition-colors hover:border-primary hover:text-primary";
-
 const problems = [
   {
     t: "Your chatbot doesn't know your business.",
     b: "A demo answers from a prompt. Production answers from your data — with the source attached, a measured refusal rate, and a benchmark showing where it fails.",
   },
   {
-    t: "You can't hire the capability.",
-    b: "AI skills are now the single hardest role to fill globally — 72% of 39,000 employers across 41 countries report difficulty, and AI skills overtook engineering and IT. (ManpowerGroup, 26 Feb 2026)",
-  },
-  {
     t: "Your pilot works in the demo and breaks on real traffic.",
     b: "Real systems need tool-calling loops that terminate, arguments validated before they execute, retrieval measured against a goldset, and a human escalation path with the conversation attached.",
-  },
-  {
-    t: "You can't tell whether your vendor's AI actually works.",
-    b: "Ask for the eval suite, the refusal rate, the latency distribution and the failure list. If a supplier can't produce them, they haven't measured their system.",
-  },
-];
-
-const offers = [
-  {
-    label: "Free entry offer",
-    title: "AI Reliability Audit",
-    price: AUDIT_OFFER.price,
-    who: "Teams shipping AI features who need an independent check before launch.",
-    bullets: [
-      "Precision/recall/F1 against a goldset built from your corpus",
-      "Refusal rate on out-of-scope questions",
-      "Citation correctness",
-      "p50 / p95 latency and token cost",
-      "Server-side authorization review",
-    ],
-    not: AUDIT_OFFER.terms,
-    cta: "Run the audit →",
-    href: "/ai-reliability-audit",
-  },
-  {
-    label: "Primary offer",
-    title: "Scoped Build",
-    price: PRICE_ANCHOR,
-    who: "Mid-market teams with a real AI feature ready to ship.",
-    bullets: [
-      "Production-ready code in your repo, with documentation",
-      "Retrieval benchmarked against a goldset you approve",
-      "Source handed over with a handover call",
-      "Severity-tagged eval dataset gates each deploy",
-      "Fixed price, scoped change orders only",
-    ],
-    not: PRICE_ANCHOR_NOTE,
-    cta: "Scope a build →",
-    href: "/contact?for=build",
-  },
-  {
-    label: "For agencies",
-    title: "White-Label Delivery Capacity",
-    price: "Fixed price, after the free audit",
-    who: "Software and product agencies with signed AI/RAG work and no one to deliver it.",
-    bullets: [
-      "Production-ready code in your repo or mine, with documentation",
-      "Retrieval benchmarked against a goldset you approve",
-      "Source handed over with a handover call",
-      "Weeklies at your cadence, not mine",
-      "Fixed price, milestone-based",
-    ],
-    not: "Not a SaaS subscription. Not a template.",
-    cta: "Bring capacity to your agency →",
-    href: "/for-agencies",
   },
 ];
 
 const work = [
   {
-    name: "WhatsApp CRM / ERP",
-    desc: "Agent reads WhatsApp, checks real stock, creates orders — behind human approval gates with an audit trail.",
-    url: "https://crm.djaouad.is-a.dev/try",
-    img: "/shots/kit-crm-erp.png",
-    repo: "https://github.com/djoudad292/ai-whatsapp-crm-erp",
-    label: "Built and operated by me",
-    limit: "No customer. No published agent benchmark — 2 committed test files.",
-  },
-  {
     name: "AI Receptionist",
     desc: "Answers questions, books appointments & captures leads from your own docs. 232-query retrieval benchmark.",
     url: "https://chat.djaouad.is-a.dev",
-    img: "/shots/kit-receptionist.png",
     repo: "https://github.com/djoudad292/ai-virtual-receptionist",
-    apk: "https://github.com/djoudad292/ai-virtual-receptionist/releases/download/latest-apk-receptionist/ai-receptionist.apk",
     label: "Built and operated by me",
     limit: "Single-tenant, single-language. FPR 76.9% at the F1-optimal threshold.",
-  },
-  {
-    name: "PDF Workspace",
-    desc: "Ask your contracts, invoices & PDFs. Answers with sources, and the retrieval mode that produced each one.",
-    url: "https://docs.djaouad.is-a.dev",
-    img: "/shots/kit-pdf-workspace.png",
-    repo: "https://github.com/djoudad292/smart-pdf-workspace",
-    apk: "https://github.com/djoudad292/smart-pdf-workspace/releases/download/latest-apk-pdf/smart-pdf.apk",
-    label: "Built and operated by me",
-    limit: "Text layer only, no OCR. No published retrieval benchmark.",
   },
   {
     name: "Support Agent",
     desc: "Handles support, creates tickets & escalates to humans — schema-validated tool calls.",
     url: "https://customer.djaouad.is-a.dev",
-    img: "/shots/kit-support-agent.png",
     repo: "https://github.com/djoudad292/ai-customer-support-agent",
-    apk: "https://github.com/djoudad292/ai-customer-support-agent/releases/download/latest-apk/ai-customer-support.apk",
     label: "Built and operated by me",
     limit: "No published retrieval benchmark. 2 committed test files.",
   },
@@ -141,41 +48,6 @@ const credibility = [
   { label: "AI support agent — live result", value: "~92% of support questions handled by AI, ~25 hours saved per week, 0 missed bookings" },
   { label: "AI virtual receptionist — live result", value: "24/7 lead capture, booking, and human handoff — running in production since August 2026" },
   { label: "Retrieval benchmark", value: "93.4% F1 on a 232-query goldset, every failing query published", href: "/benchmark" },
-  { label: "Public repositories", value: "Four live systems with public repositories and committed test suites" },
-  { label: "Codebase", value: "~24,000 lines of TypeScript across retrieval, agent, and application layers" },
-];
-
-const howIBuild = [
-  "Measure first. A retrieval + authorization audit runs on your documents and the scores are published before any code is written.",
-  "Scope with acceptance criteria. We write the spec, the goldset, and the deploy-gating severity tags together.",
-  "Build the loop. Retrieval + agent + application, tested against the goldset on every push.",
-  "Evaluate before ship. Precision/recall/F1, refusal rate, citation correctness, and latency/token cost are published with the build.",
-  "Hand over. Source, infra credentials, and a handover doc land in your repo; your team reruns the benchmark.",
-  "Defend the window. A scoped defect window, change orders only, no surprises.",
-];
-
-const processSteps = [
-  { step: "01", title: "Reliability audit", body: `${AUDIT_OFFER.duration}, scored against your documents. No call required first.` },
-  { step: "02", title: "Fixed-price scope", body: "The audit becomes a written spec with acceptance criteria and a deploy-gating eval." },
-  { step: "03", title: "Build at your cadence", body: "Weekly handoffs. Source in your repo. The benchmark is yours to rerun." },
-  { step: "04", title: "Handover + defect window", body: "Docs, credentials, and 30 days to find defects." },
-];
-
-const clients = [
-  {
-    name: "Bilal Kadri",
-    place: "United Kingdom",
-    quote:
-      "Great people, very good service. Made my website within 2 weeks in such a professional manner, very good communication skills — would highly recommend!",
-    href: "https://www.facebook.com/share/19Qx9MsT6b/",
-  },
-  {
-    name: "Muhhamet Novruzov",
-    place: "Cyprus",
-    quote:
-      "Huge shout-out to Djaouad! Complete, fully functional full-stack build delivered right on schedule. That's how it's done. Star developer right here.",
-    href: "https://www.facebook.com/share/1JTbdKi3oe/",
-  },
 ];
 
 const dontDo = [
@@ -205,68 +77,33 @@ export default function Home() {
       <div className="relative mx-auto max-w-4xl px-6">
 
         <section className="pt-20 pb-16">
-          <div className="grid gap-8 items-start sm:grid-cols-2 sm:gap-12">
-            <div className="max-w-lg">
-              <span className="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider">
-                MEASURED AI SYSTEMS · FIXED PRICE · NO HOURLY SURPRISES
-              </span>
+          <div className="max-w-lg">
+            <span className="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider">
+              MEASURED AI SYSTEMS · FIXED PRICE · NO HOURLY SURPRISES
+            </span>
 
-              <h1 className="mt-6 font-display text-4xl leading-[1.04] tracking-tight sm:text-5xl">
-                Your AI support agent should be measured before you trust it. I build it that way.
-              </h1>
+            <h1 className="mt-6 font-display text-4xl leading-[1.04] tracking-tight sm:text-5xl">
+              Your AI support agent should be measured before you trust it. I build it that way.
+            </h1>
 
-              <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-                Djaouad Frih — I build retrieval layers and agent loops that run on your existing
-                Postgres estate and monolith, scored against your own documents before a single
-                prompt is written. Fixed price. {PRICE_ANCHOR}.
+            <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+              I build retrieval layers and agent loops that run on your existing Postgres estate
+              and monolith, scored against your own documents before a single prompt is written.
+              Fixed price. {PRICE_ANCHOR}.
+            </p>
+
+            <div className="mt-8 flex flex-col gap-3">
+              <Link href="/ai-reliability-audit" className={primaryBtn}>
+                Get the free reliability audit →
+              </Link>
+              <p className="font-mono text-xs text-muted-foreground">
+                One week, target. Scored against your documents. No call required first.
+                Failures are published alongside the scores.
               </p>
-
-              <div className="mt-8 flex flex-col gap-3">
-                <Link href="/ai-reliability-audit" className={primaryBtn}>
-                  Get the free reliability audit →
-                </Link>
-                <p className="font-mono text-xs text-muted-foreground">
-                  One week, target. Scored against your documents. No call required first.
-                  Failures are published alongside the scores.
-                </p>
-
-                <Link href="/benchmark" className={secondaryBtn}>
-                  See the public retrieval benchmark →
-                </Link>
-                <p className="font-mono text-xs text-muted-foreground">
-                  232 labelled queries, a committed goldset, the failing cases published, and a
-                  one-command re-run. If my numbers don't match yours, that's a finding.
-                </p>
-              </div>
-
-              <p className="mt-8 font-mono text-xs text-muted-foreground">Remote · serves EU and US-East clients during overlapping business hours.</p>
             </div>
 
-            <div className="flex justify-center">
-              <Image
-                src="/djaouad-photo.jpg"
-                alt="Djaouad Frih"
-                width={1211}
-                height={1299}
-                className="w-44 h-44 shrink-0 rounded-full object-cover border border-border"
-              />
-            </div>
+            <p className="mt-8 font-mono text-xs text-muted-foreground">Remote · serves EU and US-East clients during overlapping business hours.</p>
           </div>
-        </section>
-
-        <section className="pb-16">
-          <p className="max-w-2xl text-pretty leading-relaxed text-muted-foreground">
-            I'm Djaouad. I build the retrieval layer and the agent loop that sits on top of
-            it, plus the production application around the two. The thread through every build
-            is measurement: a benchmark before the first prompt is written, an eval suite that
-            ships in CI, and a handover that leaves you able to rerun both.
-          </p>
-          <p className="mt-6 max-w-2xl text-pretty leading-relaxed text-muted-foreground">
-            I work fixed-price on scoped work — the kind where the spec is written down and
-            the refusal rate is measured against your own documents. If the honest answer is
-            that an existing tool or a subscription solves your problem, I'll tell you that
-            first.
-          </p>
         </section>
 
         <section id="problems" className="pb-16">
@@ -285,127 +122,8 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="offers" className="pb-16">
-          <SectionHeading title="How we work together" />
-          <div className="grid gap-5 sm:grid-cols-3">
-            {offers.map((o, i) => {
-              const emphasised = i === 0;
-              return (
-                <div
-                  key={o.title}
-                  className={
-                    "flex flex-col rounded-2xl border p-6 " +
-                    (emphasised
-                      ? "border-primary/60 bg-card shadow-[0_0_40px_-12px] shadow-primary/30"
-                      : "border-border bg-card")
-                  }
-                >
-                  <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
-                    {o.label}
-                  </span>
-                  <h3 className="mt-2 font-display text-xl tracking-tight">{o.title}</h3>
-                  <p className="mt-1 font-mono text-sm text-muted-foreground">{o.price}</p>
-                  <p className="mt-2 text-xs text-muted-foreground">{o.who}</p>
-                  <ul className="mt-4 list-disc list-inside space-y-1.5 pl-1 text-sm">
-                    {o.bullets.map((b) => (
-                      <li key={b} className="leading-snug text-muted-foreground">
-                        {b}
-                      </li>
-                    ))}
-                  </ul>
-                  <p className="mt-4 text-xs text-muted-foreground">{o.not}</p>
-                  <Link href={o.href} className={secondaryBtn + " mt-auto"}>
-                    {o.cta}
-                  </Link>
-                </div>
-              );
-            })}
-          </div>
-        </section>
-
-        <section id="work" className="pb-16">
-          <SectionHeading title="Selected work" />
-          <p className="mb-6 font-mono text-xs text-muted-foreground">
-            Systems I built and operate. Each one demonstrates a specific capability — retrieval,
-            agent tool-calling, multi-tenancy, human handoff — and each states what it cannot do,
-            because a page that only lists strengths is a page you have learned to distrust.
-          </p>
-          <div className="grid gap-5 sm:grid-cols-2">
-            {work.map((w) => (
-              <div
-                key={w.name}
-                className="group relative overflow-hidden rounded-2xl border border-border bg-card transition-colors hover:border-primary"
-              >
-                <span className="absolute top-3 left-3 rounded-md border border-border bg-background px-2 py-1 font-mono text-[10px]">
-                  {w.label}
-                </span>
-                <a href={w.url} target="_blank" rel="noopener noreferrer">
-                  <Image
-                    src={w.img}
-                    alt={w.name}
-                    width={1200}
-                    height={675}
-                    className="aspect-video w-full object-cover object-top"
-                  />
-                </a>
-                <div className="p-5 pt-4">
-                  <div className="flex items-center justify-between gap-2">
-                    <a
-                      href={w.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="font-display text-base tracking-tight group-hover:text-primary"
-                    >
-                      {w.name}
-                    </a>
-                    <ArrowUpRight className="h-4 w-4 shrink-0 text-muted-foreground group-hover:text-primary" />
-                  </div>
-                  <p className="mt-1 text-xs leading-snug text-muted-foreground">{w.desc}</p>
-                  <p className="mt-1 font-mono text-[10px] text-muted-foreground">{w.limit}</p>
-                  <div className="mt-3 flex gap-2 font-mono text-[10px]">
-                    <a
-                      href={w.repo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={chip}
-                    >
-                      code
-                    </a>
-                    {w.apk && (
-                      <a
-                        href={w.apk}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={chip}
-                      >
-                        android ↓
-                      </a>
-                    )}
-                  </div>
-                </div>
-              </div>
-            ))}
-            <div className="rounded-2xl border border-border bg-card p-6">
-              <h3 className="font-display text-xl tracking-tight">
-                More work &amp; the benchmark
-              </h3>
-              <p className="mt-2 text-sm text-muted-foreground">
-                More of my projects and the public retrieval benchmark.
-              </p>
-              <div className="mt-4 flex flex-wrap gap-3">
-                <Link href="/work" className={secondaryBtn}>
-                  View work →
-                </Link>
-                <Link href="/benchmark" className={chip}>
-                  benchmark →
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-
         <section id="credibility" className="pb-16">
-          <SectionHeading title="The parts you can open" />
+          <SectionHeading title="What I can show you" />
           <dl className="grid gap-4 sm:grid-cols-[auto_1fr] sm:gap-6">
             {credibility.map((c) => (
               <div key={c.label} className="grid gap-1">
@@ -427,68 +145,44 @@ export default function Home() {
               </div>
             ))}
           </dl>
-          <ol className="mt-10 list-decimal list-outside space-y-3 pl-4 text-sm leading-relaxed text-muted-foreground">
-            {howIBuild.map((s) => (
-              <li key={s}>{s}</li>
-            ))}
-          </ol>
         </section>
 
-        <section id="process" className="pb-16">
-          <SectionHeading title="How an engagement runs" />
-          <ol className="grid gap-6 sm:grid-cols-2">
-            {processSteps.map((p) => (
-              <li key={p.step} className="rounded-2xl border border-border bg-card p-6">
-                <span className="font-mono text-xs text-muted-foreground">
-                  {p.step}
-                </span>
-                <h3 className="mt-2 font-display text-xl tracking-tight">{p.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  {p.body}
-                </p>
-              </li>
-            ))}
-          </ol>
-          <p className="mt-10 font-mono text-xs text-muted-foreground">
-            Audit one week, target · scoped build 3–6 weeks · production system 6–12 weeks.
-          </p>
-          <p className="mt-2 font-mono text-[10px] text-muted-foreground">
-            Every inquiry gets a reply within one business day — including "this isn't for
-            you".
-          </p>
-        </section>
-
-        <section id="clients" className="pb-16">
-          <SectionHeading title="What clients actually hired me for" />
+        <section id="work" className="pb-16">
+          <SectionHeading title="Selected work" />
           <p className="mb-6 font-mono text-xs text-muted-foreground">
-            Both were full-stack delivery engagements, not AI systems. I say that plainly
-            rather than dressing them up. What they establish is remote delivery on schedule,
-            twice, for real businesses in two countries — the part a cross-border buyer is
-            actually asking about. My AI systems carry the same measurement standard:
-            benchmark, eval suite, handover doc.
+            Systems I built and operate. Each one states what it cannot do, because a page that
+            only lists strengths is a page you have learned to distrust.
           </p>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {clients.map((c) => (
-              <blockquote key={c.href} className="rounded-2xl border border-border bg-card p-6">
-                <p className="leading-relaxed text-foreground">
-                  &ldquo;{c.quote}&rdquo;
-                </p>
-                <footer className="mt-4">
-                  <a
-                    href={c.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-mono text-xs text-muted-foreground hover:text-primary"
-                  >
-                    {c.name} · {c.place}
-                  </a>
-                </footer>
-              </blockquote>
+          <div className="grid gap-5 sm:grid-cols-2">
+            {work.map((w) => (
+              <div
+                key={w.name}
+                className="rounded-2xl border border-border bg-card p-6"
+              >
+                <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+                  {w.label}
+                </span>
+                <a
+                  href={w.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-2 block font-display text-base tracking-tight group-hover:text-primary"
+                >
+                  {w.name}
+                </a>
+                <p className="mt-1 text-xs leading-snug text-muted-foreground">{w.desc}</p>
+                <p className="mt-1 font-mono text-[10px] text-muted-foreground">{w.limit}</p>
+                <a
+                  href={w.repo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-3 inline-block rounded-md border border-border bg-background px-2 py-1 font-mono text-[10px] transition-colors hover:border-primary hover:text-primary"
+                >
+                  code
+                </a>
+              </div>
             ))}
           </div>
-          <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
-            Happy to arrange a reference call — ask on the call and I'll connect you directly.
-          </p>
         </section>
 
         <section id="dont" className="pb-16">
@@ -518,13 +212,6 @@ export default function Home() {
             </Link>
           </div>
           <div className="mt-8 flex items-center gap-4 rounded-2xl border border-border bg-card p-4">
-            <Image
-              src="/djaouad-logo-trimmed.png"
-              alt="Djaouad Frih"
-              width={362}
-              height={357}
-              className="h-14 w-14 shrink-0 object-contain brightness-[1.25] saturate-[1.15]"
-            />
             <div className="min-w-0">
               <p className="font-display text-lg tracking-tight">
                 Djaouad Frih<span className="text-primary">.</span>
@@ -545,7 +232,7 @@ export default function Home() {
                 href={s.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={chip}
+                className="rounded-md border border-border bg-background px-2 py-1 font-mono text-[10px] transition-colors hover:border-primary hover:text-primary"
               >
                 {s.name}
               </a>
