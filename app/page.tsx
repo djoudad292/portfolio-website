@@ -109,7 +109,7 @@ function SectionHeading({ title, id }: { title: string; id?: string }) {
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen overflow-hidden text-foreground">
+    <main className="relative min-h-screen text-foreground">
       <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
 
         <section className="pt-16 sm:pt-20 pb-12 sm:pb-16">

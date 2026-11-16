@@ -89,7 +89,7 @@ const delivered = [
 
 export default function AiReliabilityAuditPage() {
   return (
-    <main className="relative min-h-screen overflow-hidden text-foreground">
+    <main className="relative min-h-screen text-foreground">
       <div className="relative mx-auto max-w-4xl px-6">
 
         <section className="pt-28 pb-16">

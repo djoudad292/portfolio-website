@@ -58,7 +58,7 @@ export default function ContactPage() {
   }
 
   return (
-    <main className="relative min-h-screen overflow-hidden text-foreground">
+    <main className="relative min-h-screen text-foreground">
       <div className="mx-auto max-w-3xl px-6 py-20">
         <SectionHeading
           index="0"

@@ -38,7 +38,7 @@ const boundaries = [
 
 export default function AiAgentsPage() {
   return (
-    <main className="relative min-h-screen overflow-hidden text-foreground">
+    <main className="relative min-h-screen text-foreground">
       <div className="relative mx-auto max-w-4xl px-6">
         <section className="pt-28 pb-16">
           <p className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/10 px-4 py-1.5 font-mono text-xs tracking-wide text-primary">

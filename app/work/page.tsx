@@ -67,7 +67,7 @@ const cases = [
 
 export default function WorkPage() {
   return (
-    <main className="relative min-h-screen overflow-hidden text-foreground">
+    <main className="relative min-h-screen text-foreground">
       <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
 
         <section className="pt-20 sm:pt-28 pb-12 sm:pb-16">
