@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ExternalLink, Github, Download } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Work · Measured AI Systems | Djaouad Frih",
@@ -108,7 +109,7 @@ export default function WorkPage() {
                   rel="noopener noreferrer"
                   className={chip}
                 >
-                  try it
+                  <ExternalLink className="h-3 w-3 shrink-0 mr-1" /> try it
                 </a>
                 <a
                   href={c.repo}
@@ -116,7 +117,7 @@ export default function WorkPage() {
                   rel="noopener noreferrer"
                   className={chip}
                 >
-                  code
+                  <Github className="h-3 w-3 shrink-0 mr-1" /> code
                 </a>
                 {c.apk && (
                   <a
@@ -125,7 +126,7 @@ export default function WorkPage() {
                     rel="noopener noreferrer"
                     className={chip}
                   >
-                    android ↓
+                    <Download className="h-3 w-3 shrink-0 mr-1" /> android
                   </a>
                 )}
               </div>

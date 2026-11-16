@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ExternalLink, Github, Download } from "lucide-react";
 import { LeadCapture } from "@/components/lead-capture";
 
 import { AUDIT_OFFER, PRICE_ANCHOR } from "@/lib/positioning";
@@ -216,7 +217,7 @@ export default function Home() {
                     rel="noopener noreferrer"
                     className={chip}
                   >
-                    try it
+                    <ExternalLink className="h-3 w-3 shrink-0 mr-1" /> try it
                   </a>
                   <a
                     href={w.repo}
@@ -224,7 +225,7 @@ export default function Home() {
                     rel="noopener noreferrer"
                     className={chip}
                   >
-                    code
+                    <Github className="h-3 w-3 shrink-0 mr-1" /> code
                   </a>
                   {w.apk && (
                     <a
@@ -233,7 +234,7 @@ export default function Home() {
                       rel="noopener noreferrer"
                       className={chip}
                     >
-                      android ↓
+                      <Download className="h-3 w-3 shrink-0 mr-1" /> android
                     </a>
                   )}
                 </div>
@@ -291,6 +292,8 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="rounded-md border border-border bg-background px-2 py-1 font-mono text-[10px] transition-colors hover:border-primary hover:text-primary"
               >
+                {s.name === "GitHub" ? <Github className="h-3 w-3 shrink-0 mr-1" /> : null}
+                {s.name === "LinkedIn" ? <ExternalLink className="h-3 w-3 shrink-0 mr-1" /> : null}
                 {s.name}
               </a>
             ))}

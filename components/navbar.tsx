@@ -4,13 +4,13 @@ import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { AnimatePresence, motion } from "framer-motion"
-import { Menu, Sparkles, X } from "lucide-react"
+import { Menu, Sparkles, X, Briefcase, Rocket, Target } from "lucide-react"
 import { CommandPalette } from "@/components/command-palette"
 
 const navLinks = [
-  { href: "/#work", label: "Work" },
-  { href: "/hire-ai-developer", label: "What I Build" },
-  { href: "/ai-reliability-audit", label: "Free Audit" },
+  { href: "/#work", label: "Work", icon: Briefcase },
+  { href: "/hire-ai-developer", label: "What I Build", icon: Rocket },
+  { href: "/ai-reliability-audit", label: "Free Audit", icon: Target },
 ]
 
 export function Navbar() {
@@ -52,8 +52,9 @@ export function Navbar() {
             <li key={link.href}>
               <a
                 href={link.href}
-                className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                className="flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
               >
+                <link.icon className="h-3.5 w-3.5 shrink-0" />
                 {link.label}
               </a>
             </li>
@@ -66,6 +67,7 @@ export function Navbar() {
               href="/contact"
               className="inline-flex items-center rounded-full bg-primary px-5 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
             >
+              <Rocket className="h-3.5 w-3.5 shrink-0 mr-2" />
               Start a Project
             </a>
           </li>
@@ -98,8 +100,9 @@ export function Navbar() {
                   <a
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className="block px-3 py-3 text-sm text-muted-foreground hover:text-foreground"
+                    className="flex items-center gap-2 block px-3 py-3 text-sm text-muted-foreground hover:text-foreground"
                   >
+                    <link.icon className="h-3.5 w-3.5 shrink-0" />
                     {link.label}
                   </a>
                 </li>
@@ -131,6 +134,7 @@ export function Navbar() {
                 onClick={() => setIsOpen(false)}
                 className="inline-flex min-h-11 w-full items-center justify-center rounded-full bg-primary px-5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
               >
+                <Rocket className="h-3.5 w-3.5 shrink-0 mr-2" />
                 Start a project
               </a>
             </div>
