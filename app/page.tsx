@@ -278,6 +278,20 @@ export default function Home() {
           </div>
         </section>
 
+        <section id="case-study" className="pb-10 sm:pb-14">
+          <div className="rounded-2xl border border-border bg-card p-4 sm:p-6">
+            <SectionHeading title="Case studies" />
+            <p className="text-sm sm:text-base leading-relaxed text-muted-foreground">
+              I don't have a public client case study yet — and I won't fabricate one. The free reliability audit is how I get one: measured on your documents first, scored against a goldset you approve, and the fee comes off any build that follows. The case study is the by-product.
+            </p>
+            <div className="mt-4 sm:mt-5">
+              <Link href="/ai-reliability-audit" className={primaryBtn}>
+                Start with the free audit →
+              </Link>
+            </div>
+          </div>
+        </section>
+
         <section id="faq" className="pb-10 sm:pb-14">
           <SectionHeading title="Frequently asked questions" />
           <div className="grid gap-3 sm:gap-4">
