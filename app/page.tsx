@@ -42,6 +42,30 @@ const work = [
     label: "Built and operated by me",
     limit: "No published retrieval benchmark. 2 committed test files.",
   },
+  {
+    name: "WhatsApp CRM / ERP",
+    desc: "Agent reads WhatsApp, checks real stock, creates orders — behind human approval gates with an audit trail.",
+    url: "https://crm.djaouad.is-a.dev/try",
+    repo: "https://github.com/djoudad292/ai-whatsapp-crm-erp",
+    label: "Built and operated by me",
+    limit: "Human approval gates on every write — no unsupervised agent actions on inventory.",
+  },
+  {
+    name: "Smart PDF Workspace",
+    desc: "Ask your contracts, invoices & PDFs. Answers with sources, and the retrieval mode that produced each one.",
+    url: "https://docs.djaouad.is-a.dev",
+    repo: "https://github.com/djoudad292/smart-pdf-workspace",
+    label: "Built and operated by me",
+    limit: "Text layer only — no OCR. Scanned documents are refused rather than guessed at.",
+  },
+  {
+    name: "HireMe MCP Server",
+    desc: "MCP server exposing profile, projects and pricing so AI assistants can vet your work and file a brief.",
+    url: "https://mcp.djaouad.is-a.dev/mcp",
+    repo: "https://github.com/djoudad292/hireme-mcp",
+    label: "Built and operated by me",
+    limit: "Protocol tooling, not a client system — demonstrates MCP competence, not delivery volume.",
+  },
 ];
 
 const credibility = [

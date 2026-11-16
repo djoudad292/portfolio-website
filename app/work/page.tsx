@@ -28,6 +28,27 @@ const cases = [
     url: "https://customer.djaouad.is-a.dev",
     repo: "https://github.com/djoudad292/ai-customer-support-agent",
   },
+  {
+    name: "WhatsApp CRM / ERP",
+    desc: "Agent reads WhatsApp messages, checks real stock, and creates orders — behind human approval gates with an audit trail.",
+    outcome: "Side-effecting actions on inventory run under human approval, so a wrong agent action can't reach production.",
+    url: "https://crm.djaouad.is-a.dev/try",
+    repo: "https://github.com/djoudad292/ai-whatsapp-crm-erp",
+  },
+  {
+    name: "Smart PDF Workspace",
+    desc: "Ask your contracts, invoices & PDFs. Answers with sources, and the retrieval mode that produced each one.",
+    outcome: "Document Q&A with cited sources — every answer traces back to the document it came from.",
+    url: "https://docs.djaouad.is-a.dev",
+    repo: "https://github.com/djoudad292/smart-pdf-workspace",
+  },
+  {
+    name: "HireMe MCP Server",
+    desc: "MCP server that exposes your profile, projects, and pricing so AI assistants can vet your work and file a brief without a human in the loop.",
+    outcome: "Protocol-level tool surface — read tools plus one rate-limited write for brief submission.",
+    url: "https://mcp.djaouad.is-a.dev/mcp",
+    repo: "https://github.com/djoudad292/hireme-mcp",
+  },
 ];
 
 export default function WorkPage() {
