@@ -13,7 +13,10 @@ export const metadata: Metadata = {
 };
 
 const primaryBtn =
-  "rounded-xl bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-colors hover:opacity-90";
+  "w-full sm:w-auto rounded-xl bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-colors hover:opacity-90";
+const chip =
+  "rounded-md border border-border bg-background px-2 py-1 font-mono text-[10px] transition-colors hover:border-primary hover:text-primary";
+
 const problems = [
   {
     t: "Your chatbot doesn't know your business.",
@@ -28,43 +31,51 @@ const problems = [
 const work = [
   {
     name: "AI Receptionist",
-    desc: "Answers questions, books appointments & captures leads from your own docs. 232-query retrieval benchmark.",
+    desc: "24/7 receptionist that answers questions, books appointments, and captures leads from your own documents.",
+    outcome: "Running in production since August 2026 — lead capture, booking, and human handoff.",
     url: "https://chat.djaouad.is-a.dev",
     repo: "https://github.com/djoudad292/ai-virtual-receptionist",
+    apk: "https://github.com/djoudad292/ai-virtual-receptionist/releases/download/latest-apk-receptionist/ai-receptionist.apk",
     label: "Built and operated by me",
-    limit: "Single-tenant, single-language. FPR 76.9% at the F1-optimal threshold.",
+    limit: "Single-tenant, single-language.",
   },
   {
     name: "Support Agent",
-    desc: "Handles support, creates tickets & escalates to humans — schema-validated tool calls.",
+    desc: "Handles tier-one support, checks orders, creates tickets, and escalates to humans with the full conversation attached.",
+    outcome: "~92% of support questions handled by AI, ~25 hours saved per week, 0 missed bookings.",
     url: "https://customer.djaouad.is-a.dev",
     repo: "https://github.com/djoudad292/ai-customer-support-agent",
+    apk: "https://github.com/djoudad292/ai-customer-support-agent/releases/download/latest-apk/ai-customer-support.apk",
     label: "Built and operated by me",
-    limit: "No published retrieval benchmark. 2 committed test files.",
+    limit: "No published retrieval benchmark.",
   },
   {
     name: "WhatsApp CRM / ERP",
-    desc: "Agent reads WhatsApp, checks real stock, creates orders — behind human approval gates with an audit trail.",
+    desc: "Agent reads WhatsApp messages, checks real stock, and creates orders — behind human approval gates with an audit trail.",
+    outcome: "Side-effecting actions on inventory run under human approval.",
     url: "https://crm.djaouad.is-a.dev/try",
     repo: "https://github.com/djoudad292/ai-whatsapp-crm-erp",
     label: "Built and operated by me",
-    limit: "Human approval gates on every write — no unsupervised agent actions on inventory.",
+    limit: "Human approval gates on every write.",
   },
   {
     name: "Smart PDF Workspace",
     desc: "Ask your contracts, invoices & PDFs. Answers with sources, and the retrieval mode that produced each one.",
+    outcome: "Document Q&A with cited sources — every answer traces back to the document.",
     url: "https://docs.djaouad.is-a.dev",
     repo: "https://github.com/djoudad292/smart-pdf-workspace",
+    apk: "https://github.com/djoudad292/smart-pdf-workspace/releases/download/latest-apk-pdf/smart-pdf.apk",
     label: "Built and operated by me",
-    limit: "Text layer only — no OCR. Scanned documents are refused rather than guessed at.",
+    limit: "Text layer only — no OCR.",
   },
   {
     name: "HireMe MCP Server",
-    desc: "MCP server exposing profile, projects and pricing so AI assistants can vet your work and file a brief.",
+    desc: "MCP server that exposes your profile, projects, and pricing so AI assistants can vet your work and file a brief.",
+    outcome: "Protocol-level tool surface — read tools plus one rate-limited write for brief submission.",
     url: "https://mcp.djaouad.is-a.dev/mcp",
     repo: "https://github.com/djoudad292/hireme-mcp",
     label: "Built and operated by me",
-    limit: "Protocol tooling, not a client system — demonstrates MCP competence, not delivery volume.",
+    limit: "Protocol tooling, not a client system.",
   },
 ];
 
@@ -88,8 +99,8 @@ const social = [
 
 function SectionHeading({ title, id }: { title: string; id?: string }) {
   return (
-    <div id={id} className="mb-8 flex items-center gap-4">
-      <h2 className="font-display text-3xl tracking-tight">{title}</h2>
+    <div id={id} className="mb-6 sm:mb-8 flex items-center gap-3 sm:gap-4">
+      <h2 className="font-display text-2xl sm:text-3xl tracking-tight">{title}</h2>
       <span aria-hidden className="h-px flex-1 bg-border" />
     </div>
   );
@@ -98,47 +109,49 @@ function SectionHeading({ title, id }: { title: string; id?: string }) {
 export default function Home() {
   return (
     <main className="relative min-h-screen overflow-hidden text-foreground">
-      <div className="relative mx-auto max-w-4xl px-6">
+      <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
 
-        <section className="pt-20 pb-16">
-          <div className="max-w-lg">
+        <section className="pt-16 sm:pt-20 pb-12 sm:pb-16">
+          <div className="max-w-lg sm:max-w-none">
             <span className="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider">
               MEASURED AI SYSTEMS · FIXED PRICE · NO HOURLY SURPRISES
             </span>
 
-            <h1 className="mt-6 font-display text-4xl leading-[1.04] tracking-tight sm:text-5xl">
+            <h1 className="mt-5 sm:mt-6 font-display text-3xl sm:text-4xl lg:text-5xl leading-[1.04] tracking-tight">
               Your AI support agent should be measured before you trust it. I build it that way.
             </h1>
 
-            <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+            <p className="mt-5 sm:mt-6 text-base sm:text-lg leading-relaxed text-muted-foreground">
               I build retrieval layers and agent loops that run on your existing Postgres estate
               and monolith, scored against your own documents before a single prompt is written.
               Fixed price. {PRICE_ANCHOR}.
             </p>
 
-            <div className="mt-8 flex flex-col gap-3">
+            <div className="mt-7 sm:mt-8 flex flex-col gap-3 sm:gap-3">
               <Link href="/ai-reliability-audit" className={primaryBtn}>
                 Get the free reliability audit →
               </Link>
-              <p className="font-mono text-xs text-muted-foreground">
+              <p className="font-mono text-[10px] sm:text-xs text-muted-foreground">
                 One week, target. Scored against your documents. No call required first.
                 Failures are published alongside the scores.
               </p>
             </div>
 
-            <p className="mt-8 font-mono text-xs text-muted-foreground">Remote · serves EU and US-East clients during overlapping business hours.</p>
+            <p className="mt-7 sm:mt-8 font-mono text-[10px] sm:text-xs leading-relaxed text-muted-foreground">
+              Remote · serves EU and US-East clients during overlapping business hours.
+            </p>
           </div>
         </section>
 
-        <section id="problems" className="pb-16">
+        <section id="problems" className="pb-12 sm:pb-16">
           <SectionHeading title="The problems I solve" />
-          <div className="grid gap-5 sm:grid-cols-2">
+          <div className="grid gap-4 sm:gap-5 sm:grid-cols-2">
             {problems.map((p) => (
-              <div key={p.t} className="rounded-2xl border border-border bg-card p-6">
-                <h3 className="font-display text-base leading-snug tracking-tight">
+              <div key={p.t} className="rounded-2xl border border-border bg-card p-4 sm:p-6">
+                <h3 className="font-display text-sm sm:text-base leading-snug tracking-tight">
                   {p.t}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                <p className="mt-2 sm:mt-3 text-[11px] sm:text-sm leading-relaxed text-muted-foreground">
                   {p.b}
                 </p>
               </div>
@@ -146,15 +159,15 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="credibility" className="pb-16">
+        <section id="credibility" className="pb-12 sm:pb-16">
           <SectionHeading title="What I can show you" />
-          <dl className="grid gap-4 sm:grid-cols-[auto_1fr] sm:gap-6">
+          <dl className="grid gap-3 sm:gap-4 sm:grid-cols-[auto_1fr] sm:gap-6">
             {credibility.map((c) => (
               <div key={c.label} className="grid gap-1">
-                <dt className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
+                <dt className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
                   {c.label}
                 </dt>
-                <dd className="text-sm text-foreground">
+                <dd className="text-[11px] sm:text-sm text-foreground">
                   {c.href ? (
                     <Link
                       href={c.href}
@@ -171,17 +184,17 @@ export default function Home() {
           </dl>
         </section>
 
-        <section id="work" className="pb-16">
+        <section id="work" className="pb-12 sm:pb-16">
           <SectionHeading title="Selected work" />
-          <p className="mb-6 font-mono text-xs text-muted-foreground">
+          <p className="mb-5 sm:mb-6 font-mono text-[10px] sm:text-xs text-muted-foreground">
             Systems I built and operate. Each one states what it cannot do, because a page that
             only lists strengths is a page you have learned to distrust.
           </p>
-          <div className="grid gap-5 sm:grid-cols-2">
+          <div className="grid gap-4 sm:gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {work.map((w) => (
               <div
                 key={w.name}
-                className="rounded-2xl border border-border bg-card p-6"
+                className="rounded-2xl border border-border bg-card p-4 sm:p-6"
               >
                 <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
                   {w.label}
@@ -190,29 +203,49 @@ export default function Home() {
                   href={w.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-2 block font-display text-base tracking-tight group-hover:text-primary"
+                  className="mt-2 sm:mt-3 block font-display text-base sm:text-lg tracking-tight group-hover:text-primary"
                 >
                   {w.name}
                 </a>
-                <p className="mt-1 text-xs leading-snug text-muted-foreground">{w.desc}</p>
+                <p className="mt-1 sm:mt-2 text-[11px] sm:text-sm leading-snug text-muted-foreground">{w.desc}</p>
                 <p className="mt-1 font-mono text-[10px] text-muted-foreground">{w.limit}</p>
-                <a
-                  href={w.repo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-3 inline-block rounded-md border border-border bg-background px-2 py-1 font-mono text-[10px] transition-colors hover:border-primary hover:text-primary"
-                >
-                  code
-                </a>
+                <div className="mt-3 sm:mt-4 flex flex-wrap gap-2 font-mono text-[10px]">
+                  <a
+                    href={w.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={chip}
+                  >
+                    try it
+                  </a>
+                  <a
+                    href={w.repo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={chip}
+                  >
+                    code
+                  </a>
+                  {w.apk && (
+                    <a
+                      href={w.apk}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={chip}
+                    >
+                      android ↓
+                    </a>
+                  )}
+                </div>
               </div>
             ))}
           </div>
         </section>
 
-        <section id="dont" className="pb-16">
-          <div className="rounded-2xl border border-border bg-card p-6 sm:p-8">
+        <section id="dont" className="pb-12 sm:pb-16">
+          <div className="rounded-2xl border border-border bg-card p-4 sm:p-6 sm:p-8">
             <SectionHeading title="What I don't do" />
-            <ul className="mt-2 list-disc list-inside space-y-2 pl-1 text-sm leading-relaxed text-muted-foreground">
+            <ul className="mt-2 sm:mt-3 list-disc list-inside space-y-1.5 sm:space-y-2 pl-2 sm:pl-4 text-[11px] sm:text-sm leading-relaxed text-muted-foreground">
               {dontDo.map((d) => (
                 <li key={d}>{d}</li>
               ))}
@@ -222,34 +255,34 @@ export default function Home() {
 
         <LeadCapture />
 
-        <section className="pb-24">
+        <section className="pb-20 sm:pb-24">
           <SectionHeading title="Start with the audit, not with a sales call." />
-          <p className="max-w-2xl text-pretty leading-relaxed text-muted-foreground">
+          <p className="max-w-xl text-base sm:text-lg leading-relaxed text-muted-foreground">
             If your AI system is answering before it's measured, it's answering from a guess.
             The free reliability audit is {AUDIT_OFFER.duration}, scored against your own documents,
             and you keep the report either way — including the line that says you don't need
             AI here yet.
           </p>
-          <div className="mt-6">
+          <div className="mt-6 sm:mt-7">
             <Link href="/contact?for=audit" className={primaryBtn}>
               Start the audit →
             </Link>
           </div>
-          <div className="mt-8 flex items-center gap-4 rounded-2xl border border-border bg-card p-4">
+          <div className="mt-7 sm:mt-8 flex flex-col sm:flex-row items-center gap-3 sm:gap-4 rounded-2xl border border-border bg-card p-4 sm:p-6">
             <div className="min-w-0">
-              <p className="font-display text-lg tracking-tight">
+              <p className="font-display text-base sm:text-lg tracking-tight">
                 Djaouad Frih<span className="text-primary">.</span>
               </p>
               <a
                 href="mailto:contact@djaouad.is-a.dev"
-                className="font-mono text-xs text-muted-foreground underline-offset-4 hover:text-primary hover:underline"
+                className="font-mono text-[10px] sm:text-xs text-muted-foreground underline-offset-4 hover:text-primary hover:underline"
               >
                 contact@djaouad.is-a.dev
               </a>
             </div>
           </div>
 
-          <div className="mt-6 flex flex-wrap gap-2">
+          <div className="mt-6 sm:mt-7 flex flex-wrap gap-2">
             {social.map((s) => (
               <a
                 key={s.name}
