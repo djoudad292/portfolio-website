@@ -97,6 +97,11 @@ export default function CVPage() {
             <a href="https://www.linkedin.com/in/djaouad-frih" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 transition-colors hover:text-foreground"><Linkedin className="h-3.5 w-3.5 text-primary" />linkedin.com/in/djaouad-frih</a>
             <a href="https://djaouad.is-a.dev" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 transition-colors hover:text-foreground"><ArrowUpRight className="h-3.5 w-3.5 text-primary" />djaouad.is-a.dev</a>
           </div>
+          <p className="mt-4 font-mono text-xs text-muted-foreground">
+            This CV is a reference document. If you&rsquo;re looking to buy an AI system,
+            start at <a href="https://djaouad.is-a.dev" className="hover:text-primary">djaouad.is-a.dev</a>
+            — the free reliability audit is the entry point.
+          </p>
         </section>
 
         <section className="pb-20">
@@ -166,6 +171,26 @@ export default function CVPage() {
                   <li>Operated production-grade systems and databases under real traffic.</li>
                   <li>Delivered in agile teams, owning tasks end-to-end from breakdown to rollout.</li>
                 </ul>
+              </div>
+
+              <div className="rounded-2xl border border-border bg-card p-6">
+                <div className="flex flex-wrap items-baseline justify-between gap-2">
+                  <div>
+                    <h3 className="font-display text-2xl">Freelance Web &amp; Full-Stack Builds</h3>
+                    <p className="text-sm text-muted-foreground">Remote · UK, Cyprus</p>
+                  </div>
+                  <span className="font-mono text-xs text-muted-foreground">2025–2026</span>
+                </div>
+                <ul className="mt-4 list-inside list-disc space-y-1.5 text-sm text-muted-foreground">
+                  <li><strong>Bilal Kadri, UK</strong> — business website delivered in two weeks, professional delivery and communication throughout.</li>
+                  <li><strong>Muhhamet Novruzov, Cyprus</strong> — complete full-stack build delivered on schedule.</li>
+                </ul>
+                <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
+                  Both were website builds, not AI systems, and I say that plainly rather than
+                  presenting them as agent or retrieval work. What they establish is remote
+                  delivery on schedule, twice, for real businesses in two countries — the part
+                  a cross-border buyer is actually asking about. References available on request.
+                </p>
               </div>
             </Block>
 

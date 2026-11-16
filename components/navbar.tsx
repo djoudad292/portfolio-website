@@ -2,15 +2,15 @@
 
 import { useState, useEffect } from "react"
 import Image from "next/image"
+import Link from "next/link"
 import { AnimatePresence, motion } from "framer-motion"
 import { Menu, Sparkles, X } from "lucide-react"
 import { CommandPalette } from "@/components/command-palette"
 
 const navLinks = [
   { href: "/#work", label: "Work" },
-  { href: "/#services", label: "What I Build" },
-  { href: "/#how-it-works", label: "How It Works" },
-  { href: "/cv", label: "About" },
+  { href: "/hire-ai-developer", label: "What I Build" },
+  { href: "/ai-reliability-audit", label: "Free Audit" },
 ]
 
 export function Navbar() {
@@ -33,7 +33,7 @@ export function Navbar() {
       }`}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <a href="/#top" className="flex shrink-0 items-center gap-3">
+        <Link href="/#top" className="flex shrink-0 items-center gap-3">
           <Image
             src="/djaouad-logo-trimmed.png"
             alt="Djaouad Frih"
@@ -45,7 +45,7 @@ export function Navbar() {
           <span className="hidden font-display text-2xl tracking-tight text-foreground sm:inline">
             Djaouad Frih<span className="text-primary">.</span>
           </span>
-        </a>
+        </Link>
 
         <ul className="hidden items-center gap-8 md:flex">
           {navLinks.map((link) => (

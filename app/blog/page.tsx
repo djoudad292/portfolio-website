@@ -8,6 +8,14 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "pilot-to-production",
+    date: "2026-08-24",
+    readMin: 5,
+    title: "Why 80% of AI agent projects die in pilot — and how I ship in weeks",
+    excerpt:
+      "Most enterprises want AI agents; only a third have shipped one. The gap isn't model quality — it's deployment discipline. Here's the checklist I use to take agents from demo to production in 1–3 weeks.",
+  },
+  {
     slug: "portfolio-mcp-server",
     date: "2026-08-24",
     readMin: 6,

@@ -423,18 +423,18 @@ export default function WorkPage() {
         <section className="pb-24">
           <div className="rounded-2xl border border-border bg-card p-8 sm:p-10">
             <h2 className="font-display text-3xl tracking-tight">
-              The gap is client case studies, and I&apos;d rather name it than fill it with a logo wall.
+              What I don&apos;t have is a client AI case study. The audit is how I get one.
             </h2>
             <p className="mt-3 max-w-lg text-sm leading-relaxed text-muted-foreground">
-              Everything above is my own work. What I don&apos;t have is a public case study from
-              a paying client with agreed numbers — and two systems here have a benchmark
-              where I&apos;d rather publish the absence. That gap closes the only way it should:
-              by building something for someone and measuring it together. The{" "}
-              <Link href="/ai-reliability-audit" className="text-primary underline-offset-4 hover:underline">
-                free five-day audit
-              </Link>{" "}
-              is the front door: measured on your documents first, and the fee comes off any
-              build that follows.
+              Everything above is my own work, honestly labelled. What I don&apos;t have is a
+              public case study from a paying client with agreed numbers — and two systems here
+              have a benchmark where I&apos;d rather publish the absence than imply coverage.
+            </p>
+            <p className="mt-3 max-w-lg text-sm leading-relaxed text-muted-foreground">
+              That gap closes the only way it should: by building something for someone and
+              measuring it together. The free reliability audit is the front door — measured on
+              your documents first, scored against a goldset you approve, and the fee comes off
+              any build that follows. The case study is the by-product.
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <Link href="/contact?for=audit" className={primaryBtn}>

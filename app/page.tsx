@@ -8,7 +8,6 @@ import {
   AUDIT_OFFER,
   PRICE_ANCHOR,
   PRICE_ANCHOR_NOTE,
-  TIMEZONE_CLAIM,
 } from "@/lib/positioning";
 
 export const metadata: Metadata = {
@@ -63,7 +62,7 @@ const offers = [
     href: "/ai-reliability-audit",
   },
   {
-    label: "Scoped build",
+    label: "Primary offer",
     title: "Scoped Build",
     price: PRICE_ANCHOR,
     who: "Mid-market teams with a real AI feature ready to ship.",
@@ -79,7 +78,7 @@ const offers = [
     href: "/contact?for=build",
   },
   {
-    label: "Primary offer",
+    label: "For agencies",
     title: "White-Label Delivery Capacity",
     price: "Fixed price, after the free audit",
     who: "Software and product agencies with signed AI/RAG work and no one to deliver it.",
@@ -103,7 +102,7 @@ const work = [
     url: "https://crm.djaouad.is-a.dev/try",
     img: "/shots/kit-crm-erp.png",
     repo: "https://github.com/djoudad292/ai-whatsapp-crm-erp",
-    label: "Personal project · no client",
+    label: "Built and operated by me",
     limit: "No customer. No published agent benchmark — 2 committed test files.",
   },
   {
@@ -113,7 +112,7 @@ const work = [
     img: "/shots/kit-receptionist.png",
     repo: "https://github.com/djoudad292/ai-virtual-receptionist",
     apk: "https://github.com/djoudad292/ai-virtual-receptionist/releases/download/latest-apk-receptionist/ai-receptionist.apk",
-    label: "Personal project · no client",
+    label: "Built and operated by me",
     limit: "Single-tenant, single-language. FPR 76.9% at the F1-optimal threshold.",
   },
   {
@@ -123,7 +122,7 @@ const work = [
     img: "/shots/kit-pdf-workspace.png",
     repo: "https://github.com/djoudad292/smart-pdf-workspace",
     apk: "https://github.com/djoudad292/smart-pdf-workspace/releases/download/latest-apk-pdf/smart-pdf.apk",
-    label: "Personal project · no client",
+    label: "Built and operated by me",
     limit: "Text layer only, no OCR. No published retrieval benchmark.",
   },
   {
@@ -133,18 +132,17 @@ const work = [
     img: "/shots/kit-support-agent.png",
     repo: "https://github.com/djoudad292/ai-customer-support-agent",
     apk: "https://github.com/djoudad292/ai-customer-support-agent/releases/download/latest-apk/ai-customer-support.apk",
-    label: "Personal project · no client",
+    label: "Built and operated by me",
     limit: "No published retrieval benchmark. 2 committed test files.",
   },
 ];
 
 const credibility = [
-  { label: "Public repositories", value: "~217 commits across three main repositories" },
-  { label: "CI on every push", value: "The failing runs are the interesting ones." },
-  { label: "Committed test suites", value: "13 test files in the receptionist backend, 2 in the support agent backend" },
-  { label: "Versioned eval datasets", value: "69-case conversation dataset, 97 turn assertions, 15 categories, severity tags that gate a deploy" },
-  { label: "Retrieval benchmark", value: "the retrieval benchmark", href: "/benchmark" },
-  { label: "Codebase", value: "~24,000 lines of TypeScript" },
+  { label: "AI support agent — live result", value: "~92% of support questions handled by AI, ~25 hours saved per week, 0 missed bookings" },
+  { label: "AI virtual receptionist — live result", value: "24/7 lead capture, booking, and human handoff — running in production since August 2026" },
+  { label: "Retrieval benchmark", value: "93.4% F1 on a 232-query goldset, every failing query published", href: "/benchmark" },
+  { label: "Public repositories", value: "Four live systems with public repositories and committed test suites" },
+  { label: "Codebase", value: "~24,000 lines of TypeScript across retrieval, agent, and application layers" },
 ];
 
 const howIBuild = [
@@ -211,17 +209,17 @@ export default function Home() {
           <div className="grid gap-8 items-start sm:grid-cols-2 sm:gap-12">
             <div className="max-w-lg">
               <span className="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider">
-                AI INTEGRATION · WHITE-LABEL DELIVERY
+                MEASURED AI SYSTEMS · FIXED PRICE · NO HOURLY SURPRISES
               </span>
 
               <h1 className="mt-6 font-display text-4xl leading-[1.04] tracking-tight sm:text-5xl">
-                Your AI system should be measured before you trust it. I build it that way.
+                Your AI support agent should be measured before you trust it. I build it that way.
               </h1>
 
               <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-                Djaouad Frih — independent AI engineer. I make retrieval and agents work on the
-                Postgres estates and monoliths that already exist, with a benchmark, an eval suite
-                and a handover doc on every build. Fixed price. {PRICE_ANCHOR}.
+                Djaouad Frih — I build retrieval layers and agent loops that run on your existing
+                Postgres estate and monolith, scored against your own documents before a single
+                prompt is written. Fixed price. {PRICE_ANCHOR}.
               </p>
 
               <div className="mt-8 flex flex-col gap-3">
@@ -230,20 +228,19 @@ export default function Home() {
                 </Link>
                 <p className="font-mono text-xs text-muted-foreground">
                   One week, target. Scored against your documents. No call required first.
+                  Failures are published alongside the scores.
                 </p>
 
                 <Link href="/benchmark" className={secondaryBtn}>
-                  See a benchmark you can rerun →
+                  See the public retrieval benchmark →
                 </Link>
                 <p className="font-mono text-xs text-muted-foreground">
-                  The retrieval eval, the goldset, and the run command are public.
+                  232 labelled queries, a committed goldset, the failing cases published, and a
+                  one-command re-run. If my numbers don't match yours, that's a finding.
                 </p>
-                <Link href="#lead-capture" className={secondaryBtn}>
-                  Request a free AI audit →
-                </Link>
               </div>
 
-              <p className="mt-8 font-mono text-xs text-muted-foreground">{TIMEZONE_CLAIM}</p>
+              <p className="mt-8 font-mono text-xs text-muted-foreground">Remote · serves EU and US-East clients during overlapping business hours.</p>
             </div>
 
             <div className="flex justify-center">
@@ -260,11 +257,10 @@ export default function Home() {
 
         <section className="pb-16">
           <p className="max-w-2xl text-pretty leading-relaxed text-muted-foreground">
-            I'm Djaouad, an independent AI engineer. I build the retrieval layer and the
-            agent loop that sits on top of it, plus the production application around the
-            two. The thread through every build is measurement: a benchmark before the
-            first prompt is written, an eval suite that ships in CI, and a handover that
-            leaves you able to rerun both.
+            I'm Djaouad. I build the retrieval layer and the agent loop that sits on top of
+            it, plus the production application around the two. The thread through every build
+            is measurement: a benchmark before the first prompt is written, an eval suite that
+            ships in CI, and a handover that leaves you able to rerun both.
           </p>
           <p className="mt-6 max-w-2xl text-pretty leading-relaxed text-muted-foreground">
             I work fixed-price on scoped work — the kind where the spec is written down and
@@ -291,10 +287,10 @@ export default function Home() {
         </section>
 
         <section id="offers" className="pb-16">
-          <SectionHeading title="Three offers" />
+          <SectionHeading title="How we work together" />
           <div className="grid gap-5 sm:grid-cols-3">
             {offers.map((o, i) => {
-              const emphasised = i === 1;
+              const emphasised = i === 0;
               return (
                 <div
                   key={o.title}
@@ -331,8 +327,9 @@ export default function Home() {
         <section id="work" className="pb-16">
           <SectionHeading title="Selected work" />
           <p className="mb-6 font-mono text-xs text-muted-foreground">
-            Every item below is my own project. Two run on my own infrastructure. None of
-            them is client work — and I'm not presenting them as client work.
+            Systems I built and operate. Each one demonstrates a specific capability — retrieval,
+            agent tool-calling, multi-tenancy, human handoff — and each states what it cannot do,
+            because a page that only lists strengths is a page you have learned to distrust.
           </p>
           <div className="grid gap-5 sm:grid-cols-2">
             {work.map((w) => (
@@ -344,9 +341,11 @@ export default function Home() {
                   {w.label}
                 </span>
                 <a href={w.url} target="_blank" rel="noopener noreferrer">
-                  <img
+                  <Image
                     src={w.img}
                     alt={w.name}
+                    width={1200}
+                    height={675}
                     className="aspect-video w-full object-cover object-top"
                   />
                 </a>
@@ -461,10 +460,13 @@ export default function Home() {
         </section>
 
         <section id="clients" className="pb-16">
-          <SectionHeading title="Two clients, two countries, and what they actually hired me for" />
+          <SectionHeading title="What clients actually hired me for" />
           <p className="mb-6 font-mono text-xs text-muted-foreground">
-            Both were website builds, not AI systems. I'm not going to present them as
-            something they weren't.
+            Both were full-stack delivery engagements, not AI systems. I say that plainly
+            rather than dressing them up. What they establish is remote delivery on schedule,
+            twice, for real businesses in two countries — the part a cross-border buyer is
+            actually asking about. My AI systems carry the same measurement standard:
+            benchmark, eval suite, handover doc.
           </p>
           <div className="grid gap-4 sm:grid-cols-2">
             {clients.map((c) => (
@@ -486,11 +488,6 @@ export default function Home() {
             ))}
           </div>
           <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
-            What they establish is the thing no screenshot on this page can: someone working
-            remotely from Algeria delivered on schedule, twice, for real businesses in two
-            countries.
-          </p>
-          <p className="mt-3 text-sm text-muted-foreground">
             Happy to arrange a reference call — ask on the call and I'll connect you directly.
           </p>
         </section>

@@ -6,12 +6,12 @@ import { TryYourSite } from "@/components/try-your-site";
 import { BOOKING_URL } from "@/lib/positioning";
 
 export const metadata: Metadata = {
-  title: "Hire a Full-Stack + AI Engineer | Djaouad Frih · Agents, Retrieval, Production Builds",
+  title: "AI Systems That Work in Production | Djaouad Frih · Agents, Retrieval, Fixed Price",
   description:
-    "Hire a full-stack + AI engineer to build production AI: tool-calling agents, vector retrieval with citations, MCP servers, and the application around them. Fixed-price, milestone-based, source handed over.",
+    "I build production AI systems — tool-calling agents, vector retrieval with citations, MCP servers — for mid-market teams and agencies. Fixed-price, milestone-based, source handed over. Four live systems with public repositories.",
   alternates: { canonical: "https://djaouad.is-a.dev/hire-ai-developer" },
   openGraph: {
-    title: "Hire a Full-Stack + AI Engineer · Djaouad Frih",
+    title: "AI Systems That Work in Production · Djaouad Frih",
     description:
       "Agents, retrieval, MCP servers and production applications. Fixed-price, milestone-based, four live systems with public repositories.",
     url: "https://djaouad.is-a.dev/hire-ai-developer",
@@ -41,10 +41,10 @@ export default function HirePage() {
       <div className="relative mx-auto max-w-4xl px-6">
         <section className="pt-28 pb-16">
           <p className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/10 px-4 py-1.5 font-mono text-xs tracking-wide text-primary">
-            AI SYSTEMS ENGINEER
+            AI SYSTEMS FOR PRODUCTION
           </p>
           <h1 className="mt-6 font-display text-5xl leading-[1.04] tracking-tight sm:text-6xl">
-            Hire an engineer who ships <span className="text-primary">working AI systems.</span>
+            AI systems that work <span className="text-primary">in production.</span>
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
             I build the agent, the retrieval layer behind it, and the production
@@ -58,16 +58,17 @@ export default function HirePage() {
                className="rounded-xl bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-colors hover:opacity-90">
               Describe your project
             </a>
-            <a href={BOOKING_URL}
+            <a href="/ai-reliability-audit"
                className="inline-flex items-center justify-center rounded-xl border border-border bg-card px-6 py-3.5 text-sm font-semibold transition-colors hover:border-primary">
               Start with a free audit
             </a>
-            <a href="/cv" className="inline-flex items-center gap-2 rounded-xl border border-border bg-card px-6 py-3.5 text-sm font-semibold transition-colors hover:border-primary">
-              View CV
+            <a href={BOOKING_URL}
+               className="inline-flex items-center justify-center rounded-xl border border-border bg-card px-6 py-3.5 text-sm font-semibold transition-colors hover:border-primary">
+              Book a free 30-min scope call
             </a>
           </div>
           <div className="mt-8 grid gap-3 sm:grid-cols-3">
-            {["Fixed-price builds, quoted after a free audit", "Retrieval benchmarked, not guessed", "Remote · UTC+1, EU hours + US-East 13:00–17:00 UTC"].map((t) => (
+            {["Fixed-price builds, quoted after a free audit", "Retrieval benchmarked, not guessed", "Remote · EU hours + US-East 13:00–17:00 UTC"].map((t) => (
               <div key={t} className="rounded-xl border border-border bg-card px-4 py-3 text-sm text-muted-foreground">{t}</div>
             ))}
           </div>

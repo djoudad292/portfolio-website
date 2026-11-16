@@ -1,15 +1,16 @@
 /**
  * Single source of truth for the site's positioning and commercial anchor.
  *
- * Change these two values and the whole site follows. Everything else that
- * repeats the positioning line or the price band should import from here so
- * there is no second copy to drift.
+ * Change these values and the whole site follows. Everything that repeats the
+ * positioning line or a price band imports from here so there is no second
+ * copy to drift.
+ *
+ * 2026-11-06: POSITIONING, AGENCY_OFFER, CASE_STUDY_PATHWAY, BOOKING_LABEL and
+ * NO_PRICE_NOTE were pruned. They were only consumed by components that have
+ * since been deleted (the site renders its content inline per page, and the
+ * shared-component versions of these sections were dead code). The remaining
+ * exports are all still imported by live pages.
  */
-
-// The positioning statement. Used verbatim on the homepage hero, the page
-// metadata and the OG copy.
-export const POSITIONING =
-  "Full-Stack + AI Engineer. I build the orchestration loop, the retrieval layer that feeds it, and the production application around it."
 
 // ---------------------------------------------------------------------------
 // THE PRICE ANCHOR — one floor, published identically on every surface.
@@ -29,7 +30,6 @@ export const POSITIONING =
 export const PRICE_ANCHOR = "Full builds start at $3,500"
 export const PRICE_ANCHOR_NOTE =
   "Quoted after a free reliability audit, once the scope is real. No hourly surprises."
-export const NO_PRICE_NOTE: string | undefined = undefined
 
 // White-label / agency capacity floor. A separate tier from PRICE_ANCHOR on
 // purpose: a scoped build at $3,500 and someone else's client at $8,000 are
@@ -57,37 +57,10 @@ export const AUDIT_OFFER = {
     "Failures are published alongside the scores. Credited in full against any build that follows, so the audit costs nothing whether or not you go ahead.",
 } as const
 
-// White-label / agency capacity offer. Targets digital and product agencies in
-// EU + US-East timezones. You have the client, the scope and the deadline; I
-// own the build end to end as your delivery capacity.
-export const AGENCY_OFFER = {
-  title: "White-label build capacity for agencies",
-  price: AGENCY_ANCHOR,
-  meta: AGENCY_ANCHOR_META,
-  summary:
-    "I work as your delivery layer: scoped, fixed-price, end-to-end builds that you take to the client under your brand. You keep the relationship and the margin; I bring production engineering and retrieval benchmarking to every delivery.",
-  deliverables: [
-    "Production-ready code in your repo or mine, with documentation",
-    "Retrieval benchmarked against a goldset you approve",
-    "Source handed over with a handover call",
-    "Weeklies at your cadence, not mine",
-  ],
-} as const
-
-// Case-study pathway — 2-3 scoped builds at reduced rates in exchange for a
-// testimonial and a published case study with real numbers. This is how the
-// "zero client work" gap closes.
-export const CASE_STUDY_PATHWAY = {
-  title: "Case-study builds",
-  summary:
-    "I take 2–3 scoped vertical slices at intentionally reduced rates ($3,500–$6,500) in exchange for a testimonial and a published case study. Real deflector-rate / hours-saved / latency numbers, agreed up front. This is the fastest way to close the gap between my own systems and paying-client proof.",
-  entryPoint: "Free reliability audit first, then a scoped slice scoped to your problem.",
-} as const
-
 // Honest availability claim. UTC+1 gives ~3-4h of US-East overlap, not a full
 // US day — claiming "overlaps US hours" is a verifiable falsehood on a page
 // whose whole pitch is that its claims are checkable.
-export const TIMEZONE_CLAIM = "UTC+1 — overlaps EU business hours; 13:00–17:00 UTC US-East overlap"
+export const TIMEZONE_CLAIM = "Remote · serves EU and US-East clients during overlapping business hours."
 
 // Booking link for the free scope call offered on the pricing and contact
 // sections.
@@ -100,4 +73,3 @@ export const TIMEZONE_CLAIM = "UTC+1 — overlaps EU business hours; 13:00–17:
 // imports it.
 export const BOOKING_URL =
   "https://calendar.google.com/calendar/appointments/schedules/AcZssZ1-n7EF-5CUR8I8eEuE6pebfNUKrKUrpWYc5dvXsj37YZL2EOFZeLSpCN9zRfXz20tZZcfyA2UJ"
-export const BOOKING_LABEL = "Book a free 30-min scope call"
