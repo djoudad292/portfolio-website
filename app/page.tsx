@@ -86,6 +86,28 @@ const credibility = [
   { label: "Retrieval benchmark", value: "93.4% F1 on a 232-query goldset, every failing query published", href: "/benchmark" },
 ];
 
+const process = [
+  { step: "01", title: "Free audit", body: "One week, target. Scored against your documents. No call required first." },
+  { step: "02", title: "Fixed-price scope", body: "The audit becomes a written spec with acceptance criteria and a deploy-gating eval." },
+  { step: "03", title: "Build + handover", body: "Source in your repo, docs, credentials, and 30 days to find defects." },
+];
+
+const faq = [
+  { q: "How long does it take?", a: "Audit: one week, target. Scoped build: 3–6 weeks. Production system: 6–12 weeks." },
+  { q: "What does the audit include?", a: "Precision/recall/F1 against a goldset built from your corpus, refusal rate on out-of-scope questions, citation correctness, p50/p95 latency and token cost, and a server-side authorization review." },
+  { q: "What happens after the audit?", a: "You keep the report either way — including the line that says you don't need AI here yet. If you go ahead, the audit fee is credited in full against the build." },
+  { q: "Who owns the code?", a: "You do. Source, infra credentials, and a handover doc land in your repo. Your team reruns the benchmark." },
+  { q: "What if I don't need AI?", a: "I'll tell you. If an existing tool or subscription solves your problem, that's the honest answer and I'll say it first." },
+  { q: "What's the guarantee?", a: "30-day defect window. If something breaks, I fix it. No change orders for defects." },
+];
+
+const industries = [
+  { name: "Dental clinics", href: "/dental-clinics" },
+  { name: "Agencies", href: "/for-agencies" },
+  { name: "Industries", href: "/industries" },
+  { name: "ROI calculator", href: "/roi" },
+];
+
 const dontDo = [
   "I'm not a full-service digital agency.",
   "I don't take work where I'm the cheapest credible option.",
@@ -185,6 +207,19 @@ export default function Home() {
           </dl>
         </section>
 
+        <section id="process" className="pb-10 sm:pb-14">
+          <SectionHeading title="How it works" />
+          <ol className="grid gap-3 sm:gap-4 sm:grid-cols-3">
+            {process.map((p) => (
+              <li key={p.step} className="rounded-2xl border border-border bg-card p-3 sm:p-4">
+                <span className="font-mono text-[10px] sm:text-xs text-primary">{p.step}</span>
+                <h3 className="mt-1 sm:mt-2 font-display text-sm sm:text-base tracking-tight">{p.title}</h3>
+                <p className="mt-1 sm:mt-2 text-[11px] sm:text-sm leading-relaxed text-muted-foreground">{p.body}</p>
+              </li>
+            ))}
+          </ol>
+        </section>
+
         <section id="work" className="pb-10 sm:pb-14">
           <SectionHeading title="Selected work" />
           <p className="mb-4 sm:mb-5 font-mono text-[10px] sm:text-xs text-muted-foreground">
@@ -239,6 +274,42 @@ export default function Home() {
                   )}
                 </div>
               </div>
+            ))}
+          </div>
+        </section>
+
+        <section id="faq" className="pb-10 sm:pb-14">
+          <SectionHeading title="Frequently asked questions" />
+          <div className="grid gap-3 sm:gap-4">
+            {faq.map((f) => (
+              <div key={f.q} className="rounded-2xl border border-border bg-card p-3 sm:p-4">
+                <h3 className="font-display text-sm sm:text-base tracking-tight">{f.q}</h3>
+                <p className="mt-1 sm:mt-2 text-[11px] sm:text-sm leading-relaxed text-muted-foreground">{f.a}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section id="guarantee" className="pb-10 sm:pb-14">
+          <div className="rounded-2xl border border-primary/30 bg-primary/5 p-4 sm:p-6">
+            <h2 className="font-display text-lg sm:text-xl tracking-tight">30-day defect window</h2>
+            <p className="mt-2 text-sm sm:text-base leading-relaxed text-muted-foreground">
+              If something breaks, I fix it. No change orders for defects. The audit is free, the build is fixed-price, and the handover is yours to rerun.
+            </p>
+          </div>
+        </section>
+
+        <section id="industries" className="pb-10 sm:pb-14">
+          <SectionHeading title="Industries I serve" />
+          <div className="flex flex-wrap gap-2 sm:gap-3">
+            {industries.map((i) => (
+              <Link
+                key={i.name}
+                href={i.href}
+                className="rounded-md border border-border bg-background px-3 sm:px-4 py-2 sm:py-2.5 text-[11px] sm:text-sm font-medium transition-colors hover:border-primary hover:text-primary"
+              >
+                {i.name}
+              </Link>
             ))}
           </div>
         </section>
