@@ -10,9 +10,9 @@ export const metadata: Metadata = {
 };
 
 const primaryBtn =
-  "w-full sm:w-auto rounded-xl bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-colors hover:opacity-90";
+  "w-full rounded-xl bg-primary px-6 py-4 text-sm font-semibold text-primary-foreground transition-colors hover:opacity-90 sm:py-3.5";
 const chip =
-  "rounded-md border border-border bg-background px-2 py-1 font-mono text-[10px] transition-colors hover:border-primary hover:text-primary";
+  "flex items-center gap-1.5 rounded-md border border-border bg-background px-2.5 py-1.5 font-mono text-[10px] transition-colors hover:border-primary hover:text-primary sm:px-3 sm:py-2";
 
 const cases = [
   {
@@ -68,48 +68,48 @@ const cases = [
 export default function WorkPage() {
   return (
     <main className="relative min-h-screen text-foreground">
-      <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <div className="relative mx-auto max-w-3xl px-5 sm:px-6 lg:px-8">
 
-        <section className="pt-20 sm:pt-28 pb-12 sm:pb-16">
-          <span className="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider">
+        <section className="pt-16 sm:pt-20 pb-10 sm:pb-14">
+          <span className="inline-block rounded-md border border-border bg-background px-2.5 py-1 font-mono text-[10px] sm:text-xs uppercase tracking-wider">
             SELECTED WORK
           </span>
 
-          <h1 className="mt-5 sm:mt-6 font-display text-3xl sm:text-4xl lg:text-5xl leading-[1.04] tracking-tight">
+          <h1 className="mt-4 sm:mt-5 font-display text-2xl sm:text-3xl lg:text-4xl leading-[1.06] tracking-tight">
             Systems I built and operate.
           </h1>
 
-          <p className="mt-5 sm:mt-6 max-w-xl text-base sm:text-lg leading-relaxed text-muted-foreground">
+          <p className="mt-4 sm:mt-5 max-w-none sm:max-w-xl text-sm sm:text-base leading-relaxed text-muted-foreground">
             Each one is measured against real documents, with the failures published. No
             demo-only claims — every number comes from a committed benchmark you can re-run.
           </p>
         </section>
 
-        <div className="grid gap-4 sm:gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {cases.map((c) => (
-            <div key={c.name} className="rounded-2xl border border-border bg-card p-4 sm:p-6">
+            <div key={c.name} className="rounded-2xl border border-border bg-card p-3 sm:p-4">
               <a
                 href={c.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block font-display text-base sm:text-lg tracking-tight group-hover:text-primary"
+                className="block font-display text-sm sm:text-base tracking-tight group-hover:text-primary"
               >
                 {c.name}
               </a>
-              <span className="mt-1 sm:mt-2 block font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+              <span className="mt-1 sm:mt-1.5 block font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
                 {c.label}
               </span>
-              <p className="mt-1 sm:mt-2 text-[11px] sm:text-sm leading-snug text-muted-foreground">{c.desc}</p>
+              <p className="mt-1 sm:mt-1.5 text-[11px] sm:text-sm leading-snug text-muted-foreground">{c.desc}</p>
               <p className="mt-1 font-mono text-[10px] text-muted-foreground">{c.limit}</p>
-              <p className="mt-2 sm:mt-3 font-mono text-[10px] sm:text-xs text-primary">{c.outcome}</p>
-              <div className="mt-3 sm:mt-4 flex flex-wrap gap-2 font-mono text-[10px]">
+              <p className="mt-2 sm:mt-2.5 font-mono text-[10px] sm:text-xs text-primary">{c.outcome}</p>
+              <div className="mt-2 sm:mt-3 flex flex-wrap gap-1.5 sm:gap-2 font-mono text-[10px]">
                 <a
                   href={c.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={chip}
                 >
-                  <ExternalLink className="h-3 w-3 shrink-0 mr-1" /> try it
+                  <ExternalLink className="h-3 w-3 shrink-0" /> try it
                 </a>
                 <a
                   href={c.repo}
@@ -117,7 +117,7 @@ export default function WorkPage() {
                   rel="noopener noreferrer"
                   className={chip}
                 >
-                  <Github className="h-3 w-3 shrink-0 mr-1" /> code
+                  <Github className="h-3 w-3 shrink-0" /> code
                 </a>
                 {c.apk && (
                   <a
@@ -126,7 +126,7 @@ export default function WorkPage() {
                     rel="noopener noreferrer"
                     className={chip}
                   >
-                    <Download className="h-3 w-3 shrink-0 mr-1" /> android
+                    <Download className="h-3 w-3 shrink-0" /> android
                   </a>
                 )}
               </div>
@@ -134,17 +134,17 @@ export default function WorkPage() {
           ))}
         </div>
 
-        <section className="pb-20 sm:pb-24 mt-12 sm:mt-16">
-          <div className="rounded-2xl border border-border bg-card p-4 sm:p-6 sm:p-10">
-            <h2 className="font-display text-2xl sm:text-3xl tracking-tight">
+        <section className="pb-16 sm:pb-20 mt-10 sm:mt-14">
+          <div className="rounded-2xl border border-border bg-card p-3 sm:p-4 sm:p-6">
+            <h2 className="font-display text-xl sm:text-2xl tracking-tight">
               Start with the audit
             </h2>
-            <p className="mt-3 sm:mt-4 max-w-lg text-base sm:text-lg leading-relaxed text-muted-foreground">
+            <p className="mt-2 sm:mt-3 max-w-none sm:max-w-lg text-sm sm:text-base leading-relaxed text-muted-foreground">
               The free reliability audit is how I get a client case study — measured on your
               documents first, scored against a goldset you approve, and the fee comes off any
               build that follows.
             </p>
-            <div className="mt-6 sm:mt-7">
+            <div className="mt-4 sm:mt-5">
               <Link href="/contact?for=audit" className={primaryBtn}>
                 Start with the audit
               </Link>

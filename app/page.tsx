@@ -14,9 +14,9 @@ export const metadata: Metadata = {
 };
 
 const primaryBtn =
-  "w-full sm:w-auto rounded-xl bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-colors hover:opacity-90";
+  "w-full rounded-xl bg-primary px-6 py-4 text-sm font-semibold text-primary-foreground transition-colors hover:opacity-90 sm:py-3.5";
 const chip =
-  "rounded-md border border-border bg-background px-2 py-1 font-mono text-[10px] transition-colors hover:border-primary hover:text-primary";
+  "flex items-center gap-1.5 rounded-md border border-border bg-background px-2.5 py-1.5 font-mono text-[10px] transition-colors hover:border-primary hover:text-primary sm:px-3 sm:py-2";
 
 const problems = [
   {
@@ -94,14 +94,14 @@ const dontDo = [
 ];
 
 const social = [
-  { name: "GitHub", href: "https://github.com/djoudad292" },
-  { name: "LinkedIn", href: "https://linkedin.com/in/djaouad-frih-16ab7323a" },
+  { name: "GitHub", href: "https://github.com/djoudad292", icon: <Github className="h-3 w-3 shrink-0" /> },
+  { name: "LinkedIn", href: "https://linkedin.com/in/djaouad-frih-16ab7323a", icon: <ExternalLink className="h-3 w-3 shrink-0" /> },
 ];
 
 function SectionHeading({ title, id }: { title: string; id?: string }) {
   return (
-    <div id={id} className="mb-6 sm:mb-8 flex items-center gap-3 sm:gap-4">
-      <h2 className="font-display text-2xl sm:text-3xl tracking-tight">{title}</h2>
+    <div id={id} className="mb-5 sm:mb-7 flex items-center gap-2 sm:gap-3">
+      <h2 className="font-display text-xl sm:text-2xl tracking-tight">{title}</h2>
       <span aria-hidden className="h-px flex-1 bg-border" />
     </div>
   );
@@ -110,25 +110,25 @@ function SectionHeading({ title, id }: { title: string; id?: string }) {
 export default function Home() {
   return (
     <main className="relative min-h-screen text-foreground">
-      <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <div className="relative mx-auto max-w-3xl px-5 sm:px-6 lg:px-8">
 
-        <section className="pt-16 sm:pt-20 pb-12 sm:pb-16">
+        <section className="pt-14 sm:pt-20 pb-10 sm:pb-16">
           <div className="max-w-lg sm:max-w-none">
-            <span className="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider">
+            <span className="inline-block rounded-md border border-border bg-background px-2.5 py-1 font-mono text-[10px] sm:text-xs uppercase tracking-wider">
               MEASURED AI SYSTEMS · FIXED PRICE · NO HOURLY SURPRISES
             </span>
 
-            <h1 className="mt-5 sm:mt-6 font-display text-3xl sm:text-4xl lg:text-5xl leading-[1.04] tracking-tight">
+            <h1 className="mt-4 sm:mt-5 font-display text-2xl sm:text-3xl lg:text-4xl leading-[1.06] tracking-tight">
               Your AI support agent should be measured before you trust it. I build it that way.
             </h1>
 
-            <p className="mt-5 sm:mt-6 text-base sm:text-lg leading-relaxed text-muted-foreground">
+            <p className="mt-4 sm:mt-5 text-sm sm:text-base leading-relaxed text-muted-foreground">
               I build retrieval layers and agent loops that run on your existing Postgres estate
               and monolith, scored against your own documents before a single prompt is written.
               Fixed price. {PRICE_ANCHOR}.
             </p>
 
-            <div className="mt-7 sm:mt-8 flex flex-col gap-3 sm:gap-3">
+            <div className="mt-6 sm:mt-7 flex flex-col gap-3 sm:gap-3">
               <Link href="/ai-reliability-audit" className={primaryBtn}>
                 Get the free reliability audit →
               </Link>
@@ -138,21 +138,21 @@ export default function Home() {
               </p>
             </div>
 
-            <p className="mt-7 sm:mt-8 font-mono text-[10px] sm:text-xs leading-relaxed text-muted-foreground">
+            <p className="mt-6 sm:mt-7 font-mono text-[10px] sm:text-xs leading-relaxed text-muted-foreground">
               Remote · serves EU and US-East clients during overlapping business hours.
             </p>
           </div>
         </section>
 
-        <section id="problems" className="pb-12 sm:pb-16">
+        <section id="problems" className="pb-10 sm:pb-14">
           <SectionHeading title="The problems I solve" />
-          <div className="grid gap-4 sm:gap-5 sm:grid-cols-2">
+          <div className="grid gap-3 sm:gap-4 sm:grid-cols-2">
             {problems.map((p) => (
-              <div key={p.t} className="rounded-2xl border border-border bg-card p-4 sm:p-6">
+              <div key={p.t} className="rounded-2xl border border-border bg-card p-3 sm:p-4">
                 <h3 className="font-display text-sm sm:text-base leading-snug tracking-tight">
                   {p.t}
                 </h3>
-                <p className="mt-2 sm:mt-3 text-[11px] sm:text-sm leading-relaxed text-muted-foreground">
+                <p className="mt-2 sm:mt-2.5 text-[11px] sm:text-sm leading-relaxed text-muted-foreground">
                   {p.b}
                 </p>
               </div>
@@ -160,9 +160,9 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="credibility" className="pb-12 sm:pb-16">
+        <section id="credibility" className="pb-10 sm:pb-14">
           <SectionHeading title="What I can show you" />
-          <dl className="grid gap-3 sm:gap-4 sm:grid-cols-[auto_1fr] sm:gap-6">
+          <dl className="grid gap-2 sm:gap-3 sm:grid-cols-[auto_1fr] sm:gap-4">
             {credibility.map((c) => (
               <div key={c.label} className="grid gap-1">
                 <dt className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
@@ -185,17 +185,17 @@ export default function Home() {
           </dl>
         </section>
 
-        <section id="work" className="pb-12 sm:pb-16">
+        <section id="work" className="pb-10 sm:pb-14">
           <SectionHeading title="Selected work" />
-          <p className="mb-5 sm:mb-6 font-mono text-[10px] sm:text-xs text-muted-foreground">
+          <p className="mb-4 sm:mb-5 font-mono text-[10px] sm:text-xs text-muted-foreground">
             Systems I built and operate. Each one states what it cannot do, because a page that
             only lists strengths is a page you have learned to distrust.
           </p>
-          <div className="grid gap-4 sm:gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {work.map((w) => (
               <div
                 key={w.name}
-                className="rounded-2xl border border-border bg-card p-4 sm:p-6"
+                className="rounded-2xl border border-border bg-card p-3 sm:p-4"
               >
                 <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
                   {w.label}
@@ -204,20 +204,20 @@ export default function Home() {
                   href={w.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-2 sm:mt-3 block font-display text-base sm:text-lg tracking-tight group-hover:text-primary"
+                  className="mt-2 sm:mt-2.5 block font-display text-sm sm:text-base tracking-tight group-hover:text-primary"
                 >
                   {w.name}
                 </a>
-                <p className="mt-1 sm:mt-2 text-[11px] sm:text-sm leading-snug text-muted-foreground">{w.desc}</p>
+                <p className="mt-1 sm:mt-1.5 text-[11px] sm:text-sm leading-snug text-muted-foreground">{w.desc}</p>
                 <p className="mt-1 font-mono text-[10px] text-muted-foreground">{w.limit}</p>
-                <div className="mt-3 sm:mt-4 flex flex-wrap gap-2 font-mono text-[10px]">
+                <div className="mt-2 sm:mt-3 flex flex-wrap gap-1.5 sm:gap-2 font-mono text-[10px]">
                   <a
                     href={w.url}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={chip}
                   >
-                    <ExternalLink className="h-3 w-3 shrink-0 mr-1" /> try it
+                    <ExternalLink className="h-3 w-3 shrink-0" /> try it
                   </a>
                   <a
                     href={w.repo}
@@ -225,7 +225,7 @@ export default function Home() {
                     rel="noopener noreferrer"
                     className={chip}
                   >
-                    <Github className="h-3 w-3 shrink-0 mr-1" /> code
+                    <Github className="h-3 w-3 shrink-0" /> code
                   </a>
                   {w.apk && (
                     <a
@@ -234,7 +234,7 @@ export default function Home() {
                       rel="noopener noreferrer"
                       className={chip}
                     >
-                      <Download className="h-3 w-3 shrink-0 mr-1" /> android
+                      <Download className="h-3 w-3 shrink-0" /> android
                     </a>
                   )}
                 </div>
@@ -243,10 +243,10 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="dont" className="pb-12 sm:pb-16">
-          <div className="rounded-2xl border border-border bg-card p-4 sm:p-6 sm:p-8">
+        <section id="dont" className="pb-10 sm:pb-14">
+          <div className="rounded-2xl border border-border bg-card p-3 sm:p-4 sm:p-6">
             <SectionHeading title="What I don't do" />
-            <ul className="mt-2 sm:mt-3 list-disc list-inside space-y-1.5 sm:space-y-2 pl-2 sm:pl-4 text-[11px] sm:text-sm leading-relaxed text-muted-foreground">
+            <ul className="mt-2 sm:mt-2.5 list-disc list-inside space-y-1 sm:space-y-1.5 pl-2 sm:pl-3 text-[11px] sm:text-sm leading-relaxed text-muted-foreground">
               {dontDo.map((d) => (
                 <li key={d}>{d}</li>
               ))}
@@ -256,22 +256,22 @@ export default function Home() {
 
         <LeadCapture />
 
-        <section className="pb-20 sm:pb-24">
+        <section className="pb-16 sm:pb-20">
           <SectionHeading title="Start with the audit, not with a sales call." />
-          <p className="max-w-xl text-base sm:text-lg leading-relaxed text-muted-foreground">
+          <p className="max-w-none sm:max-w-xl text-sm sm:text-base leading-relaxed text-muted-foreground">
             If your AI system is answering before it's measured, it's answering from a guess.
             The free reliability audit is {AUDIT_OFFER.duration}, scored against your own documents,
             and you keep the report either way — including the line that says you don't need
             AI here yet.
           </p>
-          <div className="mt-6 sm:mt-7">
+          <div className="mt-5 sm:mt-6">
             <Link href="/contact?for=audit" className={primaryBtn}>
               Start the audit →
             </Link>
           </div>
-          <div className="mt-7 sm:mt-8 flex flex-col sm:flex-row items-center gap-3 sm:gap-4 rounded-2xl border border-border bg-card p-4 sm:p-6">
+          <div className="mt-5 sm:mt-6 flex flex-col sm:flex-row items-center gap-2 sm:gap-3 rounded-2xl border border-border bg-card p-3 sm:p-4">
             <div className="min-w-0">
-              <p className="font-display text-base sm:text-lg tracking-tight">
+              <p className="font-display text-sm sm:text-base tracking-tight">
                 Djaouad Frih<span className="text-primary">.</span>
               </p>
               <a
@@ -283,17 +283,16 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="mt-6 sm:mt-7 flex flex-wrap gap-2">
+          <div className="mt-5 sm:mt-6 flex flex-wrap gap-1.5 sm:gap-2">
             {social.map((s) => (
               <a
                 key={s.name}
                 href={s.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-md border border-border bg-background px-2 py-1 font-mono text-[10px] transition-colors hover:border-primary hover:text-primary"
+                className="flex items-center gap-1 rounded-md border border-border bg-background px-2.5 py-1.5 font-mono text-[10px] transition-colors hover:border-primary hover:text-primary sm:px-3 sm:py-2"
               >
-                {s.name === "GitHub" ? <Github className="h-3 w-3 shrink-0 mr-1" /> : null}
-                {s.name === "LinkedIn" ? <ExternalLink className="h-3 w-3 shrink-0 mr-1" /> : null}
+                {s.icon}
                 {s.name}
               </a>
             ))}
