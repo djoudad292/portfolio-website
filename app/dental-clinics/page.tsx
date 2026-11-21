@@ -40,14 +40,14 @@ const doesNot = [
 
 export default function DentalClinicsPage() {
   return (
-    <main className="mx-auto max-w-3xl px-6 py-20">
-      <p className="font-mono text-xs uppercase tracking-widest opacity-60">
+    <main className="mx-auto max-w-[var(--container-lg)] px-6 py-20">
+      <p className="font-mono text-[var(--text-xs)] uppercase tracking-widest opacity-60">
         Dental clinics
       </p>
-      <h1 className="mt-4 text-4xl font-semibold leading-tight sm:text-5xl">
+      <h1 className="mt-4 text-[var(--text-4xl)] font-semibold leading-tight sm:text-[var(--text-5xl)]">
         The patient who messages after closing is already gone.
       </h1>
-      <p className="mt-6 text-lg opacity-80">
+      <p className="mt-6 text-[var(--text-lg)] opacity-80">
         Most dental clinics are not short of patients. They are short of
         answered enquiries at the exact hour the patient decides to act. That
         is a scheduling problem, not a marketing one.
@@ -56,14 +56,14 @@ export default function DentalClinicsPage() {
       <section className="mt-14 space-y-8">
         {leak.map((item) => (
           <div key={item.title} className="border-l-2 border-current/20 pl-5">
-            <h2 className="text-xl font-semibold">{item.title}</h2>
+            <h2 className="text-[var(--text-xl)] font-semibold">{item.title}</h2>
             <p className="mt-2 opacity-75">{item.body}</p>
           </div>
         ))}
       </section>
 
       <section className="mt-16">
-        <h2 className="text-2xl font-semibold">What it actually does</h2>
+        <h2 className="text-[var(--text-2xl)] font-semibold">What it actually does</h2>
         <ul className="mt-5 space-y-3">
           {does.map((item) => (
             <li key={item} className="flex gap-3">
@@ -75,7 +75,7 @@ export default function DentalClinicsPage() {
           ))}
         </ul>
 
-        <h2 className="mt-10 text-2xl font-semibold">What it does not do</h2>
+        <h2 className="mt-10 text-[var(--text-2xl)] font-semibold">What it does not do</h2>
         <ul className="mt-5 space-y-3">
           {doesNot.map((item) => (
             <li key={item} className="flex gap-3">
@@ -89,7 +89,7 @@ export default function DentalClinicsPage() {
       </section>
 
       <section className="mt-16 rounded-xl border border-current/15 p-7">
-        <h2 className="text-2xl font-semibold">Try it on your own clinic</h2>
+        <h2 className="text-[var(--text-2xl)] font-semibold">Try it on your own clinic</h2>
         <p className="mt-3 opacity-80">
           Not a recording and not a generic bot. Paste your website and it reads
           your real treatments, prices and hours before it answers a single
@@ -97,17 +97,17 @@ export default function DentalClinicsPage() {
         </p>
         <TryYourSite lead="dental-clinics" defaultLabel="Build my clinic's demo" />
 
-        <p className="mt-7 text-sm opacity-60">Prefer to look at a running system first?</p>
+        <p className="mt-7 text-[var(--text-sm)] opacity-60">Prefer to look at a running system first?</p>
         <div className="mt-3 flex flex-wrap gap-4">
           <Link
             href="https://chat.djaouad.is-a.dev"
-            className="rounded-lg border border-current/25 px-5 py-2.5 text-sm font-medium"
+            className="rounded-lg border border-current/25 px-5 py-2.5 text-[var(--text-sm)] font-medium"
           >
             chat.djaouad.is-a.dev
           </Link>
           <Link
             href="https://customer.djaouad.is-a.dev"
-            className="rounded-lg border border-current/25 px-5 py-2.5 text-sm font-medium"
+            className="rounded-lg border border-current/25 px-5 py-2.5 text-[var(--text-sm)] font-medium"
           >
             customer.djaouad.is-a.dev
           </Link>
@@ -115,7 +115,7 @@ export default function DentalClinicsPage() {
       </section>
 
       <section className="mt-14 rounded-xl border border-current/15 p-7">
-        <h2 className="text-2xl font-semibold">The pilot</h2>
+        <h2 className="text-[var(--text-2xl)] font-semibold">The pilot</h2>
         <p className="mt-3 opacity-80">
           One week. One treatment. One location. Your own price list and
           opening hours, nothing generic.
@@ -128,18 +128,18 @@ export default function DentalClinicsPage() {
         <p className="mt-6">
           <Link
             href="/contact"
-            className="rounded-lg bg-current px-5 py-2.5 text-sm font-medium text-background"
+            className="rounded-lg bg-current px-5 py-2.5 text-[var(--text-sm)] font-medium text-background"
           >
             Request the pilot
           </Link>
         </p>
-        <p className="mt-6 text-sm opacity-60">
+        <p className="mt-6 text-[var(--text-sm)] opacity-60">
           Djaouad Frih · Full-stack + AI engineer ·{" "}
           <a href="mailto:contact@djaouad.is-a.dev">contact@djaouad.is-a.dev</a>
         </p>
       </section>
 
-      <p className="mt-16 text-sm opacity-60">
+      <p className="mt-16 text-[var(--text-sm)] opacity-60">
         Prefer a broader write-up?{" "}
         <Link href="/industries/clinics-doctors" className="underline">
           Clinics and service businesses

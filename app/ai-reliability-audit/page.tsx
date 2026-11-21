@@ -2,11 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { AUDIT_OFFER, PRICE_ANCHOR } from "@/lib/positioning";
+import { SectionWrapper } from "@/components/section-wrapper";
+import { SectionCard } from "@/components/section-card";
+import { SectionHeading } from "@/components/section-heading";
 
 export const metadata: Metadata = {
   title: "Free AI Reliability Audit · Retrieval, Refusals & Latency Measured | Djaouad Frih",
-description:
-      `A free ${AUDIT_OFFER.duration} audit of your AI system on your own documents: precision, recall and F1 against a goldset built from your corpus, refusal rate on out-of-scope questions, citation correctness, latency, token cost and a permissions review. Failures published alongside the scores.`,
+  description:
+    `A free ${AUDIT_OFFER.duration} audit of your AI system on your own documents: precision, recall and F1 against a goldset built from your corpus, refusal rate on out-of-scope questions, citation correctness, latency, token cost and a permissions review. Failures published alongside the scores.`,
   alternates: { canonical: "https://djaouad.is-a.dev/ai-reliability-audit" },
   openGraph: {
     title: "Free AI Reliability Audit · Djaouad Frih",
@@ -16,20 +19,6 @@ description:
     type: "website",
   },
 };
-
-const primaryBtn =
-  "rounded-xl bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-colors hover:opacity-90";
-const secondaryBtn =
-  "rounded-xl border border-border bg-card px-6 py-3.5 text-sm font-semibold transition-colors hover:border-primary";
-
-function SectionHeading({ title, id }: { title: string; id?: string }) {
-  return (
-    <div id={id} className="mb-8 flex items-center gap-4">
-      <h2 className="font-display text-3xl tracking-tight">{title}</h2>
-      <span aria-hidden className="h-px flex-1 bg-border" />
-    </div>
-  );
-}
 
 const measured = [
   {
@@ -90,92 +79,91 @@ const delivered = [
 export default function AiReliabilityAuditPage() {
   return (
     <main className="relative min-h-screen text-foreground">
-      <div className="relative mx-auto max-w-4xl px-6">
-
+      <SectionWrapper>
         <section className="pt-28 pb-16">
-          <span className="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider">
+          <span className="inline-block rounded-md border border-border bg-background px-2.5 sm:px-3 py-1 sm:py-1.5 font-mono text-[var(--text-xs)] uppercase tracking-wider">
             FREE · {AUDIT_OFFER.duration.toUpperCase()}
           </span>
 
-          <h1 className="mt-6 font-display text-4xl leading-[1.04] tracking-tight sm:text-5xl">
+          <h1 className="mt-6 font-display text-[var(--text-4xl)] sm:text-[var(--text-5xl)] leading-[1.04] tracking-tight">
             Most AI pilots die between the demo and production. That&rsquo;s the part I do.
           </h1>
 
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
+          <p className="mt-6 max-w-xl text-[var(--text-lg)] leading-relaxed text-muted-foreground">
             Only 25% of enterprises have moved 40% or more of their AI pilots into
             production.
-            <span className="font-mono text-xs"> Deloitte, 21 Jan 2026</span> The rest are
+            <span className="font-mono text-[var(--text-xs)]"> Deloitte, 21 Jan 2026</span> The rest are
             stuck somewhere between a convincing demo and something you can be paged for.
             This audit measures where exactly they&rsquo;re stuck.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="/contact?for=audit" className={primaryBtn}>
+            <Link href="/contact?for=audit" className="inline-flex items-center rounded-xl bg-primary px-5 sm:px-6 py-3 sm:py-3.5 text-[var(--text-base)] sm:text-[var(--text-lg)] font-semibold text-primary-foreground transition-colors hover:opacity-90">
               Request the audit
             </Link>
-            <Link href="/benchmark" className={secondaryBtn}>
+            <Link href="/benchmark" className="inline-flex items-center rounded-xl border border-border bg-card px-5 sm:px-6 py-3 sm:py-3.5 text-[var(--text-base)] sm:text-[var(--text-lg)] font-semibold text-foreground transition-colors hover:border-primary hover:text-primary">
               See a benchmark you can rerun
             </Link>
           </div>
         </section>
 
         <section className="pb-16">
-          <SectionHeading title="What gets measured" />
+          <SectionHeading title="What gets measured" size="3xl" />
           <p className="max-w-2xl leading-relaxed text-muted-foreground">
             {AUDIT_OFFER.summary}
           </p>
-          <div className="mt-8 space-y-5">
+          <div className="mt-8 sm:mt-10 space-y-5">
             {measured.map((item) => (
               <div key={item.t} className="border-l-2 border-border pl-5">
-                <h3 className="font-display text-lg tracking-tight">{item.t}</h3>
-                <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{item.b}</p>
+                <h3 className="font-display text-[var(--text-lg)] tracking-tight">{item.t}</h3>
+                <p className="mt-1 text-[var(--text-xs)] sm:text-sm leading-relaxed text-muted-foreground">{item.b}</p>
               </div>
             ))}
           </div>
         </section>
 
         <section className="pb-16">
-          <SectionHeading title="What you get" />
-          <div className="rounded-2xl border border-border bg-card p-6">
+          <SectionHeading title="What you get" size="3xl" />
+          <SectionCard padding="6">
             <ul className="space-y-2">
               {delivered.map((item) => (
-                <li key={item} className="flex gap-2 text-sm leading-relaxed text-muted-foreground">
+                <li key={item} className="flex gap-2 text-[var(--text-xs)] sm:text-sm leading-relaxed text-muted-foreground">
                   <span aria-hidden className="text-primary">—</span>
                   {item}
                 </li>
               ))}
             </ul>
-            <p className="mt-5 font-mono text-xs text-muted-foreground">{AUDIT_OFFER.terms}</p>
-          </div>
+            <p className="mt-5 font-mono text-[var(--text-xs)] text-muted-foreground">{AUDIT_OFFER.terms}</p>
+          </SectionCard>
         </section>
 
         <section className="pb-16">
-          <SectionHeading title="Who it's for" />
-          <div className="grid gap-5 sm:grid-cols-2">
-            <div className="rounded-2xl border border-border bg-card p-6">
-              <h3 className="font-display text-lg tracking-tight">Worth requesting if</h3>
-              <ul className="mt-4 space-y-2">
+          <SectionHeading title="Who it's for" size="3xl" />
+          <div className="grid gap-5 sm:gap-6 sm:grid-cols-2">
+            <SectionCard padding="6">
+              <h3 className="font-display text-[var(--text-lg)] tracking-tight">Worth requesting if</h3>
+              <ul className="mt-4 sm:mt-5 space-y-2">
                 {forWho.map((item) => (
-                  <li key={item} className="flex gap-2 text-sm leading-relaxed text-muted-foreground">
+                  <li key={item} className="flex gap-2 text-[var(--text-xs)] sm:text-sm leading-relaxed text-muted-foreground">
                     <span aria-hidden className="text-primary">—</span>
                     {item}
                   </li>
                 ))}
               </ul>
-            </div>
-            <div className="rounded-2xl border border-border bg-card p-6">
-              <h3 className="font-display text-lg tracking-tight">Not worth it if</h3>
-              <ul className="mt-4 space-y-2">
+            </SectionCard>
+            <SectionCard padding="6">
+              <h3 className="font-display text-[var(--text-lg)] tracking-tight">Not worth it if</h3>
+              <ul className="mt-4 sm:mt-5 space-y-2">
                 {notFor.map((item) => (
-                  <li key={item} className="flex gap-2 text-sm leading-relaxed text-muted-foreground">
+                  <li key={item} className="flex gap-2 text-[var(--text-xs)] sm:text-sm leading-relaxed text-muted-foreground">
                     <span aria-hidden className="text-primary">×</span>
                     {item}
                   </li>
                 ))}
               </ul>
-            </div>
+            </SectionCard>
           </div>
-          <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
+          <p className="mt-6 sm:mt-8 text-[var(--text-xs)] sm:text-sm leading-relaxed text-muted-foreground">
             Eligibility is simple: you need a real corpus, a real system to point at it, and
             someone who owns the process for the five days. I review every audit request
             personally and decline most. That is the filter — not a form.
@@ -183,18 +171,18 @@ export default function AiReliabilityAuditPage() {
         </section>
 
         <section className="pb-16">
-          <SectionHeading title="What it is not" />
-          <div className="rounded-2xl border border-border bg-card p-6">
+          <SectionHeading title="What it is not" size="3xl" />
+          <SectionCard padding="6">
             <ul className="space-y-2">
               {isNot.map((item) => (
-                <li key={item} className="flex gap-2 text-sm leading-relaxed text-muted-foreground">
+                <li key={item} className="flex gap-2 text-[var(--text-xs)] sm:text-sm leading-relaxed text-muted-foreground">
                   <span aria-hidden className="text-primary">×</span>
                   {item}
                 </li>
               ))}
             </ul>
-          </div>
-          <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
+          </SectionCard>
+          <p className="mt-6 sm:mt-8 text-[var(--text-xs)] sm:text-sm leading-relaxed text-muted-foreground">
             The reason this is free: it replaces the sales pitch with the work. Most studios
             argue from slides and case studies, and you can argue back from a report. If the
             answer is that you should not build this yet, the report will say that and you
@@ -203,28 +191,28 @@ export default function AiReliabilityAuditPage() {
         </section>
 
         <section className="pb-24">
-          <div className="rounded-2xl border border-border bg-card p-8 sm:p-10">
-            <h2 className="font-display text-3xl tracking-tight">Send me something to measure.</h2>
-            <p className="mt-2 max-w-lg text-sm leading-relaxed text-muted-foreground">
+          <SectionCard padding="8">
+            <h2 className="font-display text-[var(--text-3xl)] tracking-tight">Send me something to measure.</h2>
+            <p className="mt-2 max-w-lg text-[var(--text-xs)] sm:text-[var(--text-base)] leading-relaxed text-muted-foreground">
               A folder of documents, a link to a knowledge base, or a description of the
               system that isn&rsquo;t performing. {AUDIT_OFFER.duration} later you get the report.
               If you want to keep building afterwards, the audit comes off the price —{" "}
               {PRICE_ANCHOR.toLowerCase()}.
             </p>
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-              <Link href="/contact?for=audit" className={primaryBtn}>
+            <div className="mt-6 sm:mt-8 flex flex-col gap-3 sm:flex-row">
+              <Link href="/contact?for=audit" className="inline-flex items-center rounded-xl bg-primary px-5 sm:px-6 py-3 sm:py-3.5 text-[var(--text-base)] sm:text-[var(--text-lg)] font-semibold text-primary-foreground transition-colors hover:opacity-90">
                 Request the audit
               </Link>
-              <Link href="/pricing" className={secondaryBtn}>
+              <Link href="/pricing" className="inline-flex items-center rounded-xl border border-border bg-card px-5 sm:px-6 py-3 sm:py-3.5 text-[var(--text-base)] sm:text-[var(--text-lg)] font-semibold text-foreground transition-colors hover:border-primary hover:text-primary">
                 See the full price map
               </Link>
             </div>
-            <p className="mt-6 font-mono text-xs text-muted-foreground">
+            <p className="mt-6 sm:mt-8 font-mono text-[var(--text-xs)] text-muted-foreground">
               Reply within one business day — including &ldquo;this isn&rsquo;t for you&rdquo;.
             </p>
-          </div>
+          </SectionCard>
         </section>
-      </div>
+      </SectionWrapper>
     </main>
   );
 }

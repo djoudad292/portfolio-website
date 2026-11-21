@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { SectionWrapper } from "@/components/section-wrapper";
+import { SectionCard } from "@/components/section-card";
 
 export const metadata: Metadata = {
   title: "Who I Work Best With · Property Management, E-commerce, Clinics, Legal, Founders, Agencies | Djaouad Frih",
@@ -59,16 +61,16 @@ const alsoApplies = [
 export default function IndustriesPage() {
   return (
     <main className="min-h-screen bg-background text-foreground">
-      <div className="mx-auto max-w-3xl px-6 py-16 lg:py-24">
-        <Link href="/" className="font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground hover:text-primary">
+      <SectionWrapper>
+        <Link href="/" className="font-mono text-[var(--text-xs)] uppercase tracking-[0.25em] text-muted-foreground hover:text-primary">
           &larr; djaouad.is-a.dev
         </Link>
 
-        <p className="mb-4 mt-12 flex items-center gap-3 font-mono text-xs uppercase tracking-[0.25em] text-primary">
+        <p className="mb-4 mt-12 flex items-center gap-3 font-mono text-[var(--text-xs)] uppercase tracking-[0.25em] text-primary">
           Who I work best with
           <span aria-hidden className="h-px flex-1 bg-border" />
         </p>
-        <h1 className="font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl">
+        <h1 className="font-display text-[var(--text-4xl)] sm:text-[var(--text-5xl)] leading-[1.05] tracking-tight">
           Six kinds of buyer get the most out of this.
         </h1>
         <p className="mt-5 max-w-xl leading-relaxed text-muted-foreground">
@@ -80,45 +82,47 @@ export default function IndustriesPage() {
 
         <div className="mt-10 space-y-4">
           {segments.map((s) => (
-            <div key={s.slug} id={s.slug} className="rounded-2xl border border-border bg-card p-6">
-              <h2 className="font-display text-lg tracking-tight">{s.name}</h2>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.text}</p>
-              <p className="mt-3 font-mono text-xs leading-relaxed text-primary">
+            <SectionCard key={s.slug} padding="6" id={s.slug}>
+              <h2 className="font-display text-[var(--text-lg)] tracking-tight">{s.name}</h2>
+              <p className="mt-2 text-[var(--text-xs)] sm:text-sm leading-relaxed text-muted-foreground">{s.text}</p>
+              <p className="mt-3 font-mono text-[var(--text-xs)] leading-relaxed text-primary">
                 <span className="text-muted-foreground">Closest thing I have shipped:</span> {s.fit}
               </p>
-            </div>
+            </SectionCard>
           ))}
         </div>
 
-        <div className="mt-8 rounded-2xl border border-dashed border-border bg-card/50 p-6">
-          <h2 className="font-display text-lg tracking-tight">Also applies to</h2>
-          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+        <SectionCard padding="6" className="mt-8 border-dashed border-border bg-card/50">
+          <h2 className="font-display text-[var(--text-lg)] tracking-tight">Also applies to</h2>
+          <p className="mt-2 text-[var(--text-xs)] sm:text-sm leading-relaxed text-muted-foreground">
             The same engineering transfers to these. Worth a conversation, but I
             have not shipped a dedicated system in each one, so I am not going to
             imply otherwise.
           </p>
           <div className="mt-4 flex flex-wrap gap-2">
             {alsoApplies.map((a) => (
-              <span key={a} className="rounded-full border border-border bg-background px-3 py-1.5 font-mono text-xs text-muted-foreground">
+              <span key={a} className="rounded-full border border-border bg-background px-3 py-1.5 font-mono text-[var(--text-xs)] text-muted-foreground">
                 {a}
               </span>
             ))}
           </div>
-        </div>
+        </SectionCard>
 
-        <div className="mt-10 rounded-2xl border border-primary/25 bg-primary/10 p-8 text-center">
-          <p className="font-display text-xl tracking-tight text-foreground">
+        <SectionCard padding="8" className="mt-10 border-primary/25 bg-primary/10 text-center">
+          <p className="font-display text-[var(--text-xl)] tracking-tight text-foreground">
             Not on this list, but you think it fits?
           </p>
-          <p className="mt-2 text-sm text-muted-foreground">
+          <p className="mt-2 text-[var(--text-xs)] sm:text-sm text-muted-foreground">
             Tell me what you need built. I&apos;ll review the scope and send a fixed quote.
           </p>
-          <Link href="/#contact"
-            className="mt-6 inline-flex items-center rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90">
+          <Link
+            href="/#contact"
+            className="mt-6 inline-flex items-center rounded-full bg-primary px-6 sm:px-8 py-3 text-[var(--text-xs)] sm:text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+          >
             Describe your project
           </Link>
-        </div>
-      </div>
+        </SectionCard>
+      </SectionWrapper>
     </main>
   );
 }

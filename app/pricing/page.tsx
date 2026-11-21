@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 
 import { AUDIT_OFFER, PRICE_ANCHOR, PRICE_ANCHOR_NOTE, AGENCY_ANCHOR, AGENCY_ANCHOR_META } from "@/lib/positioning";
+import { SectionWrapper } from "@/components/section-wrapper";
+import { SectionCard } from "@/components/section-card";
+import { PrimaryButton, SecondaryButton } from "@/components/page-buttons";
+import { SectionHeading } from "@/components/section-heading";
 
 export const metadata: Metadata = {
   title: "Pricing · Scope-to-Price Map, Not an Estimate | Djaouad Frih",
@@ -16,20 +19,6 @@ export const metadata: Metadata = {
     type: "website",
   },
 };
-
-const primaryBtn =
-  "rounded-xl bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-colors hover:opacity-90";
-const secondaryBtn =
-  "rounded-xl border border-border bg-card px-6 py-3.5 text-sm font-semibold transition-colors hover:border-primary";
-
-function SectionHeading({ title, id }: { title: string; id?: string }) {
-  return (
-    <div id={id} className="mb-8 flex items-center gap-4">
-      <h2 className="font-display text-3xl tracking-tight">{title}</h2>
-      <span aria-hidden className="h-px flex-1 bg-border" />
-    </div>
-  );
-}
 
 const tiers = [
   {
@@ -109,18 +98,17 @@ const notFor = [
 export default function PricingPage() {
   return (
     <main className="relative min-h-screen text-foreground">
-      <div className="relative mx-auto max-w-4xl px-6">
-
+      <SectionWrapper>
         <section className="pt-28 pb-16">
-          <span className="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider">
+          <span className="inline-block rounded-md border border-border bg-background px-2.5 sm:px-3 py-1 sm:py-1.5 font-mono text-[var(--text-xs)] uppercase tracking-wider">
             PRICING
           </span>
 
-          <h1 className="mt-6 font-display text-4xl leading-[1.04] tracking-tight sm:text-5xl">
+          <h1 className="mt-6 font-display text-[var(--text-4xl)] sm:text-[var(--text-5xl)] leading-[1.04] tracking-tight">
             A fixed price only means something if the edge of it is written down.
           </h1>
 
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
+          <p className="mt-6 max-w-xl text-[var(--text-lg)] leading-relaxed text-muted-foreground">
             Three tiers, one entry offer that costs you nothing, and a published list of
             what each one doesn't include. No hourly billing, no estimate that becomes a
             change order in week three.
@@ -128,58 +116,57 @@ export default function PricingPage() {
         </section>
 
         <section className="pb-16">
-          <div className="grid gap-4 lg:grid-cols-3">
+          <div className="grid gap-4 sm:gap-6 lg:grid-cols-3">
             {tiers.map((t) => (
-              <div
+              <SectionCard
                 key={t.title}
-                className={`flex flex-col rounded-2xl border p-6 ${
+                padding="6"
+                className={`flex flex-col ${
                   t.featured
-                    ? "border-primary/60 bg-card shadow-[0_0_40px_-12px] shadow-primary/30"
+                    ? "border-primary/60 shadow-[0_0_40px_-12px] shadow-primary/30"
                     : "border-border bg-card/60"
                 }`}
               >
-                <p className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+                <p className="font-mono text-[var(--text-xs)] uppercase tracking-wider text-muted-foreground">
                   {t.label}
                 </p>
-                <h2 className="mt-2 font-display text-xl tracking-tight">{t.title}</h2>
-                <p className="mt-3 font-display text-2xl tracking-tight">{t.price}</p>
-                <p className="mt-1 font-mono text-[10px] text-muted-foreground">{t.meta}</p>
-                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{t.who}</p>
+                <h2 className="mt-2 font-display text-[var(--text-xl)] tracking-tight">{t.title}</h2>
+                <p className="mt-3 font-display text-[var(--text-3xl)] tracking-tight">{t.price}</p>
+                <p className="mt-1 font-mono text-[var(--text-xs)] text-muted-foreground">{t.meta}</p>
+                <p className="mt-4 text-[var(--text-sm)] leading-relaxed text-muted-foreground">{t.who}</p>
                 <ul className="mt-4 flex-1 space-y-2">
                   {t.bullets.map((b) => (
-                    <li key={b} className="flex gap-2 text-sm leading-relaxed text-muted-foreground">
+                    <li key={b} className="flex gap-2 text-[var(--text-xs)] sm:text-sm leading-relaxed text-muted-foreground">
                       <span aria-hidden className="text-primary">—</span>
                       {b}
                     </li>
                   ))}
                 </ul>
-                <p className="mt-4 border-t border-border pt-4 text-xs text-muted-foreground">
+                <p className="mt-4 border-t border-border pt-4 text-[var(--text-xs)] text-muted-foreground">
                   {t.not}
                 </p>
-                <Link href={t.href} className={primaryBtn + " mt-5 w-full text-center"}>
-                  {t.cta}
-                </Link>
-              </div>
+                <PrimaryButton href={t.href}>{t.cta}</PrimaryButton>
+              </SectionCard>
             ))}
           </div>
         </section>
 
         <section className="pb-16">
-          <SectionHeading title="Not included, published rather than discovered" />
-          <div className="rounded-2xl border border-border bg-card p-6">
+          <SectionHeading title="Not included, published rather than discovered" size="3xl" />
+          <SectionCard padding="6">
             <ul className="space-y-2">
               {exclusions.map((item) => (
-                <li key={item} className="flex gap-2 text-sm leading-relaxed text-muted-foreground">
+                <li key={item} className="flex gap-2 text-[var(--text-xs)] sm:text-sm leading-relaxed text-muted-foreground">
                   <span aria-hidden className="text-primary">×</span>
                   {item}
                 </li>
               ))}
             </ul>
-          </div>
+          </SectionCard>
         </section>
 
         <section className="pb-16">
-          <SectionHeading title="Why it costs what it costs" />
+          <SectionHeading title="Why it costs what it costs" size="3xl" />
           <p className="max-w-2xl leading-relaxed text-muted-foreground">
             The variable is not how long I take — it's what breaks if I get it wrong. Retrieval
             that quietly returns the wrong chunk, a tool call that executes an unvalidated
@@ -196,43 +183,39 @@ export default function PricingPage() {
         </section>
 
         <section className="pb-16">
-          <SectionHeading title="This is not for you if…" />
-          <div className="rounded-2xl border border-border bg-card p-6">
+          <SectionHeading title="This is not for you if…" size="3xl" />
+          <SectionCard padding="6">
             <ul className="space-y-2">
               {notFor.map((item) => (
-                <li key={item} className="flex gap-2 text-sm leading-relaxed text-muted-foreground">
+                <li key={item} className="flex gap-2 text-[var(--text-xs)] sm:text-sm leading-relaxed text-muted-foreground">
                   <span aria-hidden className="text-primary">×</span>
                   {item}
                 </li>
               ))}
             </ul>
-            <p className="mt-5 font-mono text-xs text-muted-foreground">
+            <p className="mt-5 font-mono text-[var(--text-xs)] text-muted-foreground">
               I'd rather lose the sale here than three weeks in.
             </p>
-          </div>
+          </SectionCard>
         </section>
 
         <section className="pb-24">
-          <div className="rounded-2xl border border-border bg-card p-8 sm:p-10">
-            <h2 className="font-display text-3xl tracking-tight">
+          <SectionCard padding="8">
+            <h2 className="font-display text-[var(--text-3xl)] tracking-tight">
               Start with the audit. It costs nothing and it settles most of it.
             </h2>
-            <p className="mt-2 max-w-lg text-sm leading-relaxed text-muted-foreground">
+            <p className="mt-2 max-w-lg text-[var(--text-xs)] sm:text-[var(--text-sm)] leading-relaxed text-muted-foreground">
               {AUDIT_OFFER.duration} on your own documents, a written report you keep either way,
               and a fixed price afterwards if you want to go further. If the answer is that you
               don't need a build, that's what the report says.
             </p>
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-              <Link href="/contact?for=audit" className={primaryBtn}>
-                Request the audit
-              </Link>
-              <Link href="/for-agencies" className={secondaryBtn}>
-                White-label delivery
-              </Link>
+            <div className="mt-6 flex flex-col sm:flex-row gap-3">
+              <PrimaryButton href="/contact?for=audit">Request the audit</PrimaryButton>
+              <SecondaryButton href="/for-agencies">White-label delivery</SecondaryButton>
             </div>
-          </div>
+          </SectionCard>
         </section>
-      </div>
+      </SectionWrapper>
     </main>
   );
 }

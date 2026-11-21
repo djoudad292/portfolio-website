@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight, Bot, CalendarCheck, FileSearch, Headset, Search } from "lucide-react";
+import { SectionWrapper } from "@/components/section-wrapper";
+import { SectionCard } from "@/components/section-card";
+import { SectionHeading } from "@/components/section-heading";
 
 export const metadata: Metadata = {
   title: "AI Agents for Business| Production LangGraph Agents · Djaouad Frih",
@@ -39,15 +42,15 @@ const boundaries = [
 export default function AiAgentsPage() {
   return (
     <main className="relative min-h-screen text-foreground">
-      <div className="relative mx-auto max-w-4xl px-6">
+      <SectionWrapper>
         <section className="pt-28 pb-16">
-          <p className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/10 px-4 py-1.5 font-mono text-xs tracking-wide text-primary">
+          <p className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/10 px-4 sm:px-5 py-1.5 font-mono text-[var(--text-xs)] tracking-wide text-primary">
             AI AGENTS FOR BUSINESS
           </p>
-          <h1 className="mt-6 font-display text-5xl leading-[1.04] tracking-tight sm:text-6xl">
+          <h1 className="mt-6 font-display text-[var(--text-5xl)] sm:text-[var(--text-6xl)] leading-[1.04] tracking-tight">
             Agents that decide and <span className="text-primary">know when to stop.</span>
           </h1>
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
+          <p className="mt-6 max-w-xl text-[var(--text-lg)] leading-relaxed text-muted-foreground">
             I build agents as LangGraph state machines with real tool-calling
             loops and conditional routing, grounded in your data through vector
             retrieval, with a human handoff that carries the whole conversation.
@@ -55,51 +58,57 @@ export default function AiAgentsPage() {
             Fixed-price and milestone-based.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="https://chat.djaouad.is-a.dev" target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-xl border border-border bg-card px-6 py-3.5 text-sm font-semibold transition-colors hover:border-primary">
+            <Link
+              href="https://chat.djaouad.is-a.dev"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-xl border border-border bg-card px-5 sm:px-6 py-3 sm:py-3.5 text-[var(--text-xs)] sm:text-sm font-semibold transition-colors hover:border-primary"
+            >
               Try a live agent <ArrowUpRight className="h-4 w-4" />
             </Link>
-            <a href="mailto:contact@djaouad.is-a.dev"
-              className="inline-flex items-center gap-2 rounded-xl border border-primary bg-primary/10 px-6 py-3.5 text-sm font-semibold text-primary transition-colors hover:bg-primary/15">
+            <a
+              href="mailto:contact@djaouad.is-a.dev"
+              className="inline-flex items-center gap-2 rounded-xl border border-primary bg-primary/10 px-5 sm:px-6 py-3 sm:py-3.5 text-[var(--text-xs)] sm:text-sm font-semibold text-primary transition-colors hover:bg-primary/15"
+            >
               Email me <ArrowUpRight className="h-4 w-4" />
             </a>
           </div>
         </section>
 
         <section className="pb-16">
-          <h2 className="font-display text-3xl tracking-tight">Types of agents I build</h2>
-          <div className="mt-6 grid gap-5 sm:grid-cols-2">
+          <SectionHeading title="Types of agents I build" size="3xl" />
+          <div className="mt-6 sm:mt-8 grid gap-4 sm:gap-5 sm:grid-cols-2">
             {agents.map((a) => (
-              <div key={a.title} className="rounded-2xl border border-border bg-card p-6">
+              <SectionCard key={a.title} padding="6">
                 <a.icon className="mb-3 h-6 w-6 text-primary" />
-                <h3 className="font-display text-xl">{a.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{a.text}</p>
-              </div>
+                <h3 className="font-display text-[var(--text-xl)]">{a.title}</h3>
+                <p className="mt-2 text-[var(--text-xs)] sm:text-sm leading-relaxed text-muted-foreground">{a.text}</p>
+              </SectionCard>
             ))}
           </div>
         </section>
 
         <section className="pb-16">
-          <h2 className="font-display text-3xl tracking-tight">Where they help most</h2>
-          <div className="mt-6 grid gap-5 sm:grid-cols-2">
+          <SectionHeading title="Where they help most" size="3xl" />
+          <div className="mt-6 sm:mt-8 grid gap-4 sm:gap-5 sm:grid-cols-2">
             {usecases.map((u) => (
-              <div key={u.title} className="rounded-2xl border border-border bg-card p-6">
-                <h3 className="font-display text-xl">{u.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{u.text}</p>
-              </div>
+              <SectionCard key={u.title} padding="6">
+                <h3 className="font-display text-[var(--text-xl)]">{u.title}</h3>
+                <p className="mt-2 text-[var(--text-xs)] sm:text-sm leading-relaxed text-muted-foreground">{u.text}</p>
+              </SectionCard>
             ))}
           </div>
         </section>
 
         <section className="pb-16">
-          <h2 className="font-display text-3xl tracking-tight">What is measured, and what is not</h2>
+          <SectionHeading title="What is measured, and what is not" size="3xl" />
           <p className="mt-3 max-w-2xl leading-relaxed text-muted-foreground">
             Agent work is easy to oversell, so here is the boundary I hold.
           </p>
           <ul className="mt-6 space-y-3">
             {boundaries.map((b) => (
-              <li key={b} className="flex gap-3 rounded-2xl border border-border bg-card p-5 text-sm leading-relaxed text-muted-foreground">
-                <span aria-hidden className="font-mono text-xs text-primary">/</span>
+              <li key={b} className="flex gap-3 rounded-2xl border border-border bg-card p-5 text-[var(--text-xs)] sm:text-sm leading-relaxed text-muted-foreground">
+                <span aria-hidden className="font-mono text-[var(--text-xs)] text-primary">/</span>
                 {b}
               </li>
             ))}
@@ -107,19 +116,23 @@ export default function AiAgentsPage() {
         </section>
 
         <section className="pb-20">
-          <div className="flex flex-col items-center gap-4 rounded-2xl border border-primary/25 bg-primary/10 p-10 text-center">
-            <Search className="h-8 w-8 text-primary" />
-            <h2 className="font-display text-3xl tracking-tight">See one working right now</h2>
-            <p className="max-w-md text-muted-foreground">
+          <SectionCard padding="8" className="border-primary/25 bg-primary/10 text-center">
+            <Search className="h-8 w-8 text-primary mx-auto" />
+            <h2 className="mt-4 font-display text-[var(--text-3xl)] tracking-tight">See one working right now</h2>
+            <p className="mt-3 max-w-md text-muted-foreground">
               The agent below is a live production system, running on my real business data. Ask it about pricing or your project.
             </p>
-            <Link href="https://chat.djaouad.is-a.dev" target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-colors hover:opacity-90">
+            <Link
+              href="https://chat.djaouad.is-a.dev"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex items-center gap-2 rounded-xl bg-primary px-5 sm:px-6 py-3 sm:py-3.5 text-[var(--text-xs)] sm:text-sm font-semibold text-primary-foreground transition-colors hover:opacity-90"
+            >
               Try the live demo <ArrowUpRight className="h-4 w-4" />
             </Link>
-          </div>
+          </SectionCard>
         </section>
-      </div>
+      </SectionWrapper>
     </main>
   );
 }

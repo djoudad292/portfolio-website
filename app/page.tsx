@@ -2,24 +2,23 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ExternalLink, Github, Download } from "lucide-react";
 import { LeadCapture } from "@/components/lead-capture";
+import { SectionWrapper } from "@/components/section-wrapper";
+import { SectionCard } from "@/components/section-card";
+import { ChipButton } from "@/components/page-buttons";
 
 import { AUDIT_OFFER, PRICE_ANCHOR } from "@/lib/positioning";
 
 export const metadata: Metadata = {
-  title:
-    "Djaouad Frih — Measured AI Systems, Fixed Price",
+  title: "Djaouad Frih — Measured AI Systems, Fixed Price",
   description:
     "I build retrieval layers and agent loops that run on your existing Postgres estate and monolith, scored against your own documents before a single prompt is written. Fixed price. Full builds start at $3,500.",
   alternates: { canonical: "https://djaouad.is-a.dev" },
 };
 
-const primaryBtn =
-  "w-full rounded-xl bg-primary px-6 py-4 text-sm font-semibold text-primary-foreground transition-colors hover:opacity-90 sm:py-3.5";
-const secondaryBtn =
-  "w-full rounded-xl border border-border bg-card px-6 py-4 text-sm font-semibold transition-colors hover:border-primary hover:text-primary sm:py-3.5";
-const chip =
-  "flex items-center gap-1.5 rounded-md border border-border bg-background px-2.5 py-1.5 font-mono text-[10px] transition-colors hover:border-primary hover:text-primary sm:px-3 sm:py-2";
-
+const primaryBtnClasses =
+  "w-full sm:w-auto rounded-xl bg-primary px-5 sm:px-6 py-3 sm:py-3.5 text-[var(--text-base)] font-semibold text-primary-foreground transition-colors hover:opacity-90";
+const secondaryBtnClasses =
+  "w-full sm:w-auto rounded-xl border border-border bg-card px-5 sm:px-6 py-3 sm:py-3.5 text-[var(--text-base)] font-semibold text-foreground transition-colors hover:border-primary hover:text-primary";
 const problems = [
   {
     t: "Your chatbot doesn't know your business.",
@@ -83,9 +82,19 @@ const work = [
 ];
 
 const credibility = [
-  { label: "AI support agent — live result", value: "~92% of support questions handled by AI, ~25 hours saved per week, 0 missed bookings" },
-  { label: "AI virtual receptionist — live result", value: "24/7 lead capture, booking, and human handoff — running in production since August 2026" },
-  { label: "Retrieval benchmark", value: "93.4% F1 on a 232-query goldset, every failing query published", href: "/benchmark" },
+  {
+    label: "AI support agent — live result",
+    value: "~92% of support questions handled by AI, ~25 hours saved per week, 0 missed bookings",
+  },
+  {
+    label: "AI virtual receptionist — live result",
+    value: "24/7 lead capture, booking, and human handoff — running in production since August 2026",
+  },
+  {
+    label: "Retrieval benchmark",
+    value: "93.4% F1 on a 232-query goldset, every failing query published",
+    href: "/benchmark",
+  },
 ];
 
 const process = [
@@ -122,10 +131,10 @@ const social = [
   { name: "LinkedIn", href: "https://linkedin.com/in/djaouad-frih-16ab7323a", icon: <ExternalLink className="h-3 w-3 shrink-0" /> },
 ];
 
-function SectionHeading({ title, id }: { title: string; id?: string }) {
+function SectionHeadingLocal({ title, id }: { title: string; id?: string }) {
   return (
     <div id={id} className="mb-5 sm:mb-7 flex items-center gap-2 sm:gap-3">
-      <h2 className="font-display text-xl sm:text-2xl tracking-tight">{title}</h2>
+      <h2 className="font-display text-[var(--text-2xl)] sm:text-[var(--text-3xl)] tracking-tight">{title}</h2>
       <span aria-hidden className="h-px flex-1 bg-border" />
     </div>
   );
@@ -134,80 +143,76 @@ function SectionHeading({ title, id }: { title: string; id?: string }) {
 export default function Home() {
   return (
     <main className="relative min-h-screen text-foreground">
-      <div className="relative mx-auto max-w-3xl px-5 sm:px-6 lg:px-8">
-
+      <SectionWrapper>
         <section className="pt-14 sm:pt-20 pb-10 sm:pb-16">
-          <div className="max-w-lg sm:max-w-none">
-            <span className="inline-block rounded-md border border-border bg-background px-2.5 py-1 font-mono text-[10px] sm:text-xs uppercase tracking-wider">
+          <div className="max-w-[var(--container-sm)]">
+            <span className="inline-block rounded-md border border-border bg-background px-2.5 sm:px-3 py-1 sm:py-1.5 font-mono text-[var(--text-xs)] uppercase tracking-wider">
               MEASURED AI SYSTEMS · FIXED PRICE · NO HOURLY SURPRISES
             </span>
 
-            <h1 className="mt-4 sm:mt-5 font-display text-2xl sm:text-3xl lg:text-4xl leading-[1.06] tracking-tight">
+            <h1 className="mt-4 sm:mt-5 font-display text-[var(--text-3xl)] sm:text-[var(--text-4xl)] lg:text-[var(--text-5xl)] leading-[1.06] tracking-tight">
               Your AI support agent should be measured before you trust it. I build it that way.
             </h1>
 
-            <p className="mt-4 sm:mt-5 text-sm sm:text-base leading-relaxed text-muted-foreground">
+            <p className="mt-4 sm:mt-5 text-[var(--text-base)] sm:text-[var(--text-lg)] leading-relaxed text-muted-foreground">
               I build retrieval layers and agent loops that run on your existing Postgres estate
               and monolith, scored against your own documents before a single prompt is written.
               Fixed price. {PRICE_ANCHOR}.
             </p>
 
             <div className="mt-6 sm:mt-7 flex flex-col sm:flex-row gap-3 sm:gap-3">
-              <Link href="/ai-reliability-audit" className={primaryBtn}>
+              <Link href="/ai-reliability-audit" className={primaryBtnClasses}>
                 Get the free reliability audit →
               </Link>
               <a
                 href="https://linkedin.com/in/djaouad-frih-16ab7323a"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={secondaryBtn}
+                className={secondaryBtnClasses}
               >
                 <ExternalLink className="h-3 w-3 shrink-0 mr-1 sm:mr-2" />
                 LinkedIn profile
               </a>
             </div>
 
-            <p className="mt-4 sm:mt-5 font-mono text-[10px] sm:text-xs text-muted-foreground">
+            <p className="mt-4 sm:mt-5 font-mono text-[var(--text-xs)] text-muted-foreground">
               One week, target. Scored against your documents. No call required first.
               Failures are published alongside the scores.
             </p>
 
-            <p className="mt-6 sm:mt-7 font-mono text-[10px] sm:text-xs leading-relaxed text-muted-foreground">
+            <p className="mt-6 sm:mt-7 font-mono text-[var(--text-xs)] leading-relaxed text-muted-foreground">
               Remote · serves EU and US-East clients during overlapping business hours.
             </p>
           </div>
         </section>
 
         <section id="problems" className="pb-10 sm:pb-14">
-          <SectionHeading title="The problems I solve" />
+          <SectionHeadingLocal title="The problems I solve" id="problems" />
           <div className="grid gap-3 sm:gap-4 sm:grid-cols-2">
             {problems.map((p) => (
-              <div key={p.t} className="rounded-2xl border border-border bg-card p-3 sm:p-4">
-                <h3 className="font-display text-sm sm:text-base leading-snug tracking-tight">
+              <SectionCard key={p.t} padding="4">
+                <h3 className="font-display text-[var(--text-sm)] sm:text-[var(--text-base)] leading-snug tracking-tight">
                   {p.t}
                 </h3>
-                <p className="mt-2 sm:mt-2.5 text-[11px] sm:text-sm leading-relaxed text-muted-foreground">
+                <p className="mt-2 sm:mt-2.5 text-[var(--text-xs)] sm:text-sm leading-relaxed text-muted-foreground">
                   {p.b}
                 </p>
-              </div>
+              </SectionCard>
             ))}
           </div>
         </section>
 
         <section id="credibility" className="pb-10 sm:pb-14">
-          <SectionHeading title="What I can show you" />
+          <SectionHeadingLocal title="What I can show you" id="credibility" />
           <dl className="grid gap-2 sm:gap-3 sm:grid-cols-[auto_1fr] sm:gap-4">
             {credibility.map((c) => (
               <div key={c.label} className="grid gap-1">
-                <dt className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+                <dt className="font-mono text-[var(--text-xs)] uppercase tracking-wider text-muted-foreground">
                   {c.label}
                 </dt>
-                <dd className="text-[11px] sm:text-sm text-foreground">
+                <dd className="text-[var(--text-xs)] sm:text-sm text-foreground">
                   {c.href ? (
-                    <Link
-                      href={c.href}
-                      className="text-primary hover:underline"
-                    >
+                    <Link href={c.href} className="text-primary hover:underline">
                       {c.value}
                     </Link>
                   ) : (
@@ -220,102 +225,88 @@ export default function Home() {
         </section>
 
         <section id="testimonials" className="pb-10 sm:pb-14">
-          <SectionHeading title="What they said" />
-          <div className="rounded-2xl border border-border bg-card p-4 sm:p-6">
-            <blockquote className="text-sm sm:text-base leading-relaxed text-muted-foreground italic">
+          <SectionHeadingLocal title="What they said" id="testimonials" />
+          <SectionCard padding="6">
+            <blockquote className="text-[var(--text-base)] sm:text-[var(--text-lg)] leading-relaxed text-muted-foreground italic">
               "The audit scored our chatbot on our own documents before we paid
               anything. It found exactly where it was guessing, and the build
               that followed fixed those same failures. Fixed price, source
               handed over, no surprises."
             </blockquote>
-            <footer className="mt-4 flex items-baseline gap-2">
-              <span className="font-display text-sm sm:text-base tracking-tight">
+            <footer className="mt-5 sm:mt-6 flex items-baseline gap-2">
+              <span className="font-display text-[var(--text-sm)] sm:text-[var(--text-base)] tracking-tight">
                 Clinic principal — EU dental group
               </span>
-              <span className="text-xs sm:text-sm text-muted-foreground">· anonymized</span>
+              <span className="text-[var(--text-xs)] text-muted-foreground">· anonymized</span>
             </footer>
-          </div>
-          <p className="mt-4 sm:mt-5 font-mono text-[10px] sm:text-xs text-muted-foreground">
+          </SectionCard>
+          <p className="mt-4 sm:mt-5 font-mono text-[var(--text-xs)] text-muted-foreground">
             One anonymized client. Working with dental clinics in the EU on
             after-hours reception and booking. References available on request.
           </p>
         </section>
 
         <section id="process" className="pb-10 sm:pb-14">
-          <SectionHeading title="How it works" />
+          <SectionHeadingLocal title="How it works" id="process" />
           <ol className="grid gap-3 sm:gap-4 sm:grid-cols-3">
             {process.map((p) => (
-              <li key={p.step} className="rounded-2xl border border-border bg-card p-3 sm:p-4">
-                <span className="font-mono text-[10px] sm:text-xs text-primary">{p.step}</span>
-                <h3 className="mt-1 sm:mt-2 font-display text-sm sm:text-base tracking-tight">{p.title}</h3>
-                <p className="mt-1 sm:mt-2 text-[11px] sm:text-sm leading-relaxed text-muted-foreground">{p.body}</p>
-              </li>
+              <SectionCard key={p.step} padding="4">
+                <span className="font-mono text-[var(--text-xs)] text-primary">{p.step}</span>
+                <h3 className="mt-1 sm:mt-2 font-display text-[var(--text-sm)] sm:text-[var(--text-base)] tracking-tight">
+                  {p.title}
+                </h3>
+                <p className="mt-1 sm:mt-2 text-[var(--text-xs)] sm:text-sm leading-relaxed text-muted-foreground">
+                  {p.body}
+                </p>
+              </SectionCard>
             ))}
           </ol>
         </section>
 
         <section id="work" className="pb-10 sm:pb-14">
-          <SectionHeading title="Selected work" />
-          <p className="mb-4 sm:mb-5 font-mono text-[10px] sm:text-xs text-muted-foreground">
+          <SectionHeadingLocal title="Selected work" id="work" />
+          <p className="mb-4 sm:mb-5 font-mono text-[var(--text-xs)] text-muted-foreground">
             Systems I built and operate. Each one states what it cannot do, because a page that
             only lists strengths is a page you have learned to distrust.
           </p>
           <div className="grid gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {work.map((w) => (
-              <div
-                key={w.name}
-                className="rounded-2xl border border-border bg-card p-3 sm:p-4"
-              >
-                <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+              <SectionCard key={w.name} padding="4">
+                <span className="font-mono text-[var(--text-xs)] uppercase tracking-wider text-muted-foreground">
                   {w.label}
                 </span>
                 <a
                   href={w.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-2 sm:mt-2.5 block font-display text-sm sm:text-base tracking-tight group-hover:text-primary"
+                  className="mt-2 sm:mt-2.5 block font-display text-[var(--text-sm)] sm:text-[var(--text-base)] tracking-tight group-hover:text-primary"
                 >
                   {w.name}
                 </a>
-                <p className="mt-1 sm:mt-1.5 text-[11px] sm:text-sm leading-snug text-muted-foreground">{w.desc}</p>
-                <p className="mt-1 font-mono text-[10px] text-muted-foreground">{w.limit}</p>
-                <div className="mt-2 sm:mt-3 flex flex-wrap gap-1.5 sm:gap-2 font-mono text-[10px]">
-                  <a
-                    href={w.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={chip}
-                  >
+                <p className="mt-1 sm:mt-1.5 text-[var(--text-xs)] sm:text-sm leading-snug text-muted-foreground">{w.desc}</p>
+                <p className="mt-1 font-mono text-[var(--text-xs)] text-muted-foreground">{w.limit}</p>
+                <div className="mt-2 sm:mt-3 flex flex-wrap gap-1.5 sm:gap-2 font-mono text-[var(--text-xs)]">
+                  <ChipButton href={w.url}>
                     <ExternalLink className="h-3 w-3 shrink-0" /> try it
-                  </a>
-                  <a
-                    href={w.repo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={chip}
-                  >
+                  </ChipButton>
+                  <ChipButton href={w.repo}>
                     <Github className="h-3 w-3 shrink-0" /> code
-                  </a>
+                  </ChipButton>
                   {w.apk && (
-                    <a
-                      href={w.apk}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={chip}
-                    >
+                    <ChipButton href={w.apk}>
                       <Download className="h-3 w-3 shrink-0" /> android
-                    </a>
+                    </ChipButton>
                   )}
                 </div>
-              </div>
+              </SectionCard>
             ))}
           </div>
         </section>
 
         <section id="case-study" className="pb-10 sm:pb-14">
-          <div className="rounded-2xl border border-border bg-card p-4 sm:p-6">
-            <SectionHeading title="Case study" />
-            <p className="text-sm sm:text-base leading-relaxed text-muted-foreground">
+          <SectionCard padding="6">
+            <SectionHeadingLocal title="Case study" />
+            <p className="text-[var(--text-xs)] sm:text-[var(--text-sm)] leading-relaxed text-muted-foreground">
               Pro-bono build for an EU dental clinic (anonymized). The after-hours
               enquiry that never got answered was losing bookings to clinics that
               replied. Here is how it went from audit to result.
@@ -323,66 +314,61 @@ export default function Home() {
 
             <div className="mt-5 sm:mt-6 space-y-4">
               <div className="grid gap-3 sm:gap-4 sm:grid-cols-3">
-                <div className="rounded-xl border border-border bg-background p-3 sm:p-4">
-                  <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+                <SectionCard padding="4" className="bg-background border-border/50">
+                  <span className="font-mono text-[var(--text-xs)] uppercase tracking-wider text-muted-foreground">
                     01 · Problem
                   </span>
-                  <h4 className="mt-1 sm:mt-2 font-display text-sm sm:text-base tracking-tight">
+                  <h4 className="mt-1 sm:mt-2 font-display text-[var(--text-sm)] sm:text-[var(--text-base)] tracking-tight">
                     After-hours enquiries dropped
                   </h4>
-                  <p className="mt-1 sm:mt-2 text-[11px] sm:text-sm leading-relaxed text-muted-foreground">
+                  <p className="mt-1 sm:mt-2 text-[var(--text-xs)] sm:text-sm leading-relaxed text-muted-foreground">
                     Patients messaging on WhatsApp after closing got no reply
-                    until the next morning — and many had already booked
-                    elsewhere.
+                    until the next morning — and many had already booked elsewhere.
                   </p>
-                </div>
-                <div className="rounded-xl border border-border bg-background p-3 sm:p-4">
-                  <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+                </SectionCard>
+                <SectionCard padding="4" className="bg-background border-border/50">
+                  <span className="font-mono text-[var(--text-xs)] uppercase tracking-wider text-muted-foreground">
                     02 · Audit
                   </span>
-                  <h4 className="mt-1 sm:mt-2 font-display text-sm sm:text-base tracking-tight">
+                  <h4 className="mt-1 sm:mt-2 font-display text-[var(--text-sm)] sm:text-[var(--text-base)] tracking-tight">
                     Scored against real messages
                   </h4>
-                  <p className="mt-1 sm:mt-2 text-[11px] sm:text-sm leading-relaxed text-muted-foreground">
+                  <p className="mt-1 sm:mt-2 text-[var(--text-xs)] sm:text-sm leading-relaxed text-muted-foreground">
                     Free reliability audit on 180 real patient messages. The bot
                     answered from its prompt, not the clinic's price list — wrong
                     prices, no booking links, and no refusal on clinical questions.
                   </p>
-                </div>
-                <div                   className="rounded-xl border border-border bg-background p-3 sm:p-4">
-                  <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+                </SectionCard>
+                <SectionCard padding="4" className="bg-background border-border/50">
+                  <span className="font-mono text-[var(--text-xs)] uppercase tracking-wider text-muted-foreground">
                     03 · Build
                   </span>
-                  <h4 className="mt-1 sm:mt-2 font-display text-sm sm:text-base tracking-tight">
+                  <h4 className="mt-1 sm:mt-2 font-display text-[var(--text-sm)] sm:text-[var(--text-base)] tracking-tight">
                     Fixed-price receptionist
                   </h4>
-                  <p className="mt-1 sm:mt-2 text-[11px] sm:text-sm leading-relaxed text-muted-foreground">
+                  <p className="mt-1 sm:mt-2 text-[var(--text-xs)] sm:text-sm leading-relaxed text-muted-foreground">
                     Multilingual receptionist (French, Arabic, English) quoting
                     from the clinic's own price list, holding appointments, and
                     escalating clinical questions with the conversation attached.
                     3-week build.
                   </p>
-                </div>
+                </SectionCard>
               </div>
 
               <div className="mt-6 rounded-xl border border-border bg-background p-4 sm:p-6">
-                <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+                <span className="font-mono text-[var(--text-xs)] uppercase tracking-wider text-muted-foreground">
                   Result
                 </span>
                 <div className="mt-3 sm:mt-4 flex flex-wrap gap-4 sm:gap-6">
                   <div>
-                    <p className="font-display text-2xl sm:text-3xl tracking-tight">
-                      ~92%
-                    </p>
-                    <p className="text-[11px] sm:text-sm text-muted-foreground">
+                    <p className="font-display text-[var(--text-3xl)] tracking-tight">~92%</p>
+                    <p className="text-[var(--text-xs)] sm:text-sm text-muted-foreground">
                       of after-hours messages answered without a human
                     </p>
                   </div>
                   <div>
-                    <p className="font-display text-2xl sm:text-3xl tracking-tight">
-                      0
-                    </p>
-                    <p className="text-[11px] sm:text-sm text-muted-foreground">
+                    <p className="font-display text-[var(--text-3xl)] tracking-tight">0</p>
+                    <p className="text-[var(--text-xs)] sm:text-sm text-muted-foreground">
                       missed bookings in the first month
                     </p>
                   </div>
@@ -390,43 +376,45 @@ export default function Home() {
               </div>
 
               <div className="mt-5 sm:mt-6">
-                <Link href="/ai-reliability-audit" className={primaryBtn}>
+                <Link href="/ai-reliability-audit" className={primaryBtnClasses}>
                   Start with the free audit →
                 </Link>
               </div>
             </div>
-          </div>
+          </SectionCard>
         </section>
 
         <section id="faq" className="pb-10 sm:pb-14">
-          <SectionHeading title="Frequently asked questions" />
+          <SectionHeadingLocal title="Frequently asked questions" id="faq" />
           <div className="grid gap-3 sm:gap-4">
             {faq.map((f) => (
-              <div key={f.q} className="rounded-2xl border border-border bg-card p-3 sm:p-4">
-                <h3 className="font-display text-sm sm:text-base tracking-tight">{f.q}</h3>
-                <p className="mt-1 sm:mt-2 text-[11px] sm:text-sm leading-relaxed text-muted-foreground">{f.a}</p>
-              </div>
+              <SectionCard key={f.q} padding="4">
+                <h3 className="font-display text-[var(--text-sm)] sm:text-[var(--text-base)] tracking-tight">{f.q}</h3>
+                <p className="mt-1 sm:mt-2 text-[var(--text-xs)] sm:text-sm leading-relaxed text-muted-foreground">{f.a}</p>
+              </SectionCard>
             ))}
           </div>
         </section>
 
         <section id="guarantee" className="pb-10 sm:pb-14">
-          <div className="rounded-2xl border border-primary/30 bg-primary/5 p-4 sm:p-6">
-            <h2 className="font-display text-lg sm:text-xl tracking-tight">30-day defect window</h2>
-            <p className="mt-2 text-sm sm:text-base leading-relaxed text-muted-foreground">
+          <SectionCard padding="6" className="border-primary/30 bg-primary/5">
+            <h2 className="font-display text-[var(--text-lg)] sm:text-[var(--text-xl)] tracking-tight">
+              30-day defect window
+            </h2>
+            <p className="mt-2 text-[var(--text-xs)] sm:text-[var(--text-base)] leading-relaxed text-muted-foreground">
               If something breaks, I fix it. No change orders for defects. The audit is free, the build is fixed-price, and the handover is yours to rerun.
             </p>
-          </div>
+          </SectionCard>
         </section>
 
         <section id="industries" className="pb-10 sm:pb-14">
-          <SectionHeading title="Industries I serve" />
+          <SectionHeadingLocal title="Industries I serve" id="industries" />
           <div className="flex flex-wrap gap-2 sm:gap-3">
             {industries.map((i) => (
               <Link
                 key={i.name}
                 href={i.href}
-                className="rounded-md border border-border bg-background px-3 sm:px-4 py-2 sm:py-2.5 text-[11px] sm:text-sm font-medium transition-colors hover:border-primary hover:text-primary"
+                className="rounded-md border border-border bg-background px-3 sm:px-4 py-2 sm:py-2.5 text-[var(--text-xs)] sm:text-sm font-medium transition-colors hover:border-primary hover:text-primary"
               >
                 {i.name}
               </Link>
@@ -435,39 +423,39 @@ export default function Home() {
         </section>
 
         <section id="dont" className="pb-10 sm:pb-14">
-          <div className="rounded-2xl border border-border bg-card p-3 sm:p-4 sm:p-6">
-            <SectionHeading title="What I don't do" />
-            <ul className="mt-2 sm:mt-2.5 list-disc list-inside space-y-1 sm:space-y-1.5 pl-2 sm:pl-3 text-[11px] sm:text-sm leading-relaxed text-muted-foreground">
+          <SectionCard padding="4">
+            <SectionHeadingLocal title="What I don't do" />
+            <ul className="mt-2 sm:mt-2.5 list-disc list-inside space-y-1 sm:space-y-1.5 pl-2 sm:pl-3 text-[var(--text-xs)] sm:text-sm leading-relaxed text-muted-foreground">
               {dontDo.map((d) => (
                 <li key={d}>{d}</li>
               ))}
             </ul>
-          </div>
+          </SectionCard>
         </section>
 
         <LeadCapture />
 
         <section className="pb-16 sm:pb-20">
-          <SectionHeading title="Start with the audit, not with a sales call." />
-          <p className="max-w-none sm:max-w-xl text-sm sm:text-base leading-relaxed text-muted-foreground">
+          <SectionHeadingLocal title="Start with the audit, not with a sales call." />
+          <p className="max-w-none sm:max-w-xl text-[var(--text-xs)] sm:text-[var(--text-base)] leading-relaxed text-muted-foreground">
             If your AI system is answering before it's measured, it's answering from a guess.
             The free reliability audit is {AUDIT_OFFER.duration}, scored against your own documents,
             and you keep the report either way — including the line that says you don't need
             AI here yet.
           </p>
           <div className="mt-5 sm:mt-6">
-            <Link href="/contact?for=audit" className={primaryBtn}>
+            <Link href="/contact?for=audit" className={primaryBtnClasses}>
               Start the audit →
             </Link>
           </div>
           <div className="mt-5 sm:mt-6 flex flex-col sm:flex-row items-center gap-2 sm:gap-3 rounded-2xl border border-border bg-card p-3 sm:p-4">
             <div className="min-w-0">
-              <p className="font-display text-sm sm:text-base tracking-tight">
+              <p className="font-display text-[var(--text-sm)] sm:text-[var(--text-base)] tracking-tight">
                 Djaouad Frih<span className="text-primary">.</span>
               </p>
               <a
                 href="mailto:contact@djaouad.is-a.dev"
-                className="font-mono text-[10px] sm:text-xs text-muted-foreground underline-offset-4 hover:text-primary hover:underline"
+                className="font-mono text-[var(--text-xs)] text-muted-foreground underline-offset-4 hover:text-primary hover:underline"
               >
                 contact@djaouad.is-a.dev
               </a>
@@ -481,7 +469,7 @@ export default function Home() {
                 href={s.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1 rounded-md border border-border bg-background px-2.5 py-1.5 font-mono text-[10px] transition-colors hover:border-primary hover:text-primary sm:px-3 sm:py-2"
+                className="flex items-center gap-1 rounded-md border border-border bg-background px-2.5 sm:px-3 py-1.5 sm:py-2 font-mono text-[var(--text-xs)] transition-colors hover:border-primary hover:text-primary"
               >
                 {s.icon}
                 {s.name}
@@ -489,8 +477,7 @@ export default function Home() {
             ))}
           </div>
         </section>
-
-      </div>
+      </SectionWrapper>
     </main>
   );
 }

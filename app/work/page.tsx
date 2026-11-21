@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ExternalLink, Github, Download } from "lucide-react";
+import { SectionWrapper } from "@/components/section-wrapper";
+import { SectionCard } from "@/components/section-card";
+import { ChipButton } from "@/components/page-buttons";
 
 export const metadata: Metadata = {
   title: "Work · Measured AI Systems | Djaouad Frih",
@@ -8,11 +11,6 @@ export const metadata: Metadata = {
     "Systems I built and operate: AI receptionist, support agent, and retrieval benchmark. Each one measured against real documents, with failures published.",
   alternates: { canonical: "https://djaouad.is-a.dev/work" },
 };
-
-const primaryBtn =
-  "w-full rounded-xl bg-primary px-6 py-4 text-sm font-semibold text-primary-foreground transition-colors hover:opacity-90 sm:py-3.5";
-const chip =
-  "flex items-center gap-1.5 rounded-md border border-border bg-background px-2.5 py-1.5 font-mono text-[10px] transition-colors hover:border-primary hover:text-primary sm:px-3 sm:py-2";
 
 const cases = [
   {
@@ -68,18 +66,17 @@ const cases = [
 export default function WorkPage() {
   return (
     <main className="relative min-h-screen text-foreground">
-      <div className="relative mx-auto max-w-3xl px-5 sm:px-6 lg:px-8">
-
+      <SectionWrapper>
         <section className="pt-16 sm:pt-20 pb-10 sm:pb-14">
-          <span className="inline-block rounded-md border border-border bg-background px-2.5 py-1 font-mono text-[10px] sm:text-xs uppercase tracking-wider">
+          <span className="inline-block rounded-md border border-border bg-background px-2.5 sm:px-3 py-1 sm:py-1.5 font-mono text-[var(--text-xs)] uppercase tracking-wider">
             SELECTED WORK
           </span>
 
-          <h1 className="mt-4 sm:mt-5 font-display text-2xl sm:text-3xl lg:text-4xl leading-[1.06] tracking-tight">
+          <h1 className="mt-4 sm:mt-5 font-display text-[var(--text-3xl)] sm:text-[var(--text-4xl)] leading-[1.06] tracking-tight">
             Systems I built and operate.
           </h1>
 
-          <p className="mt-4 sm:mt-5 max-w-none sm:max-w-xl text-sm sm:text-base leading-relaxed text-muted-foreground">
+          <p className="mt-4 sm:mt-5 max-w-none sm:max-w-xl text-[var(--text-base)] sm:text-[var(--text-lg)] leading-relaxed text-muted-foreground">
             Each one is measured against real documents, with the failures published. No
             demo-only claims — every number comes from a committed benchmark you can re-run.
           </p>
@@ -87,72 +84,56 @@ export default function WorkPage() {
 
         <div className="grid gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {cases.map((c) => (
-            <div key={c.name} className="rounded-2xl border border-border bg-card p-3 sm:p-4">
+            <SectionCard key={c.name} padding="4">
               <a
                 href={c.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block font-display text-sm sm:text-base tracking-tight group-hover:text-primary"
+                className="block font-display text-[var(--text-sm)] sm:text-[var(--text-base)] tracking-tight group-hover:text-primary"
               >
                 {c.name}
               </a>
-              <span className="mt-1 sm:mt-1.5 block font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+              <span className="mt-1 sm:mt-1.5 block font-mono text-[var(--text-xs)] uppercase tracking-wider text-muted-foreground">
                 {c.label}
               </span>
-              <p className="mt-1 sm:mt-1.5 text-[11px] sm:text-sm leading-snug text-muted-foreground">{c.desc}</p>
-              <p className="mt-1 font-mono text-[10px] text-muted-foreground">{c.limit}</p>
-              <p className="mt-2 sm:mt-2.5 font-mono text-[10px] sm:text-xs text-primary">{c.outcome}</p>
-              <div className="mt-2 sm:mt-3 flex flex-wrap gap-1.5 sm:gap-2 font-mono text-[10px]">
-                <a
-                  href={c.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={chip}
-                >
+              <p className="mt-1 sm:mt-1.5 text-[var(--text-xs)] sm:text-sm leading-snug text-muted-foreground">{c.desc}</p>
+              <p className="mt-1 font-mono text-[var(--text-xs)] text-muted-foreground">{c.limit}</p>
+              <p className="mt-2 sm:mt-2.5 font-mono text-[var(--text-xs)] text-primary">{c.outcome}</p>
+              <div className="mt-2 sm:mt-3 flex flex-wrap gap-1.5 sm:gap-2 font-mono text-[var(--text-xs)]">
+                <ChipButton href={c.url}>
                   <ExternalLink className="h-3 w-3 shrink-0" /> try it
-                </a>
-                <a
-                  href={c.repo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={chip}
-                >
+                </ChipButton>
+                <ChipButton href={c.repo}>
                   <Github className="h-3 w-3 shrink-0" /> code
-                </a>
+                </ChipButton>
                 {c.apk && (
-                  <a
-                    href={c.apk}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={chip}
-                  >
+                  <ChipButton href={c.apk}>
                     <Download className="h-3 w-3 shrink-0" /> android
-                  </a>
+                  </ChipButton>
                 )}
               </div>
-            </div>
+            </SectionCard>
           ))}
         </div>
 
         <section className="pb-16 sm:pb-20 mt-10 sm:mt-14">
-          <div className="rounded-2xl border border-border bg-card p-3 sm:p-4 sm:p-6">
-            <h2 className="font-display text-xl sm:text-2xl tracking-tight">
+          <SectionCard padding="6">
+            <h2 className="font-display text-[var(--text-xl)] sm:text-[var(--text-2xl)] tracking-tight">
               Start with the audit
             </h2>
-            <p className="mt-2 sm:mt-3 max-w-none sm:max-w-lg text-sm sm:text-base leading-relaxed text-muted-foreground">
+            <p className="mt-2 sm:mt-3 max-w-none sm:max-w-lg text-[var(--text-xs)] sm:text-[var(--text-base)] leading-relaxed text-muted-foreground">
               The free reliability audit is how I get a client case study — measured on your
               documents first, scored against a goldset you approve, and the fee comes off any
               build that follows.
             </p>
             <div className="mt-4 sm:mt-5">
-              <Link href="/contact?for=audit" className={primaryBtn}>
+              <Link href="/contact?for=audit" className="inline-flex items-center rounded-xl bg-primary px-5 sm:px-6 py-3 sm:py-3.5 text-[var(--text-base)] sm:text-[var(--text-lg)] font-semibold text-primary-foreground transition-colors hover:opacity-90">
                 Start with the audit
               </Link>
             </div>
-          </div>
+          </SectionCard>
         </section>
-
-      </div>
+      </SectionWrapper>
     </main>
   );
 }

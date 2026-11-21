@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { SectionWrapper } from "@/components/section-wrapper";
+import { SectionCard } from "@/components/section-card";
+import { SectionHeading } from "@/components/section-heading";
 
 export const metadata: Metadata = {
   title: "Retrieval Benchmark · 232 Queries, Goldset and Failures Published | Djaouad Frih",
@@ -17,21 +20,8 @@ export const metadata: Metadata = {
 
 const REPO = "https://github.com/djoudad292/ai-virtual-receptionist";
 
-const primaryBtn =
-  "rounded-xl bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-colors hover:opacity-90";
-const secondaryBtn =
-  "rounded-xl border border-border bg-card px-6 py-3.5 text-sm font-semibold transition-colors hover:border-primary";
-const chip =
-  "rounded-md border border-border bg-background px-2 py-1 font-mono text-[10px] transition-colors hover:border-primary hover:text-primary";
-
-function SectionHeading({ title, id }: { title: string; id?: string }) {
-  return (
-    <div id={id} className="mb-8 flex items-center gap-4">
-      <h2 className="font-display text-3xl tracking-tight">{title}</h2>
-      <span aria-hidden className="h-px flex-1 bg-border" />
-    </div>
-  );
-}
+const chipClasses =
+  "rounded-md border border-border bg-background px-2 sm:px-2.5 py-1 font-mono text-[var(--text-xs)] transition-colors hover:border-primary hover:text-primary";
 
 const sweep = [
   { thr: "0.20", tp: 198, fp: 20, fn: 8, tn: 6, p: "90.8", r: "96.1", f1: "93.4", fpr: "76.9", best: true },
@@ -80,56 +70,55 @@ const limits = [
 export default function BenchmarkPage() {
   return (
     <main className="relative min-h-screen text-foreground">
-      <div className="relative mx-auto max-w-4xl px-6">
-
+      <SectionWrapper>
         <section className="pt-28 pb-16">
-          <span className="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider">
+          <span className="inline-block rounded-md border border-border bg-background px-2.5 sm:px-3 py-1 sm:py-1.5 font-mono text-[var(--text-xs)] uppercase tracking-wider">
             PUBLIC BENCHMARK · RE-RUNNABLE
           </span>
 
-          <h1 className="mt-6 font-display text-4xl leading-[1.04] tracking-tight sm:text-5xl">
+          <h1 className="mt-6 font-display text-[var(--text-4xl)] sm:text-[var(--text-5xl)] leading-[1.04] tracking-tight">
             Here is the retrieval benchmark. Including the part where it fails.
           </h1>
 
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
+          <p className="mt-6 max-w-xl text-[var(--text-lg)] leading-relaxed text-muted-foreground">
             A retrieval system that answers everything, wrongly, is worse than one that
             knows what it doesn&apos;t cover. So this page publishes the false-positive
             rate and the failing queries alongside the headline score, not after it.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-2">
-            <a href={`${REPO}/blob/main/backend/eval/goldset.json`} target="_blank" rel="noopener noreferrer" className={chip}>
+            <a href={`${REPO}/blob/main/backend/eval/goldset.json`} target="_blank" rel="noopener noreferrer" className={chipClasses}>
               goldset.json
             </a>
-            <a href={`${REPO}/blob/main/backend/eval/benchmark-results.json`} target="_blank" rel="noopener noreferrer" className={chip}>
+            <a href={`${REPO}/blob/main/backend/eval/benchmark-results.json`} target="_blank" rel="noopener noreferrer" className={chipClasses}>
               results
             </a>
-            <a href={`${REPO}/blob/main/backend/eval/benchmark.js`} target="_blank" rel="noopener noreferrer" className={chip}>
+            <a href={`${REPO}/blob/main/backend/eval/benchmark.js`} target="_blank" rel="noopener noreferrer" className={chipClasses}>
               run command
             </a>
-            <a href={`${REPO}/actions`} target="_blank" rel="noopener noreferrer" className={chip}>
+            <a href={`${REPO}/actions`} target="_blank" rel="noopener noreferrer" className={chipClasses}>
               CI runs
             </a>
           </div>
 
-          <div className="mt-8 grid gap-3 sm:grid-cols-4">
+          <div className="mt-8 grid gap-3 sm:gap-4 sm:grid-cols-4">
             {[
               { l: "Queries", v: "232" },
               { l: "Knowledge base", v: "45 chunks" },
               { l: "Out-of-scope", v: "26" },
               { l: "Failing cases shown", v: "all" },
             ].map((s) => (
-              <div key={s.l} className="rounded-xl border border-border bg-card px-4 py-3">
-                <p className="font-mono text-[10px] text-muted-foreground">{s.l}</p>
-                <p className="mt-1 font-display text-xl tracking-tight">{s.v}</p>
-              </div>
+              <SectionCard key={s.l} padding="4" className="bg-background border-border/50">
+                <p className="font-mono text-[var(--text-xs)] text-muted-foreground">{s.l}</p>
+                <p className="mt-1 font-display text-[var(--text-2xl)] tracking-tight">{s.v}</p>
+              </SectionCard>
             ))}
           </div>
         </section>
 
         <section className="pb-16">
-          <SectionHeading title="How to re-run it" />
-          <pre className="overflow-x-auto rounded-2xl border border-border bg-card p-5 font-mono text-xs leading-relaxed"><code>{`git clone ${REPO}
+          <SectionHeading title="How to re-run it" size="3xl" />
+          <pre className="overflow-x-auto rounded-2xl border border-border bg-card p-5 font-mono text-[var(--text-xs)] leading-relaxed"><code>{`git clone ${REPO}
 cd ai-virtual-receptionist/backend
 npm ci
 npm run eval
@@ -139,7 +128,7 @@ EVAL_MIN_F1=0.8 npm run eval
 
 # change the retrieval depth
 EVAL_TOP_K=3 npm run eval`}</code></pre>
-          <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+          <p className="mt-4 text-[var(--text-xs)] sm:text-sm leading-relaxed text-muted-foreground">
             No API key, no network, no database. The run is hermetic and deterministic, so
             you get the same numbers I get. It exits non-zero if F1 drops below the floor,
             and it runs on every push in CI — so it is a regression guard, not a
@@ -148,9 +137,9 @@ EVAL_TOP_K=3 npm run eval`}</code></pre>
         </section>
 
         <section className="pb-16">
-          <SectionHeading title="Threshold sweep — vector (production path)" />
+          <SectionHeading title="Threshold sweep — vector (production path)" size="3xl" />
           <div className="overflow-x-auto">
-            <table className="w-full min-w-[640px] border-collapse font-mono text-xs">
+            <table className="w-full border-collapse font-mono text-[var(--text-xs)]">
               <thead>
                 <tr className="border-b border-border text-left text-muted-foreground">
                   <th className="py-2 pr-3 font-normal">Thr</th>
@@ -181,7 +170,7 @@ EVAL_TOP_K=3 npm run eval`}</code></pre>
               </tbody>
             </table>
           </div>
-          <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+          <p className="mt-4 text-[var(--text-xs)] sm:text-sm leading-relaxed text-muted-foreground">
             Best F1 is <span className="font-mono text-foreground">93.4% at threshold 0.2</span> —
             and it is the <em>worst</em> row for false positives. That is the whole point of
             publishing the sweep instead of the best row.
@@ -189,9 +178,9 @@ EVAL_TOP_K=3 npm run eval`}</code></pre>
         </section>
 
         <section className="pb-16">
-          <SectionHeading title="The finding: F1 is the wrong thing to maximise" />
+          <SectionHeading title="The finding: F1 is the wrong thing to maximise" size="3xl" />
           <div className="overflow-x-auto">
-            <table className="w-full min-w-[520px] border-collapse font-mono text-xs">
+            <table className="w-full border-collapse font-mono text-[var(--text-xs)]">
               <thead>
                 <tr className="border-b border-border text-left text-muted-foreground">
                   <th className="py-2 pr-3 font-normal">Retriever</th>
@@ -225,7 +214,7 @@ EVAL_TOP_K=3 npm run eval`}</code></pre>
             hidden that entirely.
           </p>
           <div className="mt-4 overflow-x-auto">
-            <table className="w-full min-w-[420px] border-collapse font-mono text-xs">
+            <table className="w-full border-collapse font-mono text-[var(--text-xs)]">
               <thead>
                 <tr className="border-b border-border text-left text-muted-foreground">
                   <th className="py-2 pr-3 font-normal">Keyword thr</th>
@@ -251,17 +240,17 @@ EVAL_TOP_K=3 npm run eval`}</code></pre>
         </section>
 
         <section className="pb-16">
-          <SectionHeading title="Where it fails" />
+          <SectionHeading title="Where it fails" size="3xl" />
           <p className="max-w-2xl leading-relaxed text-muted-foreground">
             Sampled from the 8 false negatives and 20 false positives at the best threshold.
             An audit that only reports wins is marketing.
           </p>
           <div className="mt-6 space-y-4">
             {failures.map((f) => (
-              <div key={f.q} className="rounded-2xl border border-border bg-card p-5">
+              <SectionCard key={f.q} padding="5">
                 <div className="flex flex-wrap items-center gap-2">
                   <span
-                    className={`rounded-md border px-2 py-0.5 font-mono text-[10px] ${
+                    className={`rounded-md border px-2 py-0.5 font-mono text-[var(--text-xs)] ${
                       f.type === "false-positive"
                         ? "border-destructive/40 text-destructive"
                         : "border-primary/40 text-primary"
@@ -269,26 +258,26 @@ EVAL_TOP_K=3 npm run eval`}</code></pre>
                   >
                     {f.type}
                   </span>
-                  <p className="text-sm leading-relaxed text-foreground">&ldquo;{f.q}&rdquo;</p>
+                  <p className="text-[var(--text-xs)] sm:text-sm leading-relaxed text-foreground">&ldquo;{f.q}&rdquo;</p>
                 </div>
-                <p className="mt-2 font-mono text-[11px] text-muted-foreground">retrieved: {f.got}</p>
-                <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{f.note}</p>
-              </div>
+                <p className="mt-2 font-mono text-[var(--text-xs)] text-muted-foreground">retrieved: {f.got}</p>
+                <p className="mt-2 text-[var(--text-xs)] leading-relaxed text-muted-foreground">{f.note}</p>
+              </SectionCard>
             ))}
           </div>
         </section>
 
         <section className="pb-16">
-          <SectionHeading title="What this does not measure" />
+          <SectionHeading title="What this does not measure" size="3xl" />
           <div className="space-y-5 border-l-2 border-border pl-5">
             {limits.map((l) => (
               <div key={l.t}>
-                <h3 className="font-display text-lg tracking-tight">{l.t}</h3>
-                <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{l.b}</p>
+                <h3 className="font-display text-[var(--text-lg)] tracking-tight">{l.t}</h3>
+                <p className="mt-1 text-[var(--text-xs)] sm:text-sm leading-relaxed text-muted-foreground">{l.b}</p>
               </div>
             ))}
           </div>
-          <p className="mt-6 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+          <p className="mt-6 max-w-2xl text-[var(--text-xs)] sm:text-sm leading-relaxed text-muted-foreground">
             Every one of those limits is also something I measure when I audit someone
             else&apos;s system — which is what the{" "}
             <Link href="/ai-reliability-audit" className="text-primary underline-offset-4 hover:underline">
@@ -299,23 +288,23 @@ EVAL_TOP_K=3 npm run eval`}</code></pre>
         </section>
 
         <section className="pb-24">
-          <div className="rounded-2xl border border-border bg-card p-8 sm:p-10">
-            <h2 className="font-display text-3xl tracking-tight">Run it and check my work.</h2>
-            <p className="mt-2 max-w-lg text-sm leading-relaxed text-muted-foreground">
+          <SectionCard padding="8">
+            <h2 className="font-display text-[var(--text-3xl)] tracking-tight">Run it and check my work.</h2>
+            <p className="mt-2 max-w-lg text-[var(--text-xs)] sm:text-[var(--text-base)] leading-relaxed text-muted-foreground">
               Clone the repo, run one command, and you get the same table. If my numbers here
               don&apos;t match yours, that&apos;s a finding worth telling me about.
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-              <Link href="/contact?for=build" className={primaryBtn}>
+              <Link href="/contact?for=build" className="inline-flex items-center rounded-xl bg-primary px-5 sm:px-6 py-3 sm:py-3.5 text-[var(--text-base)] sm:text-[var(--text-lg)] font-semibold text-primary-foreground transition-colors hover:opacity-90">
                 Discuss a build
               </Link>
-              <Link href="/work" className={secondaryBtn}>
+              <Link href="/work" className="inline-flex items-center rounded-xl border border-border bg-card px-5 sm:px-6 py-3 sm:py-3.5 text-[var(--text-base)] sm:text-[var(--text-lg)] font-semibold text-foreground transition-colors hover:border-primary hover:text-primary">
                 See the case studies
               </Link>
             </div>
-          </div>
+          </SectionCard>
         </section>
-      </div>
+      </SectionWrapper>
     </main>
   );
 }
