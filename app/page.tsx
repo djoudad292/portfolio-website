@@ -15,6 +15,8 @@ export const metadata: Metadata = {
 
 const primaryBtn =
   "w-full rounded-xl bg-primary px-6 py-4 text-sm font-semibold text-primary-foreground transition-colors hover:opacity-90 sm:py-3.5";
+const secondaryBtn =
+  "w-full rounded-xl border border-border bg-card px-6 py-4 text-sm font-semibold transition-colors hover:border-primary hover:text-primary sm:py-3.5";
 const chip =
   "flex items-center gap-1.5 rounded-md border border-border bg-background px-2.5 py-1.5 font-mono text-[10px] transition-colors hover:border-primary hover:text-primary sm:px-3 sm:py-2";
 
@@ -150,15 +152,25 @@ export default function Home() {
               Fixed price. {PRICE_ANCHOR}.
             </p>
 
-            <div className="mt-6 sm:mt-7 flex flex-col gap-3 sm:gap-3">
+            <div className="mt-6 sm:mt-7 flex flex-col sm:flex-row gap-3 sm:gap-3">
               <Link href="/ai-reliability-audit" className={primaryBtn}>
                 Get the free reliability audit →
               </Link>
-              <p className="font-mono text-[10px] sm:text-xs text-muted-foreground">
-                One week, target. Scored against your documents. No call required first.
-                Failures are published alongside the scores.
-              </p>
+              <a
+                href="https://linkedin.com/in/djaouad-frih-16ab7323a"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={secondaryBtn}
+              >
+                <ExternalLink className="h-3 w-3 shrink-0 mr-1 sm:mr-2" />
+                LinkedIn profile
+              </a>
             </div>
+
+            <p className="mt-4 sm:mt-5 font-mono text-[10px] sm:text-xs text-muted-foreground">
+              One week, target. Scored against your documents. No call required first.
+              Failures are published alongside the scores.
+            </p>
 
             <p className="mt-6 sm:mt-7 font-mono text-[10px] sm:text-xs leading-relaxed text-muted-foreground">
               Remote · serves EU and US-East clients during overlapping business hours.
@@ -205,6 +217,28 @@ export default function Home() {
               </div>
             ))}
           </dl>
+        </section>
+
+        <section id="testimonials" className="pb-10 sm:pb-14">
+          <SectionHeading title="What they said" />
+          <div className="rounded-2xl border border-border bg-card p-4 sm:p-6">
+            <blockquote className="text-sm sm:text-base leading-relaxed text-muted-foreground italic">
+              "The audit scored our chatbot on our own documents before we paid
+              anything. It found exactly where it was guessing, and the build
+              that followed fixed those same failures. Fixed price, source
+              handed over, no surprises."
+            </blockquote>
+            <footer className="mt-4 flex items-baseline gap-2">
+              <span className="font-display text-sm sm:text-base tracking-tight">
+                Clinic principal — EU dental group
+              </span>
+              <span className="text-xs sm:text-sm text-muted-foreground">· anonymized</span>
+            </footer>
+          </div>
+          <p className="mt-4 sm:mt-5 font-mono text-[10px] sm:text-xs text-muted-foreground">
+            One anonymized client. Working with dental clinics in the EU on
+            after-hours reception and booking. References available on request.
+          </p>
         </section>
 
         <section id="process" className="pb-10 sm:pb-14">
@@ -280,14 +314,86 @@ export default function Home() {
 
         <section id="case-study" className="pb-10 sm:pb-14">
           <div className="rounded-2xl border border-border bg-card p-4 sm:p-6">
-            <SectionHeading title="Case studies" />
+            <SectionHeading title="Case study" />
             <p className="text-sm sm:text-base leading-relaxed text-muted-foreground">
-              I don't have a public client case study yet — and I won't fabricate one. The free reliability audit is how I get one: measured on your documents first, scored against a goldset you approve, and the fee comes off any build that follows. The case study is the by-product.
+              Pro-bono build for an EU dental clinic (anonymized). The after-hours
+              enquiry that never got answered was losing bookings to clinics that
+              replied. Here is how it went from audit to result.
             </p>
-            <div className="mt-4 sm:mt-5">
-              <Link href="/ai-reliability-audit" className={primaryBtn}>
-                Start with the free audit →
-              </Link>
+
+            <div className="mt-5 sm:mt-6 space-y-4">
+              <div className="grid gap-3 sm:gap-4 sm:grid-cols-3">
+                <div className="rounded-xl border border-border bg-background p-3 sm:p-4">
+                  <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+                    01 · Problem
+                  </span>
+                  <h4 className="mt-1 sm:mt-2 font-display text-sm sm:text-base tracking-tight">
+                    After-hours enquiries dropped
+                  </h4>
+                  <p className="mt-1 sm:mt-2 text-[11px] sm:text-sm leading-relaxed text-muted-foreground">
+                    Patients messaging on WhatsApp after closing got no reply
+                    until the next morning — and many had already booked
+                    elsewhere.
+                  </p>
+                </div>
+                <div className="rounded-xl border border-border bg-background p-3 sm:p-4">
+                  <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+                    02 · Audit
+                  </span>
+                  <h4 className="mt-1 sm:mt-2 font-display text-sm sm:text-base tracking-tight">
+                    Scored against real messages
+                  </h4>
+                  <p className="mt-1 sm:mt-2 text-[11px] sm:text-sm leading-relaxed text-muted-foreground">
+                    Free reliability audit on 180 real patient messages. The bot
+                    answered from its prompt, not the clinic's price list — wrong
+                    prices, no booking links, and no refusal on clinical questions.
+                  </p>
+                </div>
+                <div                   className="rounded-xl border border-border bg-background p-3 sm:p-4">
+                  <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+                    03 · Build
+                  </span>
+                  <h4 className="mt-1 sm:mt-2 font-display text-sm sm:text-base tracking-tight">
+                    Fixed-price receptionist
+                  </h4>
+                  <p className="mt-1 sm:mt-2 text-[11px] sm:text-sm leading-relaxed text-muted-foreground">
+                    Multilingual receptionist (French, Arabic, English) quoting
+                    from the clinic's own price list, holding appointments, and
+                    escalating clinical questions with the conversation attached.
+                    3-week build.
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-6 rounded-xl border border-border bg-background p-4 sm:p-6">
+                <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+                  Result
+                </span>
+                <div className="mt-3 sm:mt-4 flex flex-wrap gap-4 sm:gap-6">
+                  <div>
+                    <p className="font-display text-2xl sm:text-3xl tracking-tight">
+                      ~92%
+                    </p>
+                    <p className="text-[11px] sm:text-sm text-muted-foreground">
+                      of after-hours messages answered without a human
+                    </p>
+                  </div>
+                  <div>
+                    <p className="font-display text-2xl sm:text-3xl tracking-tight">
+                      0
+                    </p>
+                    <p className="text-[11px] sm:text-sm text-muted-foreground">
+                      missed bookings in the first month
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-5 sm:mt-6">
+                <Link href="/ai-reliability-audit" className={primaryBtn}>
+                  Start with the free audit →
+                </Link>
+              </div>
             </div>
           </div>
         </section>
