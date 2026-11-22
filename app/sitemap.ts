@@ -11,23 +11,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
   const pages = [
     "",
-    "/for-agencies",
     "/benchmark",
     "/work",
     "/ai-reliability-audit",
     "/pricing",
-    "/cv",
-    "/hire-ai-developer",
-    "/ai-agents",
-    "/industries",
-    "/dental-clinics",
-    "/roi",
-    "/talk",
-    "/blog",
-    "/blog/pilot-to-production",
-    "/blog/portfolio-mcp-server",
-    "/privacy",
-    "/terms",
+    "/contact",
   ];
   return pages.map((p) => ({
     url: `${BASE}${p}`,
@@ -38,10 +26,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
         ? 1
         : p === "/benchmark" || p === "/work"
           ? 0.9
-          : p === "/for-agencies" || p === "/ai-reliability-audit" || p === "/pricing"
+          : p === "/ai-reliability-audit" || p === "/pricing"
             ? 0.9
-          : p === "/hire-ai-developer" || p === "/ai-agents" || p === "/industries"
-            ? 0.8
             : 0.7,
   }));
 }

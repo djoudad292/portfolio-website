@@ -15,3 +15,6 @@ tsconfig.tsbuildinfo
 
 # Netlify CLI local cache
 .netlify/
+
+# Playwright MCP artifacts (QA screenshots, snapshots, console dumps)
+.playwright-mcp/

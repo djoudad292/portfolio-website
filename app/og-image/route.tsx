@@ -1,85 +1,110 @@
-import { ImageResponse } from "next/og"
+import { ImageResponse } from 'next/og'
 
-export const runtime = "edge"
+import { AUDIT_OFFER, PRICE_ANCHOR } from '@/lib/positioning'
+
+/*
+ * Social share card (1200x630).
+ *
+ * Palette and copy are pulled from the same design tokens as the site so the
+ * card cannot drift from the pages it represents. It is deliberately static:
+ * no request access, so Next prerenders it at build time instead of paying for
+ * an edge invocation on every crawler hit.
+ */
+
+export const dynamic = 'force-static'
 
 export async function GET() {
   return new ImageResponse(
     (
       <div
         style={{
-          height: "100%",
-          width: "100%",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          backgroundColor: "#0a0c10",
-          padding: "80px 100px",
-          position: "relative",
+          height: '100%',
+          width: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+          backgroundColor: '#0a0c10',
+          padding: '64px 72px',
+          color: '#e8e6e1',
         }}
       >
-        <div
-          style={{
-            position: "absolute",
-            top: "60px",
-            left: "100px",
-            display: "flex",
-            alignItems: "center",
-            gap: "14px",
-          }}
-        >
-          <div style={{ width: "14px", height: "14px", borderRadius: "9999px", backgroundColor: "#a3e635" }} />
-          <div style={{ fontSize: "20px", color: "#8b94a7", letterSpacing: "4px" }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+          <div
+            style={{
+              width: '12px',
+              height: '12px',
+              borderRadius: '9999px',
+              backgroundColor: '#eeaf2d',
+            }}
+          />
+          <div style={{ fontSize: '19px', color: '#8a9099', letterSpacing: '3px' }}>
             DJAOUAD.IS-A.DEV
           </div>
         </div>
-        <div
-          style={{
-            fontSize: "84px",
-            fontWeight: "bold",
-            color: "#f4f6fb",
-            lineHeight: 1.05,
-            letterSpacing: "-2px",
-            marginBottom: "18px",
-          }}
-        >
-          Djaouad Frih.
+
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <div
+            style={{
+              fontSize: '72px',
+              fontWeight: 700,
+              lineHeight: 1.06,
+              letterSpacing: '-2px',
+              maxWidth: '960px',
+            }}
+          >
+            Your AI support agent should be measured before you trust it.
+          </div>
+          <div
+            style={{
+              fontSize: '72px',
+              fontWeight: 700,
+              lineHeight: 1.06,
+              letterSpacing: '-2px',
+              color: '#eeaf2d',
+              marginTop: '6px',
+            }}
+          >
+            I build it that way.
+          </div>
+          <div
+            style={{
+              fontSize: '26px',
+              lineHeight: 1.4,
+              color: '#8a9099',
+              maxWidth: '880px',
+              marginTop: '26px',
+            }}
+          >
+            Retrieval layers and agent loops on your existing Postgres estate, scored against
+            your own documents before a single prompt is written.
+          </div>
         </div>
+
         <div
           style={{
-            fontSize: "40px",
-            color: "#a3e635",
-            fontWeight: 600,
-            lineHeight: 1.2,
-            marginBottom: "24px",
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            borderTop: '1px solid #1e2530',
+            paddingTop: '24px',
+            fontSize: '21px',
+            color: '#8a9099',
           }}
         >
-          Full-Stack + AI Engineer
-        </div>
-        <div
-          style={{
-            fontSize: "28px",
-            color: "#8b94a7",
-            lineHeight: 1.4,
-            maxWidth: "900px",
-          }}
-        >
-          AI agents · RAG · MCP · Web &amp; Mobile · production systems
-        </div>
-        <div
-          style={{
-            position: "absolute",
-            bottom: "60px",
-            left: "100px",
-            display: "flex",
-            gap: "22px",
-            fontSize: "19px",
-            color: "#8b94a7",
-          }}
-        >
-          <span>chat.djaouad.is-a.dev</span>
-          <span>docs.djaouad.is-a.dev</span>
-          <span>customer.djaouad.is-a.dev</span>
-          <span style={{ color: "#a3e635" }}>mcp.djaouad.is-a.dev</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <div
+              style={{
+                fontSize: '19px',
+                color: '#0a0c10',
+                backgroundColor: '#eeaf2d',
+                borderRadius: '6px',
+                padding: '7px 14px',
+              }}
+            >
+              {`${AUDIT_OFFER.price} reliability audit`}
+            </div>
+          </div>
+          <div style={{ color: '#e8e6e1' }}>{PRICE_ANCHOR}</div>
         </div>
       </div>
     ),

@@ -1,218 +1,252 @@
-import type { Metadata } from "next";
-import Link from "next/link";
+import type { Metadata } from 'next'
+import { ArrowRight, Check, X } from 'lucide-react'
 
-import { AUDIT_OFFER, PRICE_ANCHOR } from "@/lib/positioning";
-import { SectionWrapper } from "@/components/section-wrapper";
-import { SectionCard } from "@/components/section-card";
-import { SectionHeading } from "@/components/section-heading";
+import { AUDIT_OFFER, PRICE_ANCHOR } from '@/lib/positioning'
+import { Section } from '@/components/section'
+import { SectionCard } from '@/components/section-card'
+import { SectionHeading } from '@/components/section-heading'
+import { ButtonLink } from '@/components/button'
+import { Eyebrow } from '@/components/eyebrow'
 
 export const metadata: Metadata = {
-  title: "Free AI Reliability Audit · Retrieval, Refusals & Latency Measured | Djaouad Frih",
+  title: 'Free AI Reliability Audit · Retrieval, Refusals & Latency Measured | Djaouad Frih',
   description:
     `A free ${AUDIT_OFFER.duration} audit of your AI system on your own documents: precision, recall and F1 against a goldset built from your corpus, refusal rate on out-of-scope questions, citation correctness, latency, token cost and a permissions review. Failures published alongside the scores.`,
-  alternates: { canonical: "https://djaouad.is-a.dev/ai-reliability-audit" },
+  alternates: { canonical: 'https://djaouad.is-a.dev/ai-reliability-audit' },
   openGraph: {
-    title: "Free AI Reliability Audit · Djaouad Frih",
+    title: 'Free AI Reliability Audit · Djaouad Frih',
     description:
       `${AUDIT_OFFER.duration} — measured on your documents, credited in full against any build that follows.`,
-    url: "https://djaouad.is-a.dev/ai-reliability-audit",
-    type: "website",
+    url: 'https://djaouad.is-a.dev/ai-reliability-audit',
+    type: 'website',
   },
-};
+}
 
 const measured = [
   {
-    t: "Precision, recall and F1",
-    b: "Measured against a goldset built from your corpus, not a demo set. If retrieval misses, the answer is downstream of a known-bad input — this is the first thing to check.",
+    t: 'Precision, recall and F1',
+    b: 'Measured against a goldset built from your corpus, not a demo set. If retrieval misses, the answer is downstream of a known-bad input — this is the first thing to check.',
   },
   {
-    t: "Refusal rate on out-of-scope questions",
-    b: "The number that tells you whether the system knows what it doesn't know. A system that answers everything has no boundary, and you will find that out in production.",
+    t: 'Refusal rate on out-of-scope questions',
+    b: 'The number that tells you whether the system knows what it doesn’t know. A system that answers everything has no boundary, and you will find that out in production.',
   },
   {
-    t: "Citation correctness",
-    b: "Does the answer point at the passage that actually supports it, or merely at a passage from the same document? These are different, and only one of them is useful.",
+    t: 'Citation correctness',
+    b: 'Does the answer point at the passage that actually supports it, or merely at a passage from the same document? These are different, and only one of them is useful.',
   },
   {
-    t: "Latency and cost",
-    b: "p50 and p95, and token cost per conversation, so the economics conversation happens against real numbers instead of an estimate.",
+    t: 'Latency and cost',
+    b: 'p50 and p95, and token cost per conversation, so the economics conversation happens against real numbers instead of an estimate.',
   },
   {
-    t: "Server-side authorization review",
-    b: "Retrieval that ignores permissions is the fastest way an AI pilot exposes data it should not. This is checked before anything else.",
+    t: 'Server-side authorization review',
+    b: 'Retrieval that ignores permissions is the fastest way an AI pilot exposes data it should not. This is checked before anything else.',
   },
   {
-    t: "Failures, published alongside the scores",
-    b: "The report lists what broke. An audit that only reports wins is marketing, and you would be able to tell.",
+    t: 'Failures, published alongside the scores',
+    b: 'The report lists what broke. An audit that only reports wins is marketing, and you would be able to tell.',
   },
-];
+]
 
 const forWho = [
-  "A mid-market team whose AI feature works in a demo and stalls on real traffic",
-  "An agency with a client-facing AI system nobody has independently measured",
-  "A team about to launch and wanting to know what breaks before customers find it",
-  "Anyone who has been told a system is 'working' and has never seen the numbers",
-];
+  'A mid-market team whose AI feature works in a demo and stalls on real traffic',
+  'An agency with a client-facing AI system nobody has independently measured',
+  'A team about to launch and wanting to know what breaks before customers find it',
+  'Anyone who has been told a system is “working” and has never seen the numbers',
+]
 
 const notFor = [
-  "You want a demo, a strategy deck, or a sales call. This is none of those three.",
-  "You have no documents and no corpus to score against. There is nothing to measure yet.",
-  "You want a guaranteed accuracy figure in advance. I will not commit to a number I haven't measured on your data.",
-  "You need the answer before the audit turnaround. Then this isn't the right entry point.",
-];
+  'You want a demo, a strategy deck, or a sales call. This is none of those three.',
+  'You have no documents and no corpus to score against. There is nothing to measure yet.',
+  'You want a guaranteed accuracy figure in advance. I will not commit to a number I haven’t measured on your data.',
+  'You need the answer before the audit turnaround. Then this isn’t the right entry point.',
+]
 
 const isNot = [
-  "Not a demo. It runs against your data, not mine.",
-  "Not a strategy deck. There is no roadmap in it.",
-  "Not a sales call. If the report says you don't need this yet, that's the report, and you keep it.",
-  "Not a commitment to work together. Scoping a build without looking at your data is guessing, and you would be paying for the guess.",
-];
+  'Not a demo. It runs against your data, not mine.',
+  'Not a strategy deck. There is no roadmap in it.',
+  'Not a sales call. If the report says you don’t need this yet, that’s the report, and you keep it.',
+  'Not a commitment to work together. Scoping a build without looking at your data is guessing, and you would be paying for the guess.',
+]
 
 const delivered = [
-  "A written report — PDF and markdown — that you own outright",
-  "The goldset built from your corpus, in your repository, so you can rerun it",
-  "The measurements themselves, not just the conclusions",
-  "The permission findings, listed explicitly",
-  "A recommendation, including \"you don't need this yet\" if that's the truth",
-];
+  'A written report — PDF and markdown — that you own outright',
+  'The goldset built from your corpus, in your repository, so you can rerun it',
+  'The measurements themselves, not just the conclusions',
+  'The permission findings, listed explicitly',
+  'A recommendation, including “you don’t need this yet” if that’s the truth',
+]
 
 export default function AiReliabilityAuditPage() {
   return (
-    <main className="relative min-h-screen text-foreground">
-      <SectionWrapper>
-        <section className="pt-28 pb-16">
-          <span className="inline-block rounded-md border border-border bg-background px-2.5 sm:px-3 py-1 sm:py-1.5 font-mono text-[var(--text-xs)] uppercase tracking-wider">
-            FREE · {AUDIT_OFFER.duration.toUpperCase()}
-          </span>
+    <main>
+      <Section className="pb-10 pt-28 sm:pt-32">
+        <Eyebrow tone="brand">Free · {AUDIT_OFFER.duration}</Eyebrow>
+        <h1 className="mt-6 max-w-[26ch] font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl">
+          Most AI pilots die between the demo and production. That&rsquo;s the part I do.
+        </h1>
+        <p className="mt-6 max-w-[var(--prose-max)] text-lg leading-relaxed text-muted-foreground">
+          Only 25% of enterprises have moved 40% or more of their AI pilots into production.{' '}
+          <span className="font-mono text-xs text-muted-foreground/80">
+            Deloitte, 21 Jan 2026
+          </span>{' '}
+          The rest are stuck somewhere between a convincing demo and something you can be
+          paged for. This audit measures where exactly they&rsquo;re stuck.
+        </p>
 
-          <h1 className="mt-6 font-display text-[var(--text-4xl)] sm:text-[var(--text-5xl)] leading-[1.04] tracking-tight">
-            Most AI pilots die between the demo and production. That&rsquo;s the part I do.
-          </h1>
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <ButtonLink href="/contact?for=audit" size="lg">
+            Request the audit
+            <ArrowRight className="size-4" aria-hidden />
+          </ButtonLink>
+          <ButtonLink href="/benchmark" variant="secondary" size="lg">
+            See a benchmark you can re-run
+          </ButtonLink>
+        </div>
+      </Section>
 
-          <p className="mt-6 max-w-xl text-[var(--text-lg)] leading-relaxed text-muted-foreground">
-            Only 25% of enterprises have moved 40% or more of their AI pilots into
-            production.
-            <span className="font-mono text-[var(--text-xs)]"> Deloitte, 21 Jan 2026</span> The rest are
-            stuck somewhere between a convincing demo and something you can be paged for.
-            This audit measures where exactly they&rsquo;re stuck.
-          </p>
+      {/* What gets measured */}
+      <Section>
+        <SectionHeading
+          title="What gets measured"
+          description={AUDIT_OFFER.summary}
+        />
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:mt-10">
+          {measured.map((item) => (
+            <SectionCard key={item.t} interactive padding="md" className="h-full">
+              <h3 className="font-display text-lg tracking-tight">{item.t}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                {item.b}
+              </p>
+            </SectionCard>
+          ))}
+        </div>
+      </Section>
 
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="/contact?for=audit" className="inline-flex items-center rounded-xl bg-primary px-5 sm:px-6 py-3 sm:py-3.5 text-[var(--text-base)] sm:text-[var(--text-lg)] font-semibold text-primary-foreground transition-colors hover:opacity-90">
-              Request the audit
-            </Link>
-            <Link href="/benchmark" className="inline-flex items-center rounded-xl border border-border bg-card px-5 sm:px-6 py-3 sm:py-3.5 text-[var(--text-base)] sm:text-[var(--text-lg)] font-semibold text-foreground transition-colors hover:border-primary hover:text-primary">
-              See a benchmark you can rerun
-            </Link>
-          </div>
-        </section>
-
-        <section className="pb-16">
-          <SectionHeading title="What gets measured" size="3xl" />
-          <p className="max-w-2xl leading-relaxed text-muted-foreground">
-            {AUDIT_OFFER.summary}
-          </p>
-          <div className="mt-8 sm:mt-10 space-y-5">
-            {measured.map((item) => (
-              <div key={item.t} className="border-l-2 border-border pl-5">
-                <h3 className="font-display text-[var(--text-lg)] tracking-tight">{item.t}</h3>
-                <p className="mt-1 text-[var(--text-xs)] sm:text-sm leading-relaxed text-muted-foreground">{item.b}</p>
-              </div>
+      {/* What you get */}
+      <Section>
+        <SectionHeading title="What you get" />
+        <SectionCard padding="md" className="mt-8">
+          <ul className="space-y-3">
+            {delivered.map((item) => (
+              <li
+                key={item}
+                className="flex gap-2.5 text-sm leading-relaxed text-muted-foreground sm:text-base"
+              >
+                <Check aria-hidden className="mt-1 size-4 shrink-0 text-primary" />
+                <span className="min-w-0">{item}</span>
+              </li>
             ))}
-          </div>
-        </section>
-
-        <section className="pb-16">
-          <SectionHeading title="What you get" size="3xl" />
-          <SectionCard padding="6">
-            <ul className="space-y-2">
-              {delivered.map((item) => (
-                <li key={item} className="flex gap-2 text-[var(--text-xs)] sm:text-sm leading-relaxed text-muted-foreground">
-                  <span aria-hidden className="text-primary">—</span>
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <p className="mt-5 font-mono text-[var(--text-xs)] text-muted-foreground">{AUDIT_OFFER.terms}</p>
-          </SectionCard>
-        </section>
-
-        <section className="pb-16">
-          <SectionHeading title="Who it's for" size="3xl" />
-          <div className="grid gap-5 sm:gap-6 sm:grid-cols-2">
-            <SectionCard padding="6">
-              <h3 className="font-display text-[var(--text-lg)] tracking-tight">Worth requesting if</h3>
-              <ul className="mt-4 sm:mt-5 space-y-2">
-                {forWho.map((item) => (
-                  <li key={item} className="flex gap-2 text-[var(--text-xs)] sm:text-sm leading-relaxed text-muted-foreground">
-                    <span aria-hidden className="text-primary">—</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </SectionCard>
-            <SectionCard padding="6">
-              <h3 className="font-display text-[var(--text-lg)] tracking-tight">Not worth it if</h3>
-              <ul className="mt-4 sm:mt-5 space-y-2">
-                {notFor.map((item) => (
-                  <li key={item} className="flex gap-2 text-[var(--text-xs)] sm:text-sm leading-relaxed text-muted-foreground">
-                    <span aria-hidden className="text-primary">×</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </SectionCard>
-          </div>
-          <p className="mt-6 sm:mt-8 text-[var(--text-xs)] sm:text-sm leading-relaxed text-muted-foreground">
-            Eligibility is simple: you need a real corpus, a real system to point at it, and
-            someone who owns the process for the five days. I review every audit request
-            personally and decline most. That is the filter — not a form.
+          </ul>
+          <p className="mt-6 border-t border-border pt-4 font-mono text-xs leading-relaxed text-muted-foreground">
+            {AUDIT_OFFER.terms}
           </p>
-        </section>
+        </SectionCard>
+      </Section>
 
-        <section className="pb-16">
-          <SectionHeading title="What it is not" size="3xl" />
-          <SectionCard padding="6">
-            <ul className="space-y-2">
-              {isNot.map((item) => (
-                <li key={item} className="flex gap-2 text-[var(--text-xs)] sm:text-sm leading-relaxed text-muted-foreground">
-                  <span aria-hidden className="text-primary">×</span>
-                  {item}
+      {/* Who it's for */}
+      <Section>
+        <SectionHeading title="Who it’s for" />
+        <div className="mt-8 grid gap-4 sm:grid-cols-2">
+          <SectionCard padding="md">
+            <h3 className="font-mono text-xs uppercase tracking-[0.14em] text-primary">
+              Worth requesting if
+            </h3>
+            <ul className="mt-4 space-y-3">
+              {forWho.map((item) => (
+                <li
+                  key={item}
+                  className="flex gap-2.5 text-sm leading-relaxed text-muted-foreground"
+                >
+                  <Check aria-hidden className="mt-1 size-3.5 shrink-0 text-primary" />
+                  <span className="min-w-0">{item}</span>
                 </li>
               ))}
             </ul>
           </SectionCard>
-          <p className="mt-6 sm:mt-8 text-[var(--text-xs)] sm:text-sm leading-relaxed text-muted-foreground">
-            The reason this is free: it replaces the sales pitch with the work. Most studios
-            argue from slides and case studies, and you can argue back from a report. If the
-            answer is that you should not build this yet, the report will say that and you
-            will still have the map.
-          </p>
-        </section>
 
-        <section className="pb-24">
-          <SectionCard padding="8">
-            <h2 className="font-display text-[var(--text-3xl)] tracking-tight">Send me something to measure.</h2>
-            <p className="mt-2 max-w-lg text-[var(--text-xs)] sm:text-[var(--text-base)] leading-relaxed text-muted-foreground">
-              A folder of documents, a link to a knowledge base, or a description of the
-              system that isn&rsquo;t performing. {AUDIT_OFFER.duration} later you get the report.
-              If you want to keep building afterwards, the audit comes off the price —{" "}
-              {PRICE_ANCHOR.toLowerCase()}.
-            </p>
-            <div className="mt-6 sm:mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link href="/contact?for=audit" className="inline-flex items-center rounded-xl bg-primary px-5 sm:px-6 py-3 sm:py-3.5 text-[var(--text-base)] sm:text-[var(--text-lg)] font-semibold text-primary-foreground transition-colors hover:opacity-90">
-                Request the audit
-              </Link>
-              <Link href="/pricing" className="inline-flex items-center rounded-xl border border-border bg-card px-5 sm:px-6 py-3 sm:py-3.5 text-[var(--text-base)] sm:text-[var(--text-lg)] font-semibold text-foreground transition-colors hover:border-primary hover:text-primary">
-                See the full price map
-              </Link>
-            </div>
-            <p className="mt-6 sm:mt-8 font-mono text-[var(--text-xs)] text-muted-foreground">
-              Reply within one business day — including &ldquo;this isn&rsquo;t for you&rdquo;.
-            </p>
+          <SectionCard padding="md">
+            <h3 className="font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">
+              Not worth it if
+            </h3>
+            <ul className="mt-4 space-y-3">
+              {notFor.map((item) => (
+                <li
+                  key={item}
+                  className="flex gap-2.5 text-sm leading-relaxed text-muted-foreground"
+                >
+                  <X
+                    aria-hidden
+                    className="mt-1 size-3.5 shrink-0 text-muted-foreground/70"
+                  />
+                  <span className="min-w-0">{item}</span>
+                </li>
+              ))}
+            </ul>
           </SectionCard>
-        </section>
-      </SectionWrapper>
+        </div>
+
+        <p className="mt-6 max-w-[var(--prose-max)] text-sm leading-relaxed text-muted-foreground sm:text-base">
+          Eligibility is simple: you need a real corpus, a real system to point at it, and
+          someone who owns the process for the five days. I review every audit request
+          personally and decline most. That is the filter — not a form.
+        </p>
+      </Section>
+
+      {/* What it is not */}
+      <Section>
+        <SectionHeading title="What it is not" />
+        <SectionCard padding="md" className="mt-8">
+          <ul className="space-y-3">
+            {isNot.map((item) => (
+              <li
+                key={item}
+                className="flex gap-2.5 text-sm leading-relaxed text-muted-foreground sm:text-base"
+              >
+                <X
+                  aria-hidden
+                  className="mt-1 size-4 shrink-0 text-muted-foreground/70"
+                />
+                <span className="min-w-0">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </SectionCard>
+        <p className="mt-6 max-w-[var(--prose-max)] text-sm leading-relaxed text-muted-foreground sm:text-base">
+          The reason this is free: it replaces the sales pitch with the work. Most studios
+          argue from slides and case studies, and you can argue back from a report. If the
+          answer is that you should not build this yet, the report will say that and you will
+          still have the map.
+        </p>
+      </Section>
+
+      {/* Closing */}
+      <Section>
+        <SectionCard padding="lg">
+          <h2 className="font-display text-2xl tracking-tight sm:text-3xl">
+            Send me something to measure.
+          </h2>
+          <p className="mt-3 max-w-[var(--prose-max)] text-sm leading-relaxed text-muted-foreground sm:text-base">
+            A folder of documents, a link to a knowledge base, or a description of the system
+            that isn&rsquo;t performing. {AUDIT_OFFER.duration} later you get the report. If you
+            want to keep building afterwards, the audit comes off the price —{' '}
+            {PRICE_ANCHOR.toLowerCase()}.
+          </p>
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+            <ButtonLink href="/contact?for=audit" size="lg">
+              Request the audit
+              <ArrowRight className="size-4" aria-hidden />
+            </ButtonLink>
+            <ButtonLink href="/pricing" variant="secondary" size="lg">
+              See the full price map
+            </ButtonLink>
+          </div>
+          <p className="mt-6 font-mono text-xs text-muted-foreground">
+            Reply within one business day — including &ldquo;this isn&rsquo;t for you&rdquo;.
+          </p>
+        </SectionCard>
+      </Section>
     </main>
-  );
+  )
 }

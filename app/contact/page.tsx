@@ -1,285 +1,390 @@
-"use client"
+'use client'
 
-import { useState } from "react"
-import { Mail, Send, Check, Loader2, AlertCircle } from "lucide-react"
-import { SectionHeading } from "@/components/section-heading"
-import { email } from "@/lib/socials"
-import { SectionWrapper } from "@/components/section-wrapper"
-import { SectionCard } from "@/components/section-card"
+import { useEffect, useState } from 'react'
+import { AlertCircle, ArrowUpRight, Check, Github, Linkedin, Loader2, Mail, Send } from 'lucide-react'
 
-// Force fresh deploy - v2
+import { email, whatsappUrl } from '@/lib/socials'
+import { Button } from '@/components/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { Textarea } from '@/components/ui/textarea'
+import { Section } from '@/components/section'
+import { SectionCard } from '@/components/section-card'
+import { Eyebrow } from '@/components/eyebrow'
 
-type FormStatus = "idle" | "submitting" | "success" | "error"
+type FormStatus = 'idle' | 'submitting' | 'success' | 'error'
 
+const ENQUIRY_TYPES = [
+  'Free reliability audit',
+  'Scoped build',
+  'White-label delivery',
+  'Not sure yet',
+] as const
+
+const TIMELINES = ['Exploring', 'Within 30 days', '1–3 months', 'Already in production'] as const
+
+const BUDGETS = [
+  'Audit first / deciding',
+  '$3.5k – $7.5k',
+  '$7.5k – $15k',
+  '$15k+',
+  'Agency milestone budget',
+] as const
+
+const emptyForm = {
+  name: '',
+  company: '',
+  email: '',
+  enquiryType: 'Free reliability audit',
+  timeline: '',
+  budget: '',
+  message: '',
+}
+
+/**
+ * Contact form.
+ *
+ * Submissions open the visitor's mail client with the brief pre-filled — there
+ * is no backend to lose a message, and the form says so below the button.
+ *
+ * The previous version passed `noValidate` to the <form>, which disabled the
+ * browser's own required/type=email validation, so submitting an empty form
+ * silently "succeeded" and opened a blank email. Native validation is now left
+ * on, and every status change is announced through a live region.
+ */
 export default function ContactPage() {
-  const [status, setStatus] = useState<FormStatus>("idle")
-  const [formData, setFormData] = useState({
-    name: "",
-    company: "",
-    email: "",
-    project: "",
-    timeline: "",
-    budget: "",
-    message: "",
-  })
+  const [status, setStatus] = useState<FormStatus>('idle')
+  const [form, setForm] = useState(emptyForm)
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  // ?for=audit / ?for=build / ?for=agency preselect the enquiry type.
+  useEffect(() => {
+    const preset = new URLSearchParams(window.location.search).get('for')
+    const map: Record<string, string> = {
+      audit: 'Free reliability audit',
+      build: 'Scoped build',
+      agency: 'White-label delivery',
+    }
+    if (preset && map[preset]) {
+      setForm((f) => ({ ...f, enquiryType: map[preset] }))
+    }
+  }, [])
+
+  const update = (field: keyof typeof emptyForm, value: string) =>
+    setForm((f) => ({ ...f, [field]: value }))
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    setStatus("submitting")
+    setStatus('submitting')
 
     const body = [
-      `Name: ${formData.name}`,
-      `Company: ${formData.company || "—"}`,
-      `Email: ${formData.email}`,
-      `Project: ${formData.project}`,
-      `Timeline: ${formData.timeline || "—"}`,
-      `Budget: ${formData.budget || "—"}`,
-      "",
-      formData.message,
-    ].join("\n")
+      `Name: ${form.name}`,
+      `Company: ${form.company || '—'}`,
+      `Email: ${form.email}`,
+      `Enquiry: ${form.enquiryType}`,
+      `Timeline: ${form.timeline || '—'}`,
+      `Budget: ${form.budget || '—'}`,
+      '',
+      form.message,
+    ].join('\n')
 
-    const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(
-      `Project inquiry from ${formData.name}`
+    const mailto = `mailto:${email}?subject=${encodeURIComponent(
+      `${form.enquiryType} — ${form.name}`,
     )}&body=${encodeURIComponent(body)}`
 
-    const opened = window.open(mailtoLink, "_blank")
-    if (!opened) {
-      window.location.href = mailtoLink
-    }
-    setStatus("success")
-    setFormData({
-      name: "",
-      company: "",
-      email: "",
-      project: "",
-      timeline: "",
-      budget: "",
-      message: "",
-    })
+    const opened = window.open(mailto, '_blank')
+    if (!opened) window.location.href = mailto
+
+    setStatus('success')
+    setForm(emptyForm)
   }
 
-  const inputClasses =
-    "w-full rounded-xl border border-border bg-background px-4 sm:px-5 py-3 sm:py-3.5 text-[var(--text-xs)] sm:text-sm placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
+  const channels = [
+    {
+      label: 'Email',
+      value: email,
+      href: `mailto:${email}`,
+      icon: Mail,
+      external: false,
+    },
+    {
+      label: 'WhatsApp',
+      value: 'Message directly',
+      href: whatsappUrl,
+      icon: ArrowUpRight,
+      external: true,
+    },
+    {
+      label: 'GitHub',
+      value: 'djoudad292',
+      href: 'https://github.com/djoudad292',
+      icon: Github,
+      external: true,
+    },
+    {
+      label: 'LinkedIn',
+      value: 'djaouad-frih',
+      href: 'https://www.linkedin.com/in/djaouad-frih',
+      icon: Linkedin,
+      external: true,
+    },
+  ]
 
   return (
-    <main className="relative min-h-screen text-foreground">
-      <SectionWrapper>
-        <SectionHeading
-          index="0"
-          label="Contact"
-          title="Start a project"
-          description="Tell me what you're building. I read every brief and reply with a plan, or honest questions if the scope needs clarifying."
-          size="4xl"
-        />
+    <main>
+      <Section className="pb-10 pt-28 sm:pt-32">
+        <Eyebrow>Contact</Eyebrow>
+        <h1 className="mt-6 max-w-[22ch] font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl">
+          Start a project
+        </h1>
+        <p className="mt-6 max-w-[var(--prose-max)] text-lg leading-relaxed text-muted-foreground">
+          Tell me what you&rsquo;re building. I read every brief and reply with a plan, or
+          honest questions if the scope needs clarifying.
+        </p>
+      </Section>
 
-        <form onSubmit={handleSubmit} className="mt-10 sm:mt-12 space-y-6" noValidate>
-          <div className="grid gap-4 sm:gap-6 sm:grid-cols-2">
-            <div>
-              <label
-                htmlFor="name"
-                className="block text-[var(--text-xs)] sm:text-sm font-medium text-foreground mb-1.5"
-              >
-                Name *
-              </label>
-              <input
-                id="name"
-                type="text"
+      <Section className="pt-4 sm:pt-6">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-14">
+          {/* ------------------------------------------------------------ Form */}
+          <form onSubmit={handleSubmit} className="min-w-0 space-y-6">
+            <div className="grid gap-5 sm:grid-cols-2">
+              <div className="space-y-2">
+                <Label htmlFor="name">
+                  Name <span className="text-primary">*</span>
+                </Label>
+                <Input
+                  id="name"
+                  name="name"
+                  autoComplete="name"
+                  required
+                  value={form.name}
+                  onChange={(e) => update('name', e.target.value)}
+                  placeholder="Your name"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="company">Company</Label>
+                <Input
+                  id="company"
+                  name="company"
+                  autoComplete="organization"
+                  value={form.company}
+                  onChange={(e) => update('company', e.target.value)}
+                  placeholder="Company or project (optional)"
+                />
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="email">
+                Work email <span className="text-primary">*</span>
+              </Label>
+              <Input
+                id="email"
+                name="email"
+                type="email"
+                autoComplete="email"
                 required
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className={inputClasses}
-                placeholder="Your name"
+                value={form.email}
+                onChange={(e) => update('email', e.target.value)}
+                placeholder="you@company.com"
+                aria-describedby="email-hint"
               />
+              <p id="email-hint" className="text-xs text-muted-foreground">
+                Used only to reply to this enquiry.
+              </p>
             </div>
-            <div>
-              <label
-                htmlFor="company"
-                className="block text-[var(--text-xs)] sm:text-sm font-medium text-foreground mb-1.5"
+
+            <div className="space-y-2">
+              <Label htmlFor="enquiryType">What do you need?</Label>
+              <select
+                id="enquiryType"
+                name="enquiryType"
+                value={form.enquiryType}
+                onChange={(e) => update('enquiryType', e.target.value)}
+                className="h-11 w-full rounded-md border border-input bg-background px-3.5 text-base text-foreground outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/20"
               >
-                Company
-              </label>
-              <input
-                id="company"
-                type="text"
-                value={formData.company}
-                onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                className={inputClasses}
-                placeholder="Company name (optional)"
-              />
+                {ENQUIRY_TYPES.map((t) => (
+                  <option key={t} value={t}>
+                    {t}
+                  </option>
+                ))}
+              </select>
             </div>
-          </div>
 
-          <div>
-            <label
-              htmlFor="email"
-              className="block text-[var(--text-xs)] sm:text-sm font-medium text-foreground mb-1.5"
-            >
-              Email *
-            </label>
-            <input
-              id="email"
-              type="email"
-              required
-              value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              className={inputClasses}
-              placeholder="your@email.com"
-            />
-          </div>
-
-          <div>
-            <label
-              htmlFor="project"
-              className="block text-[var(--text-xs)] sm:text-sm font-medium text-foreground mb-1.5"
-            >
-              What are you building? *
-            </label>
-            <textarea
-              id="project"
-              required
-              rows={3}
-              value={formData.project}
-              onChange={(e) => setFormData({ ...formData, project: e.target.value })}
-              className={`${inputClasses} resize-none`}
-              placeholder="Describe the product, feature, or problem you want solved"
-            />
-          </div>
-
-          <div className="grid gap-4 sm:gap-6 sm:grid-cols-2">
-            <div>
-              <label
-                htmlFor="timeline"
-                className="block text-[var(--text-xs)] sm:text-sm font-medium text-foreground mb-1.5"
-              >
-                Timeline
-              </label>
-              <input
-                id="timeline"
-                type="text"
-                value={formData.timeline}
-                onChange={(e) => setFormData({ ...formData, timeline: e.target.value })}
-                className={inputClasses}
-                placeholder={`e.g., "Need to start in 2 weeks"`}
+            <div className="space-y-2">
+              <Label htmlFor="message">
+                What are you building? <span className="text-primary">*</span>
+              </Label>
+              <Textarea
+                id="message"
+                name="message"
+                required
+                minLength={10}
+                rows={5}
+                value={form.message}
+                onChange={(e) => update('message', e.target.value)}
+                placeholder="The product, feature or problem you want solved — a few concrete details beat a polished brief."
+                aria-describedby="message-hint"
               />
+              <p id="message-hint" className="text-xs text-muted-foreground">
+                Where does it fail today, and what does it cost you?
+              </p>
             </div>
-            <div>
-              <label
-                htmlFor="budget"
-                className="block text-[var(--text-xs)] sm:text-sm font-medium text-foreground mb-1.5"
-              >
-                Budget range
-              </label>
-              <input
-                id="budget"
-                type="text"
-                value={formData.budget}
-                onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
-                className={inputClasses}
-                placeholder="e.g. a WhatsApp order flow, or not sure yet"
-              />
-            </div>
-          </div>
 
-          <div>
-            <label
-              htmlFor="message"
-              className="block text-[var(--text-xs)] sm:text-sm font-medium text-foreground mb-1.5"
-            >
-              Anything else worth knowing?
-            </label>
-            <textarea
-              id="message"
-              rows={4}
-              value={formData.message}
-              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              className={`${inputClasses} resize-none`}
-              placeholder="Constraints, tech preferences, compliance needs, etc."
-            />
-          </div>
-
-          <button
-            type="submit"
-            disabled={status === "submitting"}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-primary px-8 sm:px-10 py-3.5 text-[var(--text-xs)] sm:text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            {status === "submitting" && <Loader2 className="h-4 w-4 animate-spin" />}
-            {status !== "submitting" && <Send className="h-4 w-4" />}
-            {status === "submitting"
-              ? "Opening your email app…"
-              : "Send brief via email"}
-          </button>
-
-          {status === "success" && (
-            <SectionCard padding="5" className="border-green-500/30 bg-green-500/10">
-              <div className="flex items-center gap-2">
-                <Check className="h-4 w-4 shrink-0" />
-                Your email app opened with the brief pre-filled. Just hit send.
+            <div className="grid gap-5 sm:grid-cols-2">
+              <div className="space-y-2">
+                <Label htmlFor="timeline">Timeline</Label>
+                <select
+                  id="timeline"
+                  name="timeline"
+                  value={form.timeline}
+                  onChange={(e) => update('timeline', e.target.value)}
+                  className="h-11 w-full rounded-md border border-input bg-background px-3.5 text-base text-foreground outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/20"
+                >
+                  <option value="">Select one</option>
+                  {TIMELINES.map((t) => (
+                    <option key={t} value={t}>
+                      {t}
+                    </option>
+                  ))}
+                </select>
               </div>
-            </SectionCard>
-          )}
-
-          {status === "error" && (
-            <SectionCard padding="5" className="border-red-500/30 bg-red-500/10">
-              <div className="flex items-center gap-2">
-                <AlertCircle className="h-4 w-4 shrink-0" />
-                Could not open email app. Please email{" "}
-                <a href={`mailto:${email}`} className="underline">
-                  {email}
-                </a>{" "}
-                directly with your brief.
+              <div className="space-y-2">
+                <Label htmlFor="budget">Budget range</Label>
+                <select
+                  id="budget"
+                  name="budget"
+                  value={form.budget}
+                  onChange={(e) => update('budget', e.target.value)}
+                  className="h-11 w-full rounded-md border border-input bg-background px-3.5 text-base text-foreground outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/20"
+                >
+                  <option value="">Select one</option>
+                  {BUDGETS.map((b) => (
+                    <option key={b} value={b}>
+                      {b}
+                    </option>
+                  ))}
+                </select>
               </div>
-            </SectionCard>
-          )}
-
-          <p className="text-[var(--text-xs)] text-muted-foreground text-center">
-            This form opens your email app with everything pre-filled. No data leaves
-            this page until you hit send in your mail client.
-          </p>
-        </form>
-
-        {/* Alternative contact methods */}
-        <div className="mt-16 sm:mt-20">
-          <SectionCard padding="8">
-            <h3 className="font-display text-[var(--text-xl)]">Other ways to reach me</h3>
-            <div className="mt-6 sm:mt-8 grid gap-3 sm:gap-4 sm:grid-cols-3">
-              <a
-                href={`mailto:${email}`}
-                className="flex items-center gap-3 rounded-xl border border-border p-4 sm:p-5 transition-colors hover:border-primary hover:bg-muted/30"
-              >
-                <Mail className="h-5 w-5 text-primary" />
-                <div>
-                  <p className="font-medium">Email</p>
-                  <p className="text-[var(--text-xs)] sm:text-sm text-muted-foreground break-all">{email}</p>
-                </div>
-              </a>
-              <a
-                href="https://github.com/djoudad292"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 rounded-xl border border-border p-4 sm:p-5 transition-colors hover:border-primary hover:bg-muted/30"
-              >
-                <svg className="h-5 w-5 text-primary" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-                <div>
-                  <p className="font-medium">GitHub</p>
-                  <p className="text-[var(--text-xs)] sm:text-sm text-muted-foreground">djoudad292</p>
-                </div>
-              </a>
-              <a
-                href="https://www.linkedin.com/in/djaouad-frih"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 rounded-xl border border-border p-4 sm:p-5 transition-colors hover:border-primary hover:bg-muted/30"
-              >
-                <svg className="h-5 w-5 text-primary" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                <div>
-                  <p className="font-medium">LinkedIn</p>
-                  <p className="text-[var(--text-xs)] sm:text-sm text-muted-foreground">djaouad-frih</p>
-                </div>
-              </a>
             </div>
-          </SectionCard>
+
+            <div className="flex flex-col gap-4 border-t border-border pt-6 sm:flex-row sm:items-center">
+              <Button
+                type="submit"
+                size="lg"
+                disabled={status === 'submitting'}
+                className="w-full sm:w-auto"
+              >
+                {status === 'submitting' ? (
+                  <Loader2 className="size-4 animate-spin" aria-hidden />
+                ) : (
+                  <Send className="size-4" aria-hidden />
+                )}
+                {status === 'submitting' ? 'Opening your email app…' : 'Send brief via email'}
+              </Button>
+              <p className="text-xs leading-relaxed text-muted-foreground sm:max-w-xs">
+                Opens your email app with everything pre-filled. Nothing leaves this page
+                until you hit send.
+              </p>
+            </div>
+
+            {/* Status is announced, not just coloured. */}
+            <div aria-live="polite" className="empty:hidden">
+              {status === 'success' && (
+                <div
+                  role="status"
+                  className="flex items-start gap-2.5 rounded-lg border border-success/30 bg-success/[0.07] p-4 text-sm text-foreground"
+                >
+                  <Check aria-hidden className="mt-0.5 size-4 shrink-0 text-success" />
+                  <span>
+                    Your email app opened with the brief pre-filled. Just hit send.
+                  </span>
+                </div>
+              )}
+              {status === 'error' && (
+                <div
+                  role="alert"
+                  className="flex items-start gap-2.5 rounded-lg border border-destructive/30 bg-destructive/[0.07] p-4 text-sm text-foreground"
+                >
+                  <AlertCircle
+                    aria-hidden
+                    className="mt-0.5 size-4 shrink-0 text-destructive"
+                  />
+                  <span>
+                    Could not open your email app. Email{' '}
+                    <a
+                      href={`mailto:${email}`}
+                      className="text-primary underline underline-offset-4"
+                    >
+                      {email}
+                    </a>{' '}
+                    directly with your brief.
+                  </span>
+                </div>
+              )}
+            </div>
+          </form>
+
+          {/* ------------------------------------------------------- Sidebar */}
+          <aside className="space-y-6">
+            <SectionCard padding="md">
+              <h2 className="font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">
+                Direct channels
+              </h2>
+              <ul className="mt-4 space-y-1">
+                {channels.map((c) => (
+                  <li key={c.label}>
+                    <a
+                      href={c.href}
+                      target={c.external ? '_blank' : undefined}
+                      rel={c.external ? 'noopener noreferrer' : undefined}
+                      className="group flex items-center justify-between gap-3 rounded-md px-2 py-2.5 transition-colors hover:bg-accent"
+                    >
+                      <span className="flex min-w-0 items-center gap-2.5">
+                        <c.icon
+                          aria-hidden
+                          className="size-4 shrink-0 text-muted-foreground group-hover:text-primary"
+                        />
+                        <span className="min-w-0">
+                          <span className="block text-sm text-foreground">{c.label}</span>
+                          <span className="block truncate text-xs text-muted-foreground">
+                            {c.value}
+                          </span>
+                        </span>
+                      </span>
+                      <ArrowUpRight
+                        aria-hidden
+                        className="size-3.5 shrink-0 text-muted-foreground opacity-50"
+                      />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </SectionCard>
+
+            <SectionCard padding="md" flat>
+              <h2 className="font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">
+                What happens next
+              </h2>
+              <ol className="mt-4 space-y-3">
+                {[
+                  'I read the brief myself — no SDR, no sequence.',
+                  'You get a reply within one business day.',
+                  'If it fits, the free audit starts from your documents.',
+                ].map((step, i) => (
+                  <li
+                    key={step}
+                    className="flex gap-3 text-sm leading-relaxed text-muted-foreground"
+                  >
+                    <span className="font-mono text-xs text-primary">0{i + 1}</span>
+                    <span className="min-w-0">{step}</span>
+                  </li>
+                ))}
+              </ol>
+            </SectionCard>
+          </aside>
         </div>
-      </SectionWrapper>
+      </Section>
     </main>
   )
 }

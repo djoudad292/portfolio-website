@@ -60,7 +60,7 @@ export const AUDIT_OFFER = {
 // Honest availability claim. UTC+1 gives ~3-4h of US-East overlap, not a full
 // US day — claiming "overlaps US hours" is a verifiable falsehood on a page
 // whose whole pitch is that its claims are checkable.
-export const TIMEZONE_CLAIM = "Remote · serves EU and US-East clients during overlapping business hours."
+export const TIMEZONE_CLAIM = "Remote · UTC+1. US-East overlap: 8–11 AM ET / 14–17 CET, plus full EU business hours."
 
 // Booking link for the free scope call offered on the pricing and contact
 // sections.

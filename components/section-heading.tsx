@@ -1,45 +1,65 @@
-"use client"
+import { cn } from '@/lib/utils'
 
-import { motion } from "framer-motion"
+type Size = '2xl' | '3xl' | '4xl' | '5xl'
 
-interface SectionHeadingProps {
-  index?: string
-  label?: string
-  title: string
-  description?: string
-  size?: "3xl" | "4xl" | "5xl" | "6xl"
+const sizeMap: Record<Size, string> = {
+  '2xl': 'text-2xl',
+  '3xl': 'text-3xl',
+  '4xl': 'text-3xl sm:text-4xl',
+  '5xl': 'text-4xl sm:text-5xl',
 }
 
+/**
+ * Section heading: mono eyebrow + hairline, display title, optional lede.
+ *
+ * This is the only heading pattern for sections. It replaces the previous
+ * split between a framer-motion client component on four pages and a
+ * duplicated `SectionHeadingLocal` inside the homepage.
+ *
+ * It is deliberately not animated: a scroll-triggered fade on every heading
+ * means content is invisible until JS runs and until the element intersects.
+ */
 export function SectionHeading({
-  index,
-  label,
   title,
+  eyebrow,
+  index,
   description,
-  size = "4xl",
-}: SectionHeadingProps) {
+  size = '3xl',
+  className,
+  as: Tag = 'h2',
+}: {
+  title: string
+  eyebrow?: string
+  index?: string
+  description?: React.ReactNode
+  size?: Size
+  className?: string
+  as?: 'h2' | 'h3'
+}) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.5 }}
-      className="mb-10 sm:mb-12 lg:mb-16 max-w-[var(--container-lg)]"
-    >
-      {label && (
-        <p className="mb-3 sm:mb-4 flex items-center gap-3 font-mono text-[var(--text-xs)] uppercase tracking-[0.25em] text-primary">
-          {index ? `${index} / ` : ""}
-          {label}
+    <div className={cn('max-w-[var(--prose-max)]', className)}>
+      {eyebrow && (
+        <div className="mb-4 flex items-center gap-3 sm:mb-5">
+          <p className="font-mono text-xs uppercase tracking-[0.18em] text-primary">
+            {index ? `${index} / ` : ''}
+            {eyebrow}
+          </p>
           <span aria-hidden className="h-px flex-1 bg-border" />
-        </p>
+        </div>
       )}
-      <h2 className={`font-display leading-[1.05] tracking-tight text-foreground text-[var(--text-${size})]`}>
+      <Tag
+        className={cn(
+          'font-display font-normal tracking-tight text-foreground',
+          sizeMap[size],
+        )}
+      >
         {title}
-      </h2>
+      </Tag>
       {description && (
-        <p className="mt-4 sm:mt-5 text-pretty leading-relaxed text-[var(--text-base)] text-muted-foreground">
+        <p className="mt-4 text-pretty text-base leading-relaxed text-muted-foreground sm:mt-5 sm:text-lg">
           {description}
         </p>
       )}
-    </motion.div>
+    </div>
   )
 }

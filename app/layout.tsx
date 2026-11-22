@@ -1,9 +1,10 @@
 import type { Metadata, Viewport } from 'next'
 import { Space_Grotesk, Instrument_Serif, IBM_Plex_Mono } from 'next/font/google'
 import './globals.css'
-import { ThemeProvider } from '@/components/theme-provider'
 import { Navbar } from '@/components/navbar'
+import { Footer } from '@/components/footer'
 import { ChatWidget } from '@/components/chat-widget'
+import { Analytics } from '@/components/analytics'
 
 const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-space' })
 const instrumentSerif = Instrument_Serif({
@@ -83,6 +84,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: '#0a0c10',
+  colorScheme: 'dark',
 }
 
 export default function RootLayout({
@@ -91,13 +93,23 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className={`${spaceGrotesk.variable} ${instrumentSerif.variable} ${plexMono.variable} font-sans antialiased`}>
-        <ThemeProvider>
-          <Navbar />
-          {children}
-          <ChatWidget />
-        </ThemeProvider>
+    // `dark` is on <html> so shadcn's dark: variants resolve. The site is
+    // dark-only; a theme provider would only add a hydration-mismatched
+    // data-theme attribute on top of a palette that has no light variant.
+    <html lang="en" className="dark" suppressHydrationWarning>
+      <body
+        className={`${spaceGrotesk.variable} ${instrumentSerif.variable} ${plexMono.variable} font-sans antialiased`}
+      >
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-primary-foreground"
+        >
+          Skip to content
+        </a>
+        <Navbar />
+        <div id="main">{children}</div>
+        <Footer />
+        <ChatWidget />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -118,8 +130,9 @@ export default function RootLayout({
             }),
           }}
         />
-        <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "9320c98188e747f0ad98120cbbba7351"}' />
-        <script defer src="https://shown.io/metrics/On9xljgK9e" type="text/javascript"></script>
+        {/* Analytics mount themselves only on a real host, so local
+            development keeps a clean console. */}
+        <Analytics />
       </body>
     </html>
   )

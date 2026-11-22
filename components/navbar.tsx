@@ -1,140 +1,190 @@
-"use client"
+'use client'
 
-import { useState, useEffect } from "react"
-import Image from "next/image"
-import Link from "next/link"
-import { AnimatePresence, motion } from "framer-motion"
-import { Menu, Sparkles, X, Briefcase, Rocket, Target } from "lucide-react"
-import { CommandPalette } from "@/components/command-palette"
+import { useEffect, useState } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { ArrowRight, Menu, X } from 'lucide-react'
 
-const navLinks = [
-  { href: "/#work", label: "Work", icon: Briefcase },
-  { href: "/hire-ai-developer", label: "What I Build", icon: Rocket },
-  { href: "/ai-reliability-audit", label: "Free Audit", icon: Target },
-]
+import { CommandPalette } from '@/components/command-palette'
+import { buttonClass } from '@/components/button'
+import { cn } from '@/lib/utils'
+
+/**
+ * Primary navigation.
+ *
+ * The previous version listed two links ("Work", "Free Audit") while the site
+ * shipped six routes, so Pricing, Benchmark and Work were reachable only by
+ * scrolling the homepage or from a footer that did not exist. Every route is
+ * now in the nav, with the current one marked via aria-current.
+ */
+const NAV = [
+  { href: '/work', label: 'Work' },
+  { href: '/pricing', label: 'Pricing' },
+  { href: '/benchmark', label: 'Benchmark' },
+  { href: '/ai-reliability-audit', label: 'Free audit' },
+] as const
 
 export function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [isOpen, setIsOpen] = useState(false)
+  const pathname = usePathname()
+  const [scrolled, setScrolled] = useState(false)
+  const [open, setOpen] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 24)
+    const onScroll = () => setScrolled(window.scrollY > 8)
     onScroll()
-    window.addEventListener("scroll", onScroll, { passive: true })
-    return () => window.removeEventListener("scroll", onScroll)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
   }, [])
+
+  // Close the mobile sheet on navigation, on Escape, and lock the page behind it.
+  useEffect(() => {
+    if (!open) return
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false)
+    document.addEventListener('keydown', onKey)
+    const previous = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.removeEventListener('keydown', onKey)
+      document.body.style.overflow = previous
+    }
+  }, [open])
+
+  const isActive = (href: string) =>
+    pathname === href || pathname.startsWith(`${href}/`)
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "border-b border-border bg-background/90 backdrop-blur"
-          : "border-b border-transparent bg-transparent"
-      }`}
+      className={cn(
+        'fixed inset-x-0 top-0 z-50 border-b transition-colors duration-200',
+        scrolled || open
+          ? 'border-border bg-background/85 backdrop-blur-md'
+          : 'border-transparent bg-transparent',
+      )}
     >
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6 py-3 sm:py-4">
-        <Link href="/#top" className="flex shrink-0 items-center gap-2 sm:gap-3">
+      <div className="mx-auto flex h-16 max-w-[var(--shell-max)] items-center justify-between gap-4 px-5 sm:px-8 lg:px-10">
+        <Link
+          href="/"
+          onClick={() => setOpen(false)}
+          className="flex shrink-0 items-center gap-2.5"
+          aria-label="Djaouad Frih — home"
+        >
           <Image
             src="/djaouad-logo-trimmed.png"
-            alt="Djaouad Frih"
+            alt=""
             width={362}
             height={357}
-            className="h-9 sm:h-10 w-auto object-contain brightness-[1.25] saturate-[1.15]"
+            className="h-8 w-auto object-contain brightness-125 saturate-110"
             priority
           />
-          <span className="hidden font-display text-sm sm:text-xl tracking-tight text-foreground sm:inline">
+          <span className="hidden font-display text-xl tracking-tight sm:inline">
             Djaouad Frih<span className="text-primary">.</span>
           </span>
         </Link>
 
-        <ul className="hidden items-center gap-4 sm:gap-6 md:flex">
-          {navLinks.map((link) => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-muted-foreground transition-colors hover:text-foreground"
-              >
-                <link.icon className="h-3 sm:h-3.5 w-3 sm:w-3.5 shrink-0" />
-                {link.label}
-              </a>
-            </li>
-          ))}
-          <li>
-            <CommandPalette />
-          </li>
-          <li>
-            <a
-              href="/contact"
-              className="inline-flex items-center rounded-full bg-primary px-4 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+        <nav aria-label="Main" className="hidden items-center gap-1 lg:flex">
+          {NAV.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              aria-current={isActive(link.href) ? 'page' : undefined}
+              className={cn(
+                'rounded-md px-3 py-2 text-sm transition-colors',
+                isActive(link.href)
+                  ? 'text-foreground'
+                  : 'text-muted-foreground hover:text-foreground',
+              )}
             >
-              <Rocket className="h-3 sm:h-3.5 w-3 sm:w-3.5 shrink-0 mr-1 sm:mr-2" />
-              Start a Project
-            </a>
-          </li>
-        </ul>
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+
+        <div className="hidden items-center gap-3 lg:flex">
+          <CommandPalette />
+          <Link
+            href="/contact"
+            aria-current={isActive('/contact') ? 'page' : undefined}
+            className={cn(
+              buttonClass({ size: 'sm' }),
+              isActive('/contact') && 'ring-2 ring-primary/40 ring-offset-2 ring-offset-background',
+            )}
+          >
+            Start a project
+            <ArrowRight className="size-4" aria-hidden />
+          </Link>
+        </div>
 
         <button
           type="button"
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle menu"
-          aria-expanded={isOpen}
-          aria-controls="mobile-menu"
-          className="-mr-1 inline-flex h-10 sm:h-11 w-10 sm:w-11 items-center justify-center text-foreground md:hidden"
+          onClick={() => setOpen((v) => !v)}
+          aria-label={open ? 'Close menu' : 'Open menu'}
+          aria-expanded={open}
+          aria-controls="mobile-nav"
+          className="-mr-2 inline-flex size-11 items-center justify-center rounded-md text-foreground transition-colors hover:bg-accent lg:hidden"
         >
-          {isOpen ? <X className="h-4 sm:h-5 w-4 sm:w-5" /> : <Menu className="h-4 sm:h-5 w-4 sm:w-5" />}
+          {open ? <X className="size-5" /> : <Menu className="size-5" />}
         </button>
-      </nav>
+      </div>
 
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            id="mobile-menu"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="overflow-hidden border-b border-border bg-background md:hidden"
-          >
-            <ul className="flex flex-col px-4 sm:px-6 py-3 sm:py-4">
-              {navLinks.map((link) => (
+      {/*
+        Mobile sheet. Shown and hidden instantly rather than animated: an
+        animated panel whose height or opacity has to transition to its end
+        state is unusable where animation frames are throttled (background
+        tabs, low-power mode, headless). Closed, the sheet is inert and
+        aria-hidden so its links stay out of the tab order.
+      */}
+      <div className={cn('lg:hidden', open ? 'block' : 'hidden')}>
+        <nav
+          id="mobile-nav"
+          aria-label="Mobile"
+          className="border-t border-border bg-background"
+        >
+          <div className="mx-auto max-w-[var(--shell-max)] px-5 py-4 sm:px-8">
+            <ul className="flex flex-col">
+              {NAV.map((link) => (
                 <li key={link.href}>
-                  <a
+                  <Link
                     href={link.href}
-                    onClick={() => setIsOpen(false)}
-                    className="flex items-center gap-2 sm:gap-3 block px-3 sm:px-4 py-3 sm:py-3.5 text-sm text-muted-foreground hover:text-foreground"
+                    onClick={() => setOpen(false)}
+                    aria-current={isActive(link.href) ? 'page' : undefined}
+                    className={cn(
+                      'flex min-h-12 items-center rounded-md px-3 text-base transition-colors',
+                      isActive(link.href)
+                        ? 'bg-secondary text-foreground'
+                        : 'text-muted-foreground hover:bg-accent hover:text-foreground',
+                    )}
                   >
-                    <link.icon className="h-3.5 w-3.5 shrink-0" />
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
-              <li>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setIsOpen(false)
-                    window.dispatchEvent(new CustomEvent("open-command-palette"))
-                  }}
-                  className="flex min-h-10 sm:min-h-11 w-full items-center gap-2 sm:gap-3 px-3 sm:px-4 text-sm text-muted-foreground transition-colors hover:text-foreground"
-                >
-                  <Sparkles className="h-3.5 sm:h-4 w-3.5 sm:w-4 shrink-0 text-primary" />
-                  Ask anything
-                </button>
-              </li>
             </ul>
 
-            <div className="px-4 sm:px-6 pb-3 sm:pb-4">
-              <a
+            <div className="mt-4 flex flex-col gap-3 border-t border-border pt-4">
+              <Link
                 href="/contact"
-                onClick={() => setIsOpen(false)}
-                className="inline-flex min-h-10 sm:min-h-11 w-full items-center justify-center rounded-full bg-primary px-4 sm:px-5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+                onClick={() => setOpen(false)}
+                aria-current={isActive('/contact') ? 'page' : undefined}
+                className={buttonClass({ size: 'md', className: 'w-full' })}
               >
-                <Rocket className="h-3 sm:h-3.5 w-3 sm:w-3.5 shrink-0 mr-1 sm:mr-2" />
                 Start a project
-              </a>
+                <ArrowRight className="size-4" aria-hidden />
+              </Link>
+              <button
+                type="button"
+                onClick={() => {
+                  setOpen(false)
+                  window.dispatchEvent(new Event('open-command-palette'))
+                }}
+                className="min-h-11 w-full rounded-md px-3 text-left text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+              >
+                Ask about my work, pricing, availability…
+              </button>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </div>
+        </nav>
+      </div>
     </header>
   )
 }

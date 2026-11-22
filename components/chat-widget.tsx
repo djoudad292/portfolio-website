@@ -1,281 +1,280 @@
-"use client"
+'use client'
 
-import { useState, useRef, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { MessageSquare, X, Send, Loader2, Check, Mail } from "lucide-react"
-import { email } from "@/lib/socials"
+import { useEffect, useRef, useState } from 'react'
+import { Check, Loader2, Mail, MessageSquare, Send, X } from 'lucide-react'
 
+import { email } from '@/lib/socials'
+import { controlClass } from '@/components/ui/input'
+import { cn } from '@/lib/utils'
+
+type Status = 'idle' | 'sending' | 'sent' | 'error'
+
+/**
+ * Floating contact widget.
+ *
+ * Submits by opening the visitor's mail client, so there is no endpoint to
+ * fail and no data captured server-side. Status is announced through a live
+ * region and the form is disabled while a send is in flight.
+ */
 export function ChatWidget() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle")
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  })
+  const [open, setOpen] = useState(false)
+  const [status, setStatus] = useState<Status>('idle')
+  const [form, setForm] = useState({ name: '', email: '', message: '' })
   const [isMobile, setIsMobile] = useState(false)
-  const widgetRef = useRef<HTMLDivElement>(null)
+  const panelRef = useRef<HTMLDivElement>(null)
 
-  // Detect mobile on mount.
-  //
-  // The breakpoint must match the `lg:` breakpoint the panel layout switches
-  // at, not an arbitrary 640px. When these disagreed, a viewport between the
-  // two got the narrow mobile panel with no backdrop and no scroll lock.
+  // Must match the lg: breakpoint the panel layout switches at, not an
+  // arbitrary 640px — a viewport between the two got the narrow mobile panel
+  // with no backdrop and no scroll lock.
   useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 1024)
-    checkMobile()
-    window.addEventListener("resize", checkMobile)
-    window.addEventListener("orientationchange", checkMobile)
+    const check = () => setIsMobile(window.innerWidth < 1024)
+    check()
+    window.addEventListener('resize', check)
+    window.addEventListener('orientationchange', check)
     return () => {
-      window.removeEventListener("resize", checkMobile)
-      window.removeEventListener("orientationchange", checkMobile)
+      window.removeEventListener('resize', check)
+      window.removeEventListener('orientationchange', check)
     }
   }, [])
 
-  // Close when clicking outside
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (widgetRef.current && !widgetRef.current.contains(event.target as Node)) {
-        setIsOpen(false)
+    if (!open) return
+    const onPointer = (e: MouseEvent) => {
+      if (panelRef.current && !panelRef.current.contains(e.target as Node)) {
+        setOpen(false)
       }
     }
-    if (isOpen) {
-      document.addEventListener("mousedown", handleClickOutside)
-    }
-    return () => document.removeEventListener("mousedown", handleClickOutside)
-  }, [isOpen])
-
-  // Prevent body scroll when open on mobile
-  useEffect(() => {
-    if (isOpen && isMobile) {
-      document.body.style.overflow = "hidden"
-    }
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false)
+    document.addEventListener('mousedown', onPointer)
+    document.addEventListener('keydown', onKey)
     return () => {
-      document.body.style.overflow = ""
+      document.removeEventListener('mousedown', onPointer)
+      document.removeEventListener('keydown', onKey)
     }
-  }, [isOpen, isMobile])
+  }, [open])
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  useEffect(() => {
+    if (!open || !isMobile) return
+    const previous = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.body.style.overflow = previous
+    }
+  }, [open, isMobile])
+
+  const update = (field: keyof typeof form, value: string) =>
+    setForm((f) => ({ ...f, [field]: value }))
+
+  const submit = (e: React.FormEvent) => {
     e.preventDefault()
-    setStatus("sending")
+    setStatus('sending')
 
-    const body = [
-      `Name: ${formData.name}`,
-      `Email: ${formData.email}`,
-      "",
-      formData.message,
-    ].join("\n")
-
-    const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(
-      `Chat widget message from ${formData.name}`
+    const body = [`Name: ${form.name}`, `Email: ${form.email}`, '', form.message].join('\n')
+    const mailto = `mailto:${email}?subject=${encodeURIComponent(
+      `Message from ${form.name}`,
     )}&body=${encodeURIComponent(body)}`
 
-    const opened = window.open(mailtoLink, "_blank")
-    if (!opened) {
-      window.location.href = mailtoLink
-    }
-    setStatus("sent")
-    setFormData({ name: "", email: "", message: "" })
+    const opened = window.open(mailto, '_blank')
+    if (!opened) window.location.href = mailto
+
+    setStatus('sent')
+    setForm({ name: '', email: '', message: '' })
     setTimeout(() => {
-      setStatus("idle")
-      setIsOpen(false)
-    }, 3000)
+      setStatus('idle')
+      setOpen(false)
+    }, 3200)
   }
 
-  return (
-    <div ref={widgetRef} className="fixed bottom-6 right-6 z-[100] lg:bottom-6 lg:right-6">
-      {/* Backdrop on mobile when open */}
-      {isOpen && isMobile && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black/20 backdrop-blur-sm z-[99] lg:hidden"
-          onClick={() => setIsOpen(false)}
-          aria-hidden="true"
-        />
-      )}
+  const busy = status === 'sending' || status === 'sent'
 
-      {/* Chat panel — full width on mobile, fixed width on desktop */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: 16, scale: 0.96 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 16, scale: 0.96 }}
-            transition={{ duration: 0.18, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="fixed inset-x-3 bottom-[5.5rem] z-[101] mx-auto flex max-h-[calc(100dvh-7rem)] max-w-md flex-col overflow-hidden lg:absolute lg:inset-x-auto lg:bottom-16 lg:right-0 lg:mb-2 lg:mx-0 lg:w-auto lg:max-h-none lg:max-w-md"
-          >
-            <div className="flex min-h-0 flex-1 flex-col rounded-2xl border border-border bg-card shadow-[0_25px_50px_-12px_rgb(0,0,0,0.25)] overflow-hidden ring-1 ring-black/5">
-              {/* Header */}
-              <div className="flex items-center justify-between border-b border-border bg-background px-4 py-3">
-                <div className="flex items-center gap-3">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10">
-                    <Mail className="h-4 w-4 text-primary" />
-                  </div>
-                  <div className="min-w-0">
-                    <p className="font-medium text-sm text-foreground truncate">Send a message</p>
-                    <p className="font-mono text-[10px] text-muted-foreground truncate">
-                      Opens in your email app
-                    </p>
-                  </div>
+  return (
+    <div className="fixed bottom-5 right-5 z-[100] lg:bottom-6 lg:right-6">
+      {/* Backdrop and panel stay mounted and toggle visibility. Opacity is
+          deliberately NOT animated: any element whose visibility depends on a
+          transition or animation reaching its end state is unreadable where
+          animation frames are throttled (background tabs, low-power mode,
+          headless). Transform-only motion degrades to a few pixels of offset,
+          never to invisible content. */}
+      <div
+        className={cn(
+          'fixed inset-0 z-[99] bg-background/70 backdrop-blur-sm lg:hidden',
+          open && isMobile ? 'visible' : 'invisible pointer-events-none',
+        )}
+        onClick={() => setOpen(false)}
+        aria-hidden
+      />
+
+      <div
+        ref={panelRef}
+        role="dialog"
+        aria-modal={isMobile || undefined}
+        aria-label="Send a message"
+        aria-hidden={!open}
+        inert={!open}
+        className={cn(
+          'fixed inset-x-3 bottom-[5.5rem] z-[101] mx-auto flex max-h-[calc(100dvh-7rem)] max-w-md flex-col overflow-hidden rounded-xl border border-border bg-card shadow-[var(--shadow-overlay)]',
+          'transition-transform duration-200 ease-out',
+          'lg:absolute lg:inset-x-auto lg:bottom-16 lg:right-0 lg:mx-0 lg:w-[22rem] lg:max-h-none',
+          open
+            ? 'visible translate-y-0 scale-100'
+            : 'invisible translate-y-2 scale-[0.98] pointer-events-none',
+        )}
+      >
+            <div className="flex items-center justify-between gap-3 border-b border-border bg-secondary/40 px-4 py-3">
+              <div className="flex min-w-0 items-center gap-3">
+                <span className="flex size-8 shrink-0 items-center justify-center rounded-md bg-primary/15">
+                  <Mail aria-hidden className="size-4 text-primary" />
+                </span>
+                <div className="min-w-0">
+                  <p className="truncate text-sm font-medium">Send a message</p>
+                  <p className="truncate font-mono text-[10px] text-muted-foreground">
+                    Opens in your email app
+                  </p>
                 </div>
-                <motion.button
-                  onClick={() => setIsOpen(false)}
-                  className="rounded-lg p-1.5 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground flex-shrink-0"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  aria-label="Close"
-                >
-                  <X className="h-4 w-4" />
-                </motion.button>
+              </div>
+              <button
+                type="button"
+                onClick={() => setOpen(false)}
+                aria-label="Close"
+                className="-mr-1 inline-flex size-9 shrink-0 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+              >
+                <X className="size-4" aria-hidden />
+              </button>
+            </div>
+
+            <form
+              onSubmit={submit}
+              className="flex min-h-0 flex-1 flex-col gap-3.5 overflow-y-auto overscroll-contain p-4"
+            >
+              <div className="space-y-1.5">
+                <label htmlFor="chat-name" className="text-xs font-medium text-muted-foreground">
+                  Name
+                </label>
+                <input
+                  id="chat-name"
+                  required
+                  autoComplete="name"
+                  value={form.name}
+                  onChange={(e) => update('name', e.target.value)}
+                  disabled={busy}
+                  className={cn(controlClass, 'h-10 py-2')}
+                  placeholder="Your name"
+                />
               </div>
 
-              {/* Form */}
-              <form onSubmit={handleSubmit} className="min-h-0 flex-1 space-y-3.5 overflow-y-auto overscroll-contain p-4">
-                <div>
-                  <label
-                    htmlFor="chat-name"
-                    className="block text-xs font-medium text-muted-foreground mb-1.5"
-                  >
-                    Name
-                  </label>
-                  <input
-                    id="chat-name"
-                    type="text"
-                    required
-                    autoComplete="name"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full rounded-xl border border-border bg-background px-3.5 py-2.5 text-sm placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:border-transparent transition-colors"
-                    placeholder="Your name"
-                    disabled={status === "sending" || status === "sent"}
-                  />
-                </div>
+              <div className="space-y-1.5">
+                <label htmlFor="chat-email" className="text-xs font-medium text-muted-foreground">
+                  Email
+                </label>
+                <input
+                  id="chat-email"
+                  type="email"
+                  required
+                  autoComplete="email"
+                  value={form.email}
+                  onChange={(e) => update('email', e.target.value)}
+                  disabled={busy}
+                  className={cn(controlClass, 'h-10 py-2')}
+                  placeholder="you@company.com"
+                />
+              </div>
 
-                <div>
-                  <label
-                    htmlFor="chat-email"
-                    className="block text-xs font-medium text-muted-foreground mb-1.5"
-                  >
-                    Email
-                  </label>
-                  <input
-                    id="chat-email"
-                    type="email"
-                    required
-                    autoComplete="email"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full rounded-xl border border-border bg-background px-3.5 py-2.5 text-sm placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:border-transparent transition-colors"
-                    placeholder="your@email.com"
-                    disabled={status === "sending" || status === "sent"}
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="chat-message"
-                    className="block text-xs font-medium text-muted-foreground mb-1.5"
-                  >
-                    Message
-                  </label>
-                  <textarea
-                    id="chat-message"
-                    required
-                    rows={4}
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full rounded-xl border border-border bg-background px-3.5 py-2.5 text-sm placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:border-transparent transition-colors resize-none"
-                    placeholder="What can I help you build?"
-                    disabled={status === "sending" || status === "sent"}
-                  />
-                </div>
-
-                <motion.button
-                  type="submit"
-                  disabled={status === "sending" || status === "sent"}
-                  className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-medium text-primary-foreground transition-all hover:opacity-90 hover:shadow-lg hover:shadow-primary/25 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:shadow-none"
-                  whileHover={{ scale: 1.01 }}
-                  whileTap={{ scale: 0.99 }}
+              <div className="space-y-1.5">
+                <label
+                  htmlFor="chat-message"
+                  className="text-xs font-medium text-muted-foreground"
                 >
-                  {status === "sending" && (
-                    <>
-                      <Loader2 className="h-4 w-4 animate-spin" />
-                      Opening email…
-                    </>
-                  )}
-                  {status === "sent" && (
-                    <>
-                      <Check className="h-4 w-4" />
-                      Sent! Check your email app
-                    </>
-                  )}
-                  {status !== "sending" && status !== "sent" && (
-                    <>
-                      <Send className="h-4 w-4" />
-                      Send via email
-                    </>
-                  )}
-                </motion.button>
+                  Message
+                </label>
+                <textarea
+                  id="chat-message"
+                  required
+                  rows={4}
+                  value={form.message}
+                  onChange={(e) => update('message', e.target.value)}
+                  disabled={busy}
+                  className={cn(controlClass, 'resize-none')}
+                  placeholder="What can I help you build?"
+                />
+              </div>
 
-                {status === "error" && (
-                  <motion.p
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="text-center text-xs text-red-500"
-                  >
-                    Could not open email app. Please email{" "}
-                    <a href={`mailto:${email}`} className="underline hover:text-red-400">
-                      {email}
-                    </a>{" "}
-                    directly.
-                  </motion.p>
+              <button
+                type="submit"
+                disabled={busy}
+                className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-md bg-primary px-5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/85 disabled:opacity-60"
+              >
+                {status === 'sending' && (
+                  <>
+                    <Loader2 aria-hidden className="size-4 animate-spin" />
+                    Opening email…
+                  </>
                 )}
+                {status === 'sent' && (
+                  <>
+                    <Check aria-hidden className="size-4" />
+                    Sent — check your email app
+                  </>
+                )}
+                {status !== 'sending' && status !== 'sent' && (
+                  <>
+                    <Send aria-hidden className="size-4" />
+                    Send via email
+                  </>
+                )}
+              </button>
 
-                <p className="text-center text-[10px] text-muted-foreground/70">
-                  No data leaves this page until you hit send in your mail client.
-                </p>
-              </form>
-            </div>
-          </motion.div>
+              <div aria-live="polite">
+                {status === 'error' && (
+                  <p role="alert" className="text-xs leading-relaxed text-destructive">
+                    Could not open your email app. Email{' '}
+                    <a
+                      href={`mailto:${email}`}
+                      className="underline underline-offset-4"
+                    >
+                      {email}
+                    </a>{' '}
+                    directly.
+                  </p>
+                )}
+              </div>
+
+              <p className="text-center text-[10px] leading-relaxed text-muted-foreground/80">
+                No data leaves this page until you hit send in your mail client.
+              </p>
+            </form>
+        </div>
+
+      {/* z-[101] keeps the trigger above the mobile backdrop: an un-z-indexed
+          button sat underneath the overlay and could not be tapped to close. */}
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-label={open ? 'Close contact form' : 'Open contact form'}
+        aria-expanded={open}
+        className={cn(
+          'relative z-[101] flex size-14 items-center justify-center rounded-full bg-primary text-primary-foreground',
+          'shadow-lg transition-transform duration-200 hover:scale-105',
+          open && 'rotate-90',
         )}
-      </AnimatePresence>
-
-      {/* Floating action button — always visible.
-          z-[101] keeps it above the mobile backdrop (z-[99]): both live in this
-          container's stacking context, so an un-z-indexed button sat underneath
-          the overlay and could not be tapped to close. */}
-      <motion.button
-        onClick={() => setIsOpen(!isOpen)}
-        className={`relative z-[101] flex h-14 w-14 items-center justify-center rounded-full bg-primary shadow-xl transition-all hover:scale-105 hover:shadow-2xl ${
-          isOpen ? "rotate-45" : ""
-        }`}
-        aria-label={isOpen ? "Close chat" : "Open chat"}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
       >
-        <MessageSquare className="h-7 w-7 text-primary-foreground" />
-      </motion.button>
+        {open ? (
+          <X className="size-6" aria-hidden />
+        ) : (
+          <MessageSquare className="size-6" aria-hidden />
+        )}
+      </button>
 
-      {/* Availability indicator — only when closed, above button */}
-      {!isOpen && (
-        <motion.div
-          initial={{ opacity: 0, x: 16 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: 16 }}
-          transition={{ delay: 0.8, duration: 0.3 }}
-          className="absolute bottom-16 right-0 mb-2 hidden sm:block lg:bottom-16 lg:right-0 lg:mb-2"
-        >
-          <div className="flex items-center gap-2 rounded-xl border border-border bg-card px-3 py-1.5 text-[11px] text-muted-foreground shadow-lg ring-1 ring-black/5 whitespace-nowrap">
-            <span className="relative flex h-1.5 w-1.5 shrink-0">
-              <span className="absolute inset-0 animate-ping rounded-full bg-green-500/60" />
-              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-green-500" />
+      {!open && (
+        <div className="absolute bottom-16 right-0 mb-2 hidden animate-in whitespace-nowrap fade-in-0 slide-in-from-right-2 duration-300 sm:block">
+          <div className="flex items-center gap-2 rounded-md border border-border bg-card px-3 py-1.5 text-[11px] shadow-[var(--shadow-panel)]">
+            <span className="relative flex size-1.5 shrink-0">
+              <span className="absolute inline-flex size-full animate-ping rounded-full bg-success opacity-60" />
+              <span className="relative inline-flex size-1.5 rounded-full bg-success" />
             </span>
             <span className="font-medium text-foreground">Available</span>
-            <span className="text-muted-foreground">· New project inquiry</span>
+            <span className="text-muted-foreground">· new project enquiries</span>
           </div>
-        </motion.div>
+        </div>
       )}
     </div>
   )

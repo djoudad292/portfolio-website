@@ -1,71 +1,95 @@
-"use client"
+'use client'
 
-import { useCallback, useEffect, useRef, useState } from "react"
-import { createPortal } from "react-dom"
-import { AnimatePresence, motion } from "framer-motion"
-import { ArrowUpRight, CornerDownLeft, Sparkles } from "lucide-react"
-import { CHAT_URL, COMPANY_ID } from "@/components/console/data"
+import { useCallback, useEffect, useRef, useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { createPortal } from 'react-dom'
+import { ArrowRight, CornerDownLeft, Search, Sparkles } from 'lucide-react'
 
-const ACTIONS = [
-  { label: "Briefing", hint: "about, who", view: "briefing" },
-  { label: "See the work", hint: "projects", view: "work" },
-  { label: "Ask my AI", hint: "chat, agent", view: "assistant" },
-  { label: "Start a project", hint: "contact, hire", view: "contact" },
-  { label: "Process & pricing", hint: "terms, cost, rates", view: "terms" },
-  { label: "Connect via MCP", hint: "hireme, agent hire", view: "connect" },
-]
+import { CHAT_URL, COMPANY_ID } from '@/lib/chat'
+import { cn } from '@/lib/utils'
 
-type Mode = "idle" | "thinking" | "answered" | "error"
+/**
+ * Command palette — routes the site's navigation and the portfolio agent.
+ *
+ * Type an exact page name to jump, or ask a question and the same support
+ * agent that answers on client sites replies. Previously every "jump to"
+ * action dispatched a `console:navigate` event that no mounted component
+ * listened to, so all of them were silent no-ops.
+ */
+const ROUTES = [
+  { label: 'Work', hint: 'projects case studies', href: '/work' },
+  { label: 'Pricing', hint: 'cost rates quote', href: '/pricing' },
+  { label: 'Benchmark', hint: 'retrieval eval numbers', href: '/benchmark' },
+  { label: 'Free audit', hint: 'reliability measure', href: '/ai-reliability-audit' },
+  { label: 'Contact', hint: 'hire brief start', href: '/contact' },
+] as const
+
+type Mode = 'idle' | 'thinking' | 'answered' | 'error'
 
 export function CommandPalette() {
+  const router = useRouter()
   const [open, setOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
-  const [query, setQuery] = useState("")
-  const [mode, setMode] = useState<Mode>("idle")
-  const [answer, setAnswer] = useState("")
+  const [query, setQuery] = useState('')
+  const [mode, setMode] = useState<Mode>('idle')
+  const [answer, setAnswer] = useState('')
   const inputRef = useRef<HTMLInputElement>(null)
   const abortRef = useRef<AbortController | null>(null)
   const convRef = useRef<string | null>(null)
-  const answerRef = useRef("")
 
   const close = useCallback(() => {
     setOpen(false)
-    setQuery("")
-    setMode("idle")
-    setAnswer("")
+    setQuery('')
+    setMode('idle')
+    setAnswer('')
     abortRef.current?.abort()
     abortRef.current = null
   }, [])
 
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
-        e.preventDefault()
-        setOpen((o) => !o)
-      }
-      if (e.key === "Escape") close()
-    }
-    const onOpen = () => setOpen(true)
-    window.addEventListener("keydown", onKey)
-    window.addEventListener("open-command-palette", onOpen)
-    return () => {
-      window.removeEventListener("keydown", onKey)
-      window.removeEventListener("open-command-palette", onOpen)
-    }
-  }, [close])
+  const go = useCallback(
+    (href: string) => {
+      close()
+      router.push(href)
+    },
+    [close, router],
+  )
 
   useEffect(() => {
     setMounted(true)
   }, [])
 
   useEffect(() => {
-    if (open) setTimeout(() => inputRef.current?.focus(), 50)
+    const onKey = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault()
+        setOpen((o) => !o)
+      }
+      if (e.key === 'Escape') close()
+    }
+    const onOpen = () => setOpen(true)
+    window.addEventListener('keydown', onKey)
+    window.addEventListener('open-command-palette', onOpen)
+    return () => {
+      window.removeEventListener('keydown', onKey)
+      window.removeEventListener('open-command-palette', onOpen)
+    }
+  }, [close])
+
+  useEffect(() => {
+    if (open) {
+      const id = setTimeout(() => inputRef.current?.focus(), 30)
+      const previous = document.body.style.overflow
+      document.body.style.overflow = 'hidden'
+      return () => {
+        clearTimeout(id)
+        document.body.style.overflow = previous
+      }
+    }
   }, [open])
 
   const askAgent = useCallback((question: string) => {
-    setMode("thinking")
-    setAnswer("")
-    answerRef.current = ""
+    setMode('thinking')
+    setAnswer('')
 
     abortRef.current?.abort()
     const ac = new AbortController()
@@ -74,8 +98,8 @@ export function CommandPalette() {
     ;(async () => {
       try {
         const res = await fetch(CHAT_URL, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             message: question,
             conversationId: convRef.current,
@@ -84,23 +108,21 @@ export function CommandPalette() {
           signal: ac.signal,
         })
         if (!res.ok) throw new Error(`http ${res.status}`)
-        const d = (await res.json()) as { type: string; content: string; conversationId?: string | null }
-        if (d.type === "error") throw new Error("backend error")
+        const d = (await res.json()) as {
+          type: string
+          content: string
+          conversationId?: string | null
+        }
+        if (d.type === 'error') throw new Error('backend error')
         if (d.conversationId) convRef.current = d.conversationId
-
-        // typewriter reveal for the full answer
-        setMode("answered")
-        const text = String(d.content || "")
-        let i = 0
-        const timer = setInterval(() => {
-          i += 3
-          setAnswer(text.slice(0, i))
-          if (i >= text.length) clearInterval(timer)
-        }, 12)
+        setMode('answered')
+        setAnswer(String(d.content || ''))
       } catch {
         if (ac.signal.aborted) return
-        setMode("error")
-        setAnswer("The agent did not answer (host busy or cold start) — try again in a few seconds.")
+        setMode('error')
+        setAnswer(
+          'The agent did not answer — it may be cold-starting. Try again in a few seconds, or email contact@djaouad.is-a.dev.',
+        )
       }
     })()
   }, [])
@@ -109,137 +131,164 @@ export function CommandPalette() {
     e?.preventDefault()
     const q = query.trim()
     if (!q) return
-    const exact = ACTIONS.find(
-      (a) => a.label.toLowerCase() === q.toLowerCase() || a.hint.split(", ").includes(q.toLowerCase()),
+    const exact = ROUTES.find(
+      (r) =>
+        r.label.toLowerCase() === q.toLowerCase() ||
+        r.hint.split(' ').includes(q.toLowerCase()),
     )
-    if (exact && mode === "idle") {
-      if (exact.view) window.dispatchEvent(new CustomEvent("console:navigate", { detail: exact.view }))
-      close()
+    if (exact && mode === 'idle') {
+      go(exact.href)
       return
     }
     askAgent(q)
   }
 
-  const filtered = ACTIONS.filter(
-    (a) =>
+  const filtered = ROUTES.filter(
+    (r) =>
       !query ||
-      a.label.toLowerCase().includes(query.toLowerCase()) ||
-      a.hint.includes(query.toLowerCase()),
+      r.label.toLowerCase().includes(query.toLowerCase()) ||
+      r.hint.includes(query.toLowerCase()),
   )
 
   return (
     <>
       <button
+        type="button"
         onClick={() => setOpen(true)}
-        className="hidden items-center gap-2 rounded-full border border-border px-4 py-2 text-xs text-muted-foreground transition-colors hover:border-primary hover:text-foreground md:inline-flex"
-        aria-label="Open AI command palette"
+        className="inline-flex items-center gap-2 rounded-md border border-border px-3 py-2 text-sm text-muted-foreground transition-colors hover:border-primary/60 hover:text-foreground"
+        aria-label="Ask anything — opens command palette"
       >
-        <Sparkles className="h-3.5 w-3.5 text-primary" />
-        Ask anything
-        <kbd className="rounded border border-border bg-muted px-1.5 py-0.5 font-mono text-[10px]">⌘K</kbd>
+        <Search className="size-4" aria-hidden />
+        <span className="hidden xl:inline">Ask anything</span>
+        <kbd className="hidden rounded-sm border border-border bg-secondary px-1.5 py-0.5 font-mono text-[10px] xl:inline">
+          ⌘K
+        </kbd>
       </button>
 
       {/*
         Portalled to document.body on purpose. This component is mounted inside
-        the desktop nav <ul className="hidden ... md:flex">, so a modal rendered
-        in place inherits display:none and collapses to 0x0 on a phone — the
-        palette would "open" while staying invisible. Portalling also lifts it
-        out of the header's stacking/containing-block context.
+        the desktop nav cluster, which is display:none below lg — a modal
+        rendered in place would inherit that and stay invisible.
+
+        The overlay stays mounted and toggles visibility rather than mounting
+        on open: the OPEN state is the natural state, so the palette is
+        readable even where animation frames are throttled. Closed, it is
+        inert so its buttons stay out of the tab order.
       */}
-      {mounted && createPortal(
-        <AnimatePresence>
-          {open && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-start justify-center bg-background/80 px-4 pt-[12vh] backdrop-blur-sm"
+      {mounted &&
+        createPortal(
+          <div
+            className={cn(
+              'fixed inset-0 z-[100] flex items-start justify-center bg-background/80 px-4 pt-[12vh] backdrop-blur-sm',
+              open ? 'visible' : 'invisible pointer-events-none',
+            )}
             onClick={close}
           >
-            <motion.div
-              initial={{ opacity: 0, y: -12, scale: 0.98 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -8, scale: 0.98 }}
-              transition={{ duration: 0.18 }}
-              className="w-full max-w-xl overflow-hidden rounded-2xl border border-border bg-card shadow-2xl"
+            <div
+              role="dialog"
+              aria-modal="true"
+              aria-label="Ask anything"
+              aria-hidden={!open}
+              inert={!open}
+              className={cn(
+                'w-full max-w-xl overflow-hidden rounded-xl border border-border bg-popover shadow-[var(--shadow-overlay)]',
+                'transition-transform duration-200 ease-out',
+                open
+                  ? 'visible translate-y-0 scale-100'
+                  : 'invisible -translate-y-1 scale-[0.98]',
+              )}
               onClick={(e) => e.stopPropagation()}
             >
-              <form onSubmit={onSubmit} className="flex items-center gap-3 border-b border-border px-5 py-4">
-                <Sparkles className="h-4 w-4 shrink-0 text-primary" />
-                <input
-                  ref={inputRef}
-                  value={query}
-                  onChange={(e) => { setQuery(e.target.value); if (mode !== "idle") { setMode("idle"); setAnswer("") } }}
-                  placeholder="Ask about me, my work, pricing… or jump to a section"
-                  className="w-full bg-transparent text-sm text-foreground outline-none placeholder:text-muted-foreground/60"
-                />
-                <kbd className="rounded border border-border bg-muted px-1.5 py-0.5 font-mono text-[10px] text-muted-foreground">
-                  esc
-                </kbd>
-              </form>
-
-              <div className="max-h-[46vh] overflow-y-auto p-2">
-                {mode === "thinking" && (
-                  <div className="flex items-center gap-3 px-4 py-6 text-sm text-muted-foreground">
-                    <span className="h-2 w-2 animate-pulse rounded-full bg-primary" />
-                    Asking my AI twin…
-                  </div>
-                )}
-
-                {mode === "error" && (
-                  <div className="px-4 py-6 text-sm text-muted-foreground">{answer}</div>
-                )}
-
-                {mode === "answered" && (
-                  <div className="px-4 py-4">
-                    <p className="whitespace-pre-wrap text-sm leading-relaxed text-foreground">{answer}</p>
-                    <button
-                      onClick={() => {
-                        window.dispatchEvent(new CustomEvent("console:navigate", { detail: "intake" }))
-                        close()
+                  <form
+                    onSubmit={onSubmit}
+                    className="flex items-center gap-3 border-b border-border px-5 py-4"
+                  >
+                    <Sparkles className="size-4 shrink-0 text-primary" aria-hidden />
+                    <input
+                      ref={inputRef}
+                      value={query}
+                      onChange={(e) => {
+                        setQuery(e.target.value)
+                        if (mode !== 'idle') {
+                          setMode('idle')
+                          setAnswer('')
+                        }
                       }}
-                      className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-xs font-medium text-primary-foreground transition-opacity hover:opacity-90"
-                    >
-                      Scope my project <ArrowUpRight className="h-3 w-3" />
-                    </button>
-                  </div>
-                )}
+                      placeholder="Ask about my work, pricing, availability…"
+                      aria-label="Ask a question"
+                      className="w-full bg-transparent text-base outline-none placeholder:text-muted-foreground/70"
+                    />
+                    <kbd className="rounded-sm border border-border bg-secondary px-1.5 py-0.5 font-mono text-[10px] text-muted-foreground">
+                      esc
+                    </kbd>
+                  </form>
 
-                {(mode === "idle" || query) && filtered.length > 0 && (
-                  <>
-                    {mode === "idle" && (
-                      <p className="px-4 pb-1 pt-3 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
-                        Jump to
+                  <div className="max-h-[50vh] overflow-y-auto p-2">
+                    {mode === 'thinking' && (
+                      <div className="flex items-center gap-3 px-4 py-6 text-sm text-muted-foreground">
+                        <span className="size-2 animate-pulse rounded-full bg-primary" />
+                        Asking my agent…
+                      </div>
+                    )}
+
+                    {mode === 'error' && (
+                      <p className="px-4 py-6 text-sm leading-relaxed text-muted-foreground">
+                        {answer}
                       </p>
                     )}
-                    {filtered.map((a) =>
-                      a.view ? (
-                        <button
-                          key={a.label}
-                          onClick={() => {
-                            window.dispatchEvent(new CustomEvent("console:navigate", { detail: a.view }))
-                            close()
-                          }}
-                          className="flex w-full items-center justify-between rounded-lg px-4 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-                        >
-                          {a.label}
-                          <CornerDownLeft className="h-3 w-3 opacity-40" />
-                        </button>
-                      ) : null,
-                    )}
-                  </>
-                )}
-              </div>
 
-              <div className="border-t border-border px-5 py-2.5 font-mono text-[10px] text-muted-foreground/60">
-                powered by the same AI agent I ship for clients
-              </div>
-            </motion.div>
-          </motion.div>
+                    {mode === 'answered' && (
+                      <div className="px-4 py-4">
+                        <p className="whitespace-pre-wrap text-sm leading-relaxed text-foreground">
+                          {answer}
+                        </p>
+                        <button
+                          type="button"
+                          onClick={() => go('/contact')}
+                          className="mt-4 inline-flex items-center gap-1.5 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/85"
+                        >
+                          Start a project <ArrowRight className="size-3.5" aria-hidden />
+                        </button>
+                      </div>
+                    )}
+
+                    {(mode === 'idle' || mode === 'answered') &&
+                      filtered.length > 0 && (
+                        <>
+                          <p className="px-4 pb-1 pt-3 font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">
+                            Jump to
+                          </p>
+                          <ul>
+                            {filtered.map((r) => (
+                              <li key={r.href}>
+                                <button
+                                  type="button"
+                                  onClick={() => go(r.href)}
+                                  className={cn(
+                                    'flex w-full items-center justify-between rounded-md px-4 py-2.5 text-left text-sm',
+                                    'text-muted-foreground transition-colors hover:bg-accent hover:text-foreground',
+                                  )}
+                                >
+                                  {r.label}
+                                  <CornerDownLeft
+                                    className="size-3 opacity-40"
+                                    aria-hidden
+                                  />
+                                </button>
+                              </li>
+                            ))}
+                          </ul>
+                        </>
+                      )}
+                  </div>
+
+                  <div className="border-t border-border px-5 py-2.5 font-mono text-[10px] text-muted-foreground/70">
+                    Answers come from the same agent I deploy for clients
+                  </div>
+                </div>
+          </div>,
+          document.body,
         )}
-      </AnimatePresence>,
-        document.body,
-      )}
     </>
   )
 }
